@@ -1,0 +1,9 @@
+# Node.JS
+node_modules
+package-lock.json
+
+# Enviroments
+.env
+
+# MacOS
+.DS_Store

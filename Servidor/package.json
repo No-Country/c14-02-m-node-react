@@ -1,0 +1,21 @@
+{
+	"name": "back",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "commonjs",
+	"scripts": {
+		"dev": "./node_modules/.bin/nodemon",
+		"dev-win": ".\\node_modules\\.bin\\nodemon"
+	},
+	"keywords": [],
+	"author": "team-back",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2"
+	},
+	"devDependencies": {
+		"nodemon": "^3.0.1"
+	}
+}
