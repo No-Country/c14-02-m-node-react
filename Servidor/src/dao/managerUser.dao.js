@@ -1,5 +1,5 @@
 const Database = require('../config/mongodb.js');
-const { createDocument, getOneDocument, allDocument } = require('../config/factory.js');
+const { createDocument, getOneDocument, allDocument,putUpdateDocument } = require('../config/factory.js');
 // const UserModel = require('../models/user.model.js');
 const { UserModel } = require('../models/');
 
@@ -9,6 +9,7 @@ class UserManager {
 		this.createDocument = createDocument;
 		this.getOneDocument = getOneDocument;
 		this.allDocument = allDocument;
+		this.putUpdateDocument = putUpdateDocument
 	}
 
 	async createUser(data) {
@@ -49,6 +50,17 @@ class UserManager {
 			throw new Error(`Error al obtener el usuario: ${error.message}`);
 		}
 	}
+    
+	async putUpdateUser( filter, dataUpdate){
+        try {
+            const users = await this.putUpdateDocument('usersCollection', filter, dataUpdate);
+            return users;
+        } catch (error) {
+            console.error(error);
+            throw new Error(`Error al actualizar usuario: ${error.message}`);
+        }
+    }
+
 }
 
 module.exports = UserManager;

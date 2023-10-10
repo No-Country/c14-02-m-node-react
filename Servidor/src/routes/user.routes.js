@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { postCreateUser, getUser, getAllUser } = require('../controllers/user.controller');
+const { postCreateUser, getUser, getAllUser,putUpdateUserController } = require('../controllers/user.controller');
 
 /** GET USERS
 METHOD:  GET
@@ -41,5 +41,7 @@ BODY:
          } 
 */
 // agregar metodo put acá! <-
+
+router.put('/update/:email', putUpdateUserController)
 
 module.exports = router;
