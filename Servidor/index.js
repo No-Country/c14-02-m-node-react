@@ -3,12 +3,12 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3031;
-const UserRoueter = require('../Servidor/src/routes/userRouter.cjs')
+const UserRouter = require('../Servidor/src/routes/userRouter.cjs')
 
 app.use(bodyParser.json());
 
 
-app.use('/user',UserRoueter)
+app.use('/user',UserRouter)
 
 
 
