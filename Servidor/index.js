@@ -12,4 +12,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/user', UserRoueter);
 
 const PORT = process.env.PORT || 3031;
+<<<<<<< HEAD
+=======
+const UserRouter = require('../Servidor/src/routes/userRouter.cjs')
+
+app.use(bodyParser.json());
+
+
+app.use('/user',UserRouter)
+
+
+
+>>>>>>> developer
 app.listen(PORT, () => console.log(`Servidor escuchando en el puerto http://localhost:${PORT}`));
