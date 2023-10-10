@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export const CardSlider = () => {
+export const CardSlider = ({ cardElement }) => {
   return (
     <Swiper
       cssMode={true}
@@ -16,18 +16,11 @@ export const CardSlider = () => {
       modules={[Navigation, Pagination, Mousewheel, Keyboard]}
       className="mySwiper"
     >
-      <SwiperSlide>
-        <img src="https://picsum.photos/200" alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://picsum.photos/200" alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://picsum.photos/200" alt="" />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src="https://picsum.photos/200" alt="" />
-      </SwiperSlide>
+      {cardElement.images.map((image, index) => (
+        <SwiperSlide key={index}>
+          <img src={image} alt="" />
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

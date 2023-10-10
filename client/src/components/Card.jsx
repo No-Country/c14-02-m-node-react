@@ -2,8 +2,7 @@ import { useState } from "react";
 import { CardSlider } from "./CardSlider";
 import { CardInfo } from "./CardInfo";
 
-
-export const Card = () => {
+export const Card = ({cardElement}) => {
   const [isHeartRed, setIsHeartRed] = useState(false);
 
   const toggleHeartColor = (e) => {
@@ -17,22 +16,22 @@ export const Card = () => {
       <a href="#">
         <div className="w-full h-[280px] relative ">
           <button
-            className={`z-10 h- w-0 absolute top-0 text-5xl right-11  cursor-pointer ${
+            className={`z-10 h- w-0 absolute top-0 text-4xl right-9  cursor-pointer ${
               isHeartRed ? "text-red-600" : "text-black "
             }`}
             onClick={toggleHeartColor}
           >
-            ♡
+            ♥
           </button>
 
         {/* Componente para mostrar el slider */}
 
-          <CardSlider />
+        <CardSlider cardElement={cardElement}/>
         </div>
 
         {/* Componente para mostrar un breve resumen */}
 
-        <CardInfo />
+        <CardInfo cardElement={cardElement}/>
       </a>
     </article>
   );
