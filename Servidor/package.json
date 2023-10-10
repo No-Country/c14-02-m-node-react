@@ -1,9 +1,8 @@
 {
 	"name": "back",
 	"version": "1.0.0",
-	"description": "",
+	"description": "api-clon-airbnb",
 	"main": "index.js",
-	"type": "commonjs",
 	"scripts": {
 		"dev": "./node_modules/.bin/nodemon",
 		"dev-win": ".\\node_modules\\.bin\\nodemon"
