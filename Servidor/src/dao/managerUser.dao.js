@@ -1,7 +1,7 @@
 const Database = require('../config/mongodb.js');
 const { createDocument, getOneDocument, allDocument } = require('../config/factory.js');
 // const UserModel = require('../models/user.model.js');
-const { UserModel } = require('../models');
+const { UserModel } = require('../models/index.js');
 
 class UserManager {
 	constructor() {

@@ -1,4 +1,5 @@
-const UserManager = require('../dao/managerUser.js');
+// const UserManager = require('../dao/managerUser.dao.js');
+const { UserManager } = require('../dao');
 const usermanager = new UserManager();
 
 async function postCreateUser(req, res) {
