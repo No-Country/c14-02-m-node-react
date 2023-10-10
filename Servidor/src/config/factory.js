@@ -51,5 +51,21 @@ async function getOneDocument(collection, query) {
 	}
 }
 
-// Exportamos la función createDocument para que pueda ser utilizada en otros módulos
-module.exports = { createDocument, allDocument, getOneDocument };
+async function putUpdateDocument(collection, filter, dataUpdate) {
+    try {
+        if (!this.db[collection]) {
+            await this.db.connectToDatabase(); //-->
+        }
+        const document = await this.db[collection].updateOne(filter, 
+            {
+                $set:dataUpdate
+            });
+        return document;
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+
+
+module.exports = { createDocument, allDocument, getOneDocument,putUpdateDocument };

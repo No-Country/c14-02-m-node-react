@@ -1,13 +1,16 @@
-
+// import IndividualViewPage from "./pages/IndividualViewPage";
+import { GaleriaPage } from "./pages/GaleriaPage";
 
 function App() {
-
-
   return (
     <>
-    <h1>Hola Mundo</h1>
+
+     {/* <IndividualViewPage /> */}
+
+      <GaleriaPage />
+
     </>
-  )
+  );
 }
 
-export default App
+export default App;
