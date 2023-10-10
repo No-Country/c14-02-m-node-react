@@ -22,7 +22,37 @@ async function createDocument(collection, data) {
         throw error;
     }
 }
+    // funcion para buscar todo
+
+    async function allDocument(collection) {
+        try {
+            if (!this.db[collection]) {
+                await this.db.connectToDatabase();
+            }
+            console.log(collection)
+            const document = await this.db[collection].find({}).toArray();
+            return document;
+        } catch (e) {
+            console.error(e);
+        }
+}
+
+
+//funcion para buscar por parametro 
+
+async function getOneDocument(collection, query) {
+    try {
+        if (!this.db[collection]) {
+            await this.db.connectToDatabase();
+        }
+        const document = await this.db[collection].findOne(query);
+        return document;
+    } catch (e) {
+        console.error(e);
+    }
+}
+
 
 // Exportamos la función createDocument para que pueda ser utilizada en otros módulos
-module.exports = { createDocument };
+module.exports = { createDocument, allDocument ,getOneDocument };
 
