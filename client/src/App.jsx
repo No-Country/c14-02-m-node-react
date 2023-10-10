@@ -1,11 +1,13 @@
-
+import { NavBar } from "./components/Header/NavBar";
+import { Filtros } from "./components/Header/Filtros";
 
 function App() {
 
 
   return (
     <>
-    <h1>Hola Mundo</h1>
+      <NavBar/>
+      <Filtros/>
     </>
   )
 }
