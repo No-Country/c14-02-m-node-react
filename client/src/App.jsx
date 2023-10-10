@@ -1,5 +1,5 @@
+import Filtros from "./components/Header/Filtros";
 import { NavBar } from "./components/Header/NavBar";
-import { Filtros } from "./components/Header/Filtros";
 
 function App() {
 
