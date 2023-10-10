@@ -1,13 +1,11 @@
-
+import { GaleriaPage } from "./pages/GaleriaPage";
 
 function App() {
-
-
   return (
     <>
-    <h1>Hola Mundo</h1>
+      <GaleriaPage />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
