@@ -1,13 +1,11 @@
-import IndividualViewPage from "./pages/IndividualViewPage";
+
 
 function App() {
-
-
   return (
     <>
-     <IndividualViewPage />
+    <h1>Hola Mundo</h1>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
