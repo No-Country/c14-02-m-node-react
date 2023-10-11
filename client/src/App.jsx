@@ -1,14 +1,9 @@
-import { NavBar } from "../../client/src/components/Header/NavBar.jsx";
-import Filtros from "./components/Header/Filtros.jsx";
-
-
-
+import { GaleriaPage } from "./pages/GaleriaPage";
 
 function App() {
   return (
     <>
-      <NavBar/>
-      <Filtros/>
+      <GaleriaPage />
     </>
   );
 }
