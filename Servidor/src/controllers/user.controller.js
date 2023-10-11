@@ -35,11 +35,12 @@ async function getAllUser(req, res) {
 	}
 }
 
-async function putUpdateUserController(req, res) {
+async function updateUser(req, res) {
 	const email = req.params;
 	const data = req.body;
 	try {
-		const Users = await usermanager.putUpdateUser(email, data);
+		// const Users = await usermanager.putUpdateUser(email, data);
+		const Users = await usermanager.updateUser(email, data);
 		if (Users.matchedCount > 0) {
 			const userUp = await usermanager.getOneUser(email);
 			return res.status(200).send(userUp);
@@ -50,4 +51,4 @@ async function putUpdateUserController(req, res) {
 	}
 }
 
-module.exports = { postCreateUser, getUser, getAllUser, putUpdateUserController };
+module.exports = { postCreateUser, getUser, getAllUser, updateUser };

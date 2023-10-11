@@ -9,7 +9,7 @@ class UserManager {
 		this.createDocument = createDocument;
 		this.getOneDocument = getOneDocument;
 		this.allDocument = allDocument;
-		this.UpdateDocument = UpdateDocument
+		this.UpdateDocument = UpdateDocument;
 	}
 
 	async createUser(data) {
@@ -50,17 +50,16 @@ class UserManager {
 			throw new Error(`Error al obtener el usuario: ${error.message}`);
 		}
 	}
-    
-	async UpdateUser( filter, dataUpdate){
-        try {
-            const users = await this.UpdateDocument('usersCollection', filter, dataUpdate);
-            return users;
-        } catch (error) {
-            console.error(error);
-            throw new Error(`Error al actualizar usuario: ${error.message}`);
-        }
-    }
 
+	async updateUser(filter, dataUpdate) {
+		try {
+			const users = await this.UpdateDocument('usersCollection', filter, dataUpdate);
+			return users;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Error al actualizar usuario: ${error.message}`);
+		}
+	}
 }
 
 module.exports = UserManager;
