@@ -19,6 +19,7 @@
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.16.0",
     "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^6.0.8",
     "swiper": "^10.3.1"
   },
