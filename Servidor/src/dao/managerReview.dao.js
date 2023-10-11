@@ -16,6 +16,15 @@ class ReviewManager {
 
     }
 
+    async createReview(data) {
+        try {
+            await this.createDocument('reviewsCollection', data)
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error al crear la reseña', error.message);
+        }
+    }
+
     async getOneReview(query) {
         try {
             const review = await this.getOneDocument('reviewsCollection', query);

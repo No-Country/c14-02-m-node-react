@@ -1,5 +1,8 @@
 const UserModel = require('./user.model');
+const BookingModel = require('./booking.model');
 // const pictureModel = require('./picture-model');
 const ReviewModel = require('./review.model');
+const FavoriteModel = require("./favorite.model");
 
-module.exports = { UserModel, ReviewModel };
+module.exports = { UserModel, BookingModel, ReviewModel, FavoriteModel };
+
