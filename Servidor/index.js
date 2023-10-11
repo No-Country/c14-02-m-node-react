@@ -3,7 +3,7 @@ const express = require('express');
 require('dotenv').config();
 const app = express();
 
-const { userRoutes, reviewRoutes, PublicationRouter, BookingRouter} = require('./src/routes');
+const { userRoutes, reviewRoutes, publicationRoutes, bookingRoutes} = require('./src/routes');
 
 
 // Middlewares de express
@@ -13,11 +13,11 @@ app.use(express.urlencoded({ extended: true }));
 // Rutas user
 app.use('/api/user', userRoutes);
 
-app.use('/api/publication',PublicationRouter)
+app.use('/api/publication',publicationRoutes)
 
 app.use('/api/review', reviewRoutes);
 
-app.use('/api/booking');
+app.use('/api/booking', bookingRoutes);
 
 
 const PORT = process.env.PORT || 3031;
