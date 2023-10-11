@@ -1,3 +1,3 @@
 const UserManager = require('./managerUser.dao');
-
-module.exports = { UserManager };
+const ReviewManager = require('./managerReview.dao');
+module.exports = { UserManager, ReviewManager };
