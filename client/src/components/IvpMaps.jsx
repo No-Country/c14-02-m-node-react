@@ -12,18 +12,19 @@ let iconUbication = new L.icon({
 
 const IvpMaps = () => {
   return (
-    <div className='border-b my-5'>
-      <MapContainer center={[-34.60376, -58.38162]} zoom={13} scrollWheelZoom={false} className='mapa'>
+    <div className='border-b p-4 my-5'>
+      <MapContainer center={[35.689444444444, 139.69166666667]} zoom={13} scrollWheelZoom={false} className='mapa'>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[-34.60376, -58.38162]}>
+        <Marker position={[35.689444444444, 139.69166666667]}>
           <Popup>
-            Vamos al obelisco! <br /> ☆☆☆
+          墨田区, 東京都 <br />  Japón
           </Popup>
         </Marker>
       </MapContainer>
+
     </div>
   )
 }

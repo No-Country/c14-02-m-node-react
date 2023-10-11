@@ -1,11 +1,11 @@
-// import IndividualViewPage from "./pages/IndividualViewPage";
+import IndividualViewPage from "./pages/IndividualViewPage";
 import { GaleriaPage } from "./pages/GaleriaPage";
 
 function App() {
   return (
     <>
 
-     {/* <IndividualViewPage /> */}
+     <IndividualViewPage />
 
       <GaleriaPage />
 
