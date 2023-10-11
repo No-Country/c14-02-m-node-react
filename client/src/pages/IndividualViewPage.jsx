@@ -8,13 +8,15 @@ import IvpReviews from '../components/IvpReviews'
 function IndividualViewPage() {
   return (
     <>
+      <div className='m-6'>
         <IvpGrid />
         <IvpDescription />
         <IvpReservation />
         <IvpCalendar />
         <IvpMaps />
         <IvpReviews />
-        
+      </div>
+                
     </>
     
   )
