@@ -24,6 +24,9 @@ class Database {
 
 			// Obtenemos una referencia a la colección "picture" en la base de datos "picture"
 			this.actividadPicture = this.client.db('picture').collection('picture');
+			
+			// Obtenemos una referencia a la colección "booking" en la base de datos "booking"
+			this.bookingCollection = this.client.db('booking').collection('booking');
             
 			// Obtenemos una referencia a la colección "publication" en la base de datos "picture"
 			this.publicationCollection = this.client.db('publication').collection('publication');
