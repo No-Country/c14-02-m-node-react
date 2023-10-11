@@ -1,18 +1,13 @@
+const PublicationControler = require('./publication.controler');
 const ReviewController = require('./review.controller');
-<<<<<<< HEAD
-const PhotoController = require('./photo.controller');
 const UserController = require('./user.controller');
-
-module.exports = {
-	ReviewController,
-	PhotoController,
-	UserController,
-};
-=======
 const FavoriteController = require('./favorite.controller');
+const PhotoController = require('./photo.controller');
 
 module.exports = {
-    ReviewController,
-    FavoriteController
-}
->>>>>>> developer
+	PublicationControler,
+	ReviewController,
+	UserController,
+	FavoriteController,
+	PhotoController,
+};

@@ -12,12 +12,13 @@ class PhotoManager {
 	}
 
 	async createPhoto(data) {
-		const { img } = data;
-		console.log('Photo URL', data);
+		const { url } = data;
+		console.log('Photo URL', url);
 
 		const photo = PhotoModel({
-			url: img,
+			url,
 		});
+
 		await this.createDocument('photoCollection', photo);
 	}
 
