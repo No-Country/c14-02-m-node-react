@@ -13,6 +13,4 @@ async function CreateBooking(req, res) {
 	}
 }
 
-
-
 module.exports = { CreateBooking };

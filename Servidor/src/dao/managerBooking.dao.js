@@ -7,12 +7,15 @@ class BookingManager {
 	constructor() {
 		this.db = new Database();
 		this.createDocument = createDocument;
-
 	}
 
 	async createBooking(data) {
-		const { names, surname, birthDate, email, phone, address, officialId, phoneUrgency, pictureID, role } = data;
-		console.log(data);
+		const { 
+			publicationID,
+			userID,
+			dateIn,
+			dateOut,
+		} = data;
 
 		const booking = BookingModel({
 			publicationID,
@@ -32,9 +35,6 @@ class BookingManager {
 			throw new Error(`Error al obtener la reserva: ${error.message}`);
 		}
 	}
-
-	
-
 }
 
 module.exports = BookingManager;

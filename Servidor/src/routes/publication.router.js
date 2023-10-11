@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { postPublicationController, getPublicationController, getAllPublicationController, putUpdatePublicationController } = require('../controllers/publication.controle');
+const { postPublicationController, getPublicationController, getAllPublicationController, putUpdatePublicationController } = require('../controllers/publication.controler');
 
 /** GET USERS
 METHOD:  GET
