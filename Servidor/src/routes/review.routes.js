@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const [ ReviewController ]= require('../controllers');
+const {ReviewController} = require('../controllers');
 
 
 router.get('/', ReviewController.getAllReviews);
