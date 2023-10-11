@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { postCreateUser, getUser, getAllUser,putUpdateUserController } = require('../controllers/user.controller');
+const { postCreateUser, getUser, getAllUser, updateUser } = require('../controllers/user.controller');
 
 /** GET USERS
 METHOD:  GET
@@ -10,7 +10,7 @@ router.get('/', getAllUser);
 
 /** GET USER
 METHOD:  GET
-URL:     http://localhost:3000/api/user
+URL:     http://localhost:3000/api/user/john.doe@mail.com
 */
 router.get('/:email', getUser);
 
@@ -42,6 +42,6 @@ BODY:
 */
 // agregar metodo put acá! <-
 
-router.put('/update/:email', putUpdateUserController)
+router.put('/:email', updateUser);
 
 module.exports = router;

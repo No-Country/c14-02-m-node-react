@@ -1,22 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const { postPublicationController, getPublicationController, getAllPublicationController, putUpdatePublicationController } = require('../controllers/publication.controler');
+const { PublicationControler } = require('../controllers');
 
 /** GET USERS
 METHOD:  GET
 URL:     http://localhost:3000/api/Publication
 */
-router.get('/', getAllPublicationController);
+router.get('/', PublicationControler.getAllPublicationController);
 
 /** GET Publication
 METHOD:  GET
 URL:     http://localhost:3000/api/Publication
 */
-router.get('/:email', getPublicationController);
+router.get('/:email', PublicationControler.getPublicationController);
 
 /** CREATE Publication
 METHOD:  POST
-URL:     http://localhost:3000/api/Publication
+URL:     http://localhost:3000/api/publication
 BODY:
      {
   "type": "Apartment",
@@ -48,7 +48,7 @@ BODY:
   "ownerUser_ID": "user123"
 }
 */
-router.post('/', postPublicationController);
+router.post('/', PublicationControler.postPublicationController);
 
 /** UPDATE Publication
 METHOD:  PUT
@@ -58,8 +58,6 @@ BODY:
         "names": "Nikola",
          } 
 */
-// agregar metodo put acá! <-
-
-router.put('/update/:email', putUpdatePublicationController)
+router.put('/:email', PublicationControler.putUpdatePublicationController);
 
 module.exports = router;
