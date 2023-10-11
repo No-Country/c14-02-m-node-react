@@ -2,5 +2,6 @@ const userRoutes = require('./user.routes');
 const bookingRoutes = require('./booking.routes');
 const publicationRoutes = require('./publication.routes')
 const reviewRoutes = require('./review.routes');
+const favoriteRoutes= require("./favorite.routes")
 
-module.exports = { userRoutes, publicationRoutes, reviewRoutes,bookingRoutes };
+module.exports = { userRoutes, publicationRoutes, reviewRoutes,bookingRoutes, favoriteRoutes };
