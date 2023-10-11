@@ -36,18 +36,18 @@ async function getAllUser(req, res) {
 }
 
 async function putUpdateUserController(req, res) {
-    const email = req.params;
-    const data = req.body;
-    try {
-        const Users = await usermanager.putUpdateUser(email, data);
-        if (Users.matchedCount > 0) {
-			const userUp = await usermanager.getOneUser(email) 
-			return res.status(200).send(userUp)
+	const email = req.params;
+	const data = req.body;
+	try {
+		const Users = await usermanager.putUpdateUser(email, data);
+		if (Users.matchedCount > 0) {
+			const userUp = await usermanager.getOneUser(email);
+			return res.status(200).send(userUp);
 		}
-    } catch (error) {
-        console.error("Error al actualizar el usuario", error);
-        return res.status(400).send(error)
-    }
+	} catch (error) {
+		console.error('Error al actualizar el usuario', error);
+		return res.status(400).send(error);
+	}
 }
 
-module.exports = { postCreateUser, getUser, getAllUser,putUpdateUserController };
+module.exports = { postCreateUser, getUser, getAllUser, putUpdateUserController };
