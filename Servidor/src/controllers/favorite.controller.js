@@ -1,4 +1,4 @@
-const { FavoriteManager} = require("../dao");
+const { FavoriteManager } = require("../dao");
 const favoriteManager = new FavoriteManager();
 
 async function createFavorite(req, res) {
