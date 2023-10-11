@@ -51,7 +51,7 @@ async function getOneDocument(collection, query) {
 	}
 }
 
-async function putUpdateDocument(collection, filter, dataUpdate) {
+async function UpdateDocument(collection, filter, dataUpdate) {
     try {
         if (!this.db[collection]) {
             await this.db.connectToDatabase(); //-->
@@ -68,4 +68,4 @@ async function putUpdateDocument(collection, filter, dataUpdate) {
 
 
 
-module.exports = { createDocument, allDocument, getOneDocument,putUpdateDocument };
+module.exports = { createDocument, allDocument, getOneDocument, UpdateDocument };

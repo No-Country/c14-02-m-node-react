@@ -1,5 +1,5 @@
 const Database = require('../config/mongodb.js');
-const { createDocument, getOneDocument, allDocument,putUpdateDocument } = require('../config/factory.js');
+const { createDocument, getOneDocument, allDocument, UpdateDocument } = require('../config/factory.js');
 // const UserModel = require('../models/user.model.js');
 const { UserModel } = require('../models/');
 
@@ -9,7 +9,7 @@ class UserManager {
 		this.createDocument = createDocument;
 		this.getOneDocument = getOneDocument;
 		this.allDocument = allDocument;
-		this.putUpdateDocument = putUpdateDocument
+		this.UpdateDocument = UpdateDocument
 	}
 
 	async createUser(data) {
@@ -51,9 +51,9 @@ class UserManager {
 		}
 	}
     
-	async putUpdateUser( filter, dataUpdate){
+	async UpdateUser( filter, dataUpdate){
         try {
-            const users = await this.putUpdateDocument('usersCollection', filter, dataUpdate);
+            const users = await this.UpdateDocument('usersCollection', filter, dataUpdate);
             return users;
         } catch (error) {
             console.error(error);
