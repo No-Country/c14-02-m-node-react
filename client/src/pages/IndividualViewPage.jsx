@@ -2,6 +2,11 @@ import IvpDescription from '../components/IvpDescription'
 import IvpGrid from '../components/IvpGrid'
 import IvpMaps from '../components/IvpMaps'
 import IvpReviews from '../components/IvpReviews'
+import IvpRules from '../components/IvpRules'
+
+import { LiaMedalSolid } from "react-icons/lia";
+import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
+import { FiDownload } from "react-icons/fi";
 
 import SuggestionFooter from '../components/SuggestionFooter'
 import HelpFooter from '../components/HelpFooter'
