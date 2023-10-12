@@ -1,5 +1,5 @@
 const Database = require('../config/mongodb.js');
-const { createDocument, getOneDocument, allDocument, putUpdateDocument } = require('../config/factory.js');
+const { createDocument, getOneDocument, allDocument, UpdateDocument } = require('../config/factory.js');
 // const UserModel = require('../models/user.model.js');
 const  PublicationModel  = require('../models/publication.model.js');
 
@@ -9,7 +9,7 @@ class PublicationManager {
         this.createDocument = createDocument;
         this.getOneDocument = getOneDocument;
         this.allDocument = allDocument;
-        this.putUpdateDocument = putUpdateDocument
+        this.putUpdateDocument = UpdateDocument;
     }
 
     async createPublication(data) {
@@ -58,7 +58,7 @@ class PublicationManager {
             return user;
         } catch (error) {
             console.error(error);
-            throw new Error(`Error al obtener el usuario: ${error.message}`);
+            throw new Error(`Error al obtener la publicación: ${error.message}`);
         }
     }
 
