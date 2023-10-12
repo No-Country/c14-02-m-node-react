@@ -1,14 +1,15 @@
 import IndividualViewPage from "./pages/IndividualViewPage";
 import { GaleriaPage } from "./pages/GaleriaPage";
 import Filtros from "./components/Filtros"; 
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <>
-    <IndividualViewPage />
-      <NavBar/>
+      <NavBar />
       <Filtros/>
       <GaleriaPage />
+      <IndividualViewPage />
     </>
   );
 }
