@@ -26,7 +26,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 258px;
+    width: 250px;
     height: 32px;
     cursor: pointer;
 
@@ -95,13 +95,16 @@ const DivSearch = styled.div`
 
 const DivLogin = styled.div`
     display: flex;
-    padding: 6px 6px 6px 12px;
+    padding: 6px 8px 6px 12px;
+    gap: 10px;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
     border-radius: 24px;
     border: 1px solid #DDD;
     background: #FFF;
     cursor: pointer;
+    overflow: hidden;
+    flex-shrink: 1;
 
     &:hover{
         box-shadow: 0px 4px 12px 0px rgba(73, 32, 32, 0.09), 0px 1px 2px 1px rgba(0, 0, 0, 0.1);
@@ -114,6 +117,7 @@ const Div = styled.div`
 
 const DivIdioma = styled.div`
     display: flex;
+    width: 100%;
     height: 40px;
     padding: 12px;
     justify-content: center;

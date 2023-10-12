@@ -22,7 +22,6 @@ const Container = styled.div`
     margin: .4rem 0 0 0;
     padding: 1rem 2.5rem 0 2.5rem;
     gap: 1.5rem;
-    height: auto;
     
     @media (max-width: 800px) {
         display: flex;
@@ -50,7 +49,6 @@ const Filter = styled.div`
     gap: .5rem; 
     box-sizing: border-box; 
     cursor: pointer; 
-    height: calc(100% - 2px); 
     text-align: center;
     white-space: nowrap;
     font-size: 12px;
@@ -59,11 +57,12 @@ const Filter = styled.div`
     line-height: 22px;
     padding: 0 0 .5rem 0;
     color: #464646;
+    border-bottom: 2px solid transparent;
     &:hover{
         box-sizing: border-box; 
-        border-bottom: 2px solid #dcd5d5; 
-        height: calc(100% - 4px);
+        border-bottom: 2px solid #dcd5d5;
         color: black;
+        border-bottom-style: solid;
     }
 `
 
@@ -146,11 +145,13 @@ const Switch = styled.label`
 `;
 
 
+
 const Filtros = () => {
+
 
   return (
         <Container>
-            <BoxFilters> 
+            <BoxFilters>
                 <Filter>
                     <Icon src={vistasincreibles}/>
                     <h3>Vistas increíbles</h3>
