@@ -1,16 +1,16 @@
-import IvpDescription from "../components/IvpDescription";
-import IvpGrid from "../components/IvpGrid";
-import IvpMaps from "../components/IvpMaps";
-import IvpReviews from "../components/IvpReviews";
+import IvpDescription from '../components/IvpDescription'
+import IvpGrid from '../components/IvpGrid'
+import IvpMaps from '../components/IvpMaps'
+import IvpReviews from '../components/IvpReviews'
 
-import { FiDownload } from "react-icons/fi";
-import { AiOutlineHeart, AiFillStar } from "react-icons/ai";
-import { LiaMedalSolid } from "react-icons/lia";
-import IvpRules from "../components/IvpRules";
+import SuggestionFooter from '../components/SuggestionFooter'
+import HelpFooter from '../components/HelpFooter'
 
 function IndividualViewPage() {
   return (
-    <div className="m-8">
+    <>
+      <div className='m-6'>
+
       <div className="container">
         {/* TITULO */}
         <h2 className="text-3xl font-semibold my-9">
@@ -37,13 +37,20 @@ function IndividualViewPage() {
         </div>
       </div>
 
-      <IvpGrid />
-      <IvpDescription />
-      <IvpMaps />
-      <IvpReviews />
-      <IvpRules />
-    </div>
-  );
+        
+        <IvpGrid />
+        <IvpDescription />
+        <IvpMaps />
+        <IvpReviews />
+        <IvpRules />
+
+        <SuggestionFooter/>
+        <HelpFooter/>
+      </div>
+        
+    </>
+    
+  )
 }
 
-export default IndividualViewPage;
+export default IndividualViewPage

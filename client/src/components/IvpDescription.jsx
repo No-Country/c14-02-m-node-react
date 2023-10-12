@@ -10,6 +10,7 @@ import { LiaBedSolid, LiaMedalSolid } from "react-icons/lia";
 import { LuShowerHead } from "react-icons/lu";
 import { FaPeopleRoof, FaFlag } from "react-icons/fa6";
 import { GrNotes } from "react-icons/gr";
+
 function IvpDescription() {
   return (
     <div className="flex justify-between p-4">
