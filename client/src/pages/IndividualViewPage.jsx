@@ -1,4 +1,3 @@
-import IvpCalendar from "../components/IvpCalendar";
 import IvpDescription from "../components/IvpDescription";
 import IvpGrid from "../components/IvpGrid";
 import IvpMaps from "../components/IvpMaps";
@@ -11,10 +10,10 @@ import IvpRules from "../components/IvpRules";
 
 function IndividualViewPage() {
   return (
-    <div>
-      <div className="container m-4">
+    <div className="m-8">
+      <div className="container">
         {/* TITULO */}
-        <h2 className="text-3xl font-semibold my-3">
+        <h2 className="text-3xl font-semibold my-9">
           Casa "WabiSabi" Habitación1/1 cama/Asakusa/Skytree/
         </h2>
 
@@ -40,9 +39,8 @@ function IndividualViewPage() {
 
       <IvpGrid />
       <IvpDescription />
-      <IvpCalendar />
-      <IvpReviews />
       <IvpMaps />
+      <IvpReviews />
       <IvpRules />
     </div>
   );
