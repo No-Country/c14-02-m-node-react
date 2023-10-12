@@ -2,7 +2,6 @@ export const AccessPage3 = () => {
   return (
     <section className="flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-8 max-w-md mx-auto my-8 rounded-md shadow-md">
-        
         <header className="h-[64px] w-full  flex items-center p-2">
           <button className="text-2xl">&#60;</button>
           <p className="text-center  mx-auto text-base font-bold">
@@ -69,7 +68,7 @@ export const AccessPage3 = () => {
           </a>
         </p>
 
-        <button className="bg-red-500 text-white w-full py-2 px-4 rounded-md mt-6 hover:bg-red-600">
+        <button className="bg-gradient-to-r from-[#FF385C] to-[#b9005a] text-white w-full py-2 px-4 rounded-md mt-6 hover:bg-red-600">
           Agree and Continue
         </button>
       </div>

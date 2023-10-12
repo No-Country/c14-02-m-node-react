@@ -40,7 +40,9 @@ export const AccessPage4 = () => {
           </svg>
         </span>
       </a>
-      <button className="bg-red-500 text-white w-full py-2 px-4 rounded-md hover:bg-blue-600 mt-6">
+
+      <button className="bg-gradient-to-r from-[#FF385C] to-[#b9005a] text-white w-full py-2 px-4 rounded-md hover:bg-blue-600 mt-6">
+
         Agree and Continue
       </button>
 
