@@ -3,6 +3,7 @@ import { LiaSwimmingPoolSolid } from "react-icons/lia";
 import { TbToolsKitchen2 } from "react-icons/tb";
 import { AiOutlineWifi, AiOutlineCar } from "react-icons/ai";
 import { GiDesk, GiFireplace } from "react-icons/gi";
+import IvpHoster from "./IvpHoster";
 
 function IvpDescription() {
   return (
@@ -26,38 +27,40 @@ function IvpDescription() {
             <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat debitis corporis et amet iste aut quo maiores molestiae esse sit! Repellat explicabo aperiam voluptatibus error voluptatum recusandae nostrum eum optio.</div>
         </div>
 
+        <IvpHoster />
+
         <div className="border-b py-3">
             <h2 className="text-2xl font-semibold">¿Dónde vas a dormir?</h2>
             <IvpSlider />
         </div>
 
-        <div className="tborder-b border-b py-3">
+        <div className="tborder-b border-b py-4">
 
             <p className="font-semibold text-2xl mb-4">¿Qué ofrece este lugar?</p>
             
             <div className="flex mb-4">
                 <LiaSwimmingPoolSolid size={35}/>
-                <p>Pileta De uso privado</p>
+                <p className="ml-3">Pileta De uso privado</p>
             </div>
             <div className="flex mb-4">
                 <TbToolsKitchen2 size={30}/>
-                <p>Cocina</p>
+                <p className="ml-3">Cocina</p>
             </div>
             <div className="flex mb-4">
                 <AiOutlineWifi size={35}/>
-                <p>Wifi</p>
+                <p className="ml-3">Wifi</p>
             </div>
             <div className="flex mb-4">
                 <AiOutlineCar size={35}/>
-                <p>Estacionamiento gratis en la propiedad</p>
+                <p className="ml-3">Estacionamiento gratis en la propiedad</p>
             </div>
             <div className="flex mb-4">
                 <GiDesk size={35}/>
-                <p>Zona de trabajo</p>
+                <p className="ml-3">Zona de trabajo</p>
             </div>
             <div className="flex mb-4">
                 <GiFireplace size={35}/>
-                <p>Chimenea</p>
+                <p className="ml-3">Chimenea</p>
             </div>
             <div>
                 <button className="bg-white text-black border font-semibold border-black px-4 py-2 rounded">
