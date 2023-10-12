@@ -168,7 +168,7 @@ function IvpDescription() {
             </div>
           </div>
 
-          <button className="bg-rose-600 text-white font-semibold px-3 py-2 my-4 rounded-lg border-none">
+          <button className="bg-rose-600 text-white font-semibold px-8 py-3 my-4 rounded-lg border-none">
             Consultar disponibilidad
           </button>
         </div>

@@ -3,6 +3,8 @@ import IvpGrid from '../components/IvpGrid'
 import IvpMaps from '../components/IvpMaps'
 import IvpReviews from '../components/IvpReviews'
 import IvpRules from '../components/IvpRules'
+import NavBar from '../components/NavBar.jsx';
+import Filtros from '../components/Filtros'
 
 import { LiaMedalSolid } from "react-icons/lia";
 import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
@@ -14,11 +16,13 @@ import HelpFooter from '../components/HelpFooter'
 function IndividualViewPage() {
   return (
     <>
-      <div className='m-6'>
+      <NavBar />
+      <Filtros />
+      <div className='m-6 px-8'>
 
-      <div className="container">
+      <div className="container mx-4">
         {/* TITULO */}
-        <h2 className="text-3xl font-semibold my-9">
+        <h2 className="text-3xl font-semibold my-9 ">
           Casa "WabiSabi" Habitación1/1 cama/Asakusa/Skytree/
         </h2>
 
@@ -32,7 +36,7 @@ function IndividualViewPage() {
               <FiDownload />
               <span className="underline pl-2">Compartir</span>
             </button>
-            <button className="btn-share flex items-center">
+            <button className="btn-share flex items-center mr-10">
               <AiOutlineHeart />
               <span className="underline pl-2">
                 Guardar
