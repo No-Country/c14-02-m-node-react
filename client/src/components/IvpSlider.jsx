@@ -28,35 +28,35 @@ function IvpSlider() {
   };
  
   return (
-    <div className='mx-5'>
+    <div className='m-6'>
       <Slider {...settings}>
 
-          <div className='p-3 border-solid border-2 rounded-lg border-stone-300'>
+          <div className='p-5 border-solid border-2 rounded-lg border-stone-300'>
             <LiaBedSolid size={30}/>
             <h3 className='font-semibold'>Dormitorio 1</h3>
             <p>x cama xx</p>
           </div>
 
-          <div className='p-3 border-solid border-2 rounded-lg border-stone-300 '>
+          <div className='p-5 border-solid border-2 rounded-lg border-stone-300 '>
             <LiaBedSolid size={30}/>
             <h3 className='font-semibold'>Dormitorio 2</h3>
             <p>x cama xx</p>
           </div>
 
-          <div className='p-3 border-solid border-2 rounded-lg border-stone-300 '>
+          <div className='p-5border-solid border-2 rounded-lg border-stone-300 '>
             <LiaBedSolid size={30}/>
             <h3 className='font-semibold'>Dormitorio 3</h3>
             <p>x cama xx</p>
           </div>
 
-          <div className='p-3 border-solid border-2 rounded-lg border-stone-300 '>
+          <div className='p-5 border-solid border-2 rounded-lg border-stone-300 '>
             <LiaBedSolid size={30}/>
             <h3 className='font-semibold'>Dormitorio 4</h3>
             <p>x cama xx</p>
           </div>
 
-          <div className='p-3 border-solid border-2 rounded-lg border-stone-300 '>
-            <LiaBedSolid size={30}/>
+          <div className='p-5 border-solid border-2 rounded-lg border-stone-300 '>
+            <LiaBedSolid size={30} />
             <h3 className='font-semibold'>Dormitorio 5</h3>
             <p>x cama xx</p>
           </div>

@@ -18,6 +18,7 @@ import filter from "../assets/images/filter.png";
 const Container = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     margin: .4rem 0 0 0;
     padding: 1rem 2.5rem 0 2.5rem;
@@ -33,6 +34,9 @@ const BoxFilters = styled.div`
     display: flex;
     flex-direction: row;
     gap: 2rem;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-grow: 1;
 
     @media (max-width: 800px) {
         display: none;
@@ -42,16 +46,16 @@ const BoxFilters = styled.div`
 const Filter = styled.div`
     display: flex;
     flex-direction: column; 
-    align-items: center; 
+    align-items: center;
     background-color: white; 
     padding: 1rem 0 0 0; 
     margin: 1rem 1rem 0 0; 
-    gap: .5rem; 
+    gap: .2rem; 
     box-sizing: border-box; 
     cursor: pointer; 
     text-align: center;
     white-space: nowrap;
-    font-size: 12px;
+    font-size: 11.5px;
     font-style: normal;
     font-weight: 500;
     line-height: 22px;
@@ -59,6 +63,7 @@ const Filter = styled.div`
     color: #464646;
     border-bottom: 2px solid transparent;
     &:hover{
+        transition: 0.2s;
         box-sizing: border-box; 
         border-bottom: 2px solid #dcd5d5;
         color: black;
@@ -68,9 +73,9 @@ const Filter = styled.div`
 
 const Box = styled.div`
     display: flex;
-    padding: 16px;
+    padding: 15px 16px;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
     flex-shrink: 0;
     border-radius: 12px;
     border: 1px solid #DDD;
