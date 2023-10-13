@@ -66,6 +66,18 @@ async function UpdateDocument(collection, filter, dataUpdate) {
     }
 }
 
+async function deleteDocument(collection, filter) {
+    try {
+        if (!this.db[collection]) {
+            await this.db.connectToDatabase();
+        }
+        const result = await this.db[collection].deleteOne(filter);
+        return result;
+    } catch (e) {
+        console.error(e);
+    }
+}
 
 
-module.exports = { createDocument, allDocument, getOneDocument, UpdateDocument };
+
+module.exports = { createDocument, allDocument, getOneDocument, UpdateDocument, deleteDocument };
