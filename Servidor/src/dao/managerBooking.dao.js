@@ -1,5 +1,5 @@
 const Database = require('../config/mongodb.js');
-const { createDocument, getOneDocument, allDocument,UpdateDocument } = require('../config/factory.js');
+const { createDocument, getOneDocument, allDocument,UpdateDocument, deleteDocument} = require('../config/factory.js');
 const { BookingModel } = require('../models/index.js');
 
 class BookingManager {
@@ -9,6 +9,7 @@ class BookingManager {
 		this.getOneDocument = getOneDocument;
         this.allDocument = allDocument;
 		this.putUpdateDocument = UpdateDocument;
+		this.deleteDocument = deleteDocument;
 	}
 
 	async createBooking(data) {
@@ -47,6 +48,15 @@ class BookingManager {
             throw new Error(`Error al obtener la reserva: ${error.message}`);
         }
     }
+
+	async deleteBooking(filter) {
+		try {
+			const delBooking = await this.deleteDocument('bookingCollection', filter);
+			return delBooking;
+		} catch (error) {
+			throw new Error(`Error al eliminar la reserva: ${error}`)
+		}
+	}
 }
 
 module.exports = BookingManager;

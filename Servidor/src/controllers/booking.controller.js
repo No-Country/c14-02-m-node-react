@@ -46,8 +46,40 @@ async function getAllBookingController(req, res) {
 }
 
 /* Función para eliminar una reserva por un id */
+async function deleteBookingController(req, res) {
+    const id = req.params.id;
+    console.log(id);
+    try {
+		if (!isValidObjectId(id)) throw new Error ('El id no tiene un formato válido')
+        const objectIdToDelete = new ObjectId(id);
+        console.log(objectIdToDelete);
+
+        // Verifica si la reserva existe antes de eliminarla
+        const bookingDel = await bookingManager.getOneBooking({ _id: objectIdToDelete });
+
+        if (!bookingDel) {
+            throw new Error('El id no pertenece a una reserva o no es correcto');
+        }
+
+        // Elimina la reserva
+        const delBooking = await bookingManager.deleteBooking({ _id: objectIdToDelete });
+
+        if (delBooking.deletedCount > 0) {
+            return res.status(200).json({ message: 'Se ha eliminado la reserva correctamente',
+										 deletedBooking: bookingDel });
+        }
+    } catch (error) {
+        return res.status(400).send(error.message);
+    }
+}
 
 
 
 
-module.exports = { createBookingController, getBookingController,getAllBookingController };
+
+
+module.exports = { 
+				createBookingController,
+				getBookingController,
+				getAllBookingController,
+				deleteBookingController };
