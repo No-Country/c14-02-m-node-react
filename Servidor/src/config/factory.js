@@ -24,13 +24,13 @@ async function createDocument(collection, data) {
 }
 // funcion para buscar todo
 
-async function allDocument(collection) {
+async function allDocument(collection,query={}) {
 	try {
 		if (!this.db[collection]) {
 			await this.db.connectToDatabase();
 		}
-		console.log(collection);
-		const document = await this.db[collection].find({}).toArray();
+		console.log(collection,query);
+		const document = await this.db[collection].find(query).toArray();
 		return document;
 	} catch (e) {
 		console.error(e);
@@ -66,6 +66,18 @@ async function UpdateDocument(collection, filter, dataUpdate) {
     }
 }
 
+async function deleteDocument(collection, filter) {
+    try {
+        if (!this.db[collection]) {
+            await this.db.connectToDatabase();
+        }
+        const result = await this.db[collection].deleteOne(filter);
+        return result;
+    } catch (e) {
+        console.error(e);
+    }
+}
 
 
-module.exports = { createDocument, allDocument, getOneDocument, UpdateDocument };
+
+module.exports = { createDocument, allDocument, getOneDocument, UpdateDocument, deleteDocument };
