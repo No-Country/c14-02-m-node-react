@@ -1,40 +1,52 @@
 const Database = require('../config/mongodb.js');
-const { createDocument, getOneDocument, allDocument,putUpdateDocument } = require('../config/factory.js');
-// const UserModel = require('../models/user.model.js');
+const { createDocument, getOneDocument, allDocument,UpdateDocument } = require('../config/factory.js');
 const { BookingModel } = require('../models/index.js');
 
 class BookingManager {
 	constructor() {
 		this.db = new Database();
 		this.createDocument = createDocument;
+		this.getOneDocument = getOneDocument;
+        this.allDocument = allDocument;
+		this.putUpdateDocument = UpdateDocument;
 	}
 
 	async createBooking(data) {
 		const { 
 			publicationID,
-			userID,
+			email,
 			dateIn,
 			dateOut,
 		} = data;
 
 		const booking = BookingModel({
 			publicationID,
-			userID,
+			email,
 			dateIn,
 			dateOut,
 		});
 		await this.createDocument('bookingCollection', booking);
+		return booking;
 	}
 
 	async getOneBooking(query) {
-		try {
 			const booking = await this.getOneDocument('bookingCollection', query);
 			return booking;
 		} catch (error) {
 			console.error(error);
-			throw new Error(`Error al obtener la reserva: ${error.message}`);
+			throw new Error(`Error al obtener la reserva: ${error}`);
 		}
-	}
+	
+
+	async getAllBooking(query) {
+        try {
+            const allBooking = await this.allDocument('bookingCollection', query);
+		    return allBooking;
+        } catch (error) {
+            console.error(error);
+            throw new Error(`Error al obtener la reserva: ${error.message}`);
+        }
+    }
 }
 
 module.exports = BookingManager;

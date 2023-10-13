@@ -8,7 +8,7 @@ async function postPublicationController(req, res) {
 
 		return res.status(200).send(newUser);
 	} catch (error) {
-		console.error('Error al crear el usuario', error);
+		console.error('Error al crear la publicación', error);
 		return res.status(400).send(error);
 	}
 }
@@ -19,7 +19,7 @@ async function getPublicationController(req, res) {
 		const User = await publicatinManage.getOnePublication(email);
 		return res.status(200).send(User);
 	} catch (error) {
-		console.error('Error al obtener el usuario', error);
+		console.error('Error al obtener la publicación', error);
 		return res.status(400).send(error);
 	}
 }
@@ -29,7 +29,7 @@ async function getAllPublicationController(req, res) {
 		const Users = await publicatinManage.getAllPublication();
 		return res.status(200).send(Users);
 	} catch (error) {
-		console.error('Error al obtener el usuario', error);
+		console.error('Error al obtener la publicación', error);
 		return res.status(400).send(error);
 	}
 }
@@ -44,7 +44,7 @@ async function putUpdatePublicationController(req, res) {
 			return res.status(200).send(userUp)
 		}
     } catch (error) {
-        console.error("Error al actualizar el usuario", error);
+        console.error("Error al actualizar la publicación", error);
         return res.status(400).send(error)
     }
 }
