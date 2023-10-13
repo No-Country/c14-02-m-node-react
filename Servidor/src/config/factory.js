@@ -24,13 +24,13 @@ async function createDocument(collection, data) {
 }
 // funcion para buscar todo
 
-async function allDocument(collection) {
+async function allDocument(collection,query={}) {
 	try {
 		if (!this.db[collection]) {
 			await this.db.connectToDatabase();
 		}
-		console.log(collection);
-		const document = await this.db[collection].find({}).toArray();
+		console.log(collection,query);
+		const document = await this.db[collection].find(query).toArray();
 		return document;
 	} catch (e) {
 		console.error(e);

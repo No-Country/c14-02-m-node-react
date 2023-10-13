@@ -14,18 +14,19 @@ class BookingManager {
 	async createBooking(data) {
 		const { 
 			publicationID,
-			userID,
+			email,
 			dateIn,
 			dateOut,
 		} = data;
 
 		const booking = BookingModel({
 			publicationID,
-			userID,
+			email,
 			dateIn,
 			dateOut,
 		});
 		await this.createDocument('bookingCollection', booking);
+		return booking;
 	}
 
 	async getOneBooking(query) {
@@ -33,17 +34,17 @@ class BookingManager {
 			return booking;
 		} catch (error) {
 			console.error(error);
-			throw new Error(`Error al obtener la reserva: ${error.message}`);
+			throw new Error(`Error al obtener la reserva: ${error}`);
 		}
 	
 
 	async getAllBooking(query) {
         try {
             const allBooking = await this.allDocument('bookingCollection', query);
-            return users;
+		    return allBooking;
         } catch (error) {
             console.error(error);
-            throw new Error(`Error al obtener el usuario: ${error.message}`);
+            throw new Error(`Error al obtener la reserva: ${error.message}`);
         }
     }
 }

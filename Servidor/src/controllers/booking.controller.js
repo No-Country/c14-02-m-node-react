@@ -1,48 +1,53 @@
 
 const BookingManager = require('../dao/managerBooking.dao');
-const UserManager = require('../dao/managerUser.dao');
-const userManager = new UserManager();
+const {validationBooking, isValidObjectId, isValidEmail} = require('../functions/validationBooking')
 const bookingManager = new BookingManager();
 
 const { ObjectId } = require('mongodb');
 
+/* funcion para crear una reserva */
 async function createBookingController(req, res) {
 	try {
 		const data = req.body;
+		const errors = validationBooking(data);
+		if(!errors.noErrors) throw new Error(errors.mensaje)
 		const newBooking = await bookingManager.createBooking(data);
 		return res.status(200).send(newBooking);
 	} catch (error) {
-		console.error('Error al crear la reserva', error);
-		return res.status(400).send(error);
+		return res.status(400).send('Error al crear la reserva',error.message);
 	}
 }
 
-
+/* Función para traer una reserva x ID */
 async function getBookingController(req, res) {
 	const id = req.params; 
 	try {
+    if (!isValidObjectId(id)) throw new Error ('El id no tiene un formato válido')
 	  const objectIdToSearch = new ObjectId(id);
 	  const Booking = await bookingManager.getOneBooking({ _id: objectIdToSearch });
-	  if (Booking) {
-		return res.status(200).send(Booking);
-	  } else {
-		return res.status(404).send({ mensaje: 'Reserva no encontrada' });
-	  }
+    if(!Booking) throw new Error('El id no es válido o no pertence a una reserva en la BD')
+	  return res.status(200).send(Booking);
 	} catch (error) {
-	  console.error('Error al obtener la reserva', error);
-	  return res.status(400).send(error);
-	}
-  }
-
-  async function getAllBookingController(req, res) {
-	const email = req.params; 
-	try {
-		const allBooking = await bookingManager.getAllBooking();
-		return res.status(200).send(allBooking);
-	} catch (error) {
-		console.error('Error al obtener las reservas con ese email', error);
-		return res.status(400).send(error);
+	  return res.status(400).send(error.message);
 	}
 }
 
-module.exports = { createBookingController, getBookingController };
+/* Función para traer todas las reservas por un email */
+async function getAllBookingController(req, res) {
+  const email = req.params; 
+  try {
+    if (!isValidEmail(email)) throw new Error ('El email no tiene un formato válido')
+    const allBooking = await bookingManager.getAllBooking(email);
+    if (!allBooking) throw new Error ('No se encontraron reservas para ese email')
+    return res.status(200).send(allBooking);
+  } catch (error) {
+    return res.status(400).send(error.message);
+  }
+}
+
+/* Función para eliminar una reserva por un id */
+
+
+
+
+module.exports = { createBookingController, getBookingController,getAllBookingController };
