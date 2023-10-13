@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import menu from "../assets/images/menu.png";
 import usuario from "../assets/images/usuario.png";
 
+
 const Component = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
