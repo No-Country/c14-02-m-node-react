@@ -9,6 +9,7 @@ import Filtros from "../components/Filtros";
 import { LiaMedalSolid } from "react-icons/lia";
 import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { FiDownload } from "react-icons/fi";
+import { PiTranslateBold } from "react-icons/pi";
 
 import OptionsFooter from "../components/OptionsFooter";
 import HelpFooter from "../components/HelpFooter";
@@ -22,15 +23,23 @@ function IndividualViewPage() {
         <Filtros />
       </div>
 
-      <div className="">
+      <div>
         <div className="container mx-4">
           {/* TITULO */}
-          <h2 className="text-3xl font-semibold my-9 ">
-            Casa "WabiSabi"{" "}
-            <span className="hidden sm:block">
-              Habitación1/1 cama/Asakusa/Skytree/
-            </span>
-          </h2>
+          <div className="flex items-center">
+            <div>
+              <PiTranslateBold size={45} />
+            </div>
+             <div>
+              
+             </div>
+            <h2 className="text-3xl font-semibold my-9 ">
+              Casa "WabiSabi"{" "}
+              <span className="hidden sm:block">
+                Habitación1/1 cama/Asakusa/Skytree/
+              </span>
+            </h2>
+          </div>
 
           <div className="flex justify-between hidden sm:block">
             <p className="flex items-center">
