@@ -10,8 +10,8 @@ function IvpHoster() {
   };
 
   return (
-    <div className="border-b my-5">
-      <h2 className="text-2xl font-semibold my-5">Conocé al anfitrión</h2>
+    <div className="border-b">
+      <h2 className="text-2xl font-semibold m-5">Conocé al anfitrión</h2>
       <div className="p-12 my-3 bg-stone-200 rounded-lg">
         {/* CARD ANFITRION  */}
 
@@ -85,7 +85,7 @@ function IvpHoster() {
 
       {/* MOSTRAR MAS - SHOW MORE */}
 
-      <div className="my-5">
+      <div className="m-5">
         <h1 className="text-2xl font-semibold my-3">Acerca de este lugar</h1>
 
         <div className="show-all">

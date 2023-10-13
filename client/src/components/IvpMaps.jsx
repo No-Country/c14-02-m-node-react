@@ -14,7 +14,7 @@ const IvpMaps = () => {
   return (
     <div className="border-y p-4 my-5">
       {/* MAPA */}
-      <div className="">
+      <div className="flex justify-center">
         <MapContainer
           center={[35.689444444444, 139.69166666667]}
           zoom={13}
@@ -34,7 +34,7 @@ const IvpMaps = () => {
       </div>
 
       {/* DESCRIPCION MAPA */}
-      <div className="mt-8">
+      <div className="m-8">
         <h2 className="text-lg font-semibold">墨田区, 東京都, Japón</h2>
         <p className="my-5">
           Nunca te sentirás complicado si compras algo de comida y bebida. Hay
