@@ -16,8 +16,12 @@ function IvpCalendar() {
 
   return (
     <>
-      <div className="flex mt-5 border-b">
+      <div className="flex">
         <div className="md:p-16 md:pb-12 p-5bg-white rounded-t">
+          <div className="text-center mb-4">
+            <h2>4 noches en 墨田区</h2>
+            <p>8 de oct. de 2023</p>
+          </div>
           <div className="px-4">
             <div className="flex text-gray-800 items-center justify-between">
               <svg

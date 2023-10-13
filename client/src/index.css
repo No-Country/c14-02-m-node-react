@@ -2,11 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
-    .card {
-        @apply bg-red-500 grid place-content-center rounded-lg text-white font-bold border-2 border-red-600 text-4xl;
-    }
-}
+
+/* CONFIGURACION DEL SLICK  */
 
 .slick-slide > div {
     margin: 0 10px;
@@ -22,9 +19,21 @@
     color: black; 
 }
 
+/* TAMAÑO DEL MAPA */
+
 .mapa{
     width: 600px;
     height: 500px;
+}
+
+/* ACORTAR TEXTOS */
+
+.show-more {
+  display: none;
+}
+
+.show-all {
+  display: block;
 }
 
 /* Contenedor de las cards. */
