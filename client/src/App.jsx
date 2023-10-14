@@ -1,6 +1,7 @@
 import NavBar from "./components/NavBar";
 import Filtros from "./components/Filtros"; 
 import { GaleriaPage } from "./pages/GaleriaPage";
+import SuggestionFooter from "./components/SuggestionFooter";
 import { AccessPage1 } from "./pages/AccessPage1";
 import { AccessPage2 } from "./pages/AccessPage2";
 import { AccessPage3 } from "./pages/AccessPage3";
@@ -17,6 +18,8 @@ function App() {
       <AccessPage2 />
       <AccessPage3 />
       <AccessPage4 />
+
+      <SuggestionFooter />
     </>
   );
 }
