@@ -1,7 +1,7 @@
 const Database = require('../config/mongodb.js');
 const { createDocument, getOneDocument, allDocument, UpdateDocument } = require('../config/factory.js');
 // const UserModel = require('../models/user.model.js');
-const  PublicationModel  = require('../models/publication.model.js');
+const PublicationModel = require('../models/publication.model.js');
 
 class PublicationManager {
     constructor() {
@@ -13,43 +13,13 @@ class PublicationManager {
     }
 
     async createPublication(data) {
-        const { publication_id,
-            type,
-            offering,
-            location,
-            spaces,
-            amenities,
-            featured,
-            security,
-            photos,
-            title,
-            description,
-            type_guest,
-            price,
-            discount,
-            extra_Security,
-            ownerUser_ID,
-        } = data;
-        console.log(data);
-
-        const user = PublicationModel({
-            publication_id,
-            type,
-            offering,
-            location,
-            spaces,
-            amenities,
-            featured, security,
-            photos,
-            title,
-            description,
-            type_guest,
-            price,
-            discount,
-            extra_Security,
-            ownerUser_ID,
-        });
-        await this.createDocument('publicationCollection', user);
+        try {
+            const newPublication = new PublicationModel(data);
+            const result = await this.createDocument('publicationCollection', newPublication);
+            return result;
+        } catch (error) {
+            throw error;
+        }
     }
 
     async getOnePublication(query) {

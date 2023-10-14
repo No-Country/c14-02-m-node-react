@@ -9,61 +9,72 @@ const publicationScheme = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-    offering: {
+	offering: {
 		type: String,
 		required: true,
 	},
-    location: {
+	location: {
 		type: String,
 		required: true,
 	},
-    spaces: {
+	spaces: {
 		type: [String],
 		required: true,
 	},
-    amenities: {
+	amenities: {
 		type: [String],
 		required: true,
 	},
-    featured: {
+	featured: {
 		type: String,
 		required: true,
 	},
-    security: {
+	security: {
 		type: [String], // Cambiado a Array de Strings
 		required: true,
 	},
-    photos: {
+	photos: {
 		type: [String],
 		required: true,
 	},
-    title: {
+	title: {
 		type: String,
 		required: true,
 	},
-    description: {
+	description: {
 		type: String,
 		required: true,
 	},
-    type_guest: {
+	type_guest: {
 		type: String,
 		required: true,
 	},
-    price: {
+	price: {
 		type: String,
 		required: true,
 	},
-    discount: {
+	discount: {
 		type: String,
 		required: true,
 	},
-    extra_Security: {
+	extra_Security: {
 		type: [String], // Cambiado a Array de Strings
 		required: true,
 	},
-    ownerUser_ID: {
+	ownerUser_ID: {
 		type: String,
 		required: true,
+	},
+	email: {
+		type: String,
+		required: true,
+		validate: {
+			validator: function (value) {
+				// Utiliza una expresión regular para validar el formato del correo electrónico
+				return /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(value);
+			},
+			message: 'El campo email no es una dirección de correo electrónico válida.',
+		},
 	},
 });
 
