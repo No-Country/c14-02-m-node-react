@@ -102,22 +102,6 @@ const DivSearch = styled.div`
   background-color: #ff385c;
 `;
 
-const DivLogin = styled.div`
-    display: flex;
-    padding: 6px 6px 6px 12px;
-    align-items: center;
-    gap: 12px;
-    border-radius: 24px;
-    border: 1px solid #DDD;
-    background: #FFF;
-    cursor: pointer;
-
-  &:hover {
-    box-shadow: 0px 4px 12px 0px rgba(73, 32, 32, 0.09),
-      0px 1px 2px 1px rgba(0, 0, 0, 0.1);
-  }
-`;
-
 const Div = styled.div`
   display: flex;
 `;
@@ -247,11 +231,7 @@ export const NavBar = () => {
             <img src={idioma} />
           </DivIdioma>
         </Div>
-        <DivLogin>
-            <img src={menu}/>
-            <img src={usuario}/>
-        </DivLogin>
-        {/* <BottonMenu /> */}
+        <BottonMenu />
       </Container3>
     </Navbar>
   );
