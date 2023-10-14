@@ -16,7 +16,7 @@ class PublicationManager {
         try {
             const newPublication = new PublicationModel(data);
             const result = await this.createDocument('publicationCollection', newPublication);
-            return result;
+            return (result,newPublication);
         } catch (error) {
             throw error;
         }
@@ -24,8 +24,8 @@ class PublicationManager {
 
     async getOnePublication(query) {
         try {
-            const user = await this.getOneDocument('publicationCollection', query);
-            return user;
+            const Publication = await this.getOneDocument('publicationCollection', query);
+            return Publication;
         } catch (error) {
             console.error(error);
             throw new Error(`Error al obtener la publicación: ${error.message}`);
@@ -34,21 +34,21 @@ class PublicationManager {
 
     async getAllPublication() {
         try {
-            const users = await this.allDocument('publicationCollection');
-            return users;
+            const Publications = await this.allDocument('publicationCollection');
+            return Publications;
         } catch (error) {
             console.error(error);
-            throw new Error(`Error al obtener el usuario: ${error.message}`);
+            throw new Error(`Error al obtener el publicación: ${error.message}`);
         }
     }
 
     async putUpdatePublication(filter, dataUpdate) {
         try {
-            const users = await this.putUpdateDocument('publicationCollection', filter, dataUpdate);
-            return users;
+            const Publications = await this.putUpdateDocument('publicationCollection', filter, dataUpdate);
+            return Publications;
         } catch (error) {
             console.error(error);
-            throw new Error(`Error al actualizar usuario: ${error.message}`);
+            throw new Error(`Error al actualizar publicación: ${error.message}`);
         }
     }
 

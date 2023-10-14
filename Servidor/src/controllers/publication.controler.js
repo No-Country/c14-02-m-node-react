@@ -5,7 +5,6 @@ const PublicationModel = require('../models/publication.model')
 async function postPublicationController(req, res) {
 	try {
 		const data = req.body;
-		console.log(data)
 		// Valida los datos utilizando el modelo
 		//uso la funcion validateSync de mongo para valodar compos definido en el modelo
 		//se puede usar en el dao tambien como .validate
@@ -16,6 +15,7 @@ async function postPublicationController(req, res) {
 		}
 
 		const newPublication = await publicatinManage.createPublication(data);
+		console.log("esto",newPublication)
 
 		return res.status(200).send(newPublication);
 	} catch (error) {

@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 
 const publicationScheme = new mongoose.Schema({
-	publication_id: {
-		type: String,
-		required: true,
-	},
+
 	type: {
 		type: String,
 		required: true,
