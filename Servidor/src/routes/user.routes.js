@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { postCreateUser, getUser, getAllUser, updateUser } = require('../controllers/user.controller');
+const { postCreateUser, getUser, getAllUser, updateUser, login } = require('../controllers/user.controller');
+
+const {validateMiddleware} = require("../middleware/index");
 
 /** GET USERS
 METHOD:  GET
 URL:     http://localhost:3000/api/user
 */
-router.get('/', getAllUser);
+router.get('/', validateMiddleware ,getAllUser);
 
 /** GET USER
 METHOD:  GET
@@ -31,6 +33,8 @@ BODY:
          } 
 */
 router.post('/', postCreateUser);
+
+router.post('/login', login);
 
 /** UPDATE USER
 METHOD:  PUT
