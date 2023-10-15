@@ -3,14 +3,7 @@ const express = require('express');
 require('dotenv').config();
 const app = express();
 
-const {
-	userRoutes,
-	reviewRoutes,
-	publicationRoutes,
-	bookingRoutes,
-	favoriteRoutes,
-	photoRoutes,
-} = require('./src/routes');
+const { userRoutes, reviewRoutes, publicationRoutes, bookingRoutes, favoriteRoutes, photoRoutes } = require('./src/routes');
 
 // Middlewares de express
 app.use(express.json());
