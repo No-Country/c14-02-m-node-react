@@ -1,14 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { postCreateUser, getUser, getAllUser, updateUser, login } = require('../controllers/user.controller');
-
-const {validateMiddleware} = require("../middleware/index");
+const { createUser, getUser, getUsers, updateUser, login } = require('../controllers/user.controller');
 
 /** GET USERS
 METHOD:  GET
 URL:     http://localhost:3000/api/user
 */
-router.get('/', validateMiddleware ,getAllUser);
+router.get('/', validateMiddleware , getUsers);
 
 /** GET USER
 METHOD:  GET
@@ -32,7 +30,7 @@ BODY:
         "role": "user"
          } 
 */
-router.post('/', postCreateUser);
+router.post('/', createUser);
 
 router.post('/login', login);
 
@@ -44,8 +42,8 @@ BODY:
         "names": "Nikola",
          } 
 */
-// agregar metodo put acá! <-
-
 router.put('/:email', updateUser);
+
+// router.delete('/:email', deleteUser);
 
 module.exports = router;
