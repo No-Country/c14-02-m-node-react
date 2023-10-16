@@ -92,4 +92,4 @@ module.exports = { createDocument, allDocument, getOneDocument, UpdateDocument, 
 
 
 
-module.exports = { createDocument, allDocument, getOneDocument, UpdateDocument };
+
