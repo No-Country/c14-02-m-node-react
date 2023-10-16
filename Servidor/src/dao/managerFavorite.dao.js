@@ -1,43 +1,26 @@
-const Database = require("../config/mongodb");
+const Database = require('../config/mongodb');
 //funciones de factory, funciones normalizdas para acceder a la bd
-const { createDocument, allDocument, deleteDocument } = require("../config/factory");
+const { createDocument, getAllDocuments, deleteDocument } = require('../config/factory');
 
-const {FavoriteModel} = require("../models/index");
+const { FavoriteModel } = require('../models/index');
 
 class FavoriteManager {
-    constructor(){
-        this.db = new Database();
-        this.createDocument= createDocument;
-        this.allDocument = allDocument;
+	constructor() {
+		this.db = new Database();
+		this.createDocument = createDocument;
+		this.getAllDocuments = getAllDocuments;
         this.deleteDocument = deleteDocument;
+	}
 
-    }
+	async createFavorite(data) {
+		const { publicationID, userID } = data;
 
-    async createFavorite (data) {
-        console.log("quien pa es data??-->", data  )
-        const {
-            publicationId,
-            userId,
-        } = data;
-
-        const fav = FavoriteModel({
-            userId,
-            publicationId
-        });
-        await this.createDocument("favoriteCollection", fav )
-    }
-
-
-    async getAllFavorites() {
-        try {
-            const favs = await this.allDocument('favoriteCollection');
-            return favs;
-        } catch (error) {
-            console.error(error);
-            throw new Error(`Error al obtener los favoritos: ${error.message}`);
-        }
-    }
-
+		const fav = FavoriteModel({
+			userID,
+			publicationID,
+		});
+		await this.createDocument('favoriteCollection', fav);
+	}
 
     async deleteFavorite( publicationId) {
         console.log("a quien pa tengo aca en el delete manager dao? ->", publicationId)
@@ -52,6 +35,15 @@ class FavoriteManager {
     }
 
 
+	async getAllFavorites() {
+		try {
+			const favs = await this.getAllDocuments('favoriteCollection');
+			return favs;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Error al obtener los favoritos: ${error.message}`);
+		}
+	}
 }
 
 module.exports = FavoriteManager;
