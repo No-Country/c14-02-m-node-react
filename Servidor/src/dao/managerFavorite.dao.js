@@ -13,19 +13,21 @@ class FavoriteManager {
 	}
 
 	async createFavorite(data) {
-		const { publicationID, userID } = data;
+		const { publicationId, userId } = data;
 
 		const fav = FavoriteModel({
-			userID,
-			publicationID,
+			userId,
+			publicationId,
 		});
 		await this.createDocument('favoriteCollection', fav);
 	}
 
+
+
     async deleteFavorite( publicationId) {
         console.log("a quien pa tengo aca en el delete manager dao? ->", publicationId)
         try {
-            const toDelete = { publicationID: publicationId };
+            const toDelete = { publicationId: publicationId };
             const result = await this.deleteDocument("favoriteCollection", toDelete);
             return result;
         } catch (error) {
