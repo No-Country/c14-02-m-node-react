@@ -1,6 +1,6 @@
 const Database = require('../config/mongodb');
 //funciones de factory, funciones normalizdas para acceder a la bd
-const { createDocument, getOneDocument, getAllDocuments, updateDocument } = require('../config/factory');
+const { createDocument, getAllDocuments, deleteDocument } = require('../config/factory');
 
 const { FavoriteModel } = require('../models/index');
 
@@ -9,17 +9,33 @@ class FavoriteManager {
 		this.db = new Database();
 		this.createDocument = createDocument;
 		this.getAllDocuments = getAllDocuments;
+        this.deleteDocument = deleteDocument;
 	}
 
 	async createFavorite(data) {
-		const { publicationID, userID } = data;
+		const { publicationId, userId } = data;
 
 		const fav = FavoriteModel({
-			userID,
-			publicationID,
+			userId,
+			publicationId,
 		});
 		await this.createDocument('favoriteCollection', fav);
 	}
+
+
+
+    async deleteFavorite( publicationId) {
+        console.log("a quien pa tengo aca en el delete manager dao? ->", publicationId)
+        try {
+            const toDelete = { publicationId: publicationId };
+            const result = await this.deleteDocument("favoriteCollection", toDelete);
+            return result;
+        } catch (error) {
+            console.error(error);
+            throw new Error(`Error al eliminar el favorito: ${error.message}`);
+        }
+    }
+
 
 	async getAllFavorites() {
 		try {
