@@ -33,14 +33,13 @@ const getPhotos = async (req, res) => {
 	}
 };
 
-// revisar esta version
 const updatePhoto = async (req, res) => {
 	try {
 		const id = req.params;
 		const url = req.body;
 		const photo = await photoManager.updatePhoto(id, url);
 		if (photo.matchedCount > 0) {
-			const photoUp = await photoManager.getPhoto(url);
+			const photoUp = await photoManager.getOnePhoto(url);
 			return res.status(201).json(photoUp);
 		}
 	} catch (error) {
@@ -53,6 +52,7 @@ const deletePhoto = async (req, res) => {
 	try {
 		const id = req.params;
 		const photo = await photoManager.deletePhoto(id);
+		console.log(photo);
 		return res.status(200).json(photo);
 	} catch (error) {
 		console.log('Error al eliminar la imagen', error.message);

@@ -1,5 +1,5 @@
 // Importamos la librería de MongoDB y la clase Database definida previamente
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const Database = require('../config/mongodb.js');
 
 // Creamos una instancia de la clase Database
@@ -77,4 +77,32 @@ async function deleteDocument(collection, filter) {
 	}
 }
 
-module.exports = { createDocument, getAllDocuments, getOneDocument, updateDocument, deleteDocument };
+// Actualiza por ID (requiere la clase ObjectId de mongoose, para acceder a los _id).
+async function updateDocumentById(collection, id, dataUpdate) {
+	try {
+		if (!this.db[collection]) {
+			await this.db.connectToDatabase();
+		}
+		const objectId = new ObjectId(id);
+		const result = await this.db[collection].updateOne({ _id: objectId }, { $set: dataUpdate });
+		return result;
+	} catch (e) {
+		console.log(e);
+	}
+}
+
+// Elimina por ID (requiere la clase ObjectId de mongoose, para acceder a los _id).
+async function deleteDocumentById(collection, id) {
+	try {
+		if (!this.db[collection]) {
+			await this.db.connectToDatabase();
+		}
+		const objectId = new ObjectId(id);
+		const result = await this.db[collection].deleteOne({ _id: objectId });
+		return result;
+	} catch (e) {
+		console.error(e);
+	}
+}
+
+module.exports = { createDocument, getAllDocuments, getOneDocument, updateDocument, updateDocumentById, deleteDocument, deleteDocumentById };

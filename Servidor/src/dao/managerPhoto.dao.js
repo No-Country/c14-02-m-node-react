@@ -1,5 +1,5 @@
 const Database = require('../config/mongodb');
-const { createDocument, getOneDocument, getAllDocuments, updateDocument, deleteDocument } = require('../config/factory.js');
+const { createDocument, getOneDocument, getAllDocuments, updateDocumentById, deleteDocumentById } = require('../config/factory.js');
 const { PhotoModel } = require('../models');
 
 class PhotoManager {
@@ -8,8 +8,8 @@ class PhotoManager {
 		this.createDocument = createDocument;
 		this.getOneDocument = getOneDocument;
 		this.getAllDocuments = getAllDocuments;
-		this.updateDocument = updateDocument;
-		this.deleteDocument = deleteDocument;
+		this.deleteDocumentById = deleteDocumentById;
+		this.updateDocumentById = updateDocumentById;
 	}
 
 	async createPhoto(data) {
@@ -41,18 +41,18 @@ class PhotoManager {
 		}
 	}
 
-	async updatePhoto(filter, dataUpdate) {
+	async updatePhoto(id, dataUpdate) {
 		try {
-			const photo = await this.updateDocument('photoCollection', filter, dataUpdate);
+			const photo = await this.updateDocumentById('photoCollection', id, dataUpdate);
 			return photo;
 		} catch (error) {
 			throw new Error(`Error al actualizar la imagen: ${error.message}`);
 		}
 	}
 
-	async deletePhoto(filter) {
+	async deletePhoto(id) {
 		try {
-			const photo = await this.deleteDocument('photoCollection', filter);
+			const photo = await this.deleteDocumentById('photoCollection', id);
 			return photo;
 		} catch (error) {
 			throw new Error(`Error al eliminar la imagen: ${error.message}`);

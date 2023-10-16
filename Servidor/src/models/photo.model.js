@@ -1,15 +1,21 @@
 const mongoose = require('mongoose');
 
 const photoSchema = new mongoose.Schema({
-	url: {
-		type: String,
-		required: true,
-	},
-
 	publicationId: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'publication',
 		required: true,
+	},
+
+	url: {
+		type: String,
+		required: true,
+		validate: {
+			validator: function (value) {
+				return /^(https?):\/\/[^\s/$.?#].[^\s]*$/.test(value);
+			},
+			message: 'El campo URL no es una URL (http/https) valida.',
+		},
 	},
 });
 
