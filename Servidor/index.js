@@ -17,5 +17,5 @@ app.use('/api/photo', photoRoutes);
 app.use('/api/booking', bookingRoutes);
 app.use('/api/favorite', favoriteRoutes);
 
-const PORT = process.env.PORT || 3031;
+const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Servidor escuchando en el puerto http://localhost:${PORT}`));
