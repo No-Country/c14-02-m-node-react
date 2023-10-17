@@ -77,6 +77,20 @@ async function deleteDocument(collection, filter) {
 	}
 }
 
+// Busca por ID (requiere la clase ObjectId de mongoose, para acceder a los _id).
+async function getOneDocumentById(collection, id) {
+	try {
+		if (!this.db[collection]) {
+			await this.db.connectToDatabase();
+		}
+		const objectId = new ObjectId(id);
+		const document = await this.db[collection].findOne({ _id: objectId });
+		return document;
+	} catch (e) {
+		console.error(e);
+	}
+}
+
 // Actualiza por ID (requiere la clase ObjectId de mongoose, para acceder a los _id).
 async function updateDocumentById(collection, id, dataUpdate) {
 	try {
@@ -105,4 +119,4 @@ async function deleteDocumentById(collection, id) {
 	}
 }
 
-module.exports = { createDocument, getAllDocuments, getOneDocument, updateDocument, updateDocumentById, deleteDocument, deleteDocumentById };
+module.exports = { createDocument, getAllDocuments, getOneDocument, getOneDocumentById, updateDocument, updateDocumentById, deleteDocument, deleteDocumentById };
