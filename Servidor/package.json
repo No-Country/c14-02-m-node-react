@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "./node_modules/.bin/nodemon",
 		"dev-win": ".\\node_modules\\.bin\\nodemon",
-		"build": "node ./dist/index.js",
+		"build": "node index.js",
 		"start": "node index.js"
 	},
 	"keywords": [],
