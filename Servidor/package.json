@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "./node_modules/.bin/nodemon",
-		"dev-win": ".\\node_modules\\.bin\\nodemon"
+		"dev-win": ".\\node_modules\\.bin\\nodemon",
+		"build": "node index.js",
+		"start": "node index.js"
 	},
 	"keywords": [],
 	"author": "team-back",
