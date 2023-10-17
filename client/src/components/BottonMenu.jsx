@@ -19,6 +19,10 @@ const DivLogin = styled.div`
       0px 1px 2px 1px rgba(0, 0, 0, 0.1);
   }
 
+  @media (max-width: 1150px) {
+    transform: scale(0.9);
+  }
+
   ${({ selected }) =>
     selected &&
     `
@@ -91,6 +95,7 @@ const Component = () => {
     // Aquí puedes tener componentes de modal diferentes y mostrarlos según el modalId.
     // Por ejemplo, puedes tener Modal1, Modal2, Modal3, etc.
   };
+
 
   return (
     <div>

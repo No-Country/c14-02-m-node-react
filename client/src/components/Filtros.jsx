@@ -27,6 +27,10 @@ const Container = styled.div`
     @media (max-width: 800px) {
         display: flex;
         justify-content: center;
+        padding: 0 1.5rem;
+        margin: 0;
+        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12);
+
     }
 `
 
@@ -39,7 +43,7 @@ const BoxFilters = styled.div`
     flex-grow: 1;
 
     @media (max-width: 800px) {
-        display: none;
+        display: flex;
     }
 `
 
@@ -69,6 +73,10 @@ const Filter = styled.div`
         color: black;
         border-bottom-style: solid;
     }
+    @media (max-width: 800px) {
+        display: flex;
+        margin: 0;
+    }
 `
 
 const Box = styled.div`
@@ -81,6 +89,9 @@ const Box = styled.div`
     border: 1px solid #DDD;
     background: #FFF;
     cursor: pointer;
+    @media (max-width: 800px) {
+        display: none;
+    }
 `
 
 const Icon = styled.img`
@@ -92,7 +103,7 @@ const Text = styled.h3`
     color:  #222;
     font-size: 14px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 16px;
 `
 
