@@ -1,6 +1,10 @@
 const PublicationManager = require('../dao/managerPublication.dao');
 const publicatinManage = new PublicationManager();
+const UserManager = require('../dao/managerUser.dao');
+const userManager = new UserManager();
+
 const PublicationModel = require('../models/publication.model')
+const sendMail = require('../functions/sendmail');
 const { ObjectId } = require('mongodb');
 
 async function postPublicationController(req, res) {
@@ -14,10 +18,18 @@ async function postPublicationController(req, res) {
 		if (validationError) {
 			return res.status(400).send(validationError);
 		}
-
+		
 		const newPublication = await publicatinManage.createPublication(data);
-		console.log("esto", newPublication)
-
+		// Envio el correo de publicacion creada
+		const email = data.email
+		const filter = { email: email };
+		const user = await userManager.getOneUser(filter);
+		sendMail({
+			"type":"publicacion",
+			"email":newPublication.email,
+			"name":user.names,
+			"titulo":newPublication.title
+		})
 		return res.status(200).send(newPublication);
 	} catch (error) {
 		console.error('Error al crear la publicación', error);

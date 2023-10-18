@@ -9,7 +9,7 @@ let msg1={};
 sgMail.setApiKey(SENDGRID);
 
 const sendMail = async(data) => {
-  if (data.type==="bienvenida") {
+  if (data.type==='bienvenida') {
         msg1 = {
             to: data.email,
             from: 'admclonairbnb@gmail.com',
@@ -20,11 +20,22 @@ const sendMail = async(data) => {
               "Sender_Name": data.email,
             },
           };
+  } else if (data.type==='publicacion') {
+    msg1 = {
+      to: data.email,
+      from: 'admclonairbnb@gmail.com',
+      subject: 'Creación de publicación en Airbnb',
+      preheader: 'Su publicación ha sido exitosa!',
+      templateId: 'd-bae3397e73ee46749ac323d38aeb32e2',
+      dynamic_template_data: {
+        "Sender_Name": data.names,
+        "Titulo_Propiedad":data.titulo
+      },
+    };
+    
   }
        try {
-        if (data.type === "bienvenida") {
-            res = await sgMail.send(msg1);
-        } 
+        res = await sgMail.send(msg1);
         console.log(res)
         console.log('Correo electrónico enviado correctamente', res[0].statusCode);
       } catch (error) {

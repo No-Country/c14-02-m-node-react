@@ -49,7 +49,7 @@ async function login(req, res) {
 }
 
 async function getUser(req, res) {
-	const email = req.body;
+	const email = req.params;
 	try {
 		const User = await usermanager.getOneUser(email);
 		return res.status(200).send(User);
