@@ -20,10 +20,8 @@ function IndividualViewPage() {
     <>
       <div className="hidden sm:block">
         <NavBar />
-<<<<<<< HEAD
         <Filtros />
-=======
->>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
+
       </div>
 
       <div>
@@ -37,7 +35,7 @@ function IndividualViewPage() {
               
              </div>
             <h2 className="text-3xl font-semibold my-9 ">
-              Casa "WabiSabi"
+              Casa WabiSabi
               <span className="hidden sm:block">
                 Habitación1/1 cama/Asakusa/Skytree/
               </span>
