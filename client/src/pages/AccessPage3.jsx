@@ -1,10 +1,19 @@
+import { Link , useNavigate } from 'react-router-dom';
+
 export const AccessPage3 = () => {
+
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate(-1);
+  }
+
   return (
     <section className="flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-8 max-w-md mx-auto my-8 rounded-md shadow-md">
         
         <header className="h-[64px] w-full  flex items-center p-2">
-          <button className="text-2xl">&#60;</button>
+          <button className="text-2xl"  onClick={handleClick}>&#60;</button>
           <p className="text-center  mx-auto text-base font-bold">
             Finish signing up
           </p>
@@ -68,10 +77,11 @@ export const AccessPage3 = () => {
             Privacy Policy.
           </a>
         </p>
-
-        <button className="bg-gradient-to-r from-[#FF385C] to-[#b9005a] text-white w-full py-2 px-4 rounded-md mt-6 hover:bg-red-600">
-          Agree and Continue
-        </button>
+        <Link to="/condiciones">
+          <button className="bg-gradient-to-r from-[#FF385C] to-[#b9005a] text-white w-full py-2 px-4 rounded-md mt-6 hover:bg-red-600">
+            Agree and Continue
+          </button>
+        </Link>
       </div>
     </section>
   );

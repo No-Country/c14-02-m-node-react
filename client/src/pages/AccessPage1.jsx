@@ -1,5 +1,5 @@
 import { AccessButtons } from "../components/AccessButtons";
-import { useNavigate } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 
 // Es la primera página que sale al ir al register / login: WELCOME AIRBNB
 
@@ -44,9 +44,11 @@ export const AccessPage1 = () => {
             We’ll call or text you to confirm your number. Standard message and
             data rates apply. <b className="text-[#222222]"> Privacy Policy</b>
           </p>
-          <button className="w-full mt-4 h-[48px] rounded-md bg-gradient-to-r from-[#FF385C] to-[#b9005a] text-[#FFF] text-xl">
-            Continue
-          </button>
+          <Link to="/completardatos">
+            <button className="w-full mt-4 h-[48px] rounded-md bg-gradient-to-r from-[#FF385C] to-[#b9005a] text-[#FFF] text-xl">
+              Continue
+            </button>
+          </Link>
         </form>
 
         <AccessButtons />

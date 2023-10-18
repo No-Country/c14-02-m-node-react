@@ -34,7 +34,8 @@ const Container = styled.div`
         padding: 0 1.5rem;
         margin: 0;
         box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12);
-
+        position: relative;
+        top: 8px;
     }
 `
 

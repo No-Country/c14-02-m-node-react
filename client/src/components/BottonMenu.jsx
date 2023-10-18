@@ -111,7 +111,7 @@ const Component = () => {
         <DivMenu>
           <Ul className="p-2">
           <Link to="/registro"><Li className="mb-2 font-medium" onClick={() => openModal(1)}>Registrate</Li></Link>
-          <Link to="/registro"><Li className="border-b mb-2 pb-5" onClick={() => openModal(2)}>Inicia Sesión</Li></Link>
+          <Link to="/login"><Li className="border-b mb-2 pb-5" onClick={() => openModal(2)}>Inicia Sesión</Li></Link>
             <Li className="mb-2" onClick={() => openModal(3)}>Poné tu Airbnb</Li>
             <Li className="mb-2" onClick={() => openModal(4)}>Centro de Ayuda</Li>
           </Ul>

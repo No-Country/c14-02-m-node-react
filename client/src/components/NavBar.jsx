@@ -28,6 +28,7 @@ const Navbar = styled.div`
     padding: 15px 0;
     transform: scale(0.9);
     margin: 0;
+    position: relative;
   }
 `;
 
