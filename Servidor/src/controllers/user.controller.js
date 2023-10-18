@@ -2,6 +2,7 @@ const { UserManager } = require('../dao');
 const usermanager = new UserManager();
 const EncryptService = require('../services/Encrypter');
 const AuthService = require('../services/Auth');
+const sendMail = require('../functions/sendmail');
 
 async function createUser(req, res) {
 	try {
@@ -17,6 +18,12 @@ async function createUser(req, res) {
 		const token = await AuthService.saveToken(data.name + data.surname + data.phone); // decidir que conbinacion de datos generaria el token
 
 		console.log(token);
+
+		sendMail({
+			"type":"bienvenida",
+			"name":data.names,
+			"email":data.email
+		})
 
 		return res.status(200).send({ auth: true, token: token }); // al loguearte y crear usuario, deberiamos mandar el token para quedar iniciados.
 	} catch (error) {
