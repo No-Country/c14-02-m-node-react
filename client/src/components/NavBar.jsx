@@ -4,8 +4,12 @@ import search from "../assets/images/search.png";
 import idioma from "../assets/images/idioma.png";
 import searchmovil from "../assets/images/searchmovil.png";
 import logosintexto from "../assets/images/logosintexto.png";
+<<<<<<< HEAD
 import menu from "../assets/images/menu.png";
 import usuario from "../assets/images/usuario.png";
+=======
+import filter from "../assets/images/filter.png";
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
 import BottonMenu from "../components/BottonMenu.jsx";
 import { Link } from "react-router-dom";
 import { GrBottomCorner } from "react-icons/gr";
@@ -18,10 +22,18 @@ const Navbar = styled.div`
   padding: 15px 40px;
   box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
   background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   @media (max-width: 800px) {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    box-shadow: none;
+    padding: 15px 0;
+    transform: scale(0.9);
+    margin: 0;
+    position: relative;
   }
 `;
 
@@ -54,6 +66,10 @@ const Container2 = styled.div`
 
   @media (max-width: 1150px) {
     margin: 0;
+<<<<<<< HEAD
+=======
+    transform: scale(0.9);
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
   }
 
   @media (max-width: 800px) {
@@ -72,13 +88,16 @@ const Container2Movil = styled.div`
   @media (max-width: 800px) {
     display: flex;
     flex-direction: row;
-    padding: 8px 10px;
+    width: 90%;
+    padding: 10px;
     align-items: center;
-    border-radius: 24px;
+    border-radius: 30px;
     border: 1px solid #ddd;
     box-shadow: 0px 4px 12px 0px rgba(73, 32, 32, 0.05),
       0px 1px 2px 0px rgba(0, 0, 0, 0.08);
     cursor: pointer;
+    transform: scale(0.9);
+    overflow: hidden;
   }
 `;
 
@@ -87,6 +106,10 @@ const Container3 = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 8px;
+
+  @media (max-width: 1500px) {
+    gap: 4px;
+  }
 
   @media (max-width: 800px) {
     display: none;
@@ -109,7 +132,11 @@ const Div = styled.div`
 const DivIdioma = styled.div`
     display: flex;
     height: 40px;
+<<<<<<< HEAD
     padding: 12px;
+=======
+    padding: 14px;
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
     justify-content: center;
     align-items: center;
     border-radius: 20px;
@@ -117,6 +144,10 @@ const DivIdioma = styled.div`
 
   &:hover {
     background: #f7f7f7;
+  }
+
+  @media (max-width: 1150px) {
+    padding: 10px;
   }
 `;
 
@@ -138,6 +169,8 @@ const Text = styled.p`
   @media (max-width: 800px) {
     display: flex;
     border-right: none;
+    font-size: 15px;
+    line-height: 12px;
   }
 `;
 
@@ -155,6 +188,7 @@ const Text2 = styled.p`
     display: flex;
     font-size: 12px;
     padding: 0 5px 0 16px;
+    font-weight: 400;
   }
 `;
 
@@ -168,15 +202,16 @@ const Text3 = styled.p`
 
   @media (max-width: 800px) {
     display: flex;
+    font-weight: 400;
     font-size: 12px;
     color: #717171;
-    padding: 0 5px;
+    padding: 0 2px;
   }
 `;
 
 const Icon = styled.img`
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
 `;
 
 const LogoResponsive = styled.img`
@@ -193,13 +228,34 @@ const LogoResponsive = styled.img`
   }
 `;
 
+<<<<<<< HEAD
+=======
+const FilterResponsive = styled.div`
+    display: none;
+
+  @media (max-width: 800px) {
+    display: flex;
+    margin: 0 3% 0 0;
+    transform: scale(0.9);
+    padding: 17px;
+    border-radius: 30px;
+    border: 2px solid #DDD;
+    cursor: pointer;
+  }
+`;
+
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
 
 export const NavBar = () => {
   return (
     <Navbar>
       <Link to="/" style={{ cursor: "pointer" }}>
         <Container>
+<<<<<<< HEAD
             <img src={logo} alt="Logo" className="logo" />
+=======
+            <img src={logo} alt="Logo" class="logo" />
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
         </Container>
         <LogoResponsive src={logosintexto} alt="New Logo" class="new-logo" />
       </Link>
@@ -208,12 +264,12 @@ export const NavBar = () => {
         <Text>semana (en cualquier fecha)</Text>
         <Text2>¿Cuantos?</Text2>
         <DivSearch>
-          <img src={search} />
+          <img src={search}/>
         </DivSearch>
       </Container2>
       <Container2Movil>
         <Icon src={searchmovil} />
-        <div>
+        <div className="pt-1.5 pb-0.5">
           <Text>A cualquier lugar</Text>
           <DivMovil>
             <Text2>semana (en cualquier fecha)</Text2>
@@ -222,6 +278,9 @@ export const NavBar = () => {
           </DivMovil>
         </div>
       </Container2Movil>
+      <FilterResponsive>
+        <img src={filter} className="w-4 h-4 transform scale-90"/>
+      </FilterResponsive>
       <Container3>
         <Div>
           <DivIdioma>

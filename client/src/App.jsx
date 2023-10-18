@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import NavBar from "./components/NavBar";
 import Filtros from "./components/Filtros";
 import { GaleriaPage } from "./pages/GaleriaPage";
@@ -30,6 +31,17 @@ function App() {
       <Login />
       <SuggestionFooter />
     </>
+=======
+import { Routes, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
+
+
+function App() {
+  return (
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
   );
 }
 

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import React from "react";
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import firebaseConfig from "../firebaseConfig";

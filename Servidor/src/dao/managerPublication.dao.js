@@ -1,6 +1,5 @@
 const Database = require('../config/mongodb.js');
-const { createDocument, getOneDocument, getAllDocuments, updateDocument } = require('../config/factory.js');
-// const UserModel = require('../models/user.model.js');
+const { createDocument, getOneDocument, getAllDocuments, updateDocument,deleteDocument } = require('../config/factory.js');
 const PublicationModel = require('../models/publication.model.js');
 
 class PublicationManager {
@@ -10,6 +9,7 @@ class PublicationManager {
 		this.getOneDocument = getOneDocument;
 		this.getAllDocuments = getAllDocuments;
 		this.updateDocument = updateDocument;
+		this.deleteDocument = deleteDocument
 	}
 
 	async createPublication(data) {
@@ -24,7 +24,7 @@ class PublicationManager {
 
 	async getOnePublication(query) {
 		try {
-			const Publication = await this.getOneDocument('publicationCollection', query);
+			const Publication = await this.getAllDocuments('publicationCollection', query);
 			return Publication;
 		} catch (error) {
 			console.error(error);
@@ -39,6 +39,37 @@ class PublicationManager {
 		} catch (error) {
 			console.error(error);
 			throw new Error(`Error al obtener el publicación: ${error.message}`);
+		}
+	}
+
+	async getPublicationById(id) {
+		try {
+			const PublicationId = await this.getOneDocument('publicationCollection', id)
+			return PublicationId;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Error al obtener el publicación por id: ${error.message}`);
+		}
+	}
+
+	async putUpdatePublication(filter, dataUpdate) {
+		try {
+			const Publications = await this.updateDocument('publicationCollection', filter, dataUpdate);
+			return Publications;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Error al actualizar publicación: ${error.message}`);
+		}
+	}
+
+	async deletePublicationById(id) {
+		try {
+			const PublicationId = await this.deleteDocument('publicationCollection',id)
+			console.log(PublicationId)
+			return PublicationId;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Error al eliminar el publicación por id: ${error.message}`);
 		}
 	}
 

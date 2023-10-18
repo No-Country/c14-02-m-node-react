@@ -1,4 +1,9 @@
+<<<<<<< HEAD:client/src/pages/Pages-login-register/CommunityLoginPage.jsx
 import airbnb from "../../assets/images/Airbnb.png";
+=======
+import { Link } from 'react-router-dom';
+import airbnb from "../assets/images/Airbnb.png";
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467:client/src/pages/AccessPage4.jsx
 
 export const CommunityLoginPage = () => {
   return (
@@ -40,12 +45,20 @@ export const CommunityLoginPage = () => {
           </svg>
         </span>
       </a>
+<<<<<<< HEAD:client/src/pages/Pages-login-register/CommunityLoginPage.jsx
 
       <button className="button">
 
         Agree and Continue
       </button>
 
+=======
+      <Link to="/">
+        <button className="bg-gradient-to-r from-[#FF385C] to-[#b9005a] text-white w-full py-2 px-4 rounded-md hover:bg-blue-600 mt-6">
+          Agree and Continue
+        </button>
+      </Link>
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467:client/src/pages/AccessPage4.jsx
       <button className="bg-white text-black-500 border border-blue-500 w-full py-2 px-4 rounded-md hover:bg-gray-100 mt-4">
         Decline
       </button>

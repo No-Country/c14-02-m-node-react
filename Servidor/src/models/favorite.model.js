@@ -13,8 +13,6 @@ const favoriteSchema = new mongoose.Schema({
   }
 });
 
-// Agregar un índice único compuesto en userId y publicationId
-// favoriteSchema.index({ userId: 1, publicationId: 1 }, { unique: true });
 
 const FavoriteModel = mongoose.model('Favorite', favoriteSchema);
 

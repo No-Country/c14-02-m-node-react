@@ -3,6 +3,7 @@ import facebook from "../assets/images/facebook.png";
 import apple from "../assets/images/apple.png";
 import email from "../assets/images/email.png";
 
+
 export const AccessButtons = () => {
   return (
     <div className="containerButtonAccess">

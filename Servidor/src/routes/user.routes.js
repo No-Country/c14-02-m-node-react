@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const { createUser, getUser, getUsers, updateUser, login } = require('../controllers/user.controller');
+const { validateMiddleware } = require('../middleware');
 
 /** GET USERS
 METHOD:  GET
 URL:     http://localhost:3000/api/user
 */
-router.get('/', validateMiddleware , getUsers);
-
+// router.get('/', validateMiddleware, getUsers);
+router.get('/', getUsers);
 /** GET USER
 METHOD:  GET
 URL:     http://localhost:3000/api/user/john.doe@mail.com
