@@ -58,10 +58,6 @@ const publicationScheme = new mongoose.Schema({
 		type: [String], // Cambiado a Array de Strings
 		required: true,
 	},
-	ownerUser_ID: {
-		type: String,
-		required: true,
-	},
 	email: {
 		type: String,
 		required: true,
