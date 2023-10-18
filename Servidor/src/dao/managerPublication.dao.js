@@ -73,6 +73,15 @@ class PublicationManager {
 		}
 	}
 
+	async putUpdatePublication(filter, dataUpdate) {
+		try {
+			const Publications = await this.updateDocument('publicationCollection', filter, dataUpdate);
+			return Publications;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Error al actualizar publicación: ${error.message}`);
+		}
+	}
 }
 
 module.exports = PublicationManager;

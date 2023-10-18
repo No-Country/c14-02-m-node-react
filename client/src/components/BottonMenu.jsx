@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
+=======
 import { Link } from "react-router-dom";
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
 import styled from "styled-components";
 import menu from "../assets/images/menu.png";
 import usuario from "../assets/images/usuario.png";
@@ -20,10 +23,13 @@ const DivLogin = styled.div`
       0px 1px 2px 1px rgba(0, 0, 0, 0.1);
   }
 
+<<<<<<< HEAD
+=======
   @media (max-width: 1150px) {
     transform: scale(0.9);
   }
 
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
   ${({ selected }) =>
     selected &&
     `
@@ -110,8 +116,13 @@ const Component = () => {
       {isMenuOpen && (
         <DivMenu>
           <Ul className="p-2">
+<<<<<<< HEAD
+            <Li className="mb-2 font-medium" onClick={() => openModal(1)}>Registrate</Li>
+            <Li className="border-b mb-2 pb-5" onClick={() => openModal(2)}>Inicia Sesión</Li>
+=======
           <Link to="/registro"><Li className="mb-2 font-medium" onClick={() => openModal(1)}>Registrate</Li></Link>
           <Link to="/login"><Li className="border-b mb-2 pb-5" onClick={() => openModal(2)}>Inicia Sesión</Li></Link>
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
             <Li className="mb-2" onClick={() => openModal(3)}>Poné tu Airbnb</Li>
             <Li className="mb-2" onClick={() => openModal(4)}>Centro de Ayuda</Li>
           </Ul>
