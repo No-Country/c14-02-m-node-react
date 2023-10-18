@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import menu from "../assets/images/menu.png";
 import usuario from "../assets/images/usuario.png";
@@ -109,8 +110,8 @@ const Component = () => {
       {isMenuOpen && (
         <DivMenu>
           <Ul className="p-2">
-            <Li className="mb-2 font-medium" onClick={() => openModal(1)}>Registrate</Li>
-            <Li className="border-b mb-2 pb-5" onClick={() => openModal(2)}>Inicia Sesión</Li>
+          <Link to="/registro"><Li className="mb-2 font-medium" onClick={() => openModal(1)}>Registrate</Li></Link>
+          <Link to="/registro"><Li className="border-b mb-2 pb-5" onClick={() => openModal(2)}>Inicia Sesión</Li></Link>
             <Li className="mb-2" onClick={() => openModal(3)}>Poné tu Airbnb</Li>
             <Li className="mb-2" onClick={() => openModal(4)}>Centro de Ayuda</Li>
           </Ul>

@@ -20,7 +20,6 @@ function IndividualViewPage() {
     <>
       <div className="hidden sm:block">
         <NavBar />
-        <Filtros />
       </div>
 
       <div>

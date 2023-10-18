@@ -17,6 +17,9 @@ const Navbar = styled.div`
   padding: 15px 40px;
   box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
   background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   @media (max-width: 800px) {
     display: flex;
@@ -77,7 +80,7 @@ const Container2Movil = styled.div`
     display: flex;
     flex-direction: row;
     width: 90%;
-    padding: 5px 10px;
+    padding: 10px;
     align-items: center;
     border-radius: 30px;
     border: 1px solid #ddd;
@@ -221,7 +224,7 @@ const FilterResponsive = styled.div`
     transform: scale(0.9);
     padding: 17px;
     border-radius: 30px;
-    border: 1px solid #DDD;
+    border: 2px solid #DDD;
     cursor: pointer;
   }
 `;

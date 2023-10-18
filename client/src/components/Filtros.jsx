@@ -23,6 +23,10 @@ const Container = styled.div`
     margin: .4rem 0 0 0;
     padding: 1rem 2.5rem 0 2.5rem;
     gap: 1.5rem;
+    background-color: #fff;
+    position: sticky;
+    top: 70px;
+    z-index: 99;
     
     @media (max-width: 800px) {
         display: flex;

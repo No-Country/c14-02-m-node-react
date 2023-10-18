@@ -1,13 +1,21 @@
 import { AccessButtons } from "../components/AccessButtons";
+import { useNavigate } from 'react-router-dom';
 
 // Es la primera página que sale al ir al register / login: WELCOME AIRBNB
 
 export const AccessPage1 = () => {
+
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate(-1);
+  }
+
   return (
     <section className="flex items-center justify-center bg-black bg-opacity-50">
       <article className="p-4 w-[340px] md:w-[568px] bg-[#fff] mx-auto mt-5 rounded-md">
         <header className="h-[64px] w-full flex items-center p-2">
-          <button className="">X</button>
+          <button className="" onClick={handleClick}>X</button>
           <p className="text-center  mx-auto text-base font-bold">
             Log in or sign up
           </p>

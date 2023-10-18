@@ -4,18 +4,25 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import App from './App.jsx';
+import App from './App';
 import './index.css';
 import IndividualViewPage from './pages/IndividualViewPage.jsx';
+import { AccessPage1 } from './pages/AccessPage1.jsx';
+import { Home } from './pages/Home.jsx';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
   },
   {
     path: '/rooms', // Agregamos la nueva ruta
     element: <IndividualViewPage/>, // Aquí debes definir el componente correspondiente
+  },
+  {
+    path: '/registro',
+    element: <AccessPage1 />,
   },
 ]);
 
