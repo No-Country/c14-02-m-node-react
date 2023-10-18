@@ -24,13 +24,13 @@ async function createDocument(collection, data) {
 }
 // funcion para buscar todo
 
-async function allDocument(collection) {
+async function getAllDocuments(collection, query = {}) {
 	try {
 		if (!this.db[collection]) {
 			await this.db.connectToDatabase();
 		}
-		console.log(collection);
-		const document = await this.db[collection].find({}).toArray();
+		console.log(collection, query);
+		const document = await this.db[collection].find(query).toArray();
 		return document;
 	} catch (e) {
 		console.error(e);
@@ -51,21 +51,30 @@ async function getOneDocument(collection, query) {
 	}
 }
 
-async function UpdateDocument(collection, filter, dataUpdate) {
-    try {
-        if (!this.db[collection]) {
-            await this.db.connectToDatabase(); //-->
-        }
-        const document = await this.db[collection].updateOne(filter, 
-            {
-                $set:dataUpdate
-            });
-        return document;
-    } catch (e) {
-        console.error(e);
-    }
+async function updateDocument(collection, filter, dataUpdate) {
+	try {
+		if (!this.db[collection]) {
+			await this.db.connectToDatabase();
+		}
+		const document = await this.db[collection].updateOne(filter, {
+			$set: dataUpdate,
+		});
+		return document;
+	} catch (e) {
+		console.error(e);
+	}
 }
 
+async function deleteDocument(collection, filter) {
+	try {
+		if (!this.db[collection]) {
+			await this.db.connectToDatabase();
+		}
+		const result = await this.db[collection].deleteOne(filter);
+		return result;
+	} catch (e) {
+		console.error(e);
+	}
+}
 
-
-module.exports = { createDocument, allDocument, getOneDocument, UpdateDocument };
+module.exports = { createDocument, getAllDocuments, getOneDocument, updateDocument, deleteDocument };

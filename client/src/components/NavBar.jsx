@@ -3,6 +3,9 @@ import logo from "../assets/images/airbnblogo.png";
 import search from "../assets/images/search.png";
 import idioma from "../assets/images/idioma.png";
 import searchmovil from "../assets/images/searchmovil.png";
+import logosintexto from "../assets/images/logosintexto.png";
+import menu from "../assets/images/menu.png";
+import usuario from "../assets/images/usuario.png";
 import BottonMenu from "../components/BottonMenu.jsx";
 import { Link } from "react-router-dom";
 import { GrBottomCorner } from "react-icons/gr";
@@ -23,14 +26,12 @@ const Navbar = styled.div`
 `;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 258px;
-  height: 32px;
-  cursor: pointer;
-
-  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    
+    @media (max-width: 1150px) {
     display: none;
   }
 `;
@@ -38,6 +39,7 @@ const Container = styled.div`
 const Container2 = styled.div`
   display: flex;
   padding: 8px;
+  margin: 0 0 0 10rem;
   align-items: center;
   border-radius: 24px;
   border: 1px solid #ddd;
@@ -48,6 +50,10 @@ const Container2 = styled.div`
   &:hover {
     box-shadow: 0px 4px 12px 0px rgba(73, 32, 32, 0.09),
       0px 1px 2px 1px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 1150px) {
+    margin: 0;
   }
 
   @media (max-width: 800px) {
@@ -96,34 +102,18 @@ const DivSearch = styled.div`
   background-color: #ff385c;
 `;
 
-const DivLogin = styled.div`
-  display: flex;
-  padding: 6px 6px 6px 12px;
-  align-items: center;
-  gap: 12px;
-  border-radius: 24px;
-  border: 1px solid #ddd;
-  background: #fff;
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: 0px 4px 12px 0px rgba(73, 32, 32, 0.09),
-      0px 1px 2px 1px rgba(0, 0, 0, 0.1);
-  }
-`;
-
 const Div = styled.div`
   display: flex;
 `;
 
 const DivIdioma = styled.div`
-  display: flex;
-  height: 40px;
-  padding: 12px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  cursor: pointer;
+    display: flex;
+    height: 40px;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    cursor: pointer;
 
   &:hover {
     background: #f7f7f7;
@@ -183,20 +173,36 @@ const Text3 = styled.p`
     padding: 0 5px;
   }
 `;
+
 const Icon = styled.img`
   width: 2rem;
   height: 2rem;
 `;
 
+const LogoResponsive = styled.img`
+    display: none;
+
+  @media (max-width: 1150px) {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  @media (max-width: 800px) {
+    display: none;
+  }
+`;
+
+
 export const NavBar = () => {
   return (
     <Navbar>
       <Link to="/" style={{ cursor: "pointer" }}>
-  <Container>
-    <img src={logo} alt="Logo" />
-  </Container>
-</Link>
-
+        <Container>
+            <img src={logo} alt="Logo" className="logo" />
+        </Container>
+        <LogoResponsive src={logosintexto} alt="New Logo" class="new-logo" />
+      </Link>
       <Container2>
         <Text>A cualquier lugar</Text>
         <Text>semana (en cualquier fecha)</Text>

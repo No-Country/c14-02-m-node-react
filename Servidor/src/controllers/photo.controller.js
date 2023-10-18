@@ -23,7 +23,7 @@ const getPhoto = async (req, res) => {
 	}
 };
 
-const getAllPhotos = async (req, res) => {
+const getPhotos = async (req, res) => {
 	try {
 		const photos = await photoManager.getAllPhotos();
 		return res.status(201).json(photos);
@@ -49,4 +49,15 @@ const updatePhoto = async (req, res) => {
 	}
 };
 
-module.exports = { createPhoto, getPhoto, getAllPhotos, updatePhoto };
+const deletePhoto = async (req, res) => {
+	try {
+		const id = req.params;
+		const photo = await photoManager.deletePhoto(id);
+		return res.status(200).json(photo);
+	} catch (error) {
+		console.log('Error al eliminar la imagen', error.message);
+		return res.status(500).json({ error: error.message });
+	}
+};
+
+module.exports = { createPhoto, getPhoto, getPhotos, updatePhoto, deletePhoto };
