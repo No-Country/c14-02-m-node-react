@@ -21,7 +21,7 @@ function UAccount() {
           <div className="flex items-center text-lg">
             <span className="font-semibold">Megumi Hayashibara</span>
             <p>, mhayashibara@gmail.com ·</p>
-            <Link to="/user-profile">
+            <Link to="/perfil/:usuario">
               <button className="font-semibold underline px-2">
                 Ir al perfil
               </button>
@@ -147,7 +147,7 @@ function UAccount() {
             <p className="text-xs text-stone-600">Mostrar perfil</p>
           </div>
           <div className="ml-auto">
-            <Link to="/user-profile">
+            <Link to="/perfil/:usuario">
               <BiSolidChevronRight size={25} />
             </Link>
           </div>
@@ -177,7 +177,7 @@ function UAccount() {
             <FaRegCircleUser size={25} style={{ color: "#292524" }} />
             <p className="text-xl ml-4">Información personal</p>
             <div className="ml-auto">
-              <Link to="/user-info">
+              <Link to="/info/:usuario">
                 <BiSolidChevronRight size={25} />
               </Link>
             </div>

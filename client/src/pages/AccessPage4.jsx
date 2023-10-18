@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import airbnb from "../assets/images/Airbnb.png";
 
 export const AccessPage4 = () => {
@@ -40,10 +41,11 @@ export const AccessPage4 = () => {
           </svg>
         </span>
       </a>
-      <button className="bg-gradient-to-r from-[#FF385C] to-[#b9005a] text-white w-full py-2 px-4 rounded-md hover:bg-blue-600 mt-6">
-        Agree and Continue
-      </button>
-
+      <Link to="/">
+        <button className="bg-gradient-to-r from-[#FF385C] to-[#b9005a] text-white w-full py-2 px-4 rounded-md hover:bg-blue-600 mt-6">
+          Agree and Continue
+        </button>
+      </Link>
       <button className="bg-white text-black-500 border border-blue-500 w-full py-2 px-4 rounded-md hover:bg-gray-100 mt-4">
         Decline
       </button>
