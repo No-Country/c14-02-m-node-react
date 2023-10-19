@@ -7,6 +7,7 @@ const userScheme = new mongoose.Schema({
 	names: {
 		type: String,
 		required: true, // Este campo es obligatorio
+		
 	},
 
 	surname: {
