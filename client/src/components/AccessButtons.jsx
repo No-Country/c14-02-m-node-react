@@ -4,10 +4,10 @@ import apple from "../assets/images/apple.png";
 import email from "../assets/images/email.png";
 
 
-export const AccessButtons = () => {
+export const AccessButtons = ({loginGoogle}) => {
   return (
     <div className="p-2 mx-auto mt-4">
-      <button className="border-4 mb-3 w-full h-[48px] flex items-center rounded-md ">
+      <button className="border-4 mb-3 w-full h-[48px] flex items-center rounded-md " onClick={loginGoogle}>
         <img src={google} alt="" className="w-5 ml-2" />
         <p className="mx-auto">Continue with Google</p>
       </button>
