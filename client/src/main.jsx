@@ -4,7 +4,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import App from './App';
 import './index.css';
 import IndividualViewPage from './pages/IndividualViewPage.jsx';
 import { AccessPage1 } from './pages/AccessPage1.jsx';
