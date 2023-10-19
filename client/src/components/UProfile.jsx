@@ -1,7 +1,7 @@
 import React from "react";
 import { GiCheckMark } from "react-icons/gi";
 
-function UProfile() {
+function UProfile({namePerson, photoPerson}) {
   return (
     <div className="flex justify-center p-16">
       <div className="grid md:grid-cols-2 gap-8 grid-cols-1">
@@ -10,18 +10,18 @@ function UProfile() {
           <div className="py-12">
             <div className="w-full p-10 rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)]">
               <img
-                src="https://cdn.leonardo.ai/users/2b4dbbb3-c3f4-45a9-a675-33148ef5ed0f/generations/7310e0ef-8fe0-4bad-b6cb-2e5be6a5da15/variations/Default_ultra_detailed_complex_illustration_a_water_bender_sur_0_7310e0ef-8fe0-4bad-b6cb-2e5be6a5da15_1.jpg?w=512"
+                src={photoPerson}
                 alt="Imagen"
                 className="rounded-full h-24 w-24 object-cover mx-auto"
               />
-              <h2 className="text-3xl font-bold text-center">Megumi</h2>
+              <h2 className="text-3xl font-bold text-center">{namePerson}</h2>
               <p className="card-content text-center">viajero</p>
             </div>
           </div>
           <div className="md:border rounded-2xl p-6">
             <div className="border-b py-12">
               <h2 className="text-2xl font-semibold pb-4">
-                Información confirmada de Megumi
+                Información confirmada de {namePerson}
               </h2>
               <div className="flex items-center">
                 <div>

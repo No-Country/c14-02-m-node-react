@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-=======
-import { Link } from "react-router-dom";
->>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import menu from "../assets/images/menu.png";
 import usuario from "../assets/images/usuario.png";
-
+import { useAuth } from "../context/AuthContext";
 
 const DivLogin = styled.div`
     display: flex;
@@ -42,7 +39,7 @@ const DivMenu = styled.div`
   display: flex;
   align-items: start;
   position: absolute;
-  justify-content: space-between;
+  justify-content: space between;
   padding: 10px 0;
   margin-top: 10px;
   transform: translateX(-66%);
@@ -78,8 +75,25 @@ const Li = styled.li`
   }
 `;
 
+const ImgPerson = styled.img`
+  width: 32px; 
+  border-radius: 50%;
+`;
 
-const Component = () => {
+const Component = ({ photoPerson }) => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handlelogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
 
@@ -103,28 +117,42 @@ const Component = () => {
     // Por ejemplo, puedes tener Modal1, Modal2, Modal3, etc.
   };
 
-
   return (
     <div>
       <button onClick={toggleMenu}>
-        <DivLogin selected={selected}
-        onClick={() => setSelected(!selected)}>
-            <img src={menu}/>
-            <img src={usuario}/>
+        <DivLogin selected={selected} onClick={() => setSelected(!selected)}>
+          <img src={menu} />
+          <ImgPerson src={user ? photoPerson : usuario} /> {/* Aplica el estilo a la imagen aquí */}
         </DivLogin>
       </button>
       {isMenuOpen && (
         <DivMenu>
           <Ul className="p-2">
-<<<<<<< HEAD
-            <Li className="mb-2 font-medium" onClick={() => openModal(1)}>Registrate</Li>
-            <Li className="border-b mb-2 pb-5" onClick={() => openModal(2)}>Inicia Sesión</Li>
-=======
-          <Link to="/registro"><Li className="mb-2 font-medium" onClick={() => openModal(1)}>Registrate</Li></Link>
-          <Link to="/login"><Li className="border-b mb-2 pb-5" onClick={() => openModal(2)}>Inicia Sesión</Li></Link>
->>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
-            <Li className="mb-2" onClick={() => openModal(3)}>Poné tu Airbnb</Li>
-            <Li className="mb-2" onClick={() => openModal(4)}>Centro de Ayuda</Li>
+            {user ? ( // Verifica si el usuario está autenticado
+              <>
+                <Link to="/user">
+                  <Li>Mi Perfil</Li>
+                  <button className="mt-4 text-center text-red-600" onClick={handlelogout}>Salir</button>
+                </Link>
+                <Li onClick={() => openModal(3)}>Poné tu Airbnb</Li>
+                <Li onClick={() => openModal(4)}>Centro de Ayuda</Li>
+              </>
+            ) : (
+              <>
+                <Link to="/register">
+                  <Li className="mb-2 font-medium" onClick={() => openModal(1)}>
+                    Registrate
+                  </Li>
+                </Link>
+                <Link to="/register">
+                  <Li className="border-b mb-2 pb-5" onClick={() => openModal(2)}>
+                    Inicia Sesión
+                  </Li>
+                </Link>
+                <Li onClick={() => openModal(3)}>Poné tu Airbnb</Li>
+                <Li onClick={() => openModal(4)}>Centro de Ayuda</Li>
+              </>
+            )}
           </Ul>
         </DivMenu>
       )}

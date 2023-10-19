@@ -4,15 +4,11 @@ import search from "../assets/images/search.png";
 import idioma from "../assets/images/idioma.png";
 import searchmovil from "../assets/images/searchmovil.png";
 import logosintexto from "../assets/images/logosintexto.png";
-<<<<<<< HEAD
-import menu from "../assets/images/menu.png";
-import usuario from "../assets/images/usuario.png";
-=======
 import filter from "../assets/images/filter.png";
->>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
 import BottonMenu from "../components/BottonMenu.jsx";
 import { Link } from "react-router-dom";
 import { GrBottomCorner } from "react-icons/gr";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = styled.div`
   display: flex;
@@ -38,12 +34,12 @@ const Navbar = styled.div`
 `;
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;
-    
-    @media (max-width: 1150px) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+
+  @media (max-width: 1150px) {
     display: none;
   }
 `;
@@ -66,10 +62,7 @@ const Container2 = styled.div`
 
   @media (max-width: 1150px) {
     margin: 0;
-<<<<<<< HEAD
-=======
     transform: scale(0.9);
->>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
   }
 
   @media (max-width: 800px) {
@@ -130,17 +123,13 @@ const Div = styled.div`
 `;
 
 const DivIdioma = styled.div`
-    display: flex;
-    height: 40px;
-<<<<<<< HEAD
-    padding: 12px;
-=======
-    padding: 14px;
->>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    cursor: pointer;
+  display: flex;
+  height: 40px;
+  padding: 14px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  cursor: pointer;
 
   &:hover {
     background: #f7f7f7;
@@ -215,7 +204,7 @@ const Icon = styled.img`
 `;
 
 const LogoResponsive = styled.img`
-    display: none;
+  display: none;
 
   @media (max-width: 1150px) {
     display: flex;
@@ -228,10 +217,10 @@ const LogoResponsive = styled.img`
   }
 `;
 
-<<<<<<< HEAD
-=======
+
+
 const FilterResponsive = styled.div`
-    display: none;
+  display: none;
 
   @media (max-width: 800px) {
     display: flex;
@@ -239,23 +228,19 @@ const FilterResponsive = styled.div`
     transform: scale(0.9);
     padding: 17px;
     border-radius: 30px;
-    border: 2px solid #DDD;
+    border: 2px solid #ddd;
     cursor: pointer;
   }
 `;
 
->>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
+export const NavBar = ({ photoPerson }) => {
+  const { user } = useAuth();
 
-export const NavBar = () => {
   return (
     <Navbar>
       <Link to="/" style={{ cursor: "pointer" }}>
         <Container>
-<<<<<<< HEAD
-            <img src={logo} alt="Logo" className="logo" />
-=======
-            <img src={logo} alt="Logo" class="logo" />
->>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
+          <img src={logo} alt="Logo" className="logo" />
         </Container>
         <LogoResponsive src={logosintexto} alt="New Logo" class="new-logo" />
       </Link>
@@ -264,7 +249,7 @@ export const NavBar = () => {
         <Text>semana (en cualquier fecha)</Text>
         <Text2>¿Cuantos?</Text2>
         <DivSearch>
-          <img src={search}/>
+          <img src={search} />
         </DivSearch>
       </Container2>
       <Container2Movil>
@@ -279,7 +264,7 @@ export const NavBar = () => {
         </div>
       </Container2Movil>
       <FilterResponsive>
-        <img src={filter} className="w-4 h-4 transform scale-90"/>
+        <img src={filter} className="w-4 h-4 transform scale-90" />
       </FilterResponsive>
       <Container3>
         <Div>
@@ -290,7 +275,7 @@ export const NavBar = () => {
             <img src={idioma} />
           </DivIdioma>
         </Div>
-        <BottonMenu />
+        <BottonMenu photoPerson={user ? user.photoURL : photoPerson} />
       </Container3>
     </Navbar>
   );
