@@ -32,7 +32,6 @@ function UAccount() {
         {/* ==================CARDS======================= */}
 
         <div className="grid grid-cols-2 gap-5">
-        <Link to="/info/:usuario">
           <div className="p-4 rounded-lg shadow-[5px_5px_20px_-1px_rgba(0,0,0,0.3)]">
             <PiIdentificationCardLight size={30} />
             <h2 className="text-lg font-semibold py-3">Informacion Personal</h2>
@@ -41,7 +40,6 @@ function UAccount() {
               en contacto con vos.
             </p>
           </div>
-          </Link>
           <div className="p-4 rounded-lg shadow-[5px_5px_20px_-1px_rgba(0,0,0,0.3)]">
             <h2 className="text-lg font-semibold">Card Title</h2>
             <p className="text-stone-600">

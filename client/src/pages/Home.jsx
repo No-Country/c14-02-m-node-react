@@ -4,6 +4,7 @@ import { GaleriaPage } from "./GaleriaPage";
 import SuggestionFooter from "../components/SuggestionFooter";
 import HelpFooter from "../components/HelpFooter";
 
+
 export const Home = () => {
     return (
         <>

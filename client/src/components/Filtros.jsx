@@ -23,13 +23,10 @@ const Container = styled.div`
     margin: .4rem 0 0 0;
     padding: 1rem 2.5rem 0 2.5rem;
     gap: 1.5rem;
-<<<<<<< HEAD
-=======
     background-color: #fff;
     position: sticky;
     top: 70px;
     z-index: 99;
->>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
     
     @media (max-width: 800px) {
         display: flex;
@@ -80,13 +77,10 @@ const Filter = styled.div`
         border-bottom: 2px solid #dcd5d5;
         color: black;
         border-bottom-style: solid;
-<<<<<<< HEAD
-=======
     }
     @media (max-width: 800px) {
         display: flex;
         margin: 0;
->>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
     }
 `
 
