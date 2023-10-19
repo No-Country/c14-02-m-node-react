@@ -3,6 +3,46 @@
 @tailwind utilities;
 
 
+@layer components {
+  .container{
+    @apply  p-4 w-[340px] md:w-[568px] bg-[#fff] mx-auto my-8 rounded-md border-2
+  }
+
+  .containerHeader {
+    @apply h-[64px] w-full  flex items-center p-2
+  }
+
+  .input {
+    @apply h-[56px] w-full p-2 rounded-md border-2
+  }
+
+  .button {
+    @apply w-full mt-4 h-[48px] rounded-md bg-gradient-to-r from-[#FF385C] to-[#b9005a] text-[#FFF] text-xl
+  }
+
+  .buttonBlack{
+    @apply bg-black text-white w-full py-2 mt-6 rounded-lg
+  }
+
+  .buttonContinue {
+    @apply bg-gray-300 p-3 w-[150px] mt-6  mx-auto rounded-md text-white
+  }
+
+  .containerButtonAccess {
+    @apply p-2 mx-auto mt-4
+  }
+
+  .AccessBtn {
+    @apply border-4 mb-3 w-full h-[48px] flex items-center rounded-md 
+  }
+
+}
+
+
+
+
+
+
 /* CONFIGURACION DEL SLICK  */
 
 .slick-slide > div {
@@ -49,7 +89,7 @@
   font-size: 14px;
   color: #000;
   margin: 0;
-  padding: 0;
+  padding: 0 0 3rem 0;
 }
 
 /* Son estilos del slider que contiene las cartas. */

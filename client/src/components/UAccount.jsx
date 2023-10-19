@@ -21,7 +21,7 @@ function UAccount() {
           <div className="flex items-center text-lg">
             <span className="font-semibold">Megumi Hayashibara</span>
             <p>, mhayashibara@gmail.com ·</p>
-            <Link to="/user-profile">
+            <Link to="/perfil/:usuario">
               <button className="font-semibold underline px-2">
                 Ir al perfil
               </button>
@@ -32,6 +32,7 @@ function UAccount() {
         {/* ==================CARDS======================= */}
 
         <div className="grid grid-cols-2 gap-5">
+        <Link to="/info/:usuario">
           <div className="p-4 rounded-lg shadow-[5px_5px_20px_-1px_rgba(0,0,0,0.3)]">
             <PiIdentificationCardLight size={30} />
             <h2 className="text-lg font-semibold py-3">Informacion Personal</h2>
@@ -40,6 +41,7 @@ function UAccount() {
               en contacto con vos.
             </p>
           </div>
+          </Link>
           <div className="p-4 rounded-lg shadow-[5px_5px_20px_-1px_rgba(0,0,0,0.3)]">
             <h2 className="text-lg font-semibold">Card Title</h2>
             <p className="text-stone-600">
@@ -147,7 +149,7 @@ function UAccount() {
             <p className="text-xs text-stone-600">Mostrar perfil</p>
           </div>
           <div className="ml-auto">
-            <Link to="/user-profile">
+            <Link to="/perfil/:usuario">
               <BiSolidChevronRight size={25} />
             </Link>
           </div>
@@ -177,7 +179,7 @@ function UAccount() {
             <FaRegCircleUser size={25} style={{ color: "#292524" }} />
             <p className="text-xl ml-4">Información personal</p>
             <div className="ml-auto">
-              <Link to="/user-info">
+              <Link to="/info/:usuario">
                 <BiSolidChevronRight size={25} />
               </Link>
             </div>

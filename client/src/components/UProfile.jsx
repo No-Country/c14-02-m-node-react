@@ -48,9 +48,9 @@ function UProfile() {
                 Antes de reservar u ofrecer estadías en Airbnb, tenés que
                 completar este paso.
               </p>
-              <button className="bg-white border border-black px-4 py-2 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover:bg-gray-200">
-                Verificá tu identidad
-              </button>
+                <button className="bg-white border border-black px-4 py-2 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover:bg-gray-200">
+                  Verificá tu identidad
+                </button>
             </div>
           </div>
         </div>
