@@ -1,0 +1,4 @@
+borre mi repositorio-
+volvi a clonar el repo 
+cree una rama desde developer (a la ultima actualizacion de tiziano push -f)
+prueba de subir archivo a developer
