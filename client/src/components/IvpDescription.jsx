@@ -22,6 +22,17 @@ function IvpDescription() {
           <div className="max-w-[600px] mx-auto">
             <div className="flex items-center p-5">
               <div>
+<<<<<<< HEAD
+                <h2 className="text-2xl font-semibold">Habitación en el siguiente alojamiento: choza.</h2>
+                <h2 className="text-2xl font-semibold">Anfitrión: Megumi</h2>
+              </div>
+              <div>
+              <img
+              src="https://cdn.leonardo.ai/users/2b4dbbb3-c3f4-45a9-a675-33148ef5ed0f/generations/7310e0ef-8fe0-4bad-b6cb-2e5be6a5da15/variations/Default_ultra_detailed_complex_illustration_a_water_bender_sur_0_7310e0ef-8fe0-4bad-b6cb-2e5be6a5da15_1.jpg?w=512"
+              alt="Imagen"
+              className="rounded-full h-16 w-16 object-cover mr-4"
+            />
+=======
                 <h2 className="text-2xl font-semibold">
                   Habitación en el siguiente alojamiento: choza.
                 </h2>
@@ -35,6 +46,7 @@ function IvpDescription() {
                     className="rounded-full h-16 w-16 object-cover mr-4"
                   />
                 </Link>
+>>>>>>> 3d7d10874c44e2406e4490f2c9dd39cea106f467
               </div>
             </div>
 
