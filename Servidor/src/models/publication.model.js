@@ -26,39 +26,12 @@ const publicationScheme = new mongoose.Schema({
 	offering: {
 		type: String,
 		required: true,
-		enum: [' Un Alojamiento entero', 'Una habitación', 'Una habitación compartida'],
-		validate: [
-			{
-			  validator: function (value) {
-				return /^[a-zA-Z0-9\s]+$/.test(value);
-			  },
-			  message: 'El campo offering solo puede contener letras, números y espacios.',
-			},
-			{
-			  validator: function (value) {
-				return value.length >= 10 && value.length <= 200;
-			  },
-			  message: 'El campo offering debe tener entre 10 y 200 caracteres.',
-			},
-			{
-			  validator: function (value) {
-				  return /(\bhogar\b|\bpiscina\b|\bjardín\b)/i.test(value);
-				},
-			  message: 'El campo offering debe contener palabras clave relevantes, como "hogar","piscina" o "jardín".',
-			},
-		],
+		enum: ['Un alojamiento entero','Una habitación','Una habitación compartida'],
 	},
 	location: {
 		type: String,
 		required: true,
-		enum: ['Direccion Linea 1', 'Direccion Linea 2', 'Direccion Linea 3', 'Direccion Linea 4', 'Ciudad', 'Estado/Provincia','Código Postal'],
 		validate: [
-			{
-			  validator: function (value) {
-				return /^[a-zA-Z0-9\s]+$/.test(value);
-			  },
-			  message: 'El campo offering solo puede contener letras, números y espacios.',
-			},
 			{
 			  validator: function (value) {
 				return value.length >= 5 && value.length <= 100;
@@ -69,41 +42,13 @@ const publicationScheme = new mongoose.Schema({
 	spaces: {
 		type: [String],
 		required: true,
-		enum: [ 'Cantidad de Viajeros',
-			'Cantidad de Dormitorios',
-			'Cantidad de Camas',
-			'Cantidad de Baños'
-		],
-		validate: [
-			{
-			  validator: function (value) {
-				// Verifica que todos los elementos del array estén en la lista predefinida
-				return value.every(item => ['Cantidad de Viajeros', 'Cantidad de Dormitorios', 'Cantidad de Camas', 'Cantidad de Baños'].includes(item));
-			  },
-			  message: 'El campo spaces debe contener solo valores predefinidos.',
-			},
-			{
-			  validator: function (value) {
-				// Verifica que la longitud del array sea adecuada (por ejemplo, no más de 10 elementos)
-				return value.length <= 10;
-			  },
-			  message: 'El campo spaces no debe contener más de 10 elementos.',
-			},
-		  ],
+		enum: ['Dormitorios','Baños','Living','Cocina'],
 	},
 	amenities: {
 		type: [String],
 		required: true,
-		// enum:[- WiFi
-		// 	- Tv
-		// 	- Cocina
-		// 	- Lavarropas
-		// 	- Estacionamiento Gratis
-		// 	en la propiedad.
-		// 	- Estacionamiento Pago en 
-		// 	las instalaciones.
-		// 	- Aire Acondicionado
-		// 	- Zona de Trabajo]
+		enum:['Wifi','Tv','Estacionamiento','Piscina','Gimnasio','Lavarropas','Cocina','Aire Acondicionado'
+		]
 	},
 	featured: {
 		type: String,
@@ -112,6 +57,7 @@ const publicationScheme = new mongoose.Schema({
 	security: {
 		type: [String], // Cambiado a Array de Strings
 		required: true,
+		enum:['Guardia de seguridad','Cámara de vigilancia','Sistema de alarmas']
 	},
 	photos: {
 		type: [String],
@@ -140,17 +86,6 @@ const publicationScheme = new mongoose.Schema({
 	extra_Security: {
 		type: [String], // Cambiado a Array de Strings
 		required: true,
-	},
-	email: {
-		type: String,
-		required: true,
-		validate: {
-			validator: function (value) {
-				// Utiliza una expresión regular para validar el formato del correo electrónico
-				return /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(value);
-			},
-			message: 'El campo email no es una dirección de correo electrónico válida.',
-		},
 	},
 	email: {
 		type: String,
