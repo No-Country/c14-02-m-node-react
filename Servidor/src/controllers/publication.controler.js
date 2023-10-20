@@ -1,6 +1,12 @@
 const PublicationManager = require('../dao/managerPublication.dao');
 const publicatinManage = new PublicationManager();
-const PublicationModel = require('../models/publication.model')
+const UserManager = require('../dao/managerUser.dao');
+const userManager = new UserManager();
+
+// const PublicationModel = require('../models/publication.model')
+const {PublicationModel} = require('../models')
+
+const sendMail = require('../functions/sendmail');
 const { ObjectId } = require('mongodb');
 
 async function postPublicationController(req, res) {
@@ -10,14 +16,25 @@ async function postPublicationController(req, res) {
 		//uso la funcion validateSync de mongo para valodar compos definido en el modelo
 		//se puede usar en el dao tambien como .validate
 		const validationError = PublicationModel(data).validateSync();
-
+        // Trhow  new Error "xxxxxxxx"
 		if (validationError) {
-			return res.status(400).send(validationError);
+			
+			// return res.status(400).send(validationError);
+			throw validationError
+			
 		}
-
+		
 		const newPublication = await publicatinManage.createPublication(data);
-		console.log("esto", newPublication)
-
+		// Envio el correo de publicacion creada
+		const email = data.email
+		const filter = { email: email };
+		const user = await userManager.getOneUser(filter);
+		sendMail({
+			"type":"publicacion",
+			"email":newPublication.email,
+			"name":user.names,
+			"titulo":newPublication.title
+		})
 		return res.status(200).send(newPublication);
 	} catch (error) {
 		console.error('Error al crear la publicación', error);
