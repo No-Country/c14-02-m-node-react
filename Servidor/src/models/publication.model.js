@@ -144,7 +144,6 @@ const publicationScheme = new mongoose.Schema({
 	extra_Security: {
 		type: [String], // Cambiado a Array de Strings
 		required: true,
-		enum:['Se requiere depósito de seguridad']
 	},
 	email: {
 		type: String,
