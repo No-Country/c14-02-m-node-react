@@ -29,6 +29,8 @@ Trae todos los favoritos juntos que fueron clickeados
 */
 router.get('/', getAllFavorite);
 
+router.delete('/:id', deleteFav);
+
 
 
 
