@@ -30,3 +30,4 @@ Editor directories and files
 #--
 yarn.lock
 package-lock.json
+firebase.js
