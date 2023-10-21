@@ -1,30 +1,50 @@
 const Database = require('../config/mongodb');
-const { createDocument, getOneDocument, allDocument, UpdateDocument } = require('../config/factory.js');
+const { createDocument, getOneDocumentById, getOneDocument, getAllDocuments, updateDocumentById, deleteDocumentById } = require('../config/factory.js');
 const { PhotoModel } = require('../models');
 
 class PhotoManager {
 	constructor() {
 		this.db = new Database();
 		this.createDocument = createDocument;
+		this.getOneDocumentById = getOneDocumentById;
 		this.getOneDocument = getOneDocument;
-		this.allDocument = allDocument;
-		this.UpdateDocument = UpdateDocument;
+		this.getAllDocuments = getAllDocuments;
+		this.deleteDocumentById = deleteDocumentById;
+		this.updateDocumentById = updateDocumentById;
 	}
 
 	async createPhoto(data) {
-		const { url } = data;
-		console.log('Photo URL', url);
-
-		const photo = PhotoModel({
-			url,
-		});
-
-		await this.createDocument('photoCollection', photo);
+		try {
+			const url = data;
+			const photo = PhotoModel({
+				url,
+			});
+			const result = await this.createDocument('photoCollection', photo);
+			if (result.insertedId) {
+				// Recupera el documento completo después de la inserción
+				const createdPhoto = await this.getOnePhoto(result.insertedId);
+				return createdPhoto;
+			} else {
+				throw new Error('Error al insertar la foto');
+			}
+		} catch (error) {
+			throw new Error(`Error al crear la imagen: ${error.message}`);
+		}
 	}
 
-	async getOnePhoto(query) {
+	async getOnePhoto(id) {
 		try {
-			const photo = await this.getOneDocument('photoCollection', query);
+			const photo = await this.getOneDocumentById('photoCollection', id);
+			return photo;
+		} catch (error) {
+			throw new Error(`Error al obtener la imagen: ${error.message}`);
+		}
+	}
+
+	async getOnePhotoByURL(url) {
+		try {
+			const filter = { url };
+			const photo = await this.getOneDocument('photoCollection', filter);
 			return photo;
 		} catch (error) {
 			throw new Error(`Error al obtener la imagen: ${error.message}`);
@@ -33,19 +53,28 @@ class PhotoManager {
 
 	async getAllPhotos() {
 		try {
-			const photos = await this.allDocument('photoCollection');
+			const photos = await this.getAllDocuments('photoCollection');
 			return photos;
 		} catch (error) {
 			throw new Error(`Error al obtener las imagenes: ${error.message}`);
 		}
 	}
 
-	async updatePhoto(filter, dataUpdate) {
+	async updatePhoto(id, dataUpdate) {
 		try {
-			const photo = await this.UpdateDocument('photoCollection', filter, dataUpdate);
+			const photo = await this.updateDocumentById('photoCollection', id, dataUpdate);
 			return photo;
 		} catch (error) {
 			throw new Error(`Error al actualizar la imagen: ${error.message}`);
+		}
+	}
+
+	async deletePhoto(id) {
+		try {
+			const photo = await this.deleteDocumentById('photoCollection', id);
+			return photo;
+		} catch (error) {
+			throw new Error(`Error al eliminar la imagen: ${error.message}`);
 		}
 	}
 }

@@ -4,9 +4,9 @@ const router = express.Router();
 const { PhotoController } = require('../controllers');
 
 router.post('/', PhotoController.createPhoto);
-router.get('/', PhotoController.getAllPhotos);
-router.get('/:img', PhotoController.getPhoto);
-router.put('/:img', PhotoController.updatePhoto);
-// router.delete('/:img', PhotoController.deletePhoto);
+router.get('/', PhotoController.getPhotos);
+router.get('/:id', PhotoController.getPhoto);
+router.put('/:id', PhotoController.updatePhoto);
+router.delete('/:id', PhotoController.deletePhoto);
 
 module.exports = router;

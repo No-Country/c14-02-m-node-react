@@ -4,11 +4,11 @@ import search from "../assets/images/search.png";
 import idioma from "../assets/images/idioma.png";
 import searchmovil from "../assets/images/searchmovil.png";
 import logosintexto from "../assets/images/logosintexto.png";
-import menu from "../assets/images/menu.png";
-import usuario from "../assets/images/usuario.png";
+import filter from "../assets/images/filter.png";
 import BottonMenu from "../components/BottonMenu.jsx";
 import { Link } from "react-router-dom";
 import { GrBottomCorner } from "react-icons/gr";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = styled.div`
   display: flex;
@@ -18,20 +18,28 @@ const Navbar = styled.div`
   padding: 15px 40px;
   box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
   background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   @media (max-width: 800px) {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    box-shadow: none;
+    padding: 15px 0;
+    transform: scale(0.9);
+    margin: 0;
+    position: relative;
   }
 `;
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    cursor: pointer;
-    
-    @media (max-width: 1150px) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+
+  @media (max-width: 1150px) {
     display: none;
   }
 `;
@@ -54,6 +62,7 @@ const Container2 = styled.div`
 
   @media (max-width: 1150px) {
     margin: 0;
+    transform: scale(0.9);
   }
 
   @media (max-width: 800px) {
@@ -72,13 +81,16 @@ const Container2Movil = styled.div`
   @media (max-width: 800px) {
     display: flex;
     flex-direction: row;
-    padding: 8px 10px;
+    width: 90%;
+    padding: 10px;
     align-items: center;
-    border-radius: 24px;
+    border-radius: 30px;
     border: 1px solid #ddd;
     box-shadow: 0px 4px 12px 0px rgba(73, 32, 32, 0.05),
       0px 1px 2px 0px rgba(0, 0, 0, 0.08);
     cursor: pointer;
+    transform: scale(0.9);
+    overflow: hidden;
   }
 `;
 
@@ -87,6 +99,10 @@ const Container3 = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 8px;
+
+  @media (max-width: 1500px) {
+    gap: 4px;
+  }
 
   @media (max-width: 800px) {
     display: none;
@@ -107,16 +123,20 @@ const Div = styled.div`
 `;
 
 const DivIdioma = styled.div`
-    display: flex;
-    height: 40px;
-    padding: 12px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    cursor: pointer;
+  display: flex;
+  height: 40px;
+  padding: 14px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  cursor: pointer;
 
   &:hover {
     background: #f7f7f7;
+  }
+
+  @media (max-width: 1150px) {
+    padding: 10px;
   }
 `;
 
@@ -138,6 +158,8 @@ const Text = styled.p`
   @media (max-width: 800px) {
     display: flex;
     border-right: none;
+    font-size: 15px;
+    line-height: 12px;
   }
 `;
 
@@ -155,6 +177,7 @@ const Text2 = styled.p`
     display: flex;
     font-size: 12px;
     padding: 0 5px 0 16px;
+    font-weight: 400;
   }
 `;
 
@@ -168,19 +191,20 @@ const Text3 = styled.p`
 
   @media (max-width: 800px) {
     display: flex;
+    font-weight: 400;
     font-size: 12px;
     color: #717171;
-    padding: 0 5px;
+    padding: 0 2px;
   }
 `;
 
 const Icon = styled.img`
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
 `;
 
 const LogoResponsive = styled.img`
-    display: none;
+  display: none;
 
   @media (max-width: 1150px) {
     display: flex;
@@ -193,13 +217,28 @@ const LogoResponsive = styled.img`
   }
 `;
 
+const FilterResponsive = styled.div`
+  display: none;
 
-export const NavBar = () => {
+  @media (max-width: 800px) {
+    display: flex;
+    margin: 0 3% 0 0;
+    transform: scale(0.9);
+    padding: 17px;
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    cursor: pointer;
+  }
+`;
+
+export const NavBar = ({ photoPerson }) => {
+  const { user } = useAuth();
+
   return (
     <Navbar>
       <Link to="/" style={{ cursor: "pointer" }}>
         <Container>
-            <img src={logo} alt="Logo" class="logo" />
+          <img src={logo} alt="Logo" className="logo" />
         </Container>
         <LogoResponsive src={logosintexto} alt="New Logo" class="new-logo" />
       </Link>
@@ -213,7 +252,7 @@ export const NavBar = () => {
       </Container2>
       <Container2Movil>
         <Icon src={searchmovil} />
-        <div>
+        <div className="pt-1.5 pb-0.5">
           <Text>A cualquier lugar</Text>
           <DivMovil>
             <Text2>semana (en cualquier fecha)</Text2>
@@ -222,6 +261,9 @@ export const NavBar = () => {
           </DivMovil>
         </div>
       </Container2Movil>
+      <FilterResponsive>
+        <img src={filter} className="w-4 h-4 transform scale-90" />
+      </FilterResponsive>
       <Container3>
         <Div>
           <DivIdioma>
@@ -231,7 +273,7 @@ export const NavBar = () => {
             <img src={idioma} />
           </DivIdioma>
         </Div>
-        <BottonMenu />
+        <BottonMenu photoPerson={user ? user.photoURL : photoPerson} />
       </Container3>
     </Navbar>
   );

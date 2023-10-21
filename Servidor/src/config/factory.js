@@ -1,5 +1,5 @@
 // Importamos la librería de MongoDB y la clase Database definida previamente
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const Database = require('../config/mongodb.js');
 
 // Creamos una instancia de la clase Database
@@ -24,12 +24,12 @@ async function createDocument(collection, data) {
 }
 // funcion para buscar todo
 
-async function allDocument(collection,query={}) {
+async function getAllDocuments(collection, query = {}) {
 	try {
 		if (!this.db[collection]) {
 			await this.db.connectToDatabase();
 		}
-		console.log(collection,query);
+		console.log(collection, query);
 		const document = await this.db[collection].find(query).toArray();
 		return document;
 	} catch (e) {
@@ -51,33 +51,72 @@ async function getOneDocument(collection, query) {
 	}
 }
 
-async function UpdateDocument(collection, filter, dataUpdate) {
-    try {
-        if (!this.db[collection]) {
-            await this.db.connectToDatabase(); //-->
-        }
-        const document = await this.db[collection].updateOne(filter, 
-            {
-                $set:dataUpdate
-            });
-        return document;
-    } catch (e) {
-        console.error(e);
-    }
+async function updateDocument(collection, filter, dataUpdate) {
+	try {
+		if (!this.db[collection]) {
+			await this.db.connectToDatabase();
+		}
+		const document = await this.db[collection].updateOne(filter, {
+			$set: dataUpdate,
+		});
+		return document;
+	} catch (e) {
+		console.error(e);
+	}
 }
 
 async function deleteDocument(collection, filter) {
-    try {
-        if (!this.db[collection]) {
-            await this.db.connectToDatabase();
-        }
-        const result = await this.db[collection].deleteOne(filter);
-        return result;
-    } catch (e) {
-        console.error(e);
-    }
+	try {
+		if (!this.db[collection]) {
+			await this.db.connectToDatabase();
+		}
+		const result = await this.db[collection].deleteOne(filter);
+		return result;
+	} catch (e) {
+		console.error(e);
+	}
 }
 
+// Busca por ID (requiere la clase ObjectId de mongoose, para acceder a los _id).
+async function getOneDocumentById(collection, id) {
+	try {
+		if (!this.db[collection]) {
+			await this.db.connectToDatabase();
+		}
+		const objectId = new ObjectId(id);
+		const document = await this.db[collection].findOne({ _id: objectId });
+		return document;
+	} catch (e) {
+		console.error(e);
+	}
+}
 
+// Actualiza por ID (requiere la clase ObjectId de mongoose, para acceder a los _id).
+async function updateDocumentById(collection, id, dataUpdate) {
+	try {
+		if (!this.db[collection]) {
+			await this.db.connectToDatabase();
+		}
+		const objectId = new ObjectId(id);
+		const result = await this.db[collection].updateOne({ _id: objectId }, { $set: dataUpdate });
+		return result;
+	} catch (e) {
+		console.log(e);
+	}
+}
 
-module.exports = { createDocument, allDocument, getOneDocument, UpdateDocument, deleteDocument };
+// Elimina por ID (requiere la clase ObjectId de mongoose, para acceder a los _id).
+async function deleteDocumentById(collection, id) {
+	try {
+		if (!this.db[collection]) {
+			await this.db.connectToDatabase();
+		}
+		const objectId = new ObjectId(id);
+		const result = await this.db[collection].deleteOne({ _id: objectId });
+		return result;
+	} catch (e) {
+		console.error(e);
+	}
+}
+
+module.exports = { createDocument, getAllDocuments, getOneDocument, getOneDocumentById, updateDocument, updateDocumentById, deleteDocument, deleteDocumentById };
