@@ -8,13 +8,12 @@ const userScheme = new mongoose.Schema({
 		type: String,
 		required: true, // Este campo es obligatorio
 		trim: true, // Elimina espacios en blanco al principio y al final
-		
 	},
 
 	surname: {
 		type: String,
 		required: true,
-		trim: true, 
+		trim: true,
 	},
 
 	birthDate: {
@@ -31,9 +30,16 @@ const userScheme = new mongoose.Schema({
 		required: true,
 		trim: true,
 		validate: {
+			validator: function (value) {
+				// Utiliza una expresión regular para validar el formato del correo electrónico
+				return /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(value);
+			},
+			message: 'El campo email no es una dirección de correo electrónico válida.',
+		},
+		/* validate: {
 			validator: isEmail, // Utiliza la función isEmail del paquete 'validator'
 			message: 'El correo electrónico no es válido',
-		},
+		}, */
 	},
 
 	phone: {
