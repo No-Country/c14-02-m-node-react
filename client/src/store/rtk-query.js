@@ -18,6 +18,7 @@ export const apiQueries = createApi({
 });
 
 
+
 export const {
     useGetAllPublicationsQuery,
 } = apiQueries;

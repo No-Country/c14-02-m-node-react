@@ -12,6 +12,7 @@ export const GaleriaPage = () => {
   console.log(typeof useGetAllPublicationsQuery)
 
 
+  
   return (
     <section className="conteinerCards flex flex-wrap w-ful p-4">
       {dataCards.map((cardElement) => (

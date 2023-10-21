@@ -18,6 +18,7 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(cors());
 
+
 // Routes
 app.use('/api/user', userRoutes);
 app.use('/api/publication', publicationRoutes);
