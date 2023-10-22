@@ -5,6 +5,7 @@ import { AccessPage1 } from "./pages/AccessPage1";
 import { AuthProvider } from "./context/AuthContext";
 import UserProfile from "./pages/UserProfile";
 import IndividualViewPage from "./pages/IndividualViewPage";
+import { FavoritesPages } from "./pages/FavoritesPages";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/register" element={<AccessPage1 />} />
         <Route path="/user" element={<UserProfile />} />
         <Route path="/rooms" element={<IndividualViewPage />} />
+        <Route path="/favorites" element={<FavoritesPages />} />
       </Routes>
     </AuthProvider>
   );

@@ -6,14 +6,14 @@ import usuario from "../assets/images/usuario.png";
 import { useAuth } from "../context/AuthContext";
 
 const DivLogin = styled.div`
-    display: flex;
-    padding: 8px 8px 8px 14px;
-    align-items: center;
-    gap: 12px;
-    border-radius: 24px;
-    border: 1px solid #DDD;
-    background: #FFF;
-    cursor: pointer;
+  display: flex;
+  padding: 8px 8px 8px 14px;
+  align-items: center;
+  gap: 12px;
+  border-radius: 24px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0px 4px 12px 0px rgba(73, 32, 32, 0.09),
@@ -49,7 +49,6 @@ const DivMenu = styled.div`
   z-index: 100;
 
   &:hover {
-  
   }
 `;
 
@@ -73,7 +72,7 @@ const Li = styled.li`
 `;
 
 const ImgPerson = styled.img`
-  width: 32px; 
+  width: 32px;
   border-radius: 50%;
 `;
 
@@ -84,12 +83,11 @@ const Component = ({ photoPerson }) => {
   const handlelogout = async () => {
     try {
       await logout();
-      navigate('/');
-
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
@@ -119,7 +117,8 @@ const Component = ({ photoPerson }) => {
       <button onClick={toggleMenu}>
         <DivLogin selected={selected} onClick={() => setSelected(!selected)}>
           <img src={menu} />
-          <ImgPerson src={user ? photoPerson : usuario} /> {/* Aplica el estilo a la imagen aquí */}
+          <ImgPerson src={user ? photoPerson : usuario} />{" "}
+          {/* Aplica el estilo a la imagen aquí */}
         </DivLogin>
       </button>
       {isMenuOpen && (
@@ -129,10 +128,15 @@ const Component = ({ photoPerson }) => {
               <>
                 <Link to="/user">
                   <Li>Mi Perfil</Li>
-                  <button className="mt-4 text-center text-red-600" onClick={handlelogout}>Salir</button>
                 </Link>
+                <Link to="/favorites" className="mb-2">Favoritos</Link>
                 <Li onClick={() => openModal(3)}>Poné tu Airbnb</Li>
                 <Li onClick={() => openModal(4)}>Centro de Ayuda</Li>
+                <div>
+                  <button className="text-red-600" onClick={handlelogout}>
+                    Cerrar Sesión
+                  </button>
+                </div>
               </>
             ) : (
               <>
@@ -142,7 +146,10 @@ const Component = ({ photoPerson }) => {
                   </Li>
                 </Link>
                 <Link to="/register">
-                  <Li className="border-b mb-2 pb-5" onClick={() => openModal(2)}>
+                  <Li
+                    className="border-b mb-2 pb-5"
+                    onClick={() => openModal(2)}
+                  >
                     Inicia Sesión
                   </Li>
                 </Link>

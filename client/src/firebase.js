@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import {getAuth} from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCK1oMMzyfCp4tK2R7rGKIq5meVzjEnTqk",
+    apiKey: import.meta.env.VITE_APIKEY,
     authDomain: "airbnb-4384f.firebaseapp.com",
     projectId: "airbnb-4384f",
     storageBucket: "airbnb-4384f.appspot.com",
