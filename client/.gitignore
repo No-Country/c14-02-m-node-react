@@ -23,7 +23,11 @@ Editor directories and files
 *.sln
 *.sw?
 
+#enviroment
+.env
+
 
 #--
 yarn.lock
 package-lock.json
+firebase.js
