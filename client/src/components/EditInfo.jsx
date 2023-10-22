@@ -79,36 +79,47 @@ export const EditInfo = () => {
           <h1 className="font-bold text-gray-900 text-3xl py-2 px-4">Datos Personales</h1>
           {editando ? (
             <form onSubmit={handleGuardar} encType="multipart/form-data">
-              <label htmlFor="nombre">Nombre completo</label>
-              <input id="nombre" name="nombre" defaultValue={nombre} />
-              <label htmlFor="email">Dirección de correo electrónico</label>
-              <input id="email" name="email" defaultValue={email} />
-              <label htmlFor="telefono">Números de teléfono</label>
-              <input id="telefono" name="telefono" defaultValue={telefono} />
-              <label htmlFor="direccion">Dirección</label>
-
-              <input id="direccion" name="direccion" defaultValue={direccion} />
-              <button type="submit">Guardar Datos Personales</button>
+              <div className="border-b py-2 px-4 flex flex-col mb-2">
+                <label className="text-gray-900 text-lg" htmlFor="nombre">Nombre completo</label>
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="nombre" name="nombre" defaultValue={nombre} />
+              </div>
+              <div className="border-b py-2 px-4 flex flex-col mb-2">
+                <label className="text-gray-900 text-lg" htmlFor="email">Dirección de correo electrónico</label>
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="email" name="email" defaultValue={email} />
+              </div> 
+              <div className="border-b py-2 px-4 flex flex-col mb-2">
+                <label className="text-gray-900 text-lg" htmlFor="telefono">Números de teléfono</label>
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="telefono" name="telefono" defaultValue={telefono} />
+              </div>
+              <div className="border-b py-2 px-4 flex flex-col mb-2">
+                <label className="text-gray-900 text-lg" htmlFor="direccion">Dirección</label>
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="direccion" name="direccion" defaultValue={direccion} />
+              </div>
+              <div className="m-4">
+                <button className="border rounded-md py-2 px-2 bg-black text-white hover:bg-gray-900" type="submit">Guardar Datos</button>
+              </div>
             </form>
           ) : (
             <div>
-              <div className="border-b py-2 px-4">
+              <div className="border-b py-2 px-4 mb-2">
                 <p className="text-gray-900 text-lg">Nombre legal</p>
                 <p className="text-gray-500">{nombre}</p>
               </div>
-              <div className="border-b py-2 px-4">
+              <div className="border-b py-2 px-4 mb-2">
                 <p className="text-gray-900 text-lg">Dirección de correo electrónico</p>
                 <p className="text-gray-500">{email}</p>
               </div>
-              <div className="border-b py-2 px-4">
+              <div className="border-b py-2 px-4 mb-2">
                 <p className="text-gray-900 text-lg">Números de teléfono</p>
                 <p className="text-gray-500">{telefono}</p>
               </div>
-              <div className="border-b py-2 px-4">
+              <div className="border-b py-2 px-4 mb-2">
                 <p className="text-gray-900 text-lg">Dirección</p>
                 <p className="text-gray-500">{direccion}</p>
               </div>
-              <button className="py-2 px-4" onClick={handleEditar}>Editar Datos Personales</button>
+              <div className="m-4">
+                <button className="border rounded-md py-2 px-2 bg-black text-white hover:bg-gray-900" onClick={handleEditar}>Editar Datos</button>
+              </div>
             </div>
           )}
         </div>

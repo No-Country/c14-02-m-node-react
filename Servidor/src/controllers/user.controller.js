@@ -3,10 +3,18 @@ const usermanager = new UserManager();
 const EncryptService = require('../services/Encrypter');
 const AuthService = require('../services/Auth');
 const sendMail = require('../functions/sendmail');
+const {UserModel} = require('../models')
 
 async function createUser(req, res) {
 	try {
 		const data = req.body;
+
+//__________Validaciones______________________________________
+        const validationError = UserModel(data).validateSync();
+        // Trhow  new Error "xxxxxxxx"
+		if (validationError) throw validationError
+//________________________________________________________________		
+
 
 		const phoneEncrypted = await EncryptService.encrypt(req.body.phone); // en Airbnb podes loguearte con tu numero de celular, se deberia encriptar ?
 
