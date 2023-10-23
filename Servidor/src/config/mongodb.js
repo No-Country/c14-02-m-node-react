@@ -55,3 +55,4 @@ class Database {
 
 // Exportamos la clase Database para que pueda ser utilizada en otros módulos
 module.exports = Database;
+

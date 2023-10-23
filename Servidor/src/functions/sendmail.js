@@ -33,6 +33,23 @@ const sendMail = async(data) => {
       },
     };
     
+  } else if (data.type==='reserva') {
+    console.log(data)
+      msg1 = {
+      to: data.email,
+      from: 'admclonairbnb@gmail.com',
+      subject: 'Creación de publicación en Airbnb',
+      preheader: 'Su publicación ha sido exitosa!',
+      templateId: 'd-035b4184f58446149c305bf427be5f92',
+      dynamic_template_data: {
+        "Nombre_Huesped" : data.Nombre_Huesped,
+        "Titulo_Propiedad" : data.Titulo_Propiedad,
+        "Fecha_Inicial" : data.Fecha_Inicial,
+        "Fecha_Final" : data.Fecha_Final,
+        "Nombre_Anfitrion" : data.Nombre_Anfitrion,
+        "Telefono_Anfitrion" : data.Telefono_Anfitrion
+      },
+    };
   }
        try {
         res = await sgMail.send(msg1);
