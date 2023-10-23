@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import styled from 'styled-components';
+import axios from 'axios';
+import { userData } from "../api/conn";
 
 const Container = styled.div`
   display: flex;
@@ -23,12 +25,35 @@ const CircleImage = styled.div`
 
 
 export const EditInfo = () => {
-  const [foto, setFoto] = useState('url_de_la_foto_actual.jpg');
-  const [nombre, setNombre] = useState('Juan');
-  const [email, setEmail] = useState('JuanPedro@gmail.com');
-  const [telefono, setTelefono] = useState('+234456781');
-  const [direccion, setDireccion] = useState('Av. Alvear 345');
+
+  const initialData = {
+    foto: '',
+    names: '',
+    surname:'',
+    birthDate: '',
+    email: '',
+    phone: '',
+    address: '',
+  };
+  
+  const [names, setNames] = useState('');
+  const [surname, setSurname] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [userData, setUserData] = useState(initialData);
   const [editando, setEditando] = useState(false);
+
+  useEffect(() => {
+    axios.get('https://clon-airbnb-dev-shhb.1.us-1.fl0.io/api/user')
+      .then(response => {
+        setUserData(response.data);
+      })
+      .catch(error => {
+        console.error('Error al obtener los datos de la API:', error);
+      });
+  }, []);
 
   const handleEditar = () => {
     setEditando(true);
@@ -36,16 +61,33 @@ export const EditInfo = () => {
 
   const handleGuardar = (event) => {
     event.preventDefault();
-    const newNombre = event.target.nombre.value;
+    const newNames = event.target.names.value;
+    const newSurname = event.target.surname.value;
+    const newBirthDate = event.target.birthDate.value;
     const newEmail = event.target.email.value;
-    const newTelefono = event.target.telefono.value;
-    const newDireccion = event.target.direccion.value;
-    setNombre(newNombre);
-    setEmail(newEmail);
-    setTelefono(newTelefono);
-    setDireccion(newDireccion);
-    setEditando(false);
+    const newPhone = event.target.phone.value;
+    const newAddress = event.target.address.value;
+    const updatedUserData = {
+      ...userData,
+      names: newNames,
+      surname: newSurname,
+      birthDate: newBirthDate,
+      email: newEmail,
+      phone: newPhone,
+      address: newAddress,
+    };
+  
+    axios.put('https://clon-airbnb-dev-shhb.1.us-1.fl0.io/api/user', updatedUserData)
+      .then(response => {
+        console.log('Datos actualizados con éxito');
+        setUserData(updatedUserData);
+        setEditando(false);
+      })
+      .catch(error => {
+        console.error('Error al actualizar los datos:', error);
+      });
   };
+
 
   const handleFotoChange = (event) => {
     const newFoto = URL.createObjectURL(event.target.files[0]);
@@ -57,7 +99,7 @@ export const EditInfo = () => {
       <Container>
         <div>
           <CircleImage>
-            <img className="w-full h-full object-cover" src={foto} alt="Foto de perfil" />
+            <img className="w-full h-full object-cover" src={userData.foto} alt="Foto de perfil" />
           </CircleImage>
           {editando ? (
             <div>
@@ -80,20 +122,28 @@ export const EditInfo = () => {
           {editando ? (
             <form onSubmit={handleGuardar} encType="multipart/form-data">
               <div className="border-b py-2 px-4 flex flex-col mb-2">
-                <label className="text-gray-900 text-lg" htmlFor="nombre">Nombre completo</label>
-                <input className="text-gray-500 border rounded-md py-1 px-2" id="nombre" name="nombre" defaultValue={nombre} />
+                <label className="text-gray-900 text-lg" htmlFor="nombre">Nombre</label>
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="nombre" name="nombre" defaultValue={userData.names} />
+              </div>
+              <div className="border-b py-2 px-4 flex flex-col mb-2">
+                <label className="text-gray-900 text-lg" htmlFor="apellido">Apellido</label>
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="apellido" name="apellido" defaultValue={userData.surname} />
+              </div>
+              <div className="border-b py-2 px-4 flex flex-col mb-2">
+                <label className="text-gray-900 text-lg" htmlFor="birthDate">Fecha de nacimiento</label>
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="birthDate" name="birthDate" defaultValue={userData.birthDate} />
               </div>
               <div className="border-b py-2 px-4 flex flex-col mb-2">
                 <label className="text-gray-900 text-lg" htmlFor="email">Dirección de correo electrónico</label>
-                <input className="text-gray-500 border rounded-md py-1 px-2" id="email" name="email" defaultValue={email} />
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="email" name="email" defaultValue={userData.email} />
               </div> 
               <div className="border-b py-2 px-4 flex flex-col mb-2">
-                <label className="text-gray-900 text-lg" htmlFor="telefono">Números de teléfono</label>
-                <input className="text-gray-500 border rounded-md py-1 px-2" id="telefono" name="telefono" defaultValue={telefono} />
+                <label className="text-gray-900 text-lg" htmlFor="phone">Número de teléfono</label>
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="phone" name="phone" defaultValue={userData.phone} />
               </div>
               <div className="border-b py-2 px-4 flex flex-col mb-2">
-                <label className="text-gray-900 text-lg" htmlFor="direccion">Dirección</label>
-                <input className="text-gray-500 border rounded-md py-1 px-2" id="direccion" name="direccion" defaultValue={direccion} />
+                <label className="text-gray-900 text-lg" htmlFor="address">Dirección</label>
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="address" name="address" defaultValue={userData.address} />
               </div>
               <div className="m-4">
                 <button className="border rounded-md py-2 px-2 bg-black text-white hover:bg-gray-900" type="submit">Guardar Datos</button>
@@ -102,20 +152,28 @@ export const EditInfo = () => {
           ) : (
             <div>
               <div className="border-b py-2 px-4 mb-2">
-                <p className="text-gray-900 text-lg">Nombre legal</p>
-                <p className="text-gray-500">{nombre}</p>
+                <p className="text-gray-900 text-lg">Nombre</p>
+                <p className="text-gray-500">{userData.names}</p>
+              </div>
+              <div className="border-b py-2 px-4 mb-2">
+                <p className="text-gray-900 text-lg">Apellido</p>
+                <p className="text-gray-500">{userData.surname}</p>
+              </div>
+              <div className="border-b py-2 px-4 mb-2">
+                <p className="text-gray-900 text-lg">Fecha de nacimiento</p>
+                <p className="text-gray-500">{userData.birthDate}</p>
               </div>
               <div className="border-b py-2 px-4 mb-2">
                 <p className="text-gray-900 text-lg">Dirección de correo electrónico</p>
-                <p className="text-gray-500">{email}</p>
-              </div>
+                <p className="text-gray-500">{userData.email}</p>
+              </div> 
               <div className="border-b py-2 px-4 mb-2">
-                <p className="text-gray-900 text-lg">Números de teléfono</p>
-                <p className="text-gray-500">{telefono}</p>
+                <p className="text-gray-900 text-lg">Número de teléfono</p>
+                <p className="text-gray-500">{userData.phone}</p>
               </div>
               <div className="border-b py-2 px-4 mb-2">
                 <p className="text-gray-900 text-lg">Dirección</p>
-                <p className="text-gray-500">{direccion}</p>
+                <p className="text-gray-500">{userData.address}</p>
               </div>
               <div className="m-4">
                 <button className="border rounded-md py-2 px-2 bg-black text-white hover:bg-gray-900" onClick={handleEditar}>Editar Datos</button>
