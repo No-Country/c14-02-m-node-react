@@ -12,7 +12,12 @@ async function createUser(req, res) {
 //__________Validaciones______________________________________
         const validationError = UserModel(data).validateSync();
         // Trhow  new Error "xxxxxxxx"
-		if (validationError) throw validationError
+		if (validationError) {
+			
+			// return res.status(400).send(validationError);
+			throw validationError
+			
+		}
 //________________________________________________________________		
 
 

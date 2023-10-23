@@ -36,10 +36,6 @@ const userScheme = new mongoose.Schema({
 			},
 			message: 'El campo email no es una dirección de correo electrónico válida.',
 		},
-		/* validate: {
-			validator: isEmail, // Utiliza la función isEmail del paquete 'validator'
-			message: 'El correo electrónico no es válido',
-		}, */
 	},
 
 	phone: {
@@ -47,7 +43,7 @@ const userScheme = new mongoose.Schema({
 		required: true,
 		trim: true,
 		validate: {
-			validator: (value) => isMobilePhone(value, 'any', { strictMode: false }), // Valida el formato del número de teléfono
+			validator: (value) => /^\+\d+$/.test(value),
 			message: 'Número de teléfono no válido',
 		},
 	},
@@ -73,17 +69,17 @@ const userScheme = new mongoose.Schema({
 		required: true,
 		trim: true,
 		validate: {
-			validator: (value) => isMobilePhone(value, 'any', { strictMode: false }), // Valida el formato del número de teléfono
-			message: 'Número de teléfono de emergencia no válido',
+			validator: (value) => /^\+\d+$/.test(value),
+			message: 'Número de teléfono no válido',
 		},
 	},
 
 	// Referencia a la imagen de perfil del usuario almacenada en la colección 'picture'
-	pictureID: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'picture', // Hace referencia a la colección 'picture'
-		required: true,
-	},
+	// pictureID: {
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	ref: 'picture', // Hace referencia a la colección 'picture'
+	// 	required: true,
+	// },
 
 	// Rol del usuario (puede ser 'admin' o 'user', con valor predeterminado 'user')
 	role: {
