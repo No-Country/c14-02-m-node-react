@@ -1,49 +1,33 @@
+import React from 'react';
+import { useFetch } from "../api/useFecht";
 import { useState } from "react";
 import { CardSlider } from "./CardSlider";
-import { CardInfo } from "./CardInfo";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { publicationData } from "../api/conn";
-import { useEffect } from "react";
-import { async } from "@firebase/util";
+
+// Definición de CardInfo en el mismo archivo
+const CardInfo = () => {
+  // Contenido de CardInfo
+};
 
 export const Card = ({ cardElement }) => {
+  const { data } = useFetch("http://localhost:3000/api/publication/");
   const [isHeartRed, setIsHeartRed] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  const [publications, setPublications] = useState([]); //Hook que guarda la data de publications de la API
-
   const toggleHeartColor = (e) => {
-
-    if(user){
+    if (user) {
       e.preventDefault();
       setIsHeartRed(!isHeartRed);
     } else {
       e.preventDefault();
       navigate("/register");
-
     }
   };
 
-  // useEffect obtiene los datos publications de la API desde 'api/conn.js' Se debe sonsumir publications desde el hook.
-  useEffect(()=> {
-    const fetchData = async ()=>{
-      try {
-        const data = await publicationData;
-        console.log(data)
-        setPublications(data);
-      } catch (error) {
-        console.log("error al obtener los datos desde publicacion", error.message);
-      }
-    }
-
-    fetchData()
-   },[])
-
   return (
     <>
-
       <article className="w-[320px] h-[384px] md:w-[299px] md:h-[384px] mx-auto mt-8 rounded-xl">
         {/* Utiliza el componente Link en lugar de <a> para redirigir a /rooms */}
         <Link to="/rooms">
@@ -62,7 +46,8 @@ export const Card = ({ cardElement }) => {
           </div>
 
           {/* Componente para mostrar un breve resumen */}
-          <CardInfo cardElement={cardElement} />
+          <CardInfo />
+          
         </Link>
       </article>
     </>
