@@ -1,11 +1,11 @@
-const API_KEY = import.meta.env.VITE_API_KEY
+
 import { initializeApp } from "firebase/app";
 import {getAuth} from "firebase/auth";
 
 //NOOOOOOOOOOOOOO BORRAAAAAAAAAAAAAR
 
 const firebaseConfig = {
-    apiKey: API_KEY,
+    apiKey: import.meta.env.VITE_APIKEY_AUTH,
     authDomain: "airbnb-4384f.firebaseapp.com",
     projectId: "airbnb-4384f",
     storageBucket: "airbnb-4384f.appspot.com",
