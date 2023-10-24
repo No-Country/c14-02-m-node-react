@@ -4,7 +4,6 @@ import IvpMaps from "../components/IvpMaps";
 import IvpReviews from "../components/IvpReviews";
 import IvpRules from "../components/IvpRules";
 import NavBar from "../components/NavBar.jsx";
-import Filtros from "../components/Filtros";
 
 import { LiaMedalSolid } from "react-icons/lia";
 import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
@@ -14,8 +13,29 @@ import { PiTranslateBold } from "react-icons/pi";
 import OptionsFooter from "../components/OptionsFooter";
 import HelpFooter from "../components/HelpFooter";
 import IvpEvaluaciones from "../components/IvpEvaluaciones";
+import { useParams } from "react-router-dom";
 
-function IndividualViewPage() {
+import { useGetPublicationByIdQuery } from "../store/rtk-query";
+
+import { useDispatch } from "react-redux";
+import { loadPublicationDetail } from "../store/actions";
+import { useEffect } from "react";
+
+function IndividualViewPage(props) {
+
+  const {id} = useParams();
+
+  const dispatch = useDispatch();
+
+
+  const {data, error, isLoading} = useGetPublicationByIdQuery(id);
+
+  useEffect(()=>{
+    if(typeof data !== 'undefined'){
+      dispatch(loadPublicationDetail(data))
+    }
+  },[dispatch, data]);
+
   return (
     <>
       <div className="hidden sm:block">
@@ -33,9 +53,9 @@ function IndividualViewPage() {
               
              </div>
             <h2 className="text-3xl font-semibold my-9 ">
-              Casa "WabiSabi"
+              {data?.title}
               <span className="hidden sm:block">
-                Habitación1/1 cama/Asakusa/Skytree/
+                {data?.featured}
               </span>
             </h2>
           </div>

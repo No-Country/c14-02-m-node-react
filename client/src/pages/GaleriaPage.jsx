@@ -8,16 +8,18 @@ export const GaleriaPage = () => {
 
   const {data: publications, error: publicationError, isLoading: isLoadingPublication} = useGetAllPublicationsQuery();
 
-  console.log(publications, publicationError);
-  console.log(typeof useGetAllPublicationsQuery)
-
-
+  console.log(publications);
   
   return (
     <section className="conteinerCards flex flex-wrap w-ful p-4">
-      {dataCards.map((cardElement) => (
-        <Card key={cardElement.id} cardElement={cardElement} />
-      ))}
+      {isLoadingPublication 
+      ? <span>Cargando</span> 
+      : publicationError 
+      ? <span>error</span> 
+      : publications.map((publication, index) => (
+        <Card key={index} publication={publication} />
+      ))  
+    }
     </section>
   );
 };
