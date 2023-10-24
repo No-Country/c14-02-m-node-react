@@ -1,4 +1,4 @@
-const API_BASE = 'https://clon-airbnb-dev-shhb.1.us-1.fl0.io/api';
+const API_BASE = 'https://localhost:3000/api';
 const USER_DATA = `${API_BASE}/user`;
 const PUBLICATION_DATA = `${API_BASE}/publication`
 // const PHOTO_DATA = `${API_BASE}/photo`
