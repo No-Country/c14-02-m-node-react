@@ -5,7 +5,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export const CardSlider = ({ cardElement }) => {
+export const CardSlider = ( {images} ) => {
+  console.log(typeof images)
   return (
     <Swiper
       cssMode={true}
@@ -16,7 +17,7 @@ export const CardSlider = ({ cardElement }) => {
       modules={[Navigation, Pagination, Mousewheel, Keyboard]}
       className="mySwiper"
     >
-      {cardElement.images.map((image, index) => (
+      {images.map((image, index) => (
         <SwiperSlide key={index}>
           <img src={image} alt="" />
         </SwiperSlide>

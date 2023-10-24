@@ -1,8 +1,10 @@
 import { createReducer } from "@reduxjs/toolkit";
 //importar acciones
-/* import {
+ import {
         getPublications,
-} from './actions' */
+        loadPublicationDetail,
+        
+} from './actions' 
 
 
 const initialState = {
@@ -20,5 +22,8 @@ export const reducer = createReducer( initialState, (builder)=>{
     /*builder.addCase(exampeAction,()=>{
         //modifican el estado
     })*/
+    builder.addCase(loadPublicationDetail,(state, {payload})=>{
+        state.publicationDetail = payload;
+    });
 
 });
