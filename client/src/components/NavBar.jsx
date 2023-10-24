@@ -240,7 +240,7 @@ export const NavBar = ({ photoPerson }) => {
         <Container>
           <img src={logo} alt="Logo" className="logo" />
         </Container>
-        <LogoResponsive src={logosintexto} alt="New Logo" class="new-logo" />
+        <LogoResponsive src={logosintexto} alt="New Logo" className="new-logo" />
       </Link>
       <Container2>
         <Text>A cualquier lugar</Text>
