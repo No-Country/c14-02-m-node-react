@@ -24,3 +24,4 @@ Editor directories and files
 *.sw?
 firebase.js
 package-lock.json
+.env
