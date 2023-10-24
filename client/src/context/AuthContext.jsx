@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../firebaseConfig";
 // Proveedor. El contexto me permite usar esos valores.
 export const AuthContext = createContext();
 
