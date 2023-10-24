@@ -56,18 +56,43 @@ async function getBookingController(req, res) {
 	}
 }
 
-/* Función para traer todas las reservas por un email */
+/* Función para traer todas las reservas por un email Y ENTRE FECHAS */
 async function getAllBookingController(req, res) {
-  const email = req.params; 
+  const { publicationID, dateIn, dateOut } = req.body;
+  let filter = {};
+
+  if (publicationID) {
+    filter.publicationID = publicationID;
+  } else {
+    return res.status(400).send('Se requiere un id para filtrar las reservas.');
+  }
+
+  if (dateIn && dateOut) {
+    const dateInObj = new Date(dateIn);
+    const dateOutObj = new Date(dateOut);
+
+    if (dateInObj > dateOutObj) {
+      return res.status(400).send('La fecha de ingreso (dateIn) no puede ser mayor que la fecha de egreso (dateOut).');
+    }
+
+    filter.$and = [
+      { dateIn: { $lte: dateOutObj } },
+      { dateOut: { $gte: dateInObj } }
+    ];
+  } else {
+    return res.status(400).send('Se requieren ambas fechas (dateIn y dateOut) para filtrar por fechas.');
+  }
+  
   try {
-    if (!isValidEmail(email)) throw new Error ('El email no tiene un formato válido')
-    const allBooking = await bookingManager.getAllBooking(email);
-    if (!allBooking) throw new Error ('No se encontraron reservas para ese email')
+    const allBooking = await bookingManager.getAllBooking(filter);
+    if (!allBooking) throw new Error('No se encontraron reservas para ese email y rango de fechas.');
     return res.status(200).send(allBooking);
   } catch (error) {
     return res.status(400).send(error.message);
   }
 }
+
+
 
 /* Función para eliminar una reserva por un id */
 async function deleteBookingController(req, res) {
@@ -97,7 +122,7 @@ async function deleteBookingController(req, res) {
     }
 }
 
-
+/* Funcion para traer la reserva por fecha */
 
 
 

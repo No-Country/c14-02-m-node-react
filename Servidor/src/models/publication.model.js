@@ -44,6 +44,10 @@ const publicationScheme = new mongoose.Schema({
 		required: true,
 		enum: ['Dormitorios','Baños','Living','Cocina'],
 	},
+	photos: {
+		type: [String],
+		required: true,
+	},
 	amenities: {
 		type: [String],
 		required: true,

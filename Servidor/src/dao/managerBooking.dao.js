@@ -39,6 +39,7 @@ class BookingManager {
 	}
 
 	async getAllBooking(query) {
+		console.log("LA QUERY ES ",query)
 		try {
 			const allBooking = await this.getAllDocuments('bookingCollection', query);
 			return allBooking;
