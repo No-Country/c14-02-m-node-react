@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { PublicationControler } = require('../controllers');
+const { PublicationController } = require('../controllers');
 
 
-router.get('/', PublicationControler.getAllPublicationController);
+router.get('/', PublicationController.getAllPublicationController);
 
 /** GET Publication devuelve todas las publicaciones
 METHOD:  GET
 URL:     http://localhost:3000/api/Publication
 */
-router.get('/:email', PublicationControler.getPublicationController);
+router.get('/:email', PublicationController.getPublicationController);
 
 /** GET Publication devuelve todas las publicaciones por el email espesificado
 METHOD:  GET
@@ -17,14 +17,14 @@ URL:     http://localhost:3000/api/publication/:email
 */
 
 
-router.get('/byId/:id', PublicationControler.getPublicationByIdController);
+router.get('/byId/:id', PublicationController.getPublicationByIdController);
 
 /** GET PublicationbyId devuelve publicacion por id
 METHOD:  GET
 URL:     http://localhost:3000/api/publication/byId/652a8ffc06fc9560b23f30fc
 */
 
-router.post('/', PublicationControler.postPublicationController);
+router.post('/', PublicationController.postPublicationController);
 
 /** CREATE Publication
 METHOD:  POST
@@ -61,7 +61,7 @@ BODY:
 }
 */
 
-router.put('/:id', PublicationControler.putUpdatePublicationController);
+router.put('/:id', PublicationController.putUpdatePublicationController);
 
 /** UPDATE Publication actualiza un publicacion por el parametro espesificado 
 METHOD:  PUT
@@ -72,7 +72,7 @@ BODY:
          } 
 */
 
-router.delete('/:id',PublicationControler.deletePublicationByIdController);
+router.delete('/:id',PublicationController.deletePublicationByIdController);
 
 /** Delete Elimina publicacon por id 
  METHOD: DELETE

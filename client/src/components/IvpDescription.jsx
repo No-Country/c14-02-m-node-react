@@ -13,7 +13,14 @@ import { LuShowerHead } from "react-icons/lu";
 import { FaPeopleRoof, FaFlag } from "react-icons/fa6";
 import { GrNotes } from "react-icons/gr";
 
+
+import { useSelector } from "react-redux";
+
 function IvpDescription() {
+
+  const info = useSelector(state => state.main.publicationDetail);
+
+  console.log('publicationDetail', info);
   return (
     <div>
       <div className="grid grid-cols-3 gap-4">
@@ -124,7 +131,7 @@ function IvpDescription() {
               <p className="font-semibold text-2xl my-4">
                 ¿Qué ofrece este lugar?
               </p>
-
+                
               <div className="flex mb-4">
                 <LiaSwimmingPoolSolid size={35} />
                 <p>Pileta De uso privado</p>
