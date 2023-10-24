@@ -22,5 +22,7 @@ Editor directories and files
 *.njsproj
 *.sln
 *.sw?
-firebase.js
+
 package-lock.json
+
+.env
