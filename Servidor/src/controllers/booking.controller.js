@@ -34,10 +34,10 @@ async function getBookingController(req, res) {
 
 /* Función para traer todas las reservas por un email */
 async function getAllBookingController(req, res) {
-  const email = req.params; 
+  const filtro = req.body; 
   try {
-    if (!isValidEmail(email)) throw new Error ('El email no tiene un formato válido')
-    const allBooking = await bookingManager.getAllBooking(email);
+    // if (!isValidEmail(email)) throw new Error ('El email no tiene un formato válido')
+    const allBooking = await bookingManager.getAllBooking(filtro);
     if (!allBooking) throw new Error ('No se encontraron reservas para ese email')
     return res.status(200).send(allBooking);
   } catch (error) {
