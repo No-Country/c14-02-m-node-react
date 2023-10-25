@@ -7,9 +7,9 @@
 <h4>El proyecto "Clone Airbnb" fue diseñado para crear una plataforma digital dedicada a la oferta de alojamientos a particulares y turísticos (alquiler vacacional) 🏝 🏕 🌎. En esta plataforma, los anfitriones pueden publicitar y contratar el arriendo de sus propiedades con sus huéspedes 🏘.</h4>
 
 <h4>Características principales:</h4>
-- ✔️ Los anfitriones y huéspedes pueden valorarse mutuamente como referencia para futuros usuarios⭐⭐⭐
-- ✔️ Posibilidad de seleccionar favoritos 🖤
-- ✔️ Un buscador que permite filtrar lugares, fechas y la cantidad de personas 🔎
+<h4>✔️ Los anfitriones y huéspedes pueden valorarse mutuamente como referencia para futuros usuarios⭐⭐⭐</h4>
+<h4>✔️ Posibilidad de seleccionar favoritos 🖤</h4>
+<h4>✔️ Un buscador que permite filtrar lugares, fechas y la cantidad de personas 🔎</h4>
 
 
 <p align="center" ><img width="500px" height="500px" align="center"src="https://media.tenor.com/td_EA9TfVnsAAAAC/room.gif"></p> 
