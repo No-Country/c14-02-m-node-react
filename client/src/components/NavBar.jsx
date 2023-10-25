@@ -10,6 +10,7 @@ import BottonMenu from "../components/BottonMenu.jsx";
 import { Link } from "react-router-dom";
 import { GrBottomCorner } from "react-icons/gr";
 import { useAuth } from "../context/AuthContext";
+import { Search } from './Search';
 
 const Navbar = styled.div`
   display: flex;
@@ -252,13 +253,7 @@ export const NavBar = ({ photoPerson }) => {
       </Link>
       <Container2 onClick={toggleInput}>
         {showInput ? (
-          <form className="w-96 flex">
-            <input  type="text"
-              placeholder="Buscar alojamiento.."
-              className="p-2 border-none rounded-l-full w-full" />
-            <button type="submit"
-              className="p-2 bg-red-500 text-white rounded-r-full">Buscar</button>
-          </form>
+          <Search />
         ) : (
           <>
             <Text>A cualquier lugar</Text>
