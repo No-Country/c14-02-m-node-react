@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CardSlider } from "./CardSlider";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import CardInfo from './CardInfo';
 
 
 export const Card = ({publication}) => {
@@ -13,7 +14,7 @@ export const Card = ({publication}) => {
   const [isFavorite, setIsFavorite] = useState(publication.favorite);
 
   const images = publication.photos;
-   console.log(publication);
+  //  console.log(publication);
   // const images = [
   //   "https://picsum.photos/200",
   //   "https://picsum.photos/200",
