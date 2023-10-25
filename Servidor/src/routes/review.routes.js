@@ -6,10 +6,10 @@ const { ReviewController } = require('../controllers');
 
 router.get('/', ReviewController.getAllReviews);
 
-router.get('/:email', ReviewController.getReview);
+router.get('/:id', ReviewController.getReview);
 
 router.post('/', ReviewController.createReview);
 
-router.put('/update/:email', ReviewController.updateReview);
+router.put('/update/:id', ReviewController.updateReview);
 
 module.exports = router;
