@@ -16,8 +16,8 @@ module.exports = {
     },
     getReview: async (req, res) => {
         try {
-            const email = req.body;
-            const review = await reviewManager.getOneReview(email);
+            const id = req.params;
+            const review = await reviewManager.getOneReview(id);
             return res.status(200).send(review);
         } catch (error) {
             console.error('Error al obtener la reseña', error);
@@ -35,12 +35,12 @@ module.exports = {
     },
     updateReview: async (req, res) => {
         try {
-            const email = req.params;
+            const id = req.params;
             const changes = req.body;
 
-            const review = await reviewManager.updateReview(email, changes);
+            const review = await reviewManager.updateReview(id, changes);
             if(review.matchedCount > 0) {
-                const reviewUpdate = await reviewManager.getOneReview(email);
+                const reviewUpdate = await reviewManager.getOneReview(id);
                 return res.status(200).send(reviewUpdate);
             }
         }catch (err){
