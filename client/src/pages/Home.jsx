@@ -4,7 +4,6 @@ import { GaleriaPage } from "./GaleriaPage";
 import SuggestionFooter from "../components/SuggestionFooter";
 import PropertyForm from "./PropertyFrom";
 
-
 export const Home = () => {
     return (
         <>
@@ -14,7 +13,6 @@ export const Home = () => {
             <SuggestionFooter/>
             <PropertyForm />
         </>
-
     )
 };
 
