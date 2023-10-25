@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import IvpSlider from "./IvpSlider";
 import IvpCalendar from "../components/IvpCalendar";
 import IvpHoster from "./IvpHoster";
+import IvpReservation from "./IvpReservation";
 
 import { LiaSwimmingPoolSolid } from "react-icons/lia";
 import { TbToolsKitchen2 } from "react-icons/tb";
-import { AiOutlineWifi, AiOutlineCar, AiFillStar } from "react-icons/ai";
+import { AiOutlineWifi, AiOutlineCar } from "react-icons/ai";
 import { GiDesk, GiFireplace } from "react-icons/gi";
 import { LiaBedSolid, LiaMedalSolid } from "react-icons/lia";
 import { LuShowerHead } from "react-icons/lu";
-import { FaPeopleRoof, FaFlag } from "react-icons/fa6";
+import { FaPeopleRoof } from "react-icons/fa6";
 import { GrNotes } from "react-icons/gr";
 
 
@@ -168,49 +169,7 @@ function IvpDescription() {
         </div>
 
         {/* DERECHA */}
-        <div className="hidden md:block">
-          <div className="inner-div bg-white p-4 border-2 rounded-xl drop-shadow-[0_10px_10px_rgba(0,0,0,0.25)]">
-            <div>
-              <div className="flex items-baseline">
-                <h2 className="text-2xl font-semibold mr-2">$57 USD</h2>
-                <span className="text-slate-500">noche</span>
-              </div>
-              <div>
-                <AiFillStar />
-                <p>4,89 ·45 evaluaciones</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 rounded-lg ">
-              <div className="border p-2">
-                <p className="text-xs font-semibold">CHECK-IN</p>
-                <p>30/11/2023</p>
-              </div>
-              <div className="border p-2">
-                <p className="text-xs font-semibold">CHECK-OUT</p>
-                <p>...</p>
-              </div>
-              <div className="border p-2 col-span-2">
-                <p className="text-xs font-semibold">VIAJEROS</p>
-                <p>1 huésped</p>
-              </div>
-            </div>
-
-            <button className="bg-rose-600 text-white font-semibold px-8 py-3 my-4 rounded-lg border-none">
-              Consultar disponibilidad
-            </button>
-          </div>
-          <div className="flex text-stone-500 items-center my-5">
-            <div>
-              <FaFlag />
-            </div>
-            <div>
-              <span className="font-semibold underline px-3 my-8">
-                Denunciar este anuncio
-              </span>
-            </div>
-          </div>
-        </div>
+        <IvpReservation />
       </div>
     </div>
   );

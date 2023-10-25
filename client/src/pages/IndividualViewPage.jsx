@@ -42,7 +42,7 @@ function IndividualViewPage(props) {
         <NavBar />
       </div>
 
-      <div>
+      <div className="mb-48 md:mb-0">
         <div className="container mx-4">
           {/* TITULO */}
           <div className="flex items-center">
