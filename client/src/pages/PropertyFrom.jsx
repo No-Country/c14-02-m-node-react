@@ -7,7 +7,7 @@ import { MdOutlineBathtub } from "react-icons/md";
 import { LuSofa } from "react-icons/lu";
 import { FaKitchenSet } from "react-icons/fa6";
 
-import { usePostPublicationMutation } from "../store/rtk-query";
+import { useCreatePublicationMutation } from "../store/rtk-query";
 
 const PropertyForm = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +28,7 @@ const PropertyForm = () => {
   });
   console.log("esto llega de formulario", formData);
 
-  const [createPublication]= usePostPublicationMutation(formData);
+  const [createPublication]= useCreatePublicationMutation(formData);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
