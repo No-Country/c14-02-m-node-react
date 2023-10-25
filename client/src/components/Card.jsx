@@ -10,14 +10,15 @@ export const Card = ({publication}) => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
+  const images = publication.photos;
 
-  const images = [
-    "https://picsum.photos/200",
-    "https://picsum.photos/200",
-    "https://picsum.photos/200",
-    "https://picsum.photos/200",
-    "https://picsum.photos/200",
-  ];
+  // const images = [
+  //   "https://picsum.photos/200",
+  //   "https://picsum.photos/200",
+  //   "https://picsum.photos/200",
+  //   "https://picsum.photos/200",
+  //   "https://picsum.photos/200",
+  // ];
 
   const toggleHeartColor = (e) => {
 

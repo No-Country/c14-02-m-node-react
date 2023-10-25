@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export const CardSlider = ( {images} ) => {
-  console.log(typeof images)
+  
   return (
     <Swiper
       cssMode={true}
