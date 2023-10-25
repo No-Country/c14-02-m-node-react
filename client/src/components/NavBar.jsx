@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import styled from "styled-components";
 import logo from "../assets/images/airbnblogo.png";
 import search from "../assets/images/search.png";
@@ -233,6 +234,13 @@ const FilterResponsive = styled.div`
 
 export const NavBar = ({ photoPerson }) => {
   const { user } = useAuth();
+  const [showInput, setShowInput] = useState(false);
+
+  const toggleInput = () => {
+    if (!showInput) {
+      setShowInput(true);
+    }
+  };
 
   return (
     <Navbar>
@@ -242,13 +250,25 @@ export const NavBar = ({ photoPerson }) => {
         </Container>
         <LogoResponsive src={logosintexto} alt="New Logo" className="new-logo" />
       </Link>
-      <Container2>
-        <Text>A cualquier lugar</Text>
-        <Text>semana (en cualquier fecha)</Text>
-        <Text2>¿Cuantos?</Text2>
-        <DivSearch>
-          <img src={search} />
-        </DivSearch>
+      <Container2 onClick={toggleInput}>
+        {showInput ? (
+          <form className="w-96 flex">
+            <input  type="text"
+              placeholder="Buscar alojamiento.."
+              className="p-2 border-none rounded-l-full w-full" />
+            <button type="submit"
+              className="p-2 bg-red-500 text-white rounded-r-full">Buscar</button>
+          </form>
+        ) : (
+          <>
+            <Text>A cualquier lugar</Text>
+            <Text>semana (en cualquier fecha)</Text>
+            <Text2>¿Cuantos?</Text2>
+            <DivSearch>
+              <img src={search} alt="Search Icon" />
+            </DivSearch>
+          </>
+        )}
       </Container2>
       <Container2Movil>
         <Icon src={searchmovil} />
