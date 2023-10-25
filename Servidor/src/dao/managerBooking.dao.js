@@ -1,6 +1,7 @@
 const Database = require('../config/mongodb.js');
 const { createDocument, getOneDocument, getAllDocuments, updateDocument, deleteDocument } = require('../config/factory.js');
 const { BookingModel } = require('../models/index.js');
+const { ObjectId } = require('mongodb');
 
 class BookingManager {
 	constructor() {
@@ -15,12 +16,15 @@ class BookingManager {
 	async createBooking(data) {
 		const { publicationID, email, dateIn, dateOut } = data;
 
+		const pubIdObject = {_id : publicationID}
+
 		const booking = BookingModel({
-			publicationID,
+			publicationID: pubIdObject,
 			email,
 			dateIn,
 			dateOut,
 		});
+
 		await this.createDocument('bookingCollection', booking);
 		return booking;
 	}
@@ -35,6 +39,7 @@ class BookingManager {
 	}
 
 	async getAllBooking(query) {
+		console.log("LA QUERY ES ",query)
 		try {
 			const allBooking = await this.getAllDocuments('bookingCollection', query);
 			return allBooking;

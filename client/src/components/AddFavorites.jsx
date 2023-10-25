@@ -50,7 +50,7 @@ function addFavorites() {
   return (
     <div>
       <h1>List of Cards</h1>
-      <ul>
+      <ul>cd
         {cards.map((card) => (
           <li key={card.id}>
             {card.name}{' '}
@@ -78,3 +78,60 @@ function addFavorites() {
 }
 
 export default addFavorites;
+
+// card
+
+  // const [isFavorite, setIsFavorite] = useState(publication.favorite);
+
+        // setIsFavorite(!isFavorite);
+      // sendFavoriteStatusToServer(publication._id, !isFavorite);
+
+        // const sendFavoriteStatusToServer = (publicationId, isFavorite) => {
+  //   const apiUrl = `https://clon-airbnb-dev-shhb.1.us-1.fl0.io/api/favorite/${publicationId}`;
+  //   const requestData = {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ isFavorite }),
+  //   };
+
+  //   fetch(apiUrl, requestData)
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         // La llamada al servidor fue exitosa
+  //         console.log("Estado de favorito actualizado en el servidor");
+  //       } else {
+  //         // La llamada al servidor falló
+  //         console.error("Error al actualizar el estado de favorito en el servidor");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error en la llamada al servidor:", error);
+  //     });
+  // };
+
+{/* <section className="conteinerCards flex flex-wrap w-ful p-4">
+        {dataCards.map((cardElement) => {
+          // Filtra las tarjetas favoritas de acuerdo a la lista de favoritas
+          if (favoriteCards.some((favorite) => favorite._id === cardElement.id)) {
+            return <Card key={cardElement.id} cardElement={cardElement} />;
+          }
+          return null;
+        })}
+      </section> */}
+
+
+
+// favorites page
+
+// import React, { useState, useEffect } from "react";
+
+        // const [favoriteCards, setFavoriteCards] = useState([]);
+
+  // useEffect(() => {
+  //   fetch('https://clon-airbnb-dev-shhb.1.us-1.fl0.io/api/favorite') // Endpoint de las tarjetas favoritas
+  //     .then((response) => response.json())
+  //     .then((data) => setFavoriteCards(data)) // Actualiza el estado con las tarjetas favoritas
+  //     .catch((error) => console.error('Error al cargar tarjetas favoritas:', error));
+  // }, []);

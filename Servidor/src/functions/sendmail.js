@@ -33,10 +33,26 @@ const sendMail = async(data) => {
       },
     };
     
+  } else if (data.type==='reserva') {
+    console.log(data)
+      msg1 = {
+      to: data.email,
+      from: 'admclonairbnb@gmail.com',
+      subject: 'Su reserva ha sido creada con éxito en Airbnb',
+      preheader: 'Su reserva ha sido exitosa!',
+      templateId: 'd-035b4184f58446149c305bf427be5f92',
+      dynamic_template_data: {
+        "Nombre_Huesped" : data.Nombre_Huesped,
+        "Titulo_Propiedad" : data.Titulo_Propiedad,
+        "Fecha_Inicial" : data.Fecha_Inicial,
+        "Fecha_Final" : data.Fecha_Final,
+        "Nombre_Anfitrion" : data.Nombre_Anfitrion,
+        "Telefono_Anfitrion" : data.Telefono_Anfitrion
+      },
+    };
   }
        try {
         res = await sgMail.send(msg1);
-        console.log(res)
         console.log('Correo electrónico enviado correctamente', res[0].statusCode);
       } catch (error) {
         console.error('Error al enviar el correo electrónico', error);
