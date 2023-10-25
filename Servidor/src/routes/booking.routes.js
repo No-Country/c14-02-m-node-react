@@ -5,7 +5,12 @@ const {
     getBookingController,
     getAllBookingController,
     deleteBookingController 
-    } = require('../controllers/booking.controller');
+} = require('../controllers/booking.controller');
+
+
+
+router.get('/all', getAllBookingController);
+
 
 /** POST Crear una reserva
 METHOD:  GET
