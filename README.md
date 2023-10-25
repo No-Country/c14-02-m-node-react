@@ -39,5 +39,13 @@
 ![Express.js](https://img.shields.io/badge/Express.js-%23404d59.svg?style=for-the-badge&logo=Express&logoColor=%2361DAFB) ![JavaScript](https://img.shields.io/badge/JavaScript-%23323330.svg?style=for-the-badge&logo=Javascript&logoColor=%23F7DF1E) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=MongoDB&logoColor=white) 
 ![Mongoose](https://img.shields.io/badge/Mongoose-%2320232a.svg?style=for-the-badge&logo=Mongoose&logoColor=%%2361DAFB)
 
+<h4>👉🏻 Developers</h4>
+
+| <img src="https://res-console.cloudinary.com/desr2crlz/thumbnails/v1/image/upload/v1698250169/V2hhdHNBcHBfSW1hZ2VfMjAyMy0wNy0zMV9hdF8xNy4wMy4xNF9lamxldHM=/preview" width=50>| <img src="https://res-console.cloudinary.com/desr2crlz/thumbnails/v1/image/upload/v1698250488/MTY5MDczNjYyNTQ5NF9ldHoyanY=/grid_landscape" width=50>| <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698250780/187428602_714116179624253_2044403315537487648_n_niuowj.jpg" width=50> | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698250955/1678972956054_aaj6sg.jpg" width=50> | 
+|:-:|:-:|
+| **Ivana Carmona**| **Jorge Alfredo Lozano**| ** Victor Araya Castillo ** | ** Emiliano Brizuela **
+| <a href="https://github.com/antonella-carmona"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/ivana-carmona-5a166520a/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/> </a> | <a href="https://github.com/JorgeAlfredoLozano/JorgeAlfredoLozano"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jorgealozano/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+
+<hr/>
 
 
