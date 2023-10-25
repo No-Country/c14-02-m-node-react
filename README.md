@@ -5,4 +5,4 @@
 
 <hr/>
 
-<img align="center" src="https://imgur.com/a/8Y1ZDBK">
+<img align="center" src="https://ibb.co/4RwFB80">
