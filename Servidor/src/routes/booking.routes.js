@@ -20,6 +20,13 @@ RETURN: La reserva creada.
 **/
 router.post('/', createBookingController);
 
+/** GET oneAllBooking
+METHOD:  GET
+URL:     http://localhost:3000/api/Booking/all/email
+RETURN: Devuelve un listado de reservas con ese email.
+*/
+router.get('/all', getAllBookingController);
+
 /** GET oneBooking
 METHOD:  GET
 URL:     http://localhost:3000/api/Booking/id
@@ -27,11 +34,7 @@ RETURN: La reserva con el id proporcionado.
 */
 router.get('/:id', getBookingController);
 
-/** GET oneAllBooking
-METHOD:  GET
-URL:     http://localhost:3000/api/Booking/all/email
-RETURN: Devuelve un listado de reservas con ese email.
-*/
+
 
 /** DELETE Eliminar una reserva x ID
 METHOD:  DELETE

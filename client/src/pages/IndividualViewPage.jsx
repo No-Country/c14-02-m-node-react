@@ -78,7 +78,7 @@ function IndividualViewPage(props) {
           </div>
         </div>
 
-        <IvpGrid />
+        <IvpGrid images={data.photos}/>
         <IvpDescription />
         <IvpMaps />
         <IvpReviews />
