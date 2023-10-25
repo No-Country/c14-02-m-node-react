@@ -1,8 +1,10 @@
+import React from 'react';
+import { useFetch } from "../api/useFecht";
 import { useState } from "react";
 import { CardSlider } from "./CardSlider";
-import { CardInfo } from "./CardInfo";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import CardInfo from './CardInfo';
 
 
 export const Card = ({publication}) => {
@@ -12,7 +14,7 @@ export const Card = ({publication}) => {
   const [isFavorite, setIsFavorite] = useState(publication.favorite);
 
   const images = publication.photos;
-   console.log(publication);
+  //  console.log(publication);
   // const images = [
   //   "https://picsum.photos/200",
   //   "https://picsum.photos/200",
@@ -22,11 +24,10 @@ export const Card = ({publication}) => {
   // ];
 
   const toggleHeartColor = (e) => {
-
-    if(user){
+    if (user) {
       e.preventDefault();
       setIsHeartRed(!isHeartRed);
-      setIsFavorite(!isFavorite);
+      setIsFavorite(!isFavorite);npm
       sendFavoriteStatusToServer(publication._id, !isFavorite);
     } else {
       e.preventDefault();
@@ -61,7 +62,6 @@ export const Card = ({publication}) => {
 
   return (
     <>
-
       <article className="w-[320px] h-[384px] md:w-[299px] md:h-[384px] mx-auto mt-8 rounded-xl">
         {/* Utiliza el componente Link en lugar de <a> para redirigir a /rooms */}
         <Link to={`/publication/${publication._id}`}>

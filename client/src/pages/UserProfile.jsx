@@ -16,7 +16,7 @@ function UserProfile() {
     return console.log("User not authenticated"); // O puedes redirigir al usuario a la página de inicio de sesión.
   }
 
-  console.log(user);
+  // console.log(user);
   return (
     <div>
       <NavBar photoPerson = {user.photoURL}/>

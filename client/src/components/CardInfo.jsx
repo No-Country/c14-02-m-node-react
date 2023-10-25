@@ -1,5 +1,5 @@
 export const CardInfo = ({info}) => {
-  console.log(info)
+  // console.log(info)
   return (
     <section className="mt-2">
       <div className="flex justify-between text-[#222]">
@@ -17,3 +17,5 @@ export const CardInfo = ({info}) => {
     </section>
   );
 };
+
+export default CardInfo;
