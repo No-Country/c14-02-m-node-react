@@ -13,8 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<AccessPage1 />} />
-        <Route path="/user" element={<UserProfile />} />
-        <Route path="/rooms" element={<IndividualViewPage />} />
+        <Route path="/user" element={<UserProfile  />} />
+        <Route path="/publication/:id" element={<IndividualViewPage />} />
         <Route path="/favorites" element={<FavoritesPages />} />
       </Routes>
     </AuthProvider>

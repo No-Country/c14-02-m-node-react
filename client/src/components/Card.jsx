@@ -5,16 +5,21 @@ import { CardSlider } from "./CardSlider";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-// Definición de CardInfo en el mismo archivo
-const CardInfo = () => {
-  // Contenido de CardInfo
-};
 
-export const Card = ({ cardElement }) => {
-  const { data } = useFetch("http://localhost:3000/api/publication/");
+export const Card = ({publication}) => {
   const [isHeartRed, setIsHeartRed] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+
+  const images = publication.photos;
+
+  // const images = [
+  //   "https://picsum.photos/200",
+  //   "https://picsum.photos/200",
+  //   "https://picsum.photos/200",
+  //   "https://picsum.photos/200",
+  //   "https://picsum.photos/200",
+  // ];
 
   const toggleHeartColor = (e) => {
     if (user) {
@@ -30,7 +35,7 @@ export const Card = ({ cardElement }) => {
     <>
       <article className="w-[320px] h-[384px] md:w-[299px] md:h-[384px] mx-auto mt-8 rounded-xl">
         {/* Utiliza el componente Link en lugar de <a> para redirigir a /rooms */}
-        <Link to="/rooms">
+        <Link to={`/publication/${publication._id}`}>
           <div className="w-full h-[280px] relative">
             <button
               className={`z-10 h- w-0 absolute top-0 text-4xl right-9 cursor-pointer  ${
@@ -42,12 +47,11 @@ export const Card = ({ cardElement }) => {
             </button>
 
             {/* Componente para mostrar el slider */}
-            <CardSlider cardElement={cardElement} />
+            <CardSlider images={images} />
           </div>
 
           {/* Componente para mostrar un breve resumen */}
-          <CardInfo />
-          
+          <CardInfo info={publication} />
         </Link>
       </article>
     </>

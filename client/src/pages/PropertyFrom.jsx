@@ -7,6 +7,8 @@ import { MdOutlineBathtub } from "react-icons/md";
 import { LuSofa } from "react-icons/lu";
 import { FaKitchenSet } from "react-icons/fa6";
 
+import { usePostPublicationMutation } from "../store/rtk-query";
+
 const PropertyForm = () => {
   const [formData, setFormData] = useState({
     type: "",
@@ -25,6 +27,8 @@ const PropertyForm = () => {
     email: "",
   });
   console.log("esto llega de formulario", formData);
+
+  const [createPublication]= usePostPublicationMutation(formData);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -65,28 +69,7 @@ const PropertyForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    fetch("http://localhost:3000/api/publication", {
-      // Cambia esto a tu servidor local
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Manejar una respuesta exitosa del servidor aquí
-          console.log("Publicación creada con éxito");
-        } else {
-          // Manejar errores del servidor aquí
-          console.error("Error al crear la publicación");
-        }
-      })
-      .catch((error) => {
-        // Manejar errores de red aquí
-        console.error("Error de red", error);
-      });
+    createPublication(formData);
   };
 
   return (

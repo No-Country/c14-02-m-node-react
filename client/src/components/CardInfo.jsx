@@ -1,29 +1,20 @@
-import React from 'react';
-import { useFetch } from "../api/useFecht";
-
-const CardInfo = () => {
-  const { data, isLoading, error } = useFetch("http://localhost:3000/api/publication/");
-
-  console.log('Data:', data);
-
-  if (isLoading) {
-    return <p>Loading...</p>; // Muestra un mensaje de carga mientras se obtienen los datos.
-  }
-
-  if (error) {
-    return <p>Error: {error.message}</p>; // Muestra un mensaje de error si la solicitud falla.
-  }
-
- 
+export const CardInfo = ({info}) => {
+  console.log(info)
   return (
-    <div className="card">
-      {data.map((item, email) => (
-        <div className="card-item" key={email}>
-          <p className="location">{item.location}</p>
-          <p className="price">${item.price}</p>
-        </div>
-      ))}
-    </div>
+    <section className="mt-2">
+      <div className="flex justify-between text-[#222]">
+        <p className="font-bold">{info.location}</p>
+        {/* <p>&#9733; {info.publication.title}</p> */}
+      </div>
+
+      <div>
+        <p className="text-[#858484]">A {info.title} kilómetros de distancia</p> 
+        {/* <p className="text-[#858484]">{info.publication.date}</p> */}
+        <p className="mt-3 text-[#222]">
+          <b>${info.price} USD</b> noche
+        </p>
+      </div>
+    </section>
   );
 };
 
