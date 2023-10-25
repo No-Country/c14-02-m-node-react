@@ -1,6 +1,7 @@
 <img align="center" width="500px" height="500px" src="https://logodownload.org/wp-content/uploads/2016/10/airbnb-logo-0.png">
 
-<h3> El proyecto "Nombre de tu Proyecto" es una copia de Airbnb diseñada para [proporciona aquí una breve descripción de la finalidad de tu proyecto]. Nuestra plataforma ofrece [mencionar las características o funcionalidades clave] para brindar a los usuarios una experiencia similar a la de Airbnb</h3>
+<h3> El proyecto "Airbnb" fue diseñada para realizar una plataforma digital dedicada a la oferta de alojamientos a particulares y turísticos (alquiler vacacional) mediante la cual los anfitriones pueden publicitar y contratar el arriendo de sus propiedades con sus huéspedes; anfitriones y huéspedes pueden valorarse mutuamente, como referencia para futuros usuarios</h3>
+
 <p align="center" ><img width="500px" height="500px" align="center"src="https://media.tenor.com/td_EA9TfVnsAAAAC/room.gif"></p> 
 
 <hr/>
