@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "../components/Card";
+import { useGetAllFavoritesQuery } from "../store/rtk-query";
 
 export const FavoritesPages = () => {
   const [favoriteCards, setFavoriteCards] = useState([]);
+  
+  //NO BORRAR o PREGUNTAR (no sea maleucao)
+  const {data, error, isLoading} = useGetAllFavoritesQuery()
 
-  useEffect(() => {
-      fetch('https://clon-airbnb-dev-shhb.1.us-1.fl0.io/api/favorite/') // Endpoint de las tarjetas favoritas
-        .then((response) => response.json())
-        .then((data) => setFavoriteCards(data)) // Actualiza el estado con las tarjetas favoritas
-        .catch((error) => console.error('Error al cargar tarjetas favoritas:', error));
-    }, []);
+  // useEffect(() => {
+  //     fetch('https://clon-airbnb-dev-shhb.1.us-1.fl0.io/api/favorite/') // Endpoint de las tarjetas favoritas
+  //       .then((response) => response.json())
+  //       .then((data) => setFavoriteCards(data)) // Actualiza el estado con las tarjetas favoritas
+  //       .catch((error) => console.error('Error al cargar tarjetas favoritas:', error));
+  //   }, []);
 
   return (
     <section className="md:w-[70%] mx-auto">
