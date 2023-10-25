@@ -15,6 +15,6 @@
 <img align="center" src="https://res.cloudinary.com/desr2crlz/image/upload/v1698208753/paginaVista_cjonyr.png">
 
 <h3 align="center"  ><b>Puedes consultar nuestra página web aquí:</b></h3>
-<h3 align="center"><a href="xxxxxlink deployxxxxxx" target="_blank" rel="noopener noreferrer"> <img align="center" width="10px"  height="10px" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/airbnb_logo_icon_170605.png"> Clone Airbnb 🐾</a></h3>
-<p  align="center" ><a href="https://www.youtube.com/watch?v=X5mUV5qxs3I" target="_blank" rel="noopener noreferrer"> <img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
+<h3 align="center"><a href="xxxxxlink deployxxxxxx" target="_blank" rel="noopener noreferrer"> <img align="center" width="20px"  height="20px" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/airbnb_logo_icon_170605.png"> Clone Airbnb <img align="center" width="20px"  height="20px" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/airbnb_logo_icon_170605.png"> </a></h3>
+<p  align="center" ><a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"> <img src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 
