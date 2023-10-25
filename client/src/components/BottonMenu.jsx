@@ -129,7 +129,7 @@ const Component = ({ photoPerson }) => {
                 <Link to="/user">
                   <Li>Mi Perfil</Li>
                 </Link>
-                <Link to="/favorites" className="mb-2">Favoritos</Link>
+                <Link to="/favorites" className="mb-2"><Li>Favoritos</Li></Link>
                 <Li onClick={() => openModal(3)}>Poné tu Airbnb</Li>
                 <Li onClick={() => openModal(4)}>Centro de Ayuda</Li>
                 <div>
