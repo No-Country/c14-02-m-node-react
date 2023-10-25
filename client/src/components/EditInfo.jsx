@@ -12,10 +12,10 @@ const Container = styled.div`
 `
 
 const CircleImage = styled.div`
-  width: 200px; /* Tamaño del círculo (ajusta según tus necesidades) */
-  height: 200px; /* Tamaño del círculo (ajusta según tus necesidades) */
-  border-radius: 50%; /* Hace que el elemento sea circular */
-  overflow: hidden; /* Recorta la imagen que se desborda del círculo */
+  width: 200px; 
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,53 +97,57 @@ export const EditInfo = () => {
   return (
     <div>
       <Container>
-        <div>
-          <CircleImage>
+      <div>
+        <label htmlFor="foto">
+          <CircleImage style={{ cursor: 'pointer' }}>
             <img className="w-full h-full object-cover" src={userData.foto} alt="Foto de perfil" />
           </CircleImage>
-          {editando ? (
-            <div>
-              <input
-                type="file"
-                id="foto"
-                name="foto"
-                accept="image/*"
-                onChange={handleFotoChange}
-              />
-            </div>
-          ) : (
-            <div className="flex justify-center items-center">
-              <button className="py-2 px-4" onClick={handleEditar}>Editar Foto</button>
-            </div>
-          )}
-        </div>
+        </label>
+        {editando ? (
+          <div>
+            <input
+              type="file"
+              id="foto"
+              name="foto"
+              accept="image/*"
+              onChange={handleFotoChange}
+              style={{ display: 'none' }}
+            />
+      </div>
+  ) : (
+    <div className="flex justify-center items-center">
+      <button className="py-2 px-4" onClick={handleEditar}>Editar Foto</button>
+    </div>
+  )}
+</div>
+
         <div>
           <h1 className="font-bold text-gray-900 text-3xl py-2 px-4">Datos Personales</h1>
           {editando ? (
             <form onSubmit={handleGuardar} encType="multipart/form-data">
               <div className="border-b py-2 px-4 flex flex-col mb-2">
                 <label className="text-gray-900 text-lg" htmlFor="nombre">Nombre</label>
-                <input className="text-gray-500 border rounded-md py-1 px-2" id="nombre" name="nombre" defaultValue={userData.names} />
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="nombre" name="nombre" type="text" defaultValue={userData.names} />
               </div>
               <div className="border-b py-2 px-4 flex flex-col mb-2">
                 <label className="text-gray-900 text-lg" htmlFor="apellido">Apellido</label>
-                <input className="text-gray-500 border rounded-md py-1 px-2" id="apellido" name="apellido" defaultValue={userData.surname} />
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="apellido" name="apellido" type="text" defaultValue={userData.surname} />
               </div>
               <div className="border-b py-2 px-4 flex flex-col mb-2">
                 <label className="text-gray-900 text-lg" htmlFor="birthDate">Fecha de nacimiento</label>
-                <input className="text-gray-500 border rounded-md py-1 px-2" id="birthDate" name="birthDate" defaultValue={userData.birthDate} />
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="birthDate" name="birthDate" type="date" defaultValue={userData.birthDate} />
               </div>
               <div className="border-b py-2 px-4 flex flex-col mb-2">
                 <label className="text-gray-900 text-lg" htmlFor="email">Dirección de correo electrónico</label>
-                <input className="text-gray-500 border rounded-md py-1 px-2" id="email" name="email" defaultValue={userData.email} />
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="email" name="email" type="email" defaultValue={userData.email} />
               </div> 
               <div className="border-b py-2 px-4 flex flex-col mb-2">
                 <label className="text-gray-900 text-lg" htmlFor="phone">Número de teléfono</label>
-                <input className="text-gray-500 border rounded-md py-1 px-2" id="phone" name="phone" defaultValue={userData.phone} />
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="phone" name="phone" type="tel" defaultValue={userData.phone} />
               </div>
               <div className="border-b py-2 px-4 flex flex-col mb-2">
                 <label className="text-gray-900 text-lg" htmlFor="address">Dirección</label>
-                <input className="text-gray-500 border rounded-md py-1 px-2" id="address" name="address" defaultValue={userData.address} />
+                <input className="text-gray-500 border rounded-md py-1 px-2" id="address" name="address" type="text" defaultValue={userData.address} />
               </div>
               <div className="m-4">
                 <button className="border rounded-md py-2 px-2 bg-black text-white hover:bg-gray-900" type="submit">Guardar Datos</button>
@@ -152,12 +156,8 @@ export const EditInfo = () => {
           ) : (
             <div>
               <div className="border-b py-2 px-4 mb-2">
-                <p className="text-gray-900 text-lg">Nombre</p>
-                <p className="text-gray-500">{userData.names}</p>
-              </div>
-              <div className="border-b py-2 px-4 mb-2">
-                <p className="text-gray-900 text-lg">Apellido</p>
-                <p className="text-gray-500">{userData.surname}</p>
+                <p className="text-gray-900 text-lg">Nombre completo</p>
+                <p className="text-gray-500">{userData.names} {userData.surname}</p>
               </div>
               <div className="border-b py-2 px-4 mb-2">
                 <p className="text-gray-900 text-lg">Fecha de nacimiento</p>
