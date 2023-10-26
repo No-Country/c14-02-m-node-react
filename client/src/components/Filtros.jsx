@@ -205,7 +205,7 @@ const Filtros = () => {
                             <Icon src={impresionantes}/>
                             <h3>¡Impresionantes!</h3>
                 </Filter>
-                {/* <Filter>
+                <Filter>
                             <Icon src={mansiones}/>
                             <h3>Mansiones</h3>
                 </Filter>
@@ -220,7 +220,7 @@ const Filtros = () => {
                 <Filter>
                             <Icon src={pianosdecola}/>
                             <h3>Pianos de cola</h3>
-                </Filter> */}
+                </Filter>
             </BoxFilters>
             <Box>
                 <img src={filter}/>
