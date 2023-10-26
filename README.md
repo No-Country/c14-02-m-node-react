@@ -41,12 +41,20 @@
 
 <h4>👉🏻 Developers</h4>
 
-| <img src="https://res-console.cloudinary.com/desr2crlz/thumbnails/v1/image/upload/v1698250169/V2hhdHNBcHBfSW1hZ2VfMjAyMy0wNy0zMV9hdF8xNy4wMy4xNF9lamxldHM=/preview" width=50>| <img src="https://res-console.cloudinary.com/desr2crlz/thumbnails/v1/image/upload/v1698250488/MTY5MDczNjYyNTQ5NF9ldHoyanY=/grid_landscape" width=50>| <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698250780/187428602_714116179624253_2044403315537487648_n_niuowj.jpg" width=50> | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698250955/1678972956054_aaj6sg.jpg" width=50> | 
+<!-- | <img src="https://res-console.cloudinary.com/desr2crlz/thumbnails/v1/image/upload/v1698250169/V2hhdHNBcHBfSW1hZ2VfMjAyMy0wNy0zMV9hdF8xNy4wMy4xNF9lamxldHM=/preview" width=50>| <img src="https://res-console.cloudinary.com/desr2crlz/thumbnails/v1/image/upload/v1698250488/MTY5MDczNjYyNTQ5NF9ldHoyanY=/grid_landscape" width=50>| <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698250780/187428602_714116179624253_2044403315537487648_n_niuowj.jpg" width=50> | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698250955/1678972956054_aaj6sg.jpg" width=50> | 
 
 |:-:|:-:|:-:|:-:|
 | **Ivana Carmona**| **Jorge Alfredo Lozano**| ** Victor Araya Castillo ** | ** Emiliano Brizuela ** |
 
-| <a href="https://github.com/antonella-carmona"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/ivana-carmona-5a166520a/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/> </a> | <a href="https://github.com/JorgeAlfredoLozano/JorgeAlfredoLozano"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jorgealozano/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+|<a href="https://github.com/antonella-carmona"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/ivana-carmona-5a166520a/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/> </a> | <a href="https://github.com/JorgeAlfredoLozano/JorgeAlfredoLozano"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/jorgealozano/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | -->
+
+| ![Ivana Carmona](https://res-console.cloudinary.com/desr2crlz/thumbnails/v1/image/upload/v1698250169/V2hhdHNBcHBfSW1hZ2VfMjAyMy0wNy0zMV9hdF_17.03.14_ejxelts.jpg) | ![Jorge Alfredo Lozano](https://res-console.cloudinary.com/desr2crlz/thumbnails/v1/image/upload/v1698250488/MTY5MDczNjYyNTQ5NF9ldHoyanY/grid_landscape) | ![Victor Araya Castillo](https://res.cloudinary.com/desr2crlz/image/upload/v1698250780/187428602_714116179624253_2044403315537487648_n_niuowj.jpg) | ![Emiliano Brizuela](https://res.cloudinary.com/desr2crlz/image/upload/v1698250955/1678972956054_aaj6sg.jpg) |
+|:-:|:-:|:-:|:-:|
+| [Ivana Carmona](https://github.com/antonella-carmona) | [Jorge Alfredo Lozano](https://github.com/JorgeAlfredoLozano/JorgeAlfredoLozano) | [Victor Araya Castillo](https://enlace-a-perfil-de-github) | [Emiliano Brizuela](https://enlace-a-perfil-de-github) |
+
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/antonella-carmona) [![LinkedIn](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ivana-carmona-5a166520a/)
+
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/JorgeAlfredoLozano/JorgeAlfredoLozano) [![LinkedIn](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jorgealozano/)
 
 <hr/>
 
