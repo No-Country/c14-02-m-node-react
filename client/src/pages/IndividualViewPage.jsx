@@ -42,10 +42,10 @@ function IndividualViewPage(props) {
         <NavBar />
       </div>
 
-      <div>
+      <div className="mb-48 md:mb-0">
         <div className="container mx-4">
           {/* TITULO */}
-          <div className="flex items-center">
+          <div className="flex items-center ">
             <div>
               <PiTranslateBold size={45} />
             </div>
@@ -79,6 +79,8 @@ function IndividualViewPage(props) {
         </div>
 
         <IvpGrid images={data?.photos || []}/>
+
+
         <IvpDescription />
         <IvpMaps />
         <IvpReviews />

@@ -17,7 +17,7 @@ function IvpEvaluaciones() {
           
         </div>
         <div className='mt-6'>
-          <p>Permíteme empezar diciendo que Tetsuya fue un anfitrión muy agradable y amable. Es extremadamente comunicativo y se aleja para ayudarte. La estancia está escondida en el barrio sumida de Toyo, que está fuera del ajetreo y el bullicio, por lo que si estás buscando una escapada...</p>
+          <p>Permíteme empezar diciendo que Megumi fue un anfitrión muy agradable y amable. Es extremadamente comunicativo y se aleja para ayudarte. La estancia está escondida en el barrio sumida de Toyo, que está fuera del ajetreo y el bullicio, por lo que si estás buscando una escapada...</p>
           <span className="text-lg font-semibold underline">Mostrar más</span>
         </div>
         

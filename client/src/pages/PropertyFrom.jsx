@@ -8,6 +8,7 @@ import { LuSofa } from "react-icons/lu";
 import { FaKitchenSet } from "react-icons/fa6";
 
 import { useCreatePublicationMutation } from "../store/rtk-query";
+import { Link } from "react-router-dom";
 
 const PropertyForm = () => {
   const [formData, setFormData] = useState({
@@ -75,6 +76,13 @@ const PropertyForm = () => {
   return (
     <div>
       <div className="m-4 p-8 rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)]">
+        {/* El link esta listo para que se ponga a donde se quiere que lo llevemos atras seria el perifl o al home. */}
+        <Link
+          to="/"
+          className="text-4xl text-gray-800 bg-red-500 w-[50px] h-[50px] flex flex-col items-center rounded-lg "
+        >
+          &#8592;
+        </Link>
         <div className="text-center">
           <h2 className="text-3xl font-semibold">Tu Airbnb</h2>
         </div>

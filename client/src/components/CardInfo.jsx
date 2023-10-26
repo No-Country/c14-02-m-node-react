@@ -17,3 +17,5 @@ export const CardInfo = ({info}) => {
     </section>
   );
 };
+
+export default CardInfo;
