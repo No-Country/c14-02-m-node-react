@@ -50,12 +50,15 @@
 
 | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698250169/WhatsApp_Image_2023-07-31_at_17.03.14_ejlets.jpg" width="50"> | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698250488/1690736625494_etz2jv.jpg" width="50"> | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698250780/187428602_714116179624253_2044403315537487648_n_niuowj.jpg" width="50"> | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698250955/1678972956054_aaj6sg.jpg" width="50"> |
 |:-:|:-:|:-:|:-:|
-| [Ivana Carmona](https://github.com/antonella-carmona) | [Jorge Alfredo Lozano](https://github.com/JorgeAlfredoLozano/JorgeAlfredoLozano) | [Victor Araya Castillo](https://enlace-a-perfil-de-github) | [Emiliano Brizuela](https://enlace-a-perfil-de-github) |
+| [Ivana Carmona](https://github.com/antonella-carmona) | [Jorge Alfredo Lozano](https://github.com/JorgeAlfredoLozano/JorgeAlfredoLozano) | [Victor Araya Castillo](https://github.com/varayac?tab=repositories) | [Emiliano Brizuela](https://github.com/emybr) |
 
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/antonella-carmona) [![LinkedIn](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ivana-carmona-5a166520a/)
 
 [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/JorgeAlfredoLozano/JorgeAlfredoLozano) [![LinkedIn](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jorgealozano/)
 
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](ttps://github.com/varayac?tab=repositories) [![LinkedIn](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victor-a/)
+
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/emybr) [![LinkedIn](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/emiliano-brizuela-65045466/)
 <hr/>
 
 
