@@ -85,6 +85,7 @@ async function getUsers(req, res) {
 async function updateUser(req, res) {
 	const email = req.params;
 	const data = req.body;
+	console.log("BODYYYY", data)
 	try {
 		const Users = await usermanager.updateUser(email, data);
 		if (Users.matchedCount > 0) {
