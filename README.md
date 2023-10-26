@@ -22,7 +22,7 @@
 <h4> ✔ Requerimientos para puesta en marcha 📋</h4>
 
 <p>▪️ Tendrás que crear un .env en las carpetas Front y Back.</p>
-<p>▪️ Tendrás que crear tu propia base de datos en el sitio web de Mongo.</p>
+<p>▪️ Tendrás que crear tu propia base de datos en el sitio web de Mongo Atlas.</p>
 <p>▪️ Tendrás que crear tu propia cuenta para Firebase.</p>
 <p>▪️ Tendrás que crear tu propia cuenta para Google registro de formulario.</p>
 <p>▪️ Validación de usuarios con Google.</p>
@@ -84,3 +84,13 @@
 |:-:|:-:|:-:|:-:|
 | [Tiziano Mina](https://github.com/Tizianomina?tab=repositories) | [Vanessa Sanchez](https://github.com/NezziY) | [Emanuel Funes](https://github.com/EmanFun) | [Mateo Corsi](https://github.com/Mateocorsi33) |
 | <a href="https://github.com/Tizianomina?tab=repositories"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/tiziano-mina/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/NezziY"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/bertha-vanessa-s%C3%A1nchez-posadas-5b05a9208/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Mateocorsi33"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/mateocorsi/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/EmanFun"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/emanuel-funes-1b1171183/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+
+<hr/>
+
+<h4> 👉🏻 Team Leader </h4>
+
+
+| <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698323249/1614783338090_bgt4oy.jpg" width=50>|
+|:-:|
+| Cecilia Alsina |
+|<a href="https://github.com/"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/cecilia-alsina-3670aa207/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> ||
