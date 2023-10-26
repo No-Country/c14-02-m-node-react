@@ -19,6 +19,18 @@
 <p  align="center" ><a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"> <img align="center" src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 
 <hr/>
+<h4> ✔ Requerimientos para puesta en marcha 📋</h4>
+
+<p>▪️ Tendrás que crear un .env en las carpetas Front y Back</p>
+<p>▪️ endrás que crear tu propia base de datos en el sitio web de Mongo</p>
+<p>▪️ Tendrás que crear tu propia cuenta para Firebase.</p>
+<p>▪️ Tendrás que crear tu propia cuenta para Google registro de formulario.</p>
+<p>▪️ Validación de usuarios con Google.</p>
+<p>▪️ Instale las dependencias con npm installlas carpetas Back y Front</p>
+<p>▪️ Ejecute el servidor con "npm run dev-win"</p>
+<p>▪️ Ejecute el cliente con "npm run dev</p>
+
+<hr/>
 
 <h4>✔️ Backend </h4>
 
@@ -30,7 +42,6 @@
 <p>▪️ Creando filtros con Mongoose y expresiones regulares.</p>
 <p>▪️ Validación de usuarios con Google.</p>
 <p>▪️ Envío de correos electrónicos con bienvenida y recuperación de contraseña.</p>
-<p>▪️ xxxxxxxxxxxxxxxxxxxxxxxxx.</p>
 <p>▪️ Deployed en xxxxxxxxxx</p>
 
 <h4> 👉🏻 Construido con 🛠️ </h4>
