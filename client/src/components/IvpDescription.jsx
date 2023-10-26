@@ -1,21 +1,20 @@
 import { Link } from "react-router-dom";
 
+
+import Description from "./Description";
+import Type from "./Type";
+import Spaces from "./Spaces";
+import Amenities from "./Amenities";
 import IvpSlider from "./IvpSlider";
 import IvpCalendar from "../components/IvpCalendar";
 import IvpHoster from "./IvpHoster";
 import IvpReservation from "./IvpReservation";
 
-import { LiaSwimmingPoolSolid } from "react-icons/lia";
-import { TbToolsKitchen2 } from "react-icons/tb";
-import { AiOutlineWifi, AiOutlineCar } from "react-icons/ai";
-import { GiDesk, GiFireplace } from "react-icons/gi";
 import { LiaBedSolid, LiaMedalSolid } from "react-icons/lia";
-import { LuShowerHead } from "react-icons/lu";
-import { FaPeopleRoof } from "react-icons/fa6";
 import { GrNotes } from "react-icons/gr";
 
-
 import { useSelector } from "react-redux";
+
 
 function IvpDescription() {
 
@@ -25,14 +24,15 @@ function IvpDescription() {
   return (
     <div>
       <div className="grid grid-cols-3 gap-4">
-        {/* ---------IZQUIERDA--------------- */}
+
+{/* ====================IZQUIERDA==================== */}
+        
         <div className="col-span-3 md:col-span-2">
           <div className="max-w-[600px] mx-auto">
             <div className="flex items-center p-5">
               <div>
-                <h2 className="text-2xl font-semibold">
-                  Habitación en el siguiente alojamiento: choza.
-                </h2>
+                {/* TYPE */}
+                <Type />
                 <h2 className="text-2xl font-semibold">Anfitrión: Megumi</h2>
               </div>
               <div>
@@ -46,25 +46,9 @@ function IvpDescription() {
               </div>
             </div>
 
-            {/* DIVS CON BORDE */}
-            <div className="border-b p-5">
-              <div className="flex">
-                <div className="flex-1 border border-gray-300 rounded-xl p-4 mr-4">
-                  <LiaBedSolid size={30} className="mb-4" />
-                  <p className="text-xs">1 cama de una plaza</p>
-                </div>
-                <div className="flex-1 border border-gray-300 rounded-xl p-4 mr-4">
-                  <LuShowerHead size={30} className="mb-4" />
-                  <p className="text-xs">Baño compartido</p>
-                </div>
-                <div className="flex-1 border border-gray-300 rounded-xl p-4">
-                  <FaPeopleRoof size={30} className="mb-4" />
-                  <p className="text-xs">
-                    Es posible que el anfitrión y otros huéspedes estén acá
-                  </p>
-                </div>
-              </div>
-            </div>
+            {/* SPACES */}
+            
+            <Spaces />
 
             {/* FAQ */}
             <div className="border-b p-5">
@@ -115,6 +99,10 @@ function IvpDescription() {
               </div>
             </div>
 
+            {/* DESCRIPTION */}
+
+            <Description />
+
             {/* CARD DEL HOSTER */}
 
             <IvpHoster />
@@ -126,49 +114,18 @@ function IvpDescription() {
               <IvpSlider />
             </div>
 
-            {/* SERVICIOS */}
+            {/* AMENITIES */}
 
-            <div className="tborder-b border-b p-5">
-              <p className="font-semibold text-2xl my-4">
-                ¿Qué ofrece este lugar?
-              </p>
-                
-              <div className="flex mb-4">
-                <LiaSwimmingPoolSolid size={35} />
-                <p>Pileta De uso privado</p>
-              </div>
-              <div className="flex mb-4">
-                <TbToolsKitchen2 size={30} />
-                <p>Cocina</p>
-              </div>
-              <div className="flex mb-4">
-                <AiOutlineWifi size={35} />
-                <p>Wifi</p>
-              </div>
-              <div className="flex mb-4">
-                <AiOutlineCar size={35} />
-                <p>Estacionamiento gratis en la propiedad</p>
-              </div>
-              <div className="flex mb-4">
-                <GiDesk size={35} />
-                <p>Zona de trabajo</p>
-              </div>
-              <div className="flex mb-4">
-                <GiFireplace size={35} />
-                <p>Chimenea</p>
-              </div>
-              <div className="mb-6">
-                <button className="bg-white text-black border font-semibold border-black px-4 py-2 rounded">
-                  Mostrar más Servicios
-                </button>
-              </div>
-            </div>
+            <Amenities />
+
             {/* CALENDAR */}
             <IvpCalendar />
           </div>
         </div>
 
-        {/* DERECHA */}
+{/* ======================DIV IZQUIERDO==================== */}
+
+        {/* Reservation */}
         <IvpReservation />
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { FaFlag } from "react-icons/fa6";
+import Price from "./Price";
 import Reservation from "./Reservation";
 
 function IvpReservation() {
@@ -12,7 +13,7 @@ function IvpReservation() {
       <div className="inner-div md:w-[auto] md:relative bg-white p-4 border-2 md:rounded-xl  md:drop-shadow-[0_10px_10px_rgba(0,0,0,0.25)] md:bottom-auto md:w-auto md:static fixed bottom-0 w-full">
           <div>
             <div className="flex items-baseline">
-              <h2 className="text-2xl font-semibold mr-2">$57 USD</h2>
+              <Price />
               <span className="text-slate-500">noche</span>
             </div>
             <div className="hidden md:block">
