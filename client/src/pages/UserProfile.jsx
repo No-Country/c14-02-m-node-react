@@ -49,7 +49,9 @@ function UserProfile() {
             phone={data.phone}
             address={data.address}
             phoneUrgency={data.phoneUrgency}
-            photoPerson={user.photoURL} />
+            photo={data.photo} />
+            // photo={user.photoURL} 
+            
           <HelpFooter />
           <SuggestionFooter />
         </>

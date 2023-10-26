@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import { useUpdateUserMutation } from "../store/rtk-query";
+import SendPhoto from "./SendPhoto";
+import { Link } from "react-router-dom";
 
-function UProfile({names, surname, birthDate, email, phone, address, phoneUrgency, photoPerson}) {
+function UProfile({names, surname, birthDate, email, phone, address, phoneUrgency, photo}) {
   const [editMode, setEditMode] = useState({
     names: false,
     surname: false,
@@ -19,10 +21,10 @@ function UProfile({names, surname, birthDate, email, phone, address, phoneUrgenc
     phone: phone,
     address: address,
     phoneUrgency: phoneUrgency,
+    photo: photo,
   });
   const [updateUser, { isLoading}] = useUpdateUserMutation();
-
-
+  
   const handleEditClick = (fieldName) => {
     setEditMode({
       ...editMode,
@@ -33,7 +35,7 @@ function UProfile({names, surname, birthDate, email, phone, address, phoneUrgenc
   const handleSaveClick = (fieldName) => {
     // Call the updateUser mutation to save the data to the database
     console.log(email, {[fieldName] : newData[fieldName]})
-    
+    //            
     updateUser( {email, update : {[fieldName] : newData[fieldName]} });
 
     // Exit edit mode
@@ -42,6 +44,12 @@ function UProfile({names, surname, birthDate, email, phone, address, phoneUrgenc
       [fieldName]: false,
     });
   };
+
+  const handlePhotoUpload = (photoUrl) => {
+    updateUser({ email, update: { photo: photoUrl } });
+  };
+
+
 
   return (
     <div className="flex justify-center p-16">
@@ -245,12 +253,17 @@ function UProfile({names, surname, birthDate, email, phone, address, phoneUrgenc
 
         <div className="py-12">
             <div className="w-full p-10 rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)]">
-              <img
-                src={photoPerson}
-                alt="Imagen"
-                className="rounded-full h-24 w-24 object-cover mx-auto"
-              />
-              <h2 className="text-3xl font-bold text-center">{names}</h2>
+            <img
+                  src={photo}
+                  alt="Imagen"
+                  className="rounded-full h-24 w-24 object-cover mx-auto"
+                >
+
+                </img>
+            
+                <SendPhoto onPhotoUpload={handlePhotoUpload} />
+              
+              <h2 className="text-3xl font-bold text-center">{newData.names}</h2>
               <p className="card-content text-center">viajero</p>
             </div>
           </div>
