@@ -8,7 +8,6 @@ export const apiQueries = createApi({
         // en el deploy cambiar la base url al deploy del back.
     }),
     endpoints: (builder)=>({ // publication queries
-    endpoints: (builder)=>({ // publication queries
         getAllPublications: builder.query({
             query: ()=> ({url:"publication"})
         }),

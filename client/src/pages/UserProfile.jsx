@@ -15,16 +15,19 @@ function UserProfile() {
   const [showRegister, setShowRegister] = useState(false);
 
   useEffect(() => {
-    if (!isLoading) {
+    
+    // if (!isLoading) {
+      console.log(data)
       if (data && data.email === user.email) {
         // El usuario está registrado, no es necesario mostrar el componente de registro.
         setUserData(data);
+        console.log(data)
         setShowRegister(false);
       } else {
         // El usuario no está registrado, muestra el componente de registro.
         setShowRegister(true);
       }
-    }
+    // }
   }, [data, isLoading, user.email]);
 
   if (isLoading) {
