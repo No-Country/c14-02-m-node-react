@@ -8,7 +8,7 @@ const {UserModel} = require('../models')
 async function createUser(req, res) {
 	try {
 		const data = req.body;
-
+		console.log("DATAAAAAAAAAAAAA", data)
 //__________Validaciones______________________________________
         const validationError = UserModel(data).validateSync();
         // Trhow  new Error "xxxxxxxx"

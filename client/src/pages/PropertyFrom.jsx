@@ -9,6 +9,7 @@ import { FaKitchenSet } from "react-icons/fa6";
 
 import { useCreatePublicationMutation } from "../store/rtk-query";
 import { Link } from "react-router-dom";
+import UpImages from "../components/UpImages";
 
 const PropertyForm = () => {
   const [formData, setFormData] = useState({
@@ -86,9 +87,9 @@ const PropertyForm = () => {
         <div className="text-center">
           <h2 className="text-3xl font-semibold">Tu Airbnb</h2>
         </div>
+ {/* ==================UPLOAD IMAGES=============== */}
         <div className="text-center pb-8">
-          <h2>Subir imágenes (próximamente)</h2>
-          {/* código para subir imágenes */}
+          <UpImages />
         </div>
 
         <div className="w-full p-4">

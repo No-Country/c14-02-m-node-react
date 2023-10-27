@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { useCreateUserMutation } from '../store/rtk-query';
 
 const UserForm = (user) => {
+  console.log(user.user.photoURL)
   const [createUser, { isLoading }] = useCreateUserMutation()
   const [formData, setFormData] = useState({
     names: '',
@@ -10,12 +11,13 @@ const UserForm = (user) => {
     birthDate: '',
     email: user.user.email,
     phone: '+1234567890',
-    address: 'mi casita',
+    address: 'mi domicilio',
     phoneUrgency: '+1234567890',
+    photo: user.user.photoURL,
     role: 'user',
   });
   const navigate = useNavigate()
-
+console.log("FORMDATAAAAA",formData)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -32,13 +34,24 @@ const UserForm = (user) => {
 
   return (
     <div className="m-4 p-8 rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)]">
-      <div className="text-center">
+      
+      
+ 
+            <div className="max-w-screen-xl p-10 rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)] ">
+            <div className="text-center">
         <h2 className="text-3xl font-semibold">Tu Airbnb</h2>
       </div>
       <div className="text-center pb-8">
-        <h2>Hola {user.user.displayName}, ingresa tus Datos</h2>
+        <h2>Hola {user.user.displayName}, ingresa tus datos</h2>
       </div>
-  
+            <img
+                  src={formData.photo}
+                  alt="Imagen"
+                  className="rounded-full h-24 w-24 object-cover mx-auto"
+                >
+                </img>
+            </div>
+   
       <div className="w-full p-4">
         <form className="flex flex-col" onSubmit={handleSubmit}>
           

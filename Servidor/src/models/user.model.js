@@ -15,7 +15,11 @@ const userScheme = new mongoose.Schema({
 		required: true,
 		trim: true,
 	},
-
+	photo: {
+		type: String,
+		required: true,
+		trim: true,
+	},
 	birthDate: {
 		type: String,
 		required: true,
