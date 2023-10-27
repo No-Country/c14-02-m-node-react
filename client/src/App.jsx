@@ -7,7 +7,7 @@ import UserProfile from "./pages/UserProfile";
 import IndividualViewPage from "./pages/IndividualViewPage";
 import { FavoritesPages } from "./pages/FavoritesPages";
 import PropertyForm from "./pages/PropertyFrom";
-import { SearchFilter } from "./pages/SearchFilter";
+import SearchFilter from "./pages/SearchFilter";
 
 function App() {
 
