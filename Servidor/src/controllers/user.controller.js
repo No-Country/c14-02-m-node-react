@@ -8,7 +8,7 @@ const {UserModel} = require('../models')
 async function createUser(req, res) {
 	try {
 		const data = req.body;
-
+		console.log("DATAAAAAAAAAAAAA", data)
 //__________Validaciones______________________________________
         const validationError = UserModel(data).validateSync();
         // Trhow  new Error "xxxxxxxx"
@@ -85,6 +85,7 @@ async function getUsers(req, res) {
 async function updateUser(req, res) {
 	const email = req.params;
 	const data = req.body;
+	console.log("BODYYYY", data)
 	try {
 		const Users = await usermanager.updateUser(email, data);
 		if (Users.matchedCount > 0) {

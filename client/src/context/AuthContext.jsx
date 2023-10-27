@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+
+
 // Proveedor. El contexto me permite usar esos valores.
 export const AuthContext = createContext();
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-
   return context;
 };
 // Esta función contiene el valor del contexto.
@@ -28,12 +29,16 @@ export function AuthProvider({ children }) {
   // onAuthStateChanged => Me permite saber si esta logueado o no.
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      
       setUser(currentUser);
       setLoading(false);
     });
-
+    
     return () => unsubscribe();
   }, []);
+
+ 
+
 
   return (
     <AuthContext.Provider value={{ loginWithGoogle, user, loading, logout }}>{children}</AuthContext.Provider>

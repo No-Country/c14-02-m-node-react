@@ -15,7 +15,11 @@ const userScheme = new mongoose.Schema({
 		required: true,
 		trim: true,
 	},
-
+	photo: {
+		type: String,
+		required: true,
+		trim: true,
+	},
 	birthDate: {
 		type: String,
 		required: true,
@@ -52,16 +56,6 @@ const userScheme = new mongoose.Schema({
 		type: String,
 		required: true,
 		trim: true,
-	},
-
-	officialId: {
-		type: String,
-		required: true,
-		trim: true,
-		validate: {
-			validator: (value) => /\d{8}-\d{1}/.test(value), // Valida el formato de identificación (XXXXXXXX-X)
-			message: 'Formato de identificación no válido (XXXXXXXX-X)',
-		},
 	},
 
 	phoneUrgency: {

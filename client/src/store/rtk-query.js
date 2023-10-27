@@ -1,4 +1,3 @@
-
 import {createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 
@@ -58,10 +57,10 @@ export const apiQueries = createApi({
             })
         }),
         updateUser: builder.mutation({
-            query: (id,update) =>({
-                url: `user/${id}`,
+            query: (data) =>({
+                url: `user/${data.email}`,
                 method: "put",
-                body: update
+                body: data.update
             })
         }),//review queries
         getReviews: builder.query({
@@ -83,7 +82,24 @@ export const apiQueries = createApi({
                 method: "pust",
                 body: update
             })
-        }),// booking queries
+        }),// favorite queries
+        getAllFavorites: builder.query({
+            query: () => ({ url: "favorite" })
+        }),
+        addFavorite: builder.mutation({
+            query: (data) => ({
+                url: "favorite",
+                method: "post",
+                body: data,
+            })
+        }),
+        removeFavorite: builder.mutation({
+            query: (id) => ({
+                url: `favorite/${id}`,
+                method: "delete",
+            })
+        }),
+        
     }),
     
     //agregar otros endpoints
@@ -117,7 +133,10 @@ export const {
     useGetReviewsQuery,
     useCreateReviewMutation,
     useUpdateReviewMutation,
-    // booking queries
+    // favorite queries
+    useGetAllFavoritesQuery,
+    useAddFavoriteMutation,
+    useRemoveFavoriteMutation,
 
 
 
