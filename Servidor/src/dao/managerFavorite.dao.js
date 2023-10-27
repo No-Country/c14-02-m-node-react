@@ -13,10 +13,10 @@ class FavoriteManager {
 	}
 
 	async createFavorite(data) {
-		const { publicationId, userId } = data;
+		const { publicationId, email } = data;
 
 		const fav = FavoriteModel({
-			userId,
+			email,
 			publicationId,
 		});
 		await this.createDocument('favoriteCollection', fav);
@@ -37,9 +37,10 @@ class FavoriteManager {
     }
 
 
-	async getAllFavorites() {
+	async getAllFavorites(query) {
+
 		try {
-			const favs = await this.getAllDocuments('favoriteCollection');
+			const favs = await this.getAllDocuments('favoriteCollection', query);
 			return favs;
 		} catch (error) {
 			console.error(error);
