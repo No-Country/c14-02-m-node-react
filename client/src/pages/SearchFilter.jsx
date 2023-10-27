@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { useSearch } from "../hook/useSearch";
 
+
 const SearchFilter = () => {
   const { filteredLocations } = useSearch();
   const location = useLocation(); // Obtiene información sobre la ubicación actual de la aplicación, incluyendo la URL.
