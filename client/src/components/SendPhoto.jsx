@@ -1,6 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
-import style from './SendPhoto.module.css';
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
+import style from "./SendPhoto.module.css";
+import { AiOutlineCamera } from "react-icons/ai";
+import Swal from 'sweetalert2';
 
 const VITE_IMGBB_KEY = import.meta.env.VITE_IMGBB_KEY;
 
@@ -16,25 +18,35 @@ const SendPhoto = (props) => {
   const handleUpload = async () => {
     if (selectedFile) {
       const formData = new FormData();
-      formData.append('image', selectedFile);
-
+      formData.append("image", selectedFile);
+  
       try {
-        const response = await axios.post('https://api.imgbb.com/1/upload', formData, {
-          params: {
-            key: VITE_IMGBB_KEY,
-          },
-        });
-        
+        const response = await axios.post(
+          "https://api.imgbb.com/1/upload",
+          formData,
+          {
+            params: {
+              key: VITE_IMGBB_KEY,
+            },
+          }
+        );
+  
         const imageUrl = response.data.data.url;
-        
-        // Llama a la función de devolución de llamada para enviar la URL al componente padre (UProfile)
+  
         if (props.onPhotoUpload) {
           props.onPhotoUpload(imageUrl);
         }
-
-        alert('¡Imagen actualizada!');
+  
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          width: 400,
+          title: 'Tu foto ha sido actualizada!',
+          showConfirmButton: false,
+          timer: 1500
+        });
       } catch (error) {
-        console.error('Hubo un error al subir la imagen:', error);
+        console.error("Hubo un error al subir la imagen:", error);
       }
     }
   };
@@ -47,8 +59,17 @@ const SendPhoto = (props) => {
 
   return (
     <div className={style.contenedor}>
-      <input type="file" ref={fileInputRef} onChange={handleFileChange} style={{ display: 'none' }} />
-      <button onClick={() => fileInputRef.current.click()}>Cambiar Foto</button>
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        style={{ display: "none" }}
+      />
+      <button 
+      onClick={() => fileInputRef.current.click()}
+      className="absolute right-0 text-white p-2 bg-stone-950 rounded-full cursor-pointer">
+        <AiOutlineCamera />
+      </button>
     </div>
   );
 };
