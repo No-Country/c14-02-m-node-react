@@ -105,3 +105,18 @@
 
 /* Fin de los estilos de las cards. */
 
+
+/* ============grid de perfil=========== */
+.grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
