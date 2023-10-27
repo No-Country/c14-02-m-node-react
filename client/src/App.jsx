@@ -7,8 +7,10 @@ import UserProfile from "./pages/UserProfile";
 import IndividualViewPage from "./pages/IndividualViewPage";
 import { FavoritesPages } from "./pages/FavoritesPages";
 import PropertyForm from "./pages/PropertyFrom";
+import { SearchFilter } from "./pages/SearchFilter";
 
 function App() {
+
   return (
     <AuthProvider>
       <Routes>
@@ -18,6 +20,7 @@ function App() {
         <Route path="/publication/:id" element={<IndividualViewPage />} />
         <Route path="/favorites" element={<FavoritesPages />} />
         <Route path="/manageads" element={<PropertyForm />} />
+        <Route path="/searchfilter" element={<SearchFilter />} />
       </Routes>
     </AuthProvider>
   );  
