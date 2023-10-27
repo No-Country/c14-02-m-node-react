@@ -27,7 +27,7 @@ export const Card = ({publication}) => {
     if (user) {
       e.preventDefault();
       setIsHeartRed(!isHeartRed);
-      setIsFavorite(!isFavorite);npm
+      setIsFavorite(!isFavorite);
       sendFavoriteStatusToServer(publication._id, !isFavorite);
     } else {
       e.preventDefault();

@@ -49,8 +49,6 @@ function UProfile({names, surname, birthDate, email, phone, address, phoneUrgenc
     updateUser({ email, update: { photo: photoUrl } });
   };
 
-
-
   return (
     <div className="flex justify-center p-16">
       <div className="grid md:grid-cols-2 gap-8 grid-cols-1">

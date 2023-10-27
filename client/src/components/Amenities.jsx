@@ -1,44 +1,71 @@
 import { LiaSwimmingPoolSolid } from "react-icons/lia";
 import { TbToolsKitchen2 } from "react-icons/tb";
 import { AiOutlineWifi, AiOutlineCar } from "react-icons/ai";
-import { GiDesk, GiFireplace } from "react-icons/gi";
+import { PiTelevisionBold } from "react-icons/pi";
+import { CgGym } from "react-icons/cg";
+import { GiWashingMachine } from "react-icons/gi";
+import { MdSevereCold } from "react-icons/md";
+import React, { useState } from "react";
 
-function Amenities() {
+function Amenities({ amenities }) {
+  const amenitiesObj = {
+    "Piscina": LiaSwimmingPoolSolid,
+    "Cocina": TbToolsKitchen2,
+    "Wifi": AiOutlineWifi,
+    "Estacionamiento": AiOutlineCar,
+    "Tv": PiTelevisionBold,
+    "Gimnasio": CgGym,
+    "Lavarropas": GiWashingMachine,
+    'Aire Acondicionado': MdSevereCold
+  };
+
+  const initialAmenities = amenities.slice(0, 3);
+  const [displayedAmenities, setDisplayedAmenities] = useState(initialAmenities);
+  const [showMore, setShowMore] = useState(true);
+
+  const handleShowMore = () => {
+    setDisplayedAmenities(amenities);
+    setShowMore(false);
+  };
+
+  const handleShowLess = () => {
+    setDisplayedAmenities(initialAmenities);
+    setShowMore(true);
+  };
+
   return (
     <div>
-      <div className="tborder-b border-b p-5">
+      <div className="border-b p-5">
         <p className="font-semibold text-2xl my-4">¿Qué ofrece este lugar?</p>
 
-        <div className="flex mb-4">
-          <LiaSwimmingPoolSolid size={35} />
-          <p>Pileta De uso privado</p>
-        </div>
-        <div className="flex mb-4">
-          <TbToolsKitchen2 size={30} />
-          <p>Cocina</p>
-        </div>
-        <div className="flex mb-4">
-          <AiOutlineWifi size={35} />
-          <p>Wifi</p>
-        </div>
-        <div className="flex mb-4">
-          <AiOutlineCar size={35} />
-          <p>Estacionamiento gratis en la propiedad</p>
-        </div>
-        <div className="flex mb-4">
-          <GiDesk size={35} />
-          <p>Zona de trabajo</p>
-        </div>
-        <div className="flex mb-4">
-          <GiFireplace size={35} />
-          <p>Chimenea</p>
-        </div>
-        <div className="mb-6">
-          <button className="bg-white text-black border font-semibold border-black px-4 py-2 rounded">
-            Mostrar más Servicios
-          </button>
-        </div>
-      </div>
+        {displayedAmenities.map((amenity, index) => (
+          <div key={index} className="flex mb-4 items-center">
+            {amenitiesObj[amenity] && (
+              <span className="mr-2">
+                {React.createElement(amenitiesObj[amenity], { size: 35 })}
+              </span>
+            )}
+            <p>{amenity}</p>
+          </div>
+        ))}
+      
+
+      {showMore ? (
+        <button
+          className="font-semibold text-lg underline"
+          onClick={handleShowMore}
+        >
+          Mostrar más
+        </button>
+      ) : (
+        <button
+          className="font-semibold text-lg underline"
+          onClick={handleShowLess}
+        >
+          Mostrar menos
+        </button>
+      )}
+    </div>
     </div>
   );
 }

@@ -1,10 +1,11 @@
 import React from "react";
 
-function Type() {
+function Type({data}) {
+
   return (
     <div>
       <h2 className="text-2xl font-semibold">
-        Habitación en el siguiente alojamiento: choza.
+        {data.offering}: {data.type}.
       </h2>
     </div>
   );
