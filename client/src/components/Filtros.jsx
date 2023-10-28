@@ -5,7 +5,7 @@ import boats from "../assets/images/boats.png";
 import lakefrontt from "../assets/images/lakefrontt.png";
 import luxe from "../assets/images/luxe.png";
 import treehouses from "../assets/images/treehouses.png";
-import cabañas from "../assets/images/cabañas.png";
+import cabanas from "../assets/images/cabanas.png";
 import impresionantes from "../assets/images/impresionantes.png";
 import frentealaplaya from "../assets/images/frentealaplaya.png";
 import esqui from "../assets/images/esquí.png";
@@ -198,7 +198,7 @@ const Filtros = () => {
                     <h3>Casas del árbol</h3>
                 </Filter>
                 <Filter>
-                            <Icon src={cabañas}/>
+                            <Icon src={cabanas}/>
                             <h3>Cabañas</h3>
                 </Filter>
                 <Filter>

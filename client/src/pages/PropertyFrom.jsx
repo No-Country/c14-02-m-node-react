@@ -3,13 +3,17 @@ import { LiaSwimmingPoolSolid } from "react-icons/lia";
 import { AiOutlineWifi, AiOutlineCar } from "react-icons/ai";
 import { LiaBedSolid } from "react-icons/lia";
 import { CgGym } from "react-icons/cg";
-import { MdOutlineBathtub } from "react-icons/md";
+import { MdOutlineBathtub, MdOutlineLocalLaundryService } from "react-icons/md";
 import { LuSofa } from "react-icons/lu";
-import { FaKitchenSet } from "react-icons/fa6";
+import { FaKitchenSet, FaFan } from "react-icons/fa6";
+import { FiMonitor } from "react-icons/fi";
 
 import { useCreatePublicationMutation } from "../store/rtk-query";
 import { Link } from "react-router-dom";
+
 import UpImages from "../components/UpImages";
+
+import Swal from "sweetalert2";
 
 const PropertyForm = () => {
   const [formData, setFormData] = useState({
@@ -27,10 +31,11 @@ const PropertyForm = () => {
     discount: "",
     extra_Security: [],
     email: "",
+    photo: [],
   });
   console.log("esto llega de formulario", formData);
 
-  const [createPublication]= useCreatePublicationMutation(formData);
+  const [createPublication] = useCreatePublicationMutation(formData);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -50,10 +55,18 @@ const PropertyForm = () => {
     }
   };
 
+  const handleUploadImages = (uploadedUrls) => {
+    // maneja las imágenes cargadas en el componente UpImages
+    setFormData({
+      ...formData,
+      photo: uploadedUrls,
+    });
+  };
+
   const handleSpacesChange = (e) => {
     const { name, type, checked } = e.target;
     let updatedSpaces = formData.spaces;
-  
+
     if (type === "checkbox") {
       if (checked) {
         updatedSpaces = [...updatedSpaces, name];
@@ -61,17 +74,80 @@ const PropertyForm = () => {
         updatedSpaces = updatedSpaces.filter((item) => item !== name);
       }
     }
-  
+
     setFormData({
       ...formData,
       spaces: updatedSpaces,
     });
   };
-  
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     createPublication(formData);
+
+    try {
+      const response = await createPublication(formData);
+
+      // Validar campos requeridos
+      if (
+        !formData.title ||
+        !formData.location ||
+        !formData.description ||
+        !formData.price ||
+        !formData.email
+      ) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Por favor, completa todos los campos obligatorios.",
+        });
+        return; // No envíes la solicitud si falta información
+      }
+
+      // Validar el formato del correo electrónico
+      const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+      if (!emailRegex.test(formData.email)) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "El formato del correo electrónico no es válido.",
+        });
+        return; // No envíes la solicitud si el correo electrónico no es válido
+      }
+
+      // Validar el descuento
+      const discountValue = parseFloat(formData.discount);
+      if (isNaN(discountValue) || discountValue < 5 || discountValue > 100) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "El descuento debe ser un número entre 5 y 100.",
+        });
+        return; // No envíes la solicitud si el descuento no es válido
+      }
+
+      if (response.data) {
+        // la publicación se creó con éxito
+        Swal.fire({
+          icon: "success",
+          title: "Éxito",
+          text: "La propiedad se guardó con éxito.",
+        });
+      } else {
+        // error al crear la publicación
+        console.error("Error al crear la publicación");
+      }
+    } catch (error) {
+      // manejar errores de la solicitud aquí
+      console.error("Error al crear la publicación:", error);
+    }
+  };
+
+  const updateImageUrls = (imageUrls) => {
+    setFormData({
+      ...formData,
+      photo: imageUrls,
+    });
   };
 
   return (
@@ -87,9 +163,9 @@ const PropertyForm = () => {
         <div className="text-center">
           <h2 className="text-3xl font-semibold">Tu Airbnb</h2>
         </div>
- {/* ==================UPLOAD IMAGES=============== */}
+        {/* ==================UPLOAD IMAGES=============== */}
         <div className="text-center pb-8">
-          <UpImages />
+          <UpImages onImagesUploaded={updateImageUrls} />
         </div>
 
         <div className="w-full p-4">
@@ -136,7 +212,7 @@ const PropertyForm = () => {
               onChange={handleChange}
             ></textarea>
 
-            <div className="flex justify-between">
+            <div className="flex justify-between pt-4">
               {[
                 {
                   id: "Dormitorios",
@@ -281,41 +357,87 @@ const PropertyForm = () => {
               Amenities
             </label>
 
-            <div className="flex items-center justify-between pb-5">
-              {[
-                {
-                  id: "wifi",
-                  label: "Wifi",
-                  icon: <AiOutlineWifi size={25} />,
-                },
-                {
-                  id: "pool",
-                  label: "Pool",
-                  icon: <LiaSwimmingPoolSolid size={30} />,
-                },
-                { id: "gym", label: "Gym", icon: <CgGym size={30} /> },
-                {
-                  id: "parking",
-                  label: "Parking",
-                  icon: <AiOutlineCar size={30} />,
-                },
-              ].map((amenity) => (
-                <div className="flex items-center" key={amenity.id}>
-                  <input
-                    type="checkbox"
-                    id={amenity.id}
-                    name={amenity.id}
-                    value={amenity.id}
-                    className="mr-3"
-                    checked={formData.amenities.includes(amenity.id)}
-                    onChange={handleChange}
-                  />
-                  <div>
-                    {amenity.icon}
-                    <label htmlFor={amenity.id}>{amenity.label}</label>
+            <div className="flex flex-col">
+              <div className="flex flex-wrap justify-between">
+                {[
+                  {
+                    id: "Wifi",
+                    label: "Wifi",
+                    icon: <AiOutlineWifi size={25} />,
+                  },
+                  {
+                    id: "Piscina",
+                    label: "Pool",
+                    icon: <LiaSwimmingPoolSolid size={30} />,
+                  },
+                  {
+                    id: "Gimnasio",
+                    label: "Gym",
+                    icon: <CgGym size={30} />,
+                  },
+                  {
+                    id: "Estacionamiento",
+                    label: "Parking",
+                    icon: <AiOutlineCar size={30} />,
+                  },
+                ].map((amenity) => (
+                  <div className="flex items-center" key={amenity.id}>
+                    <input
+                      type="checkbox"
+                      id={amenity.id}
+                      name={amenity.id}
+                      value={amenity.id}
+                      className="mr-3"
+                      checked={formData.amenities.includes(amenity.id)}
+                      onChange={handleChange}
+                    />
+                    <div>
+                      {amenity.icon}
+                      <label htmlFor={amenity.id}>{amenity.label}</label>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              <div className="flex flex-wrap justify-between">
+                {[
+                  {
+                    id: "Tv",
+                    label: "Tv",
+                    icon: <FiMonitor size={30} />,
+                  },
+                  {
+                    id: "Lavarropas",
+                    label: "Washing",
+                    icon: <MdOutlineLocalLaundryService size={30} />,
+                  },
+                  {
+                    id: "Cocina",
+                    label: "Cocina",
+                    icon: <FaKitchenSet size={30} />,
+                  },
+                  {
+                    id: "Aire Acondicionado",
+                    label: "AC",
+                    icon: <FaFan size={30} />,
+                  },
+                ].map((amenity) => (
+                  <div className="flex items-center" key={amenity.id}>
+                    <input
+                      type="checkbox"
+                      id={amenity.id}
+                      name={amenity.id}
+                      value={amenity.id}
+                      className="mr-3"
+                      checked={formData.amenities.includes(amenity.id)}
+                      onChange={handleChange}
+                    />
+                    <div>
+                      {amenity.icon}
+                      <label htmlFor={amenity.id}>{amenity.label}</label>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <label
@@ -403,9 +525,13 @@ const PropertyForm = () => {
                 />
               </div>
             </div>
-            <button className="bg-black text-white p-2 px-4 my-6 rounded-lg text-lg">
+            <button
+              className="bg-black text-white p-2 px-4 my-6 rounded-lg text-lg"
+              type="submit"
+            >
               Agregar
             </button>
+            
           </form>
         </div>
       </div>
