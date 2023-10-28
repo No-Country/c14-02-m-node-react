@@ -13,14 +13,15 @@ import IvpReservation from "./IvpReservation";
 import { LiaBedSolid, LiaMedalSolid } from "react-icons/lia";
 import { GrNotes } from "react-icons/gr";
 
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 
-function IvpDescription() {
+function IvpDescription({data, dataUser}) {
 
-  const info = useSelector(state => state.main.publicationDetail);
+  // const info = useSelector(state => state.main.publicationDetail);
 
-  console.log('publicationDetail', info);
+  console.log('PARAMETROS', data,dataUser);
+  console.log(data.offering)
   return (
     <div>
       <div className="grid grid-cols-3 gap-4">
@@ -31,14 +32,13 @@ function IvpDescription() {
           <div className="max-w-[600px] mx-auto">
             <div className="flex items-center p-5">
               <div>
-                {/* TYPE */}
-                <Type />
-                <h2 className="text-2xl font-semibold">Anfitrión: Megumi</h2>
+                <Type data={data} />
+                <h2 className="text-2xl font-semibold">Anfitrión: {dataUser?.names}</h2>
               </div>
               <div>
                 <Link to="/user-account">
                   <img
-                    src="https://cdn.leonardo.ai/users/2b4dbbb3-c3f4-45a9-a675-33148ef5ed0f/generations/7310e0ef-8fe0-4bad-b6cb-2e5be6a5da15/variations/Default_ultra_detailed_complex_illustration_a_water_bender_sur_0_7310e0ef-8fe0-4bad-b6cb-2e5be6a5da15_1.jpg?w=512"
+                    src={dataUser?.photo}
                     alt="Imagen"
                     className="rounded-full h-16 w-16 object-cover mr-4"
                   />
@@ -57,7 +57,7 @@ function IvpDescription() {
                   <LiaBedSolid size={30} className="mr-4" />
                   <div>
                     <h2 className="text-lg font-semibold">
-                      Habitación en el siguiente alojamiento: choza
+                      Habitación en el siguiente alojamiento: {data.type}
                     </h2>
                     <p>
                       Tu propio dormitorio en un alojamiento, más acceso a
@@ -90,33 +90,33 @@ function IvpDescription() {
 
             {/* IDIOMA */}
 
-            <div className="border-b p-5">
+            {/* <div className="border-b p-5">
               <div className=" p-2 rounded-lg">
                 <p>Parte de la información se tradujo automáticamente. </p>
                 <span className="font-semibold underline">
                   Mostrar idioma original
                 </span>
               </div>
-            </div>
+            </div> */}
 
             {/* DESCRIPTION */}
 
-            <Description />
+            {data?.description ? (<Description description={data?.description}/>) : []}
 
             {/* CARD DEL HOSTER */}
 
-            <IvpHoster />
-
+            {/* <IvpHoster /> */}
+{/* 
             <div className="border-b p-5">
               <h2 className="text-2xl mb-4 font-semibold">
                 ¿Dónde vas a dormir?
               </h2>
               <IvpSlider />
-            </div>
+            </div> */}
 
             {/* AMENITIES */}
 
-            <Amenities />
+            {data?.amenities ? (<Amenities amenities={data?.amenities}/>) : []}
 
             {/* CALENDAR */}
             <IvpCalendar />

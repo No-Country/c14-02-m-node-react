@@ -27,7 +27,7 @@ METHOD:  GET
 URL: http://localhost:3000/api/favorite
 Trae todos los favoritos juntos que fueron clickeados
 */
-router.get('/', getAllFavorite);
+router.get('/:email', getAllFavorite);
 
 router.delete('/:id', deleteFav);
 

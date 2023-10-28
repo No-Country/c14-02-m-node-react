@@ -29,7 +29,7 @@ async function getAllDocuments(collection, query = {}) {
 		if (!this.db[collection]) {
 			await this.db.connectToDatabase();
 		}
-		console.log(collection, query);
+	
 		const document = await this.db[collection].find(query).toArray();
 		return document;
 	} catch (e) {

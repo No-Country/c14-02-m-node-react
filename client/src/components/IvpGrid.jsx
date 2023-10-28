@@ -2,7 +2,7 @@ import noImage from "../assets/images/noImage.png"
 
 function IvpGrid(photos) {
   const images = photos.images;
-  console.log("iiiiiii",photos)
+
   return (
 
       <div className="p-4">

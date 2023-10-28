@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
 const favoriteSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'user', // Referencia al modelo de user que se ha marcado como favorita
+  email: {
+    type: String,
     required: true,
   },
   publicationId: {
