@@ -29,7 +29,7 @@ async function getAllDocuments(collection, query = {}) {
 		if (!this.db[collection]) {
 			await this.db.connectToDatabase();
 		}
-	
+		// busca una coleccion mediante una query, si la query es un objeto vacio pinta todo.
 		const document = await this.db[collection].find(query).toArray();
 		return document;
 	} catch (e) {
