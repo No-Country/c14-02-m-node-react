@@ -5,60 +5,64 @@ import { CardSlider } from "./CardSlider";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import CardInfo from './CardInfo';
+import { useAddFavoriteMutation, useRemoveFavoriteMutation} from "../store/rtk-query";
 
 
-export const Card = ({publication}) => {
-  const [isHeartRed, setIsHeartRed] = useState(false);
-  const { user } = useAuth();
+export const Card = ({publication, isFavorite}) => {
   const navigate = useNavigate();
-  const [isFavorite, setIsFavorite] = useState(publication.favorite);
+
+  const [addFav, {isLoadingAdd}] = useAddFavoriteMutation()
+  const [DeleteFav, {isLoadingDelete}] = useRemoveFavoriteMutation()
+  const [isHeartRed, setIsHeartRed] = useState(isFavorite);
+  const { user } = useAuth();
+
 
   const images = publication.photos;
-  //  console.log(publication);
-  // const images = [
-  //   "https://picsum.photos/200",
-  //   "https://picsum.photos/200",
-  //   "https://picsum.photos/200",
-  //   "https://picsum.photos/200",
-  //   "https://picsum.photos/200",
-  // ];
 
   const toggleHeartColor = (e) => {
     if (user) {
-      e.preventDefault();
-      setIsHeartRed(!isHeartRed);
-      setIsFavorite(!isFavorite);
-      sendFavoriteStatusToServer(publication._id, !isFavorite);
+      if(isHeartRed){
+        //si esta clickeado borrar de la base de datos/elimina
+        DeleteFav(publication._id)
+        e.preventDefault();
+        setIsHeartRed(!isHeartRed);
+      }else{
+        //se crea un post osea un favorito
+        const fav = {email: user.email ,publicationId: publication._id}
+        addFav(fav)
+        e.preventDefault();
+        setIsHeartRed(!isHeartRed);
+      }
     } else {
       e.preventDefault();
       navigate("/register");
     }
   };
 
-    const sendFavoriteStatusToServer = (publicationId, isFavorite) => {
-    const apiUrl = `https://clon-airbnb-dev-shhb.1.us-1.fl0.io/api/favorite/${publicationId}`;
-    const requestData = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ isFavorite }),
-    };
+    // const sendFavoriteStatusToServer = (publicationId, isFavorite) => {
+    // const apiUrl = `https://clon-airbnb-dev-shhb.1.us-1.fl0.io/api/favorite/${publicationId}`;
+    // const requestData = {
+    //   method: "PUT",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ isFavorite }),
+    // };
 
-    fetch(apiUrl, requestData)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error en la respuesta del servidor');
-      }
-      return response.json();
-    })
-    .then(data => {
-      // Manejar la respuesta exitosa del servidor
-    })
-    .catch(error => {
-      console.error('Error en la llamada al servidor:', error);
-    });
-  }
+  //   fetch(apiUrl, requestData)
+  //   .then(response => {
+  //     if (!response.ok) {
+  //       throw new Error('Error en la respuesta del servidor');
+  //     }
+  //     return response.json();
+  //   })
+  //   .then(data => {
+  //     // Manejar la respuesta exitosa del servidor
+  //   })
+  //   .catch(error => {
+  //     console.error('Error en la llamada al servidor:', error);
+  //   });
+  // }
 
   return (
     <>
@@ -87,3 +91,5 @@ export const Card = ({publication}) => {
     
   );
 };
+
+

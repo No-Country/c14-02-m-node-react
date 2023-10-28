@@ -14,6 +14,8 @@ function UserProfile() {
   const [userData, setUserData] = useState(null);
   const [showRegister, setShowRegister] = useState(false);
 
+
+
   useEffect(() => {
     
     // if (!isLoading) {
@@ -49,8 +51,9 @@ function UserProfile() {
             phone={data.phone}
             address={data.address}
             phoneUrgency={data.phoneUrgency}
-            photo={data.photo} />
+            photo={data.photo} 
             // photo={user.photoURL} 
+             />
             
           <HelpFooter />
           <SuggestionFooter />

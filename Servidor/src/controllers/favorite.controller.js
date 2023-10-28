@@ -20,8 +20,14 @@ async function createFav(req, res) {
 
 
 async function getAllFavorite(req, res) {
+    const {email} = req.params
+    let filtro = {}
 	try {
-		const favs = await favoriteManager.getAllFavorites();
+        if(email){
+            filtro.email= email
+        }
+        
+		const favs = await favoriteManager.getAllFavorites(filtro);
 		return res.status(200).send(favs);
 
 	} catch (error) {
@@ -37,6 +43,7 @@ async function deleteFav(req, res) {
 	   const {id}= req.params;
 
        console.log("que id tengo en el delete del controller? ->", id)
+       console.log(req.params)
        //__________________________
 
 
