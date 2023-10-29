@@ -1,6 +1,5 @@
 import IvpDescription from "../components/IvpDescription";
 import IvpGrid from "../components/IvpGrid";
-import IvpMaps from "../components/IvpMaps";
 import IvpReviews from "../components/IvpReviews";
 import IvpRules from "../components/IvpRules";
 import NavBar from "../components/NavBar.jsx";
@@ -8,33 +7,28 @@ import NavBar from "../components/NavBar.jsx";
 import { LiaMedalSolid } from "react-icons/lia";
 import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { FiDownload } from "react-icons/fi";
-import { PiTranslateBold } from "react-icons/pi";
 
 import OptionsFooter from "../components/OptionsFooter";
 import HelpFooter from "../components/HelpFooter";
 import IvpEvaluaciones from "../components/IvpEvaluaciones";
 import { useParams } from "react-router-dom";
 
-import { useGetPublicationByIdQuery } from "../store/rtk-query";
+import { useGetPublicationByIdQuery, useGetUserQuery } from "../store/rtk-query";
 
 import { useDispatch } from "react-redux";
-import { loadPublicationDetail } from "../store/actions";
+
 import { useEffect } from "react";
 
 function IndividualViewPage(props) {
-
   const {id} = useParams();
+  
 
-  const dispatch = useDispatch();
+  const { data: publicationData, error: publicationError, isLoading: publicationLoading } = useGetPublicationByIdQuery(id);
 
+  const skipSecondQuery = !publicationData || publicationLoading || publicationError;
 
-  const {data, error, isLoading} = useGetPublicationByIdQuery(id);
+  const { data: dataUser, error: errorUser, isLoading: isLoadingUser } = useGetUserQuery(publicationData?.email, { skip: skipSecondQuery });
 
-  useEffect(()=>{
-    if(typeof data !== 'undefined'){
-      dispatch(loadPublicationDetail(data))
-    }
-  },[dispatch, data]);
 
   return (
     <>
@@ -46,18 +40,20 @@ function IndividualViewPage(props) {
         <div className="container mx-4">
           {/* TITULO */}
           <div className="flex items-center ">
-            <div>
+            {/* <div>
               <PiTranslateBold size={45} />
-            </div>
+            </div> */}
              <div>
               
              </div>
-            <h2 className="text-3xl font-semibold my-9 ">
-              {data?.title}
-              <span className="hidden sm:block">
-                {data?.featured}
+             <h2 className="text-3xl font-semibold my-9 ">
+              {publicationData?.title}
+              <span className="text-2xl font-normal hidden sm:block">
+              {publicationData?.location}
+               
               </span>
             </h2>
+
           </div>
 
           <div className="flex justify-between hidden sm:block">
@@ -78,11 +74,11 @@ function IndividualViewPage(props) {
           </div>
         </div>
 
-        <IvpGrid images={data?.photos || []}/>
+        <IvpGrid images={publicationData && publicationData.photos ? publicationData.photos : []} />
 
 
-        <IvpDescription />
-        <IvpMaps />
+
+        <IvpDescription data = {publicationData ? publicationData : []} dataUser = {dataUser} />
         <IvpReviews />
         <IvpEvaluaciones />
         <IvpRules />

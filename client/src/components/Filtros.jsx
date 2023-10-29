@@ -202,7 +202,6 @@ const Filtros = () => {
           <Icon src={casacampo} />
           <h3>Casa de campo</h3>
         </Filter>
-
       </BoxFilters>
       <Box>
         <img src={filter} />
