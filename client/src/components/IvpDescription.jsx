@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-
 import Description from "./Description";
 import Type from "./Type";
 import Spaces from "./Spaces";
@@ -22,6 +21,7 @@ function IvpDescription({data, dataUser}) {
 
   console.log('PARAMETROS', data,dataUser);
   console.log(data.offering)
+
   return (
     <div>
       <div className="grid grid-cols-3 gap-4">
@@ -47,11 +47,10 @@ function IvpDescription({data, dataUser}) {
             </div>
 
             {/* SPACES */}
+            {data?.spaces && <Spaces spaces={data.spaces} />}
             
-            <Spaces />
-
             {/* FAQ */}
-            <div className="border-b p-5">
+            <div className="border-b p-8">
               <div>
                 <div className="flex items-center">
                   <LiaBedSolid size={30} className="mr-4" />
@@ -69,7 +68,7 @@ function IvpDescription({data, dataUser}) {
                   <LiaMedalSolid size={30} className="mr-4" />
                   <div>
                     <h2 className="text-lg font-semibold">
-                      Tetsuya tiene la categoría de Superanfitrión
+                      Anfitrión con la categoría de Superanfitrión
                     </h2>
                     <p>
                       Los Superanfitriones son anfitriones con experiencia y
@@ -105,9 +104,9 @@ function IvpDescription({data, dataUser}) {
 
             {/* CARD DEL HOSTER */}
 
-            {/* <IvpHoster /> */}
-{/* 
-            <div className="border-b p-5">
+            <IvpHoster data={data} dataUser={dataUser} />
+
+            {/* <div className="border-b p-5">
               <h2 className="text-2xl mb-4 font-semibold">
                 ¿Dónde vas a dormir?
               </h2>

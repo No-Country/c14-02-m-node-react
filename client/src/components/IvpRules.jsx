@@ -1,6 +1,11 @@
 import Security from "../components/Security";
 
 function IvpRules() {
+  const data = {
+    security: ["Guardia de seguridad", "Cámara de vigilancia"],
+    extra_Security: ["Sistema de alarmas", "Vigilancia por satélite"],
+  };
+
   return (
     <div className="m-3 px-6">
       <div>
@@ -20,7 +25,7 @@ function IvpRules() {
           </div>
           <div className="flex-1 p-4">
             {/* SECURITY */}
-            <Security />
+            <Security data={data} />
           </div>
           <div className="flex-1 p-4">
             <h3 className="font-bold text-lg mb-3">Política de cancelación</h3>

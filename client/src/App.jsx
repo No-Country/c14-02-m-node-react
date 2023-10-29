@@ -7,6 +7,7 @@ import UserProfile from "./pages/UserProfile";
 import IndividualViewPage from "./pages/IndividualViewPage";
 import { FavoritesPages } from "./pages/FavoritesPages";
 import PropertyForm from "./pages/PropertyFrom";
+import PublicationsUser from "./pages/PublicationsUser";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Route path="/user" element={<UserProfile  />} />
         <Route path="/publication/:id" element={<IndividualViewPage />} />
         <Route path="/favorites" element={<FavoritesPages />} />
-        <Route path="/manageads" element={<PropertyForm />} />
+        <Route path="/manageads" element={<PublicationsUser />} />
+        <Route path="/tuairbnb" element={<PropertyForm />} />
       </Routes>
     </AuthProvider>
   );  
