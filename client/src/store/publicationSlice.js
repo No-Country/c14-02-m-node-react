@@ -12,10 +12,18 @@ const publicationSlice = createSlice({
   initialState: {
     allPublications: [],
     filteredPublications: [],
+    currentPublication: {},
     status: 'idle',
     error: null,
   },
   reducers: {
+    // acción para buscar por ID
+    searchPublicationById: (state, action) => {
+      const idForSearch = action.payload;
+      const foundPublication = state.allPublications.find(publication => publication._id === idForSearch);
+      state.currentPublication = foundPublication ? [foundPublication] : [];
+    },
+
     // acción para filtrar publicaciones por título
     filterPublicationsByTitle: (state, action) => {
       const titleToFilter = action.payload.toLowerCase();
@@ -63,7 +71,8 @@ const publicationSlice = createSlice({
 export const { 
   filterPublicationsByTitle,
   filterPublicationsByLocation,
-  filterPublicationsByPrice } = publicationSlice.actions;
+  filterPublicationsByPrice,
+  searchPublicationById } = publicationSlice.actions;
 
 export default publicationSlice.reducer;
 
