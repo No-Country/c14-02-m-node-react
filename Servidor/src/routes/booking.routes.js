@@ -4,10 +4,12 @@ const {
     createBookingController, 
     getBookingController,
     getAllBookingController,
-    deleteBookingController 
+    deleteBookingController,
+    getBookingByPublicationID 
 } = require('../controllers/booking.controller');
 
 
+router.get('/idPublication/:id', getBookingByPublicationID )
 
 router.get('/all', getAllBookingController);
 
@@ -43,5 +45,6 @@ DATOS: Id por Paramas de la reserva a eliminar.
 RETURN: La reserva eliminada.
 **/
 router.delete('/:id', deleteBookingController);
+
 
 module.exports = router;

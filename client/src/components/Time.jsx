@@ -4,7 +4,6 @@ import Times from './Times';
 
 
 function Time(props) {
- 
  return (
  <div>
   {props.showTime ? <Times date={props.date}/> : null}

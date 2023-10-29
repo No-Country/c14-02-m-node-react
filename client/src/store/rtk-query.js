@@ -99,7 +99,9 @@ export const apiQueries = createApi({
                 method: "delete",
             })
         }),
-        
+        getBooking: builder.query({
+            query: (id) => ({url:`booking/idPublication/${id}`})
+        }),
     }),
     
     //agregar otros endpoints
@@ -137,7 +139,7 @@ export const {
     useGetAllFavoritesQuery,
     useAddFavoriteMutation,
     useRemoveFavoriteMutation,
-
-
+    // Booking
+    useGetBookingQuery
 
 } = apiQueries;

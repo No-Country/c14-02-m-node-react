@@ -119,7 +119,7 @@ function IvpDescription({data, dataUser}) {
             {data?.amenities ? (<Amenities amenities={data?.amenities}/>) : []}
 
             {/* CALENDAR */}
-            <IvpCalendar />
+            <IvpCalendar idPublication={data?._id}/>
           </div>
         </div>
 
