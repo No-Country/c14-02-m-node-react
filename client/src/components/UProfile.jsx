@@ -117,6 +117,11 @@ function UProfile({
       return;
     }
 
+    if (!email) {
+      console.error("Email is null");
+      return;
+    }
+
     // llamando la mutacion
     updateUser({ email, update: { [fieldName]: newData[fieldName] } });
 

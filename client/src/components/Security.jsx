@@ -1,17 +1,26 @@
 import React from "react";
 
-function Security() {
+function Security({ data }) {
   return (
     <div>
-      <h3 className="font-bold text-lg mb-3">
-        Sobre la seguridad y la propiedad
-      </h3>
+      <h3 className="font-bold text-lg mb-3">Sobre la seguridad y la propiedad</h3>
       <ul className="list-none pl-0">
         <li className="mb-3">
-          No se indicó si hay detector de monóxido de carbono
+          <strong className="font-semibold">Seguridad:</strong>
+          <ul>
+            {data.security.map((securityItem, index) => (
+              <li key={index}>{securityItem}</li>
+            ))}
+          </ul>
         </li>
-        <li className="mb-3">Detector de humo</li>
-        <li className="mb-3">Hay espacios compartidos</li>
+        <li className="mb-3">
+          <strong  className="font-semibold">Seguridad Extra:</strong>
+          <ul>
+            {data.extra_Security.map((extraSecurityItem, index) => (
+              <li key={index}>{extraSecurityItem}</li>
+            ))}
+          </ul>
+        </li>
       </ul>
       <span className="text-lg font-semibold underline">Mostrar más</span>
     </div>
