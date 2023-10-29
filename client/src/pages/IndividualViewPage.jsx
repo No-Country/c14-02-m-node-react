@@ -18,7 +18,7 @@ import { useParams } from "react-router-dom";
 import { useGetPublicationByIdQuery, useGetUserQuery } from "../store/rtk-query";
 
 import { useDispatch } from "react-redux";
-import { loadPublicationDetail } from "../store/actions";
+// import { loadPublicationDetail } from "../store/actions";
 import { useEffect } from "react";
 
 function IndividualViewPage(props) {

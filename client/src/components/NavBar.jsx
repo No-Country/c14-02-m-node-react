@@ -236,13 +236,26 @@ const FilterResponsive = styled.div`
 export const NavBar = ({ photoPerson }) => {
   const { user } = useAuth();
   const [showInput, setShowInput] = useState(false);
+  const [selectedSearch, setSelectedSearch] = useState("");
 
+  
   const toggleInput = () => {
     if (!showInput) {
       setShowInput(true);
     }
   };
+  const handleLocationClick = () => {
+    setSelectedSearch("location"); // Cambia el estado a "location" cuando se hace clic en "Locación"
+  };
 
+  const handleTitleClick = () => {
+    setSelectedSearch("title"); // Cambia el estado a "title" cuando se hace clic en "Título"
+  };
+  const handlePriceClick = () => {
+    setSelectedSearch("price"); // Cambia el estado a "price" cuando se hace clic en "Título"
+  };
+
+  
   return (
     <Navbar>
       <Link to="/" style={{ cursor: "pointer" }}>
@@ -253,45 +266,35 @@ export const NavBar = ({ photoPerson }) => {
       </Link>
       <Container2 onClick={toggleInput}>
         {showInput ? (
-          <Search />
+          <Search selectedSearch={selectedSearch} setShowInput={setShowInput} />
         ) : (
           <>
-            <Text>A cualquier lugar</Text>
-            <Text>semana (en cualquier fecha)</Text>
-            <Text2>¿Cuantos?</Text2>
-            <DivSearch>
-              <img src={search} alt="Search Icon" />
+            <Text onClick={handleLocationClick}>Locación</Text>
+            <Text onClick={handleTitleClick}>Título</Text>
+            <Text onClick={handlePriceClick}>Precio</Text>
+            <DivSearch className="ml-2">
+              <img  src={search} alt="Search Icon" />
             </DivSearch>
           </>
         )}
       </Container2>
-      <Container2Movil>
-        <Icon src={searchmovil} />
-        <div className="pt-1.5 pb-0.5">
-          <Text>A cualquier lugar</Text>
-          <DivMovil>
-            <Text2>semana (en cualquier fecha)</Text2>
-            <Text3>●</Text3>
-            <Text3>¿Cuantos?</Text3>
-          </DivMovil>
-        </div>
-      </Container2Movil>
-      <FilterResponsive>
-        <img src={filter} className="w-4 h-4 transform scale-90" />
-      </FilterResponsive>
       <Container3>
         <Div>
           <DivIdioma>
             <Text3>Poné tu Airbnb</Text3>
           </DivIdioma>
           <DivIdioma>
-            <img src={idioma} />
+            <img src={idioma} alt="Idioma Icon" />
           </DivIdioma>
         </Div>
         <BottonMenu photoPerson={user ? user.photoURL : photoPerson} />
       </Container3>
+      <FilterResponsive>
+        <img src={filter} className="w-4 h-4 transform scale-90" alt="Filter Icon" />
+      </FilterResponsive>
     </Navbar>
   );
+  
 };
 
 export default NavBar;
