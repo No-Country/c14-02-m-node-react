@@ -10,6 +10,9 @@ import depto from "../assets/images/departamento.png";
 import casarodante from "../assets/images/casarodante.png";
 import casacampo from "../assets/images/campo.png";
 import filter from "../assets/images/filter.png";
+import { filterNav } from "../store/publicationSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -100,7 +103,7 @@ const Icon = styled.img`
   height: 1.5rem;
 `;
 
-const Text = styled.h3`
+const Text = styled.button`
   color: #222;
   font-size: 14px;
   font-style: normal;
@@ -162,45 +165,134 @@ const Switch = styled.label`
 `;
 
 const Filtros = () => {
+  const [selectedFilter, setSelectedFilter] = useState(null);
+  const [showDeleteButton, setShowDeleteButton] = useState(false);
+  const dispatch = useDispatch();
+
+  const click = (nombre) => {
+    const filter = nombre;
+    console.log(filter);
+    dispatch(filterNav(filter));
+
+    setSelectedFilter(nombre);
+    // Mostrar el botón "Eliminar"
+    setShowDeleteButton(true);
+  };
+
+  const handleDeleteClick = () => {
+    if (selectedFilter) {
+      setSelectedFilter(null);
+      setShowDeleteButton(false);
+      dispatch(filterNav(""));
+    }
+  };
+
   return (
     <Container>
       <BoxFilters>
         <Filter>
-          <Icon src={cabañas} />
-          <h3>Cabañas</h3>
-        </Filter>
-
-        <Filter>
-          <Icon src={lakefrontt} />
-          <h3>En el lago</h3>
+          <Icon src={depto} />
+          <button onClick={() => click("Departamento")}>Departamentos</button>
+          {selectedFilter === "Departamento" && (
+            <button
+              onClick={handleDeleteClick}
+              className="outline outline-red-600 px-1 text-red-950 rounded-sm"
+            >
+              Eliminar
+            </button>
+          )}
         </Filter>
 
         <Filter>
           <Icon src={casas} />
-          <h3>Casas</h3>
+          <button onClick={() => click("Casa")}>Casas</button>
+          {selectedFilter === "Casa" && (
+            <button
+              onClick={handleDeleteClick}
+              className="outline outline-red-600 px-1 text-red-950 rounded-sm"
+            >
+              Eliminar
+            </button>
+          )}
         </Filter>
 
         <Filter>
-          <Icon src={depto} />
-          <h3>Departamentos</h3>
+          <Icon src={casacampo} />
+          <button onClick={() => click("Granero")}>Casa de campo</button>
+          {selectedFilter === "Granero" && (
+            <button
+              onClick={handleDeleteClick}
+              className="outline outline-red-600 px-1 text-red-950 rounded-sm"
+            >
+              Eliminar
+            </button>
+          )}
+        </Filter>
+        {/* ------------DE ACA PARA ABAJO NO ANDAN-------------- */}
+
+        <Filter>
+          <Icon src={cabañas} />
+          <button onClick={() => click("Cabaña")}>Cabañas</button>
+          {selectedFilter === "Cabaña" && (
+            <button
+              onClick={handleDeleteClick}
+              className="outline outline-red-600 px-1 text-red-950 rounded-sm"
+            >
+              Eliminar
+            </button>
+          )}
+        </Filter>
+
+        <Filter>
+          <Icon src={lakefrontt} />
+          <button onClick={() => click("Hotel")}>Hotel</button>
+          {selectedFilter === "Hotel" && (
+            <button
+              onClick={handleDeleteClick}
+              className="outline outline-red-600 px-1 text-red-950 rounded-sm"
+            >
+              Hotel
+            </button>
+          )}
+        </Filter>
+
+        <Filter>
+          <Icon src={casarodante} />
+          <button onClick={() => click("Casa Rodante")}>Casa rodante</button>
+          {selectedFilter === "Casa Rodante" && (
+            <button
+              onClick={handleDeleteClick}
+              className="outline outline-red-600 px-1 text-red-950 rounded-sm"
+            >
+              Hotel
+            </button>
+          )}
         </Filter>
 
         <Filter>
           <Icon src={piletasincreibles} />
-          <h3>Piletas increíbles</h3>
+          <button onClick={() => click("Castillo")}>Castillos</button>
+          {selectedFilter === "Castillo" && (
+            <button
+              onClick={handleDeleteClick}
+              className="outline outline-red-600 px-1 text-red-950 rounded-sm"
+            >
+              Hotel
+            </button>
+          )}
         </Filter>
 
         <Filter>
           <Icon src={boats} />
-          <h3>Barcos</h3>
-        </Filter>
-        <Filter>
-          <Icon src={casarodante} />
-          <h3>Casa rodante</h3>
-        </Filter>
-        <Filter>
-          <Icon src={casacampo} />
-          <h3>Casa de campo</h3>
+          <button onClick={() => click("Barco")}>Barcos</button>
+          {selectedFilter === "Barco" && (
+            <button
+              onClick={handleDeleteClick}
+              className="outline outline-red-600 px-1 text-red-950 rounded-sm"
+            >
+              Hotel
+            </button>
+          )}
         </Filter>
       </BoxFilters>
       <Box>
