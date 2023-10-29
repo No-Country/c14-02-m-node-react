@@ -12,7 +12,7 @@ export const store = configureStore({
   reducer: {
     [apiQueries.reducerPath]: apiQueries.reducer,
     publications: publicationReducer,
-    // users: userReducer, // Agrega otros slices aquí
+    users: userReducer, 
     // reviews: reviewReducer,
     favorites: favoriteReducer,
   },

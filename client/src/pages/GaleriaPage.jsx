@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchPublications } from "../store/publicationSlice";
 import { loadFavorites } from "../store/favoriteSlice";
 import { filterPublicationsByTitle } from "../store/publicationSlice";
+import { fetchUsers } from "../store/userSlice";
 
 export const GaleriaPage = () => {
   const { user } = useAuth();
@@ -14,6 +15,7 @@ export const GaleriaPage = () => {
   useEffect(() => {
     dispatch(fetchPublications());
     dispatch(loadFavorites(user?.email));
+    dispatch(fetchUsers())
   }, [user, dispatch]);
 
   // Usar Redux para obtener las publicaciones y favoritos
@@ -25,7 +27,9 @@ export const GaleriaPage = () => {
 
 
       {status === "loading" ? (
-        <span>Cargando...</span>
+        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-gray-900"></div>
+      </div>
       ) : status === "failed" ? (
         <span>Error al cargar las publicaciones</span>
       ) : filteredPublications.length > 0 ? (
