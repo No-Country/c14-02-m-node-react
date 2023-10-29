@@ -2,7 +2,7 @@ import styled from "styled-components";
 import boats from "../assets/images/boats.png";
 import lakefrontt from "../assets/images/lakefrontt.png";
 
-import cabañas from "../assets/images/cabañas.png";
+import cabañas from "../assets/images/cabanas.png";
 
 import piletasincreibles from "../assets/images/piletasincreibles.png";
 import casas from "../assets/images/casa.png";
