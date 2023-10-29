@@ -22,76 +22,75 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 function IndividualViewPage(props) {
+	const { id } = useParams();
 
-  const {id} = useParams();
+	const {
+		data: publicationData,
+		error: publicationError,
+		isLoading: publicationLoading,
+	} = useGetPublicationByIdQuery(id);
 
+	const skipSecondQuery = !publicationData || publicationLoading || publicationError;
 
-  const { data: publicationData, error: publicationError, isLoading: publicationLoading } = useGetPublicationByIdQuery(id);
+	const {
+		data: dataUser,
+		error: errorUser,
+		isLoading: isLoadingUser,
+	} = useGetUserQuery(publicationData?.email, { skip: skipSecondQuery });
 
-  const skipSecondQuery = !publicationData || publicationLoading || publicationError;
+	return (
+		<>
+			<div className="hidden sm:block">
+				<NavBar />
+			</div>
 
-  const { data: dataUser, error: errorUser, isLoading: isLoadingUser } = useGetUserQuery(publicationData?.email, { skip: skipSecondQuery });
-
-
-  return (
-    <>
-      <div className="hidden sm:block">
-        <NavBar />
-      </div>
-
-      <div className="mb-48 md:mb-0">
-        <div className="container mx-4">
-          {/* TITULO */}
-          <div className="flex items-center ">
-            {/* <div>
+			<div className="mb-48 md:mb-0">
+				<div className="container mx-4">
+					{/* TITULO */}
+					<div className="flex items-center ">
+						{/* <div>
               <PiTranslateBold size={45} />
             </div> */}
-             <div>
-              
-             </div>
-             <h2 className="text-3xl font-semibold my-9 ">
-              {publicationData?.title}
-              <span className="text-2xl font-normal hidden sm:block">
-              {publicationData?.location}
-               
-              </span>
-            </h2>
+						<div></div>
+						<h2 className="text-3xl font-semibold my-9 ">
+							{publicationData?.title}
+							<span className="text-2xl font-normal hidden sm:block">
+								{publicationData?.location}
+							</span>
+						</h2>
+					</div>
 
-          </div>
+					<div className="flex justify-between hidden sm:block">
+						<p className="flex items-center">
+							<AiFillStar /> 4,89 · 45 evaluaciones · <LiaMedalSolid /> Superanfitrión · 墨田区,
+							東京都, Japón
+						</p>
+						<div className="flex">
+							<button className="btn-share flex items-center mr-4">
+								<FiDownload />
+								<span className="underline pl-2">Compartir</span>
+							</button>
+							<button className="btn-share flex items-center mr-10">
+								<AiOutlineHeart />
+								<span className="underline pl-2">Guardar</span>
+							</button>
+						</div>
+					</div>
+				</div>
 
-          <div className="flex justify-between hidden sm:block">
-            <p className="flex items-center">
-              <AiFillStar /> 4,89 · 45 evaluaciones · <LiaMedalSolid />{" "}
-              Superanfitrión · 墨田区, 東京都, Japón
-            </p>
-            <div className="flex">
-              <button className="btn-share flex items-center mr-4">
-                <FiDownload />
-                <span className="underline pl-2">Compartir</span>
-              </button>
-              <button className="btn-share flex items-center mr-10">
-                <AiOutlineHeart />
-                <span className="underline pl-2">Guardar</span>
-              </button>
-            </div>
-          </div>
-        </div>
+				<IvpGrid images={publicationData && publicationData.photos ? publicationData.photos : []} />
 
-        <IvpGrid images={publicationData && publicationData.photos ? publicationData.photos : []} />
+				<IvpDescription data={publicationData ? publicationData : []} dataUser={dataUser} />
+				{/* <IvpMaps /> */}
+				<IvpReviews />
+				<IvpEvaluaciones />
+				<IvpRules />
 
-
-
-        <IvpDescription data = {publicationData ? publicationData : []} dataUser = {dataUser} />
-        {/* <IvpMaps /> */}
-        <IvpReviews />
-        <IvpEvaluaciones />
-        <IvpRules />
-
-        <HelpFooter />
-        <OptionsFooter />
-      </div>
-    </>
-  );
+				<HelpFooter />
+				<OptionsFooter />
+			</div>
+		</>
+	);
 }
 
 export default IndividualViewPage;

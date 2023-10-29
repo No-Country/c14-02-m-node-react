@@ -1,106 +1,106 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const apiQueries = createApi({
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:3000/api/',
+		baseUrl: "http://localhost:3000/api/",
 		// en el deploy cambiar la base url al deploy del back.
 	}),
-	endpoints: (builder) => ({
+	endpoints: builder => ({
 		// publication queries
 		getAllPublications: builder.query({
-			query: () => ({ url: 'publication' }),
+			query: () => ({ url: "publication" }),
 		}),
 		getPublicationById: builder.query({
-			query: (id) => ({ url: `publication/byId/${id}` }),
+			query: id => ({ url: `publication/byId/${id}` }),
 		}),
 		createPublication: builder.mutation({
-			query: (data) => ({
-				url: 'publication',
-				method: 'post',
+			query: data => ({
+				url: "publication",
+				method: "post",
 				body: data,
 			}),
 		}),
 		updatePublication: builder.mutation({
 			query: (id, update) => ({
 				url: `publication/${id}`,
-				method: 'put',
+				method: "put",
 				body: update,
 			}),
 		}),
 		deletePublication: builder.mutation({
-			query: (id) => ({
+			query: id => ({
 				url: `publication/${id}`,
-				method: 'delete',
+				method: "delete",
 			}),
 		}), // User queries
 		getUsers: builder.query({
-			query: () => 'user',
+			query: () => "user",
 		}),
 		getUser: builder.query({
-			query: (email) => `user/${email}`,
+			query: email => `user/${email}`,
 		}),
 		createUser: builder.mutation({
-			query: (newUser) => ({
-				url: 'user',
-				method: 'post',
+			query: newUser => ({
+				url: "user",
+				method: "post",
 				body: newUser,
 				headers: {},
 			}),
 		}),
 		login: builder.mutation({
-			query: (login) => ({
-				url: 'user/login',
-				method: 'post',
+			query: login => ({
+				url: "user/login",
+				method: "post",
 				body: login,
 				headers: {},
 			}),
 		}),
 		updateUser: builder.mutation({
-			query: (data) => ({
+			query: data => ({
 				url: `user/${data.email}`,
-				method: 'put',
+				method: "put",
 				body: data.update,
 			}),
-		}), //review queries
+		}), // review queries
 		getReviews: builder.query({
-			query: () => ({ url: 'review' }),
+			query: () => ({ url: "review" }),
 		}),
 		getReview: builder.query({
-			query: (id) => ({ url: `review/${id}` }),
+			query: id => ({ url: `review/${id}` }),
 		}),
 		createReview: builder.mutation({
-			query: (newReview) => ({
-				url: 'review',
-				method: 'post',
+			query: newReview => ({
+				url: "review",
+				method: "post",
 				body: newReview,
 			}),
 		}),
 		updateReview: builder.mutation({
 			query: (id, update) => ({
 				url: `review/update/${id}`,
-				method: 'pust',
+				method: "pust",
 				body: update,
 			}),
 		}), // favorite queries
 		getAllFavorites: builder.query({
-			query: (email) => ({ url: `favorite/${email}` }),
+			query: email => ({ url: `favorite/${email}` }),
 		}),
 		addFavorite: builder.mutation({
-			query: (data) => ({
-				url: 'favorite',
-				method: 'post',
+			query: data => ({
+				url: "favorite",
+				method: "post",
 				body: data,
 			}),
 		}),
 		removeFavorite: builder.mutation({
-			query: (id) => ({
+			query: id => ({
 				url: `favorite/${id}`,
-				method: 'delete',
+				method: "delete",
 			}),
 		}),
 	}),
 
-	//agregar otros endpoints
+	// agregar otros endpoints
 });
 // implemetation headers
 

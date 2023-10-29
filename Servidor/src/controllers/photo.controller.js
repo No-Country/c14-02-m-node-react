@@ -69,13 +69,11 @@ const updatePhoto = async (req, res) => {
 		console.log(photo);
 		if (photo.matchedCount > 0) {
 			const photoUp = await photoManager.getOnePhoto(dataUpdate);
-			res.status(201).json(photoUp);
-			return;
+			return res.status(201).json(photoUp);
 		}
 	} catch (error) {
 		console.log('Error al actualizar la imagen', error.message);
 		res.status(500).json({ error: error.message });
-		return;
 	}
 };
 

@@ -1,5 +1,12 @@
 const Database = require('../config/mongodb');
-const { createDocument, getOneDocumentById, getOneDocument, getAllDocuments, updateDocumentById, deleteDocumentById } = require('../config/factory.js');
+const {
+	createDocument,
+	getOneDocumentById,
+	getOneDocument,
+	getAllDocuments,
+	updateDocumentById,
+	deleteDocumentById,
+} = require('../config/factory.js');
 const { PhotoModel } = require('../models');
 
 class PhotoManager {

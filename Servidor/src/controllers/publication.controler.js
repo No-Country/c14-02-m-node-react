@@ -13,8 +13,8 @@ async function postPublicationController(req, res) {
 	try {
 		const data = req.body;
 		// Valida los datos utilizando el modelo
-		//uso la funcion validateSync de mongo para valodar compos definido en el modelo
-		//se puede usar en el dao tambien como .validate
+		// uso la funcion validateSync de mongo para valodar compos definido en el modelo
+		// se puede usar en el dao tambien como .validate
 		const validationError = PublicationModel(data).validateSync();
 		// Trhow  new Error "xxxxxxxx"
 		if (validationError) {
@@ -25,7 +25,7 @@ async function postPublicationController(req, res) {
 		const newPublication = await publicatinManage.createPublication(data);
 		// Envio el correo de publicacion creada
 		const email = data.email;
-		const filter = { email: email };
+		const filter = { email };
 		const user = await userManager.getOneUser(filter);
 		sendMail({
 			type: 'publicacion',
@@ -52,17 +52,17 @@ async function getPublicationController(req, res) {
 }
 
 async function getAllPublicationController(req, res) {
-	// se agrega filtro para location
+	// Se agrega filtro para location
 	const { location } = req.query;
 	try {
 		let filter = {};
 		if (!location) {
-			filter;
+			filter = {};
 		} else {
 			// filter.location = `/.*${location}.*/i`;
 			filter.location = new RegExp(`^${location}`, 'i');
 		}
-		const Publications = await publicatinManage.getAllPublication(filter); //aca debe llegar un objeto
+		const Publications = await publicatinManage.getAllPublication(filter);
 		return res.status(200).send(Publications);
 	} catch (error) {
 		console.error('Error al obtener la publicación', error);
@@ -111,7 +111,9 @@ async function deletePublicationByIdController(req, res) {
 		if (deletionResult.deletedCount > 0) {
 			return res.status(200).send('Publicación eliminada con éxito');
 		} else {
-			return res.status(404).send('No se encontró la publicación con el ObjectID proporcionado o no se eliminó.');
+			return res
+				.status(404)
+				.send('No se encontró la publicación con el ObjectID proporcionado o no se eliminó.');
 		}
 	} catch (error) {
 		console.error('Error al eliminar la publicación', error);

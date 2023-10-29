@@ -1,16 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { 
-    createBookingController, 
-    getBookingController,
-    getAllBookingController,
-    deleteBookingController 
+const {
+	createBookingController,
+	getBookingController,
+	getAllBookingController,
+	deleteBookingController,
 } = require('../controllers/booking.controller');
 
-
-
 router.get('/all', getAllBookingController);
-
 
 /** POST Crear una reserva
 METHOD:  GET
@@ -33,8 +30,6 @@ URL:     http://localhost:3000/api/Booking/id
 RETURN: La reserva con el id proporcionado.
 */
 router.get('/:id', getBookingController);
-
-
 
 /** DELETE Eliminar una reserva x ID
 METHOD:  DELETE

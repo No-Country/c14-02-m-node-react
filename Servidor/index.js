@@ -7,7 +7,14 @@ const cors = require('cors');
 require('dotenv').config();
 const app = express();
 
-const { userRoutes, reviewRoutes, publicationRoutes, bookingRoutes, favoriteRoutes, photoRoutes } = require('./src/routes');
+const {
+	userRoutes,
+	reviewRoutes,
+	publicationRoutes,
+	bookingRoutes,
+	favoriteRoutes,
+	photoRoutes,
+} = require('./src/routes');
 
 // Middlewares de express
 
@@ -18,7 +25,6 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(cors());
 
-
 // Routes
 app.use('/api/user', userRoutes);
 app.use('/api/publication', publicationRoutes);
@@ -27,5 +33,5 @@ app.use('/api/photo', photoRoutes);
 app.use('/api/booking', bookingRoutes);
 app.use('/api/favorite', favoriteRoutes);
 
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Servidor escuchando en el puerto http://localhost:${PORT}`));

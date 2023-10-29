@@ -47,7 +47,7 @@ class ReviewManager {
 			const review = await this.updateDocument('reviewsCollection', filter, dataUpdate);
 			return review;
 		} catch (error) {
-			onsole.error(error);
+			console.error(error);
 			throw new Error(`Error al actualizar la reseña: ${error.message}`);
 		}
 	}

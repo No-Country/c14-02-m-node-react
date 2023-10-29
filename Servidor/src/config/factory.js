@@ -8,7 +8,6 @@ this.db = new Database();
 // Función asincrónica para crear un documento en una colección específica
 async function createDocument(collection, data) {
 	console.log(collection, data);
-
 	try {
 		// Verificamos si la conexión a la base de datos ya está establecida
 		if (!this.db[collection]) {
@@ -22,8 +21,8 @@ async function createDocument(collection, data) {
 		throw error;
 	}
 }
-// funcion para buscar todo
 
+// Funcion para buscar todo
 async function getAllDocuments(collection, query = {}) {
 	try {
 		if (!this.db[collection]) {
@@ -37,8 +36,7 @@ async function getAllDocuments(collection, query = {}) {
 	}
 }
 
-//funcion para buscar por parametro
-
+// Funcion para buscar por parametro
 async function getOneDocument(collection, query) {
 	try {
 		if (!this.db[collection]) {
@@ -119,4 +117,13 @@ async function deleteDocumentById(collection, id) {
 	}
 }
 
-module.exports = { createDocument, getAllDocuments, getOneDocument, getOneDocumentById, updateDocument, updateDocumentById, deleteDocument, deleteDocumentById };
+module.exports = {
+	createDocument,
+	getAllDocuments,
+	getOneDocument,
+	getOneDocumentById,
+	updateDocument,
+	updateDocumentById,
+	deleteDocument,
+	deleteDocumentById,
+};

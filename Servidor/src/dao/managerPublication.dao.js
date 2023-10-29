@@ -1,5 +1,11 @@
 const Database = require('../config/mongodb.js');
-const { createDocument, getOneDocument, getAllDocuments, updateDocument, deleteDocument } = require('../config/factory.js');
+const {
+	createDocument,
+	getOneDocument,
+	getAllDocuments,
+	updateDocument,
+	deleteDocument,
+} = require('../config/factory.js');
 const PublicationModel = require('../models/publication.model.js');
 
 class PublicationManager {
