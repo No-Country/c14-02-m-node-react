@@ -131,8 +131,8 @@ const Component = ({ photoPerson }) => {
                 </Link>
                 <Link to="/favorites" className="mb-2"><Li>Favoritos</Li></Link>
                 <Link to="/manageads" className="mb-2"><Li>Administrar anuncios</Li></Link>
-                
-                <Li onClick={() => openModal(3)}>Poné tu Airbnb</Li>
+                <Link to="/tuairbnb" className="mb-2"><Li>Poné tu Airbnb</Li></Link>
+                {/* <Li onClick={() => openModal(3)}>Poné tu Airbnb</Li> */}
                 <Li onClick={() => openModal(4)}>Centro de Ayuda</Li>
                 <div>
                   <button className="text-red-600" onClick={handlelogout}>

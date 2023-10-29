@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useState } from 'react';
 import styled from "styled-components";
 import logo from "../assets/images/airbnblogo.png";
@@ -7,7 +8,6 @@ import searchmovil from "../assets/images/searchmovil.png";
 import logosintexto from "../assets/images/logosintexto.png";
 import filter from "../assets/images/filter.png";
 import BottonMenu from "../components/BottonMenu.jsx";
-import { Link } from "react-router-dom";
 import { GrBottomCorner } from "react-icons/gr";
 import { useAuth } from "../context/AuthContext";
 import { Search } from './Search';
@@ -237,7 +237,7 @@ export const NavBar = ({ photoPerson }) => {
   const { user } = useAuth();
   const [showInput, setShowInput] = useState(false);
   const [selectedSearch, setSelectedSearch] = useState("");
-
+  
   
   const toggleInput = () => {
     if (!showInput) {
@@ -255,15 +255,19 @@ export const NavBar = ({ photoPerson }) => {
     setSelectedSearch("price"); // Cambia el estado a "price" cuando se hace clic en "Título"
   };
 
+  const handleReloadHomePage = () => {
+    window.location.href = "/";// Navega a la página de inicio
   
+  };
   return (
     <Navbar>
-      <Link to="/" style={{ cursor: "pointer" }}>
-        <Container>
-          <img src={logo} alt="Logo" className="logo" />
-        </Container>
-        <LogoResponsive src={logosintexto} alt="New Logo" className="new-logo" />
-      </Link>
+ <Link to="/" style={{ cursor: "pointer" }} onClick={handleReloadHomePage}>
+  <Container>
+    <img src={logo} alt="Logo" className="logo" />
+  </Container>
+  <LogoResponsive src={logosintexto} alt="New Logo" className="new-logo" />
+</Link>
+
       <Container2 onClick={toggleInput}>
         {showInput ? (
           <Search selectedSearch={selectedSearch} setShowInput={setShowInput} />

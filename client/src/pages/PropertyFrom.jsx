@@ -33,7 +33,7 @@ const PropertyForm = () => {
     email: "",
     photos: [],
   });
-  console.log("esto llega de formulario", formData);
+  
 
   const [createPublication] = useCreatePublicationMutation(formData);
 
