@@ -22,9 +22,8 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 function IndividualViewPage(props) {
-
   const {id} = useParams();
-
+  
 
   const { data: publicationData, error: publicationError, isLoading: publicationLoading } = useGetPublicationByIdQuery(id);
 
