@@ -12,7 +12,7 @@ import IvpReservation from "./IvpReservation";
 import { LiaBedSolid, LiaMedalSolid } from "react-icons/lia";
 import { GrNotes } from "react-icons/gr";
 
-// import { useSelector } from "react-redux";
+
 
 function IvpDescription({ data, dataUser }) {
 	// const info = useSelector(state => state.main.publicationDetail);
@@ -20,31 +20,9 @@ function IvpDescription({ data, dataUser }) {
 	console.log("PARAMETROS", data, dataUser);
 	console.log(data.offering);
 
-	return (
-		<div>
-			<div className="grid grid-cols-3 gap-4">
-				{/* ====================IZQUIERDA==================== */}
-
-				<div className="col-span-3 md:col-span-2">
-					<div className="max-w-[600px] mx-auto">
-						<div className="flex items-center p-5">
-							<div>
-								<Type data={data} />
-								<h2 className="text-2xl font-semibold">Anfitrión: {dataUser?.names}</h2>
-							</div>
-							<div>
-								<Link to="/user-account">
-									<img
-										src={dataUser?.photo}
-										alt="Imagen"
-										className="rounded-full h-16 w-16 object-cover mr-4"
-									/>
-								</Link>
-							</div>
-						</div>
-
-						{/* SPACES */}
-						{data?.spaces && <Spaces spaces={data.spaces} />}
+  return (
+    <div>
+      <div className="grid grid-cols-3 gap-4">
 
 						{/* FAQ */}
 						<div className="border-b p-8">
@@ -119,12 +97,12 @@ function IvpDescription({ data, dataUser }) {
 					</div>
 				</div>
 
-				{/* ======================DIV IZQUIERDO==================== */}
+		// 		{/* ======================DIV IZQUIERDO==================== */}
 
-				{/* Reservation */}
-				<IvpReservation />
-			</div>
-		</div>
+		// 		{/* Reservation */}
+		// 		<IvpReservation />
+		// 	</div>
+		// </div>
 	);
 }
 

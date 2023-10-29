@@ -1,54 +1,56 @@
 import IvpDescription from "../components/IvpDescription";
 import IvpGrid from "../components/IvpGrid";
-import IvpMaps from "../components/IvpMaps";
 import IvpReviews from "../components/IvpReviews";
+import IvpEvaluaciones from "../components/IvpEvaluaciones";
 import IvpRules from "../components/IvpRules";
 import NavBar from "../components/NavBar.jsx";
+import OptionsFooter from "../components/OptionsFooter";
+import HelpFooter from "../components/HelpFooter";
 
 import { LiaMedalSolid } from "react-icons/lia";
 import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { FiDownload } from "react-icons/fi";
-import { PiTranslateBold } from "react-icons/pi";
 
-import OptionsFooter from "../components/OptionsFooter";
-import HelpFooter from "../components/HelpFooter";
-import IvpEvaluaciones from "../components/IvpEvaluaciones";
 import { useParams } from "react-router-dom";
-
 import { useGetPublicationByIdQuery, useGetUserQuery } from "../store/rtk-query";
-
-import { useDispatch } from "react-redux";
-// import { loadPublicationDetail } from "../store/actions";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { searchPublicationById } from "../store/publicationSlice";
+import { fetchUsers,searchUserByEmail } from "../store/userSlice";
+
+
 
 function IndividualViewPage(props) {
-	const { id } = useParams();
+  const {id} = useParams();
+  const dispatch = useDispatch();
+  const publicationData = useSelector((state) => state.publications.currentPublication[0])
+  const dataUser = useSelector((state) => state.users.currentUser)
 
-	const {
-		data: publicationData,
-		error: publicationError,
-		isLoading: publicationLoading,
-	} = useGetPublicationByIdQuery(id);
+  useEffect(() => {
+    dispatch(searchPublicationById(id));
+    dispatch(searchUserByEmail(publicationData?.email));
+  }, [publicationData, id, dispatch]);
 
-	const skipSecondQuery = !publicationData || publicationLoading || publicationError;
+  if (!publicationData || !dataUser) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-gray-900"></div>
+      </div>
+    );
+  }
+  
 
-	const {
-		data: dataUser,
-		error: errorUser,
-		isLoading: isLoadingUser,
-	} = useGetUserQuery(publicationData?.email, { skip: skipSecondQuery });
+  return (
+    <>
+      <div className="hidden sm:block">
+        <NavBar />
+      </div>
 
-	return (
-		<>
-			<div className="hidden sm:block">
-				<NavBar />
-			</div>
-
-			<div className="mb-48 md:mb-0">
-				<div className="container mx-4">
-					{/* TITULO */}
-					<div className="flex items-center ">
-						{/* <div>
+      <div className="mb-48 md:mb-0">
+        <div className="container mx-4">
+          {/* TITULO */}
+          <div className="flex items-center ">
+            {/* <div>
               <PiTranslateBold size={45} />
             </div> */}
 						<div></div>
@@ -80,17 +82,22 @@ function IndividualViewPage(props) {
 
 				<IvpGrid images={publicationData && publicationData.photos ? publicationData.photos : []} />
 
-				<IvpDescription data={publicationData ? publicationData : []} dataUser={dataUser} />
+				<IvpDescription data={publicationData || []} dataUser={dataUser} />
 				{/* <IvpMaps /> */}
 				<IvpReviews />
 				<IvpEvaluaciones />
 				<IvpRules />
 
-				<HelpFooter />
-				<OptionsFooter />
-			</div>
-		</>
-	);
+        <IvpDescription data = {publicationData || []} dataUser = {dataUser} />
+        <IvpReviews />
+        <IvpEvaluaciones />
+        <IvpRules />
+
+        <HelpFooter />
+        <OptionsFooter />
+      </div>
+    </>
+  );
 }
 
 export default IndividualViewPage;
