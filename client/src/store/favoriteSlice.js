@@ -27,7 +27,6 @@ const favoriteSlice = createSlice({
       })
       .addCase(loadFavorites.rejected, (state, action) => {
         state.status = 'failed';
-        console.log("failed")
         state.error = action.error.message;
       });
   },

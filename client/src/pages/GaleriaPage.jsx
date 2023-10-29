@@ -10,31 +10,44 @@ import { fetchUsers } from "../store/userSlice";
 export const GaleriaPage = () => {
   const { user } = useAuth();
   const dispatch = useDispatch();
-  
+  const [loading, setLoading] = useState(true);
+  const [favoritesLoading, setFavoritesLoading] = useState(true);
 
   useEffect(() => {
     dispatch(fetchPublications());
-    dispatch(loadFavorites(user?.email));
-    dispatch(fetchUsers())
+    if (user?.email) {
+      dispatch(loadFavorites(user.email)).then(() => {
+        setFavoritesLoading(false);
+      });
+    }
+    dispatch(fetchUsers());
   }, [user, dispatch]);
 
   // Usar Redux para obtener las publicaciones y favoritos
   const { allPublications, filteredPublications, status } = useSelector((state) => state.publications);
   const allFavorites = useSelector((state) => state.favorites.allFavorites);
 
-  return (
-    <section className="containerCards flex flex-wrap w-full p-4">
+  useEffect(() => {
+    if (status === "succeeded") {
+      setLoading(false);
+    }
+  }, [status]);
 
-
-      {status === "loading" ? (
-        <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
+  if (loading || favoritesLoading) {
+    return (
+      <div className="fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-gray-900"></div>
       </div>
-      ) : status === "failed" ? (
+    );
+  }
+
+  return (
+    <section className="containerCards flex flex-wrap w-full p-4">
+      {status === "failed" ? (
         <span>Error al cargar las publicaciones</span>
       ) : filteredPublications.length > 0 ? (
         filteredPublications?.map((publication, index) => {
-          const isFavorite = allFavorites.some(favorite => favorite.publicationId === publication._id);
+          const isFavorite = allFavorites.some((favorite) => favorite.publicationId === publication._id);
           return <Card key={index} publication={publication} isFavorite={isFavorite} />;
         })
       ) : (
