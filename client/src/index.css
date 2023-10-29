@@ -107,7 +107,7 @@
 
 
 /* ============grid de perfil=========== */
-.grid {
+/* .grid {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -116,7 +116,8 @@
 @media (min-width: 768px) {
   .grid {
     display: grid;
+    margin-bottom: 20px;
     grid-template-columns: repeat(2, 1fr);
   }
-}
+} */
 
