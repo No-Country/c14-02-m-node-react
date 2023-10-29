@@ -25,8 +25,6 @@ export const Search = ({selectedSearch,setShowInput}) => {
       dispatch(filterPublicationsByLocation(titleFilter));
     }
     if (selectedSearch === "price") {
-      console.log("PRECIO 1: ",price1Filter)
-      console.log("PRECIO 2: ",price2Filter)
       dispatch(filterPublicationsByPrice({ price1Filter, price2Filter }));
     }
   };
@@ -47,13 +45,14 @@ export const Search = ({selectedSearch,setShowInput}) => {
     setPrice2Filter(event.target.value);
   };
   
+  const placeholderText = `Buscar alojamiento por ${selectedSearch==="title" ? "título" : "locación"}`;
 
   return (
     <form className="w-96 flex">
-      {selectedSearch === "titulo" ? ( 
+      {selectedSearch !== "price" ? ( 
         <input
           type="text"
-          placeholder="Buscar alojamiento.."
+          placeholder={placeholderText}
           className="p-2 border-none rounded-l-full w-full"
           value={titleFilter}
           onChange={handleTitleFilterChange}
@@ -62,16 +61,16 @@ export const Search = ({selectedSearch,setShowInput}) => {
         <>
         <input
             type="number"
-            placeholder="Precio 1"
-            className="ml-3 p-2 border-none rounded-1-full w-1/4 mr-2"
+            placeholder="U$S desde"
+            className="ml-2 p-2 border-none rounded-1-full w-1/3 mr-2"
             value={price1Filter}
             onChange={handlePrice1FilterChange}
           />
 
           <input
             type="number"
-            placeholder="Precio 2"
-            className="ml-3 p-2 border-none w-1/4 mr-2"
+            placeholder="U$S hasta"
+            className="ml-2 p-2 border-none w-1/3 mr-2"
             value={price2Filter}
             onChange={handlePrice2FilterChange}
           />

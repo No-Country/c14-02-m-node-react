@@ -12,15 +12,10 @@ import IvpReservation from "./IvpReservation";
 import { LiaBedSolid, LiaMedalSolid } from "react-icons/lia";
 import { GrNotes } from "react-icons/gr";
 
-// import { useSelector } from "react-redux";
+
 
 
 function IvpDescription({data, dataUser}) {
-
-  // const info = useSelector(state => state.main.publicationDetail);
-
-  console.log('PARAMETROS', data,dataUser);
-  console.log(data.offering)
 
   return (
     <div>

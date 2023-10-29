@@ -1,6 +1,5 @@
 import IvpDescription from "../components/IvpDescription";
 import IvpGrid from "../components/IvpGrid";
-import IvpMaps from "../components/IvpMaps";
 import IvpReviews from "../components/IvpReviews";
 import IvpRules from "../components/IvpRules";
 import NavBar from "../components/NavBar.jsx";
@@ -8,7 +7,6 @@ import NavBar from "../components/NavBar.jsx";
 import { LiaMedalSolid } from "react-icons/lia";
 import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { FiDownload } from "react-icons/fi";
-import { PiTranslateBold } from "react-icons/pi";
 
 import OptionsFooter from "../components/OptionsFooter";
 import HelpFooter from "../components/HelpFooter";
@@ -18,7 +16,7 @@ import { useParams } from "react-router-dom";
 import { useGetPublicationByIdQuery, useGetUserQuery } from "../store/rtk-query";
 
 import { useDispatch } from "react-redux";
-// import { loadPublicationDetail } from "../store/actions";
+
 import { useEffect } from "react";
 
 function IndividualViewPage(props) {
@@ -81,7 +79,6 @@ function IndividualViewPage(props) {
 
 
         <IvpDescription data = {publicationData ? publicationData : []} dataUser = {dataUser} />
-        {/* <IvpMaps /> */}
         <IvpReviews />
         <IvpEvaluaciones />
         <IvpRules />
