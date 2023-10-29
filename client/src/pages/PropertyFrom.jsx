@@ -31,9 +31,9 @@ const PropertyForm = () => {
     discount: "",
     extra_Security: [],
     email: "",
-    photo: [],
+    photos: [],
   });
-  console.log("esto llega de formulario", formData);
+  
 
   const [createPublication] = useCreatePublicationMutation(formData);
 
@@ -55,12 +55,13 @@ const PropertyForm = () => {
     }
   };
 
-  const handleUploadImages = (uploadedUrls) => {
-    // maneja las imágenes cargadas en el componente UpImages
+  const handleUploadImages = (uploadedUrls, callback) => {
     setFormData({
       ...formData,
-      photo: uploadedUrls,
+      photos: uploadedUrls,
     });
+    // Llama al callback después de actualizar el estado
+    callback(uploadedUrls);
   };
 
   const handleSpacesChange = (e) => {
@@ -102,6 +103,16 @@ const PropertyForm = () => {
           text: "Por favor, completa todos los campos obligatorios.",
         });
         return; // No envíes la solicitud si falta información
+      }
+
+      // Validar el campo "description"
+      if (formData.description.length < 10) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "La descripción debe tener al menos 10 caracteres.",
+        });
+        return;
       }
 
       // Validar el formato del correo electrónico
@@ -146,7 +157,7 @@ const PropertyForm = () => {
   const updateImageUrls = (imageUrls) => {
     setFormData({
       ...formData,
-      photo: imageUrls,
+      photos: imageUrls,
     });
   };
 
@@ -171,7 +182,7 @@ const PropertyForm = () => {
         <div className="w-full p-4">
           <form className="flex flex-col " onSubmit={handleSubmit}>
             <label
-              htmlFor="direccion"
+              htmlFor="title"
               className="text-sm font-medium text-gray-900"
             >
               Nombre de tu Airbnb
@@ -184,6 +195,7 @@ const PropertyForm = () => {
               value={formData.title}
               onChange={handleChange}
             />
+
             <label
               htmlFor="location"
               className="text-sm font-medium text-gray-900"
@@ -198,6 +210,7 @@ const PropertyForm = () => {
               value={formData.location}
               onChange={handleChange}
             />
+
             <label
               htmlFor="description"
               className="text-sm font-medium text-gray-900"
@@ -475,7 +488,7 @@ const PropertyForm = () => {
               id="security"
               name="security"
               className="half-width rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 sm:max-w-xs "
-              value={formData.security}
+              value={formData.security.join(",")} // Convierte la matriz en una cadena
               onChange={handleChange}
             >
               <option value="security">Seguridad</option>
@@ -489,6 +502,7 @@ const PropertyForm = () => {
                 </option>
               ))}
             </select>
+
             <div className="flex flex-col">
               <label
                 htmlFor="extra_Security"
@@ -531,7 +545,6 @@ const PropertyForm = () => {
             >
               Agregar
             </button>
-            
           </form>
         </div>
       </div>
