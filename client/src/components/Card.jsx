@@ -3,46 +3,42 @@ import { useFetch } from "../api/useFecht";
 import { CardSlider } from "./CardSlider";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import CardInfo from './CardInfo';
-import { useAddFavoriteMutation, useRemoveFavoriteMutation, } from "../store/rtk-query";
-import {  useDispatch } from 'react-redux';
-import { loadFavorites } from '../store/favoriteSlice';
+import CardInfo from "./CardInfo";
+import { useAddFavoriteMutation, useRemoveFavoriteMutation } from "../store/rtk-query";
+import { useDispatch } from "react-redux";
+import { loadFavorites } from "../store/favoriteSlice";
 
-export const Card = ({publication, isFavorite}) => {
-  const navigate = useNavigate();
+export const Card = ({ publication, isFavorite }) => {
+	const navigate = useNavigate();
 
-  const [addFav, {isLoadingAdd}] = useAddFavoriteMutation()
-  const [DeleteFav, {isLoadingDelete}] = useRemoveFavoriteMutation()
-  const [isHeartRed, setIsHeartRed] = useState(isFavorite);
-  const { user } = useAuth();
-  const dispatch = useDispatch()
-
+	const [addFav, { isLoadingAdd }] = useAddFavoriteMutation();
+	const [DeleteFav, { isLoadingDelete }] = useRemoveFavoriteMutation();
+	const [isHeartRed, setIsHeartRed] = useState(isFavorite);
+	const { user } = useAuth();
+	const dispatch = useDispatch();
 
 	const images = publication.photos;
 
-  const toggleHeartColor = (e) => {
-    if (user) {
-      if(isHeartRed){
-        //si esta clickeado borrar de la base de datos/elimina
-        DeleteFav(publication._id)
-        dispatch(loadFavorites(user.email))
-        e.preventDefault();
-        setIsHeartRed(!isHeartRed);
-       
-        
-      }else{
-        //se crea un post osea un favorito
-        const fav = {email: user.email ,publicationId: publication._id}
-        addFav(fav)
-        e.preventDefault();
-        setIsHeartRed(!isHeartRed);
-      }
-    } else {
-      e.preventDefault();
-      navigate("/register");
-    }
-  };
-
+	const toggleHeartColor = e => {
+		if (user) {
+			if (isHeartRed) {
+				//si esta clickeado borrar de la base de datos/elimina
+				DeleteFav(publication._id);
+				dispatch(loadFavorites(user.email));
+				e.preventDefault();
+				setIsHeartRed(!isHeartRed);
+			} else {
+				//se crea un post osea un favorito
+				const fav = { email: user.email, publicationId: publication._id };
+				addFav(fav);
+				e.preventDefault();
+				setIsHeartRed(!isHeartRed);
+			}
+		} else {
+			e.preventDefault();
+			navigate("/register");
+		}
+	};
 
 	return (
 		<>
