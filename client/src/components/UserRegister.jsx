@@ -2,29 +2,29 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useCreateUserMutation } from "../store/rtk-query";
 
-const UserForm = (user) => {
-  // console.log(user.user.photoURL)
-  const [createUser, { isLoading }] = useCreateUserMutation()
-  const [formData, setFormData] = useState({
-    names: '',
-    surname: '',
-    birthDate: '',
-    email: user.user.email,
-    phone: '+1234567890',
-    address: 'mi domicilio',
-    phoneUrgency: '+1234567890',
-    photo: user.user.photoURL,
-    role: 'user',
-  });
-  const navigate = useNavigate()
-// console.log("FORMDATAAAAA",formData)
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+const UserForm = user => {
+	// console.log(user.user.photoURL)
+	const [createUser, { isLoading }] = useCreateUserMutation();
+	const [formData, setFormData] = useState({
+		names: "",
+		surname: "",
+		birthDate: "",
+		email: user.user.email,
+		phone: "+1234567890",
+		address: "mi domicilio",
+		phoneUrgency: "+1234567890",
+		photo: user.user.photoURL,
+		role: "user",
+	});
+	const navigate = useNavigate();
+	// console.log("FORMDATAAAAA",formData)
+	const handleChange = e => {
+		const { name, value } = e.target;
+		setFormData({
+			...formData,
+			[name]: value,
+		});
+	};
 
 	const handleSubmit = e => {
 		e.preventDefault();

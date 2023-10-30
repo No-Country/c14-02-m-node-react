@@ -8,29 +8,28 @@ export const loadFavorites = createAsyncThunk("favorites/loadFavorites", async e
 });
 
 const favoriteSlice = createSlice({
-  name: 'favorites',
-  initialState: {
-    allFavorites: [],
-    status: 'idle',
-    error: null,
-  },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(loadFavorites.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(loadFavorites.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.allFavorites = action.payload;
-
-      })
-      .addCase(loadFavorites.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
-  },
-  // ...
+	name: "favorites",
+	initialState: {
+		allFavorites: [],
+		status: "idle",
+		error: null,
+	},
+	reducers: {},
+	extraReducers: builder => {
+		builder
+			.addCase(loadFavorites.pending, state => {
+				state.status = "loading";
+			})
+			.addCase(loadFavorites.fulfilled, (state, action) => {
+				state.status = "succeeded";
+				state.allFavorites = action.payload;
+			})
+			.addCase(loadFavorites.rejected, (state, action) => {
+				state.status = "failed";
+				state.error = action.error.message;
+			});
+	},
+	// ...
 });
 
 export default favoriteSlice.reducer;
