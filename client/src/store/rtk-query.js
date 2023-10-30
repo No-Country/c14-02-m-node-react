@@ -84,7 +84,7 @@ export const apiQueries = createApi({
             })
         }),// favorite queries
         getAllFavorites: builder.query({
-            query: () => ({ url: "favorite" })
+            query: (email) => ({url: `favorite/${email}` })
         }),
         addFavorite: builder.mutation({
             query: (data) => ({

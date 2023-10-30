@@ -10,7 +10,7 @@ let iconUbication = new L.icon({
   iconShadow: iconShadow,
 });
 
-const IvpMaps = () => {
+const IvpMaps2 = () => {
   return (
     <div className="border-y p-4 my-5">
       {/* MAPA */}
@@ -48,4 +48,4 @@ const IvpMaps = () => {
   );
 };
 
-export default IvpMaps;
+export default IvpMaps2;

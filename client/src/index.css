@@ -105,3 +105,30 @@
 
 /* Fin de los estilos de las cards. */
 
+
+/* ============grid de perfil=========== */
+/* .grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    display: grid;
+    margin-bottom: 20px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+} */
+
+/* Son estilos que utilice para el componente Mensajes. */
+
+.custom-width {
+  width: 30%;
+}
+
+.custom-width-resto {
+  width: 70%;
+}
+
+/* Fin de los estilos para los Mensajes. */

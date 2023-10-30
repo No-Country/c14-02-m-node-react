@@ -2,12 +2,26 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "../components/Card";
 import { useGetAllFavoritesQuery } from "../store/rtk-query";
-
+import { useAuth } from "../context/AuthContext";
 export const FavoritesPages = () => {
+
   const [favoriteCards, setFavoriteCards] = useState([]);
   
-  //NO BORRAR o PREGUNTAR (no sea maleucao)
+  // const { user } = useAuth();
+  // console.log("user tengo? -->", user)
+  // const user_id = user
+
   const {data, error, isLoading} = useGetAllFavoritesQuery()
+
+  // useEffect( ()=>{
+  //   if(data){
+  //     console.log("que pa tiene data? -->", data)
+  //     console.log("que pa tiene error? -->", error)
+  //     console.log("que pa tiene isLoading? -->", isLoading)
+  //     console.log("useGetAllFavoritesQuery? -->", useGetAllFavoritesQuery)
+  //   }
+  // },[data])
+
 
   // useEffect(() => {
   //     fetch('https://clon-airbnb-dev-shhb.1.us-1.fl0.io/api/favorite/') // Endpoint de las tarjetas favoritas
@@ -40,3 +54,5 @@ export const FavoritesPages = () => {
     </section> 
   );
 };
+
+

@@ -1,7 +1,7 @@
 import { GiGlobe } from "react-icons/gi";
 import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 
-function IvpHoster() {
+function IvpHoster({dataUser}) {
 
   return (
     <div className="border-b">
@@ -12,17 +12,17 @@ function IvpHoster() {
         <div className="flex items-center justify-around bg-white rounded-3xl drop-shadow-[0_30px_30px_rgba(0,0,0,0.25)] my-3 p-5 w-400">
           <div>
             <img
-              src="https://cdn.leonardo.ai/users/2b4dbbb3-c3f4-45a9-a675-33148ef5ed0f/generations/7310e0ef-8fe0-4bad-b6cb-2e5be6a5da15/variations/Default_ultra_detailed_complex_illustration_a_water_bender_sur_0_7310e0ef-8fe0-4bad-b6cb-2e5be6a5da15_1.jpg?w=512"
+              src={dataUser?.photo}
               alt="Imagen"
               className="rounded-full h-40 w-40 object-cover mr-4"
             />
             <div className="text-center my-2">
-              <h2 className="text-2xl font-semibold mb-0">Megumi</h2>
+              <h2 className="text-2xl font-semibold mb-0">{dataUser?.names}</h2>
               <p className="text-gray-600 my-2">Anfitrion</p>
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <div className="border-b">
               <h2 className="text-2xl font-bold mb-0">162</h2>
               <p className="text-xs text-gray-600 my-2">Evaluaciones</p>
@@ -37,14 +37,14 @@ function IvpHoster() {
                 Años de experiencia como anfitrión
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* DESCRIPCION AMPLIA DEL ANFITRION */}
 
         <div className="border-b-2 border-stone-300">
           <div className="py-5">
-            <ul className="my-4">
+            {/* <ul className="my-4">
               <li className="flex items-center">
                 <HiOutlineChatBubbleLeftRight size={35} />
                 Habla Inlgés y Japones
@@ -53,9 +53,9 @@ function IvpHoster() {
                 <GiGlobe size={35} />
                 <p className="ml-3">Vive en Tokio</p>
               </li>
-            </ul>
+            </ul> */}
             <div>
-              Hola, soy Megumi. El verdadero propietario de este tradicional me
+              Hola! El verdadero propietario de este tradicional me
               pidió que activara esta casa. Estoy tratando de compartir el
               atractivo de esta casa y de esta zona para muchas personas, tanto
               como sea posible, no solo la gente local, sino también los

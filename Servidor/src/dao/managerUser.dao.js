@@ -13,7 +13,7 @@ class UserManager {
 	}
 
 	async createUser(data) {
-		const { names, surname, birthDate, email, phone, address, officialId, phoneUrgency, pictureID, role } = data;
+		const { names, surname, birthDate, email, phone, address, photo, phoneUrgency, role } = data;
 		console.log(data);
 
 		const user = UserModel({
@@ -23,9 +23,8 @@ class UserManager {
 			email,
 			phone,
 			address,
-			officialId,
+			photo,
 			phoneUrgency,
-			pictureID,
 			role,
 		});
 		await this.createDocument('usersCollection', user);
