@@ -1,3 +1,4 @@
+const { isValidObjectId } = require('mongoose');
 const { ReviewManager } = require('../dao');
 const reviewManager = new ReviewManager();
 
@@ -13,6 +14,7 @@ module.exports = {
 			return res.status(400).send(error);
 		}
 	},
+
 	getReview: async (req, res) => {
 		try {
 			const id = req.params;
@@ -23,6 +25,7 @@ module.exports = {
 			return res.status(400).send(error);
 		}
 	},
+
 	getAllReviews: async (req, res) => {
 		try {
 			const reviews = await reviewManager.getAllReview();
@@ -32,6 +35,7 @@ module.exports = {
 			return res.status(400).send(error);
 		}
 	},
+
 	updateReview: async (req, res) => {
 		try {
 			const id = req.params;
@@ -45,6 +49,25 @@ module.exports = {
 		} catch (err) {
 			console.error('Error al actualizar la reseña', err);
 			return res.status(400).send(err);
+		}
+	},
+
+	deleteReview: async (req, res) => {
+		try {
+			const { id } = req.params;
+			if (!isValidObjectId(id)) {
+				res.status(400).json({ error: 'Id invalido' });
+				return;
+			}
+			const review = await reviewManager.deleteReview(id);
+			if (review.deletedCount !== 1) {
+				res.status(404).json({ error: 'Reseña no encontrada' });
+				return;
+			}
+			res.status(200).json({ message: 'Reseña eliminada correctamente' });
+		} catch (error) {
+			console.log('Error al eliminar la reseña', error.message);
+			res.status(500).json({ error: error.message });
 		}
 	},
 };

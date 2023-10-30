@@ -7,6 +7,7 @@ const {
 	updateDocumentById,
 	deleteDocumentById,
 } = require('../config/factory.js');
+
 const { PhotoModel } = require('../models');
 
 class PhotoManager {

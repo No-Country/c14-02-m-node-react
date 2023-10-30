@@ -37,6 +37,9 @@ class Database {
 			// Obtenemos una referencia a la colección "publication" en la base de datos "photo"
 			this.photoCollection = this.client.db(DB).collection('photo');
 
+			// Obtenemos una referencia a la colección "review" en la base de datos "review"
+			this.reviewCollection = this.client.db(DB).collection('review');
+
 			this.favoriteCollection = this.client.db(DB).collection('favorite');
 
 			// Imprimimos un mensaje de conexión exitosa
