@@ -1,4 +1,3 @@
-const {validateMiddleware} = require('./validateToken');
-
+const { validateMiddleware } = require('./validateToken');
 
 module.exports = { validateMiddleware };

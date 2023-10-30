@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "../components/Card";
 import { useAuth } from "../context/AuthContext";
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchPublications } from "../store/publicationSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchPublications, filterPublicationsByTitle } from "../store/publicationSlice";
 import { loadFavorites } from "../store/favoriteSlice";
-import { filterPublicationsByTitle } from "../store/publicationSlice";
+// import { filterPublicationsByTitle } from "../store/publicationSlice";
 import { fetchUsers } from "../store/userSlice";
 
 export const GaleriaPage = () => {
@@ -23,9 +23,11 @@ export const GaleriaPage = () => {
     dispatch(fetchUsers());
   }, [user, dispatch]);
 
-  // Usar Redux para obtener las publicaciones y favoritos
-  const { allPublications, filteredPublications, status } = useSelector((state) => state.publications);
-  const allFavorites = useSelector((state) => state.favorites.allFavorites);
+	// Usar Redux para obtener las publicaciones y favoritos
+	const { allPublications, filteredPublications, status } = useSelector(
+		state => state.publications
+	);
+	const allFavorites = useSelector(state => state.favorites.allFavorites);
 
   useEffect(() => {
     if (status === "succeeded") {

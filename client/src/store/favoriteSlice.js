@@ -1,10 +1,10 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { useGetAllFavoritesQuery } from './rtk-query';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useGetAllFavoritesQuery } from "./rtk-query";
 
-export const loadFavorites = createAsyncThunk('favorites/loadFavorites', async (email) => {
-  const response = await fetch(`http://localhost:3000/api/favorite/${email}`);
-  const data = await response.json();
-  return data; // Asumiendo que los datos están en response.data
+export const loadFavorites = createAsyncThunk("favorites/loadFavorites", async email => {
+	const response = await fetch(`http://localhost:3000/api/favorite/${email}`);
+	const data = await response.json();
+	return data; // Asumiendo que los datos están en response.data
 });
 
 const favoriteSlice = createSlice({
