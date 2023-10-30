@@ -6,7 +6,9 @@ const createPhoto = async (req, res) => {
 	try {
 		const { url } = req.body;
 		if (!isValidURL(url)) {
-			res.status(400).json({ error: 'El campo URL debe ser una URL válida con formato HTTP o HTTPS.' });
+			res
+				.status(400)
+				.json({ error: 'El campo URL debe ser una URL válida con formato HTTP o HTTPS.' });
 			return;
 		}
 		if (await photoManager.getOnePhotoByURL(url)) {
@@ -56,7 +58,9 @@ const updatePhoto = async (req, res) => {
 			return;
 		}
 		if (!isValidURL(url)) {
-			res.status(400).json({ error: 'El campo URL debe ser una URL válida con formato HTTP o HTTPS.' });
+			res
+				.status(400)
+				.json({ error: 'El campo URL debe ser una URL válida con formato HTTP o HTTPS.' });
 			return;
 		}
 		if (!(await photoManager.getOnePhotoByURL(url))) {
@@ -69,13 +73,11 @@ const updatePhoto = async (req, res) => {
 		console.log(photo);
 		if (photo.matchedCount > 0) {
 			const photoUp = await photoManager.getOnePhoto(dataUpdate);
-			res.status(201).json(photoUp);
-			return;
+			return res.status(201).json(photoUp);
 		}
 	} catch (error) {
 		console.log('Error al actualizar la imagen', error.message);
 		res.status(500).json({ error: error.message });
-		return;
 	}
 };
 

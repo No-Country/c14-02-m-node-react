@@ -24,7 +24,7 @@ const userScheme = new mongoose.Schema({
 		type: String,
 		required: true,
 		validate: {
-			validator: (value) => /\d{2}\/\d{2}\/\d{4}/.test(value), // Valida el formato de fecha (DD/MM/YYYY)
+			validator: value => /\d{2}\/\d{2}\/\d{4}/.test(value), // Valida el formato de fecha (DD/MM/YYYY)
 			message: 'Formato de fecha no válido (DD/MM/YYYY)',
 		},
 	},
@@ -47,7 +47,7 @@ const userScheme = new mongoose.Schema({
 		required: true,
 		trim: true,
 		validate: {
-			validator: (value) => /^\+\d+$/.test(value),
+			validator: value => /^\+\d+$/.test(value),
 			message: 'Número de teléfono no válido',
 		},
 	},
@@ -63,7 +63,7 @@ const userScheme = new mongoose.Schema({
 		required: true,
 		trim: true,
 		validate: {
-			validator: (value) => /^\+\d+$/.test(value),
+			validator: value => /^\+\d+$/.test(value),
 			message: 'Número de teléfono no válido',
 		},
 	},

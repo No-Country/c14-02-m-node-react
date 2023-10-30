@@ -1,5 +1,10 @@
 const Database = require('../config/mongodb.js');
-const { createDocument, getOneDocument, getAllDocuments, updateDocument } = require('../config/factory.js');
+const {
+	createDocument,
+	getOneDocument,
+	getAllDocuments,
+	updateDocument,
+} = require('../config/factory.js');
 // const UserModel = require('../models/user.model.js');
 const { UserModel } = require('../models/');
 

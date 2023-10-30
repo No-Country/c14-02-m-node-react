@@ -1,6 +1,11 @@
 const Database = require('../config/mongodb');
-
-const { createDocument, getOneDocument, getAllDocuments, updateDocument } = require('../config/factory');
+const {
+	createDocument,
+	getOneDocument,
+	getAllDocuments,
+	updateDocument,
+	deleteDocumentById,
+} = require('../config/factory');
 
 const { ReviewModel } = require('../models/');
 
@@ -11,20 +16,32 @@ class ReviewManager {
 		this.getOneDocument = getOneDocument;
 		this.getAllDocuments = getAllDocuments;
 		this.updateDocument = updateDocument;
+		this.deleteDocumentById = deleteDocumentById;
 	}
 
 	async createReview(data) {
+		const { stars, text } = data;
+		const review = ReviewModel({
+			stars,
+			review_text: text,
+		});
 		try {
-			await this.createDocument('reviewsCollection', data);
+			const result = await this.createDocument('reviewCollection', review);
+			if (result.insertedId) {
+				const createdReview = await this.getOneReview(result.insertedId);
+				return createdReview;
+			} else {
+				throw new Error('Error al insertar la review');
+			}
 		} catch (error) {
 			console.log(error);
-			throw new Error('Error al crear la reseña', error.message);
+			throw new Error(`Error al crear la reseña: ${error.message}`);
 		}
 	}
 
 	async getOneReview(query) {
 		try {
-			const review = await this.getOneDocument('reviewsCollection', query);
+			const review = await this.getOneDocument('reviewCollection', query);
 			return review;
 		} catch (error) {
 			console.error(error);
@@ -34,7 +51,7 @@ class ReviewManager {
 
 	async getAllReview() {
 		try {
-			const reviews = await this.getAllDocuments('reviewsCollection');
+			const reviews = await this.getAllDocuments('reviewCollection');
 			return reviews;
 		} catch (error) {
 			console.error(error);
@@ -44,11 +61,20 @@ class ReviewManager {
 
 	async updateReview(filter, dataUpdate) {
 		try {
-			const review = await this.updateDocument('reviewsCollection', filter, dataUpdate);
+			const review = await this.updateDocument('reviewCollection', filter, dataUpdate);
 			return review;
 		} catch (error) {
-			onsole.error(error);
+			console.error(error);
 			throw new Error(`Error al actualizar la reseña: ${error.message}`);
+		}
+	}
+
+	async deleteReview(filter) {
+		try {
+			const review = await this.deleteDocumentById('reviewCollection', filter);
+			return review;
+		} catch (error) {
+			throw new Error(`Error al eliminar la reseña: ${error.message}`);
 		}
 	}
 }
