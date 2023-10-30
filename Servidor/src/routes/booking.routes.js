@@ -1,11 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const { 
-    createBookingController, 
-    getBookingController,
-    getAllBookingController,
-    deleteBookingController 
-    } = require('../controllers/booking.controller');
+const {
+	createBookingController,
+	getBookingController,
+	getAllBookingController,
+	deleteBookingController,
+	getBookingByPublicationID,
+} = require('../controllers/booking.controller');
+
+router.get('/idPublication/:id', getBookingByPublicationID);
+
+router.get('/all', getAllBookingController);
 
 /** POST Crear una reserva
 METHOD:  GET
@@ -15,19 +20,19 @@ RETURN: La reserva creada.
 **/
 router.post('/', createBookingController);
 
+/** GET oneAllBooking
+METHOD:  GET
+URL:     http://localhost:3000/api/Booking/all/email
+RETURN: Devuelve un listado de reservas con ese email.
+*/
+router.get('/all', getAllBookingController);
+
 /** GET oneBooking
 METHOD:  GET
 URL:     http://localhost:3000/api/Booking/id
 RETURN: La reserva con el id proporcionado.
 */
 router.get('/:id', getBookingController);
-
-/** GET oneAllBooking
-METHOD:  GET
-URL:     http://localhost:3000/api/Booking/all/email
-RETURN: Devuelve un listado de reservas con ese email.
-*/
-router.get('/all/:email', getAllBookingController);
 
 /** DELETE Eliminar una reserva x ID
 METHOD:  DELETE

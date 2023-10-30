@@ -1,76 +1,100 @@
 import IvpDescription from "../components/IvpDescription";
 import IvpGrid from "../components/IvpGrid";
-import IvpMaps from "../components/IvpMaps";
 import IvpReviews from "../components/IvpReviews";
+import IvpEvaluaciones from "../components/IvpEvaluaciones";
 import IvpRules from "../components/IvpRules";
 import NavBar from "../components/NavBar.jsx";
-import Filtros from "../components/Filtros";
+import OptionsFooter from "../components/OptionsFooter";
+import HelpFooter from "../components/HelpFooter";
 
 import { LiaMedalSolid } from "react-icons/lia";
 import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { FiDownload } from "react-icons/fi";
-import { PiTranslateBold } from "react-icons/pi";
 
-import OptionsFooter from "../components/OptionsFooter";
-import HelpFooter from "../components/HelpFooter";
-import IvpEvaluaciones from "../components/IvpEvaluaciones";
+import { useParams } from "react-router-dom";
+import { useGetPublicationByIdQuery, useGetUserQuery } from "../store/rtk-query";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { searchPublicationById } from "../store/publicationSlice";
+import { fetchUsers, searchUserByEmail } from "../store/userSlice";
 
-function IndividualViewPage() {
-  return (
-    <>
-      <div className="hidden sm:block">
-        <NavBar />
-        <Filtros />
-      </div>
+function IndividualViewPage(props) {
+	const { id } = useParams();
+	const dispatch = useDispatch();
+	const publicationData = useSelector(state => state.publications.currentPublication[0]);
+	const dataUser = useSelector(state => state.users.currentUser);
 
-      <div>
-        <div className="container mx-4">
-          {/* TITULO */}
-          <div className="flex items-center">
-            <div>
+	useEffect(() => {
+		dispatch(searchPublicationById(id));
+		dispatch(searchUserByEmail(publicationData?.email));
+	}, [publicationData, id, dispatch]);
+
+	if (!publicationData || !dataUser) {
+		return (
+			<div className="flex items-center justify-center h-screen">
+				<div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-gray-900"></div>
+			</div>
+		);
+	}
+
+	return (
+		<>
+			<div className="hidden sm:block">
+				<NavBar />
+			</div>
+
+			<div className="mb-48 md:mb-0">
+				<div className="container mx-4">
+					{/* TITULO */}
+					<div className="flex items-center ">
+						{/* <div>
               <PiTranslateBold size={45} />
-            </div>
-             <div>
-              
-             </div>
-            <h2 className="text-3xl font-semibold my-9 ">
-              Casa "WabiSabi"
-              <span className="hidden sm:block">
-                Habitación1/1 cama/Asakusa/Skytree/
-              </span>
-            </h2>
-          </div>
+            </div> */}
+						<div></div>
+						<h2 className="text-3xl font-semibold my-9 ">
+							{publicationData?.title}
+							<span className="text-2xl font-normal hidden sm:block">
+								{publicationData?.location}
+							</span>
+						</h2>
+					</div>
 
-          <div className="flex justify-between hidden sm:block">
-            <p className="flex items-center">
-              <AiFillStar /> 4,89 · 45 evaluaciones · <LiaMedalSolid />{" "}
-              Superanfitrión · 墨田区, 東京都, Japón
-            </p>
-            <div className="flex">
-              <button className="btn-share flex items-center mr-4">
-                <FiDownload />
-                <span className="underline pl-2">Compartir</span>
-              </button>
-              <button className="btn-share flex items-center mr-10">
-                <AiOutlineHeart />
-                <span className="underline pl-2">Guardar</span>
-              </button>
-            </div>
-          </div>
-        </div>
+					<div className="flex justify-between hidden sm:block">
+						<p className="flex items-center">
+							<AiFillStar /> 4,89 · 45 evaluaciones · <LiaMedalSolid /> Superanfitrión · 墨田区,
+							東京都, Japón
+						</p>
+						<div className="flex">
+							<button className="btn-share flex items-center mr-4">
+								<FiDownload />
+								<span className="underline pl-2">Compartir</span>
+							</button>
+							<button className="btn-share flex items-center mr-10">
+								<AiOutlineHeart />
+								<span className="underline pl-2">Guardar</span>
+							</button>
+						</div>
+					</div>
+				</div>
 
-        <IvpGrid />
-        <IvpDescription />
-        <IvpMaps />
-        <IvpReviews />
-        <IvpEvaluaciones />
-        <IvpRules />
+				<IvpGrid images={publicationData && publicationData.photos ? publicationData.photos : []} />
 
-        <HelpFooter />
-        <OptionsFooter />
-      </div>
-    </>
-  );
+				<IvpDescription data={publicationData || []} dataUser={dataUser} />
+				{/* <IvpMaps /> */}
+				<IvpReviews />
+				<IvpEvaluaciones />
+				<IvpRules />
+
+				<IvpDescription data={publicationData || []} dataUser={dataUser} />
+				<IvpReviews />
+				<IvpEvaluaciones />
+				<IvpRules />
+
+				<HelpFooter />
+				<OptionsFooter />
+			</div>
+		</>
+	);
 }
 
 export default IndividualViewPage;

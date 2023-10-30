@@ -9,10 +9,10 @@ const bookingScheme = new mongoose.Schema({
 		ref: 'publication', // Hace referencia a la colección 'publication'
 		required: true,
 	},
-	
+
 	email: {
 		type: String,
-		ref: 'user', 
+		ref: 'user',
 		required: true,
 	},
 

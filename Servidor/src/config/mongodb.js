@@ -23,24 +23,24 @@ class Database {
 			await this.client.connect();
 
 			// Obtenemos una referencia a la colección "users" en la base de datos "users"
-			// this.usersCollection = this.client.db('users').collection('users');
 			this.usersCollection = this.client.db(DB).collection('users');
 
 			// Obtenemos una referencia a la colección "picture" en la base de datos "picture"
-			// this.actividadPicture = this.client.db('picture').collection('picture');
 			this.actividadPicture = this.client.db(DB).collection('picture');
 
 			// Obtenemos una referencia a la colección "booking" en la base de datos "booking"
-			// this.bookingCollection = this.client.db('booking').collection('booking');
 			this.bookingCollection = this.client.db(DB).collection('booking');
 
 			// Obtenemos una referencia a la colección "publication" en la base de datos "picture"
-			// this.publicationCollection = this.client.db('publication').collection('publication');
 			this.publicationCollection = this.client.db(DB).collection('publication');
 
 			// Obtenemos una referencia a la colección "publication" en la base de datos "photo"
-			// this.photoCollection = this.client.db('publication').collection('publication');
 			this.photoCollection = this.client.db(DB).collection('photo');
+
+			// Obtenemos una referencia a la colección "review" en la base de datos "review"
+			this.reviewCollection = this.client.db(DB).collection('review');
+
+			this.favoriteCollection = this.client.db(DB).collection('favorite');
 
 			// Imprimimos un mensaje de conexión exitosa
 			console.log('Connected to database');

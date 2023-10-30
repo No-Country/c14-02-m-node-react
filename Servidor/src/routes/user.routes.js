@@ -1,13 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const { postCreateUser, getUser, getAllUser, updateUser } = require('../controllers/user.controller');
+const {
+	createUser,
+	getUser,
+	getUsers,
+	updateUser,
+	login,
+} = require('../controllers/user.controller');
+const { validateMiddleware } = require('../middleware');
 
 /** GET USERS
 METHOD:  GET
 URL:     http://localhost:3000/api/user
 */
-router.get('/', getAllUser);
-
+// router.get('/', validateMiddleware, getUsers);
+router.get('/', getUsers);
 /** GET USER
 METHOD:  GET
 URL:     http://localhost:3000/api/user/john.doe@mail.com
@@ -30,7 +37,9 @@ BODY:
         "role": "user"
          } 
 */
-router.post('/', postCreateUser);
+router.post('/', createUser);
+
+router.post('/login', login);
 
 /** UPDATE USER
 METHOD:  PUT
@@ -40,8 +49,8 @@ BODY:
         "names": "Nikola",
          } 
 */
-// agregar metodo put acá! <-
-
 router.put('/:email', updateUser);
+
+// router.delete('/:email', deleteUser);
 
 module.exports = router;
