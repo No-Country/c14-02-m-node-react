@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
-
+import { useGetBookingQuery } from "../store/rtk-query";
+import IvpReservation from "./IvpReservation";
 const today = new Date();
 const numberOfDays = 30;
 
@@ -14,7 +15,29 @@ for (let i = 1; i < numberOfDays; i++) {
 
 function Times(props) {
 	const [selectedDates, setSelectedDates] = useState([]);
+	const {
+		data: BookinData,
+		error: BookinError,
+		isLoading: BookinLoading,
+	} = useGetBookingQuery(props.date);
+	const [blockedDates, setBlockedDates] = useState(new Set());
 
+	useEffect(() => {
+		// Actualizar las fechas bloqueadas cuando BookinData cambia
+		if (BookinData) {
+			const updatedBlockedDates = new Set();
+			BookinData.forEach(booking => {
+				const bookingDateIn = new Date(booking.dateIn);
+				const bookingDateOut = new Date(booking.dateOut);
+
+				// Agregar al conjunto las fechas entre dateIn y dateOut, incluyendo la fecha de entrada y salida
+				for (let date = bookingDateIn; date <= bookingDateOut; date.setDate(date.getDate() + 1)) {
+					updatedBlockedDates.add(date.toDateString());
+				}
+			});
+			setBlockedDates(updatedBlockedDates);
+		}
+	}, [BookinData]);
 	function handleDateSelection(date) {
 		const index = selectedDates.findIndex(d => d.toDateString() === date.toDateString());
 
@@ -29,15 +52,6 @@ function Times(props) {
 		}
 	}
 
-	function makeReservation() {
-		if (selectedDates.length > 0) {
-			// Aquí puedes implementar la lógica para realizar la reserva de los días seleccionados
-			// Puedes, por ejemplo, marcar los días como no disponibles en la lista de availableDates
-			// y guardar la reserva en tu base de datos.
-			// Luego, puedes mostrar un mensaje de confirmación.
-		}
-	}
-
 	return (
 		<div className="times mt-5">
 			<h2 className="text-xl font-semibold my-5">Seleccione fecha(s) para su reserva:</h2>
@@ -45,31 +59,22 @@ function Times(props) {
 				<Calendar
 					value={selectedDates}
 					onChange={handleDateSelection}
-					tileDisabled={({ date }) =>
-						!availableDates.some(d => date.toDateString() === d.toDateString())
-					}
+					tileDisabled={({ date }) => {
+						const dateStr = date.toDateString();
+						return blockedDates.has(dateStr);
+					}}
 				/>
 			</div>
 			<div className="mt-5">
 				{selectedDates.length > 0 ? (
-					<p>
-						<span className="font-semibold">Inicia:</span> {selectedDates[0].toDateString()} &nbsp;
-						&nbsp; <span className="font-semibold">Termina:</span>{" "}
-						{selectedDates[selectedDates.length - 1].toDateString()}
-					</p>
+					<></>
 				) : (
 					<p>
 						<span>Seleccione fecha(s) para su reserva.</span>
 					</p>
 				)}
 			</div>
-
-			<button
-				onClick={makeReservation}
-				className="bg-stone-900 text-white px-10 py-2 my-4 rounded-lg border-none"
-			>
-				Reservar
-			</button>
+			<IvpReservation dates={selectedDates} idPublication={props} />
 		</div>
 	);
 }

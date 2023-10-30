@@ -1,5 +1,9 @@
 const BookingManager = require('../dao/managerBooking.dao');
-const { validationBooking, isValidObjectId, isValidEmail } = require('../functions/validationBooking');
+const {
+	validationBooking,
+	isValidObjectId,
+	isValidEmail,
+} = require('../functions/validationBooking');
 const bookingManager = new BookingManager();
 const UserManager = require('../dao/managerUser.dao');
 const userManager = new UserManager();
@@ -45,9 +49,11 @@ async function createBookingController(req, res) {
 /* Función para traer una reserva x ID */
 async function getBookingController(req, res) {
 	const id = req.params;
+	console.log(req.params);
 	try {
-		if (!isValidObjectId(id)) throw new Error('El id no tiene un formato válido');
+		// if (!isValidObjectId(id)) throw new Error ('El id no tiene un formato válido')
 		const objectIdToSearch = new ObjectId(id);
+		console.log('este es el objetid', objectIdToSearch);
 		const Booking = await bookingManager.getOneBooking({ _id: objectIdToSearch });
 		if (!Booking) throw new Error('El id no es válido o no pertence a una reserva en la BD');
 		return res.status(200).send(Booking);
@@ -58,8 +64,8 @@ async function getBookingController(req, res) {
 
 /* Función para traer todas las reservas por un email Y ENTRE FECHAS */
 async function getAllBookingController(req, res) {
-	const { publicationID, dateIn, dateOut } = req.body;
-	let filter = {};
+	const { publicationID, dateIn, dateOut } = req.params;
+	const filter = {};
 
 	if (publicationID) {
 		filter.publicationID = publicationID;
@@ -79,12 +85,15 @@ async function getAllBookingController(req, res) {
 
 		filter.$and = [{ dateIn: { $lte: dateOutObj } }, { dateOut: { $gte: dateInObj } }];
 	} else {
-		return res.status(400).send('Se requieren ambas fechas (dateIn y dateOut) para filtrar por fechas.');
+		return res
+			.status(400)
+			.send('Se requieren ambas fechas (dateIn y dateOut) para filtrar por fechas.');
 	}
 
 	try {
 		const allBooking = await bookingManager.getAllBooking(filter);
-		if (!allBooking) throw new Error('No se encontraron reservas para ese email y rango de fechas.');
+		if (!allBooking)
+			throw new Error('No se encontraron reservas para ese email y rango de fechas.');
 		return res.status(200).send(allBooking);
 	} catch (error) {
 		return res.status(400).send(error.message);
@@ -120,6 +129,20 @@ async function deleteBookingController(req, res) {
 	}
 }
 
+async function getBookingByPublicationID(req, res) {
+	const id = req.params;
+	try {
+		const publicationId = new ObjectId(id);
+		const BookingByPublicationID = await bookingManager.getAllBooking({
+			publicationID: publicationId,
+		});
+		return res.status(200).send(BookingByPublicationID);
+	} catch (error) {
+		console.error('Error al obtener la reserva por id', error);
+		return res.status(400).send(error);
+	}
+}
+
 /* Funcion para traer la reserva por fecha */
 
 module.exports = {
@@ -127,4 +150,5 @@ module.exports = {
 	getBookingController,
 	getAllBookingController,
 	deleteBookingController,
+	getBookingByPublicationID,
 };

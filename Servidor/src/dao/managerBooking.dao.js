@@ -56,6 +56,7 @@ class BookingManager {
 		}
 	}
 
+
 	async deleteBooking(filter) {
 		try {
 			const delBooking = await this.deleteDocument('bookingCollection', filter);

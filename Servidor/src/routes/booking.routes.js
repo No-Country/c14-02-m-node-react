@@ -5,7 +5,10 @@ const {
 	getBookingController,
 	getAllBookingController,
 	deleteBookingController,
+	getBookingByPublicationID,
 } = require('../controllers/booking.controller');
+
+router.get('/idPublication/:id', getBookingByPublicationID);
 
 router.get('/all', getAllBookingController);
 
