@@ -9,15 +9,14 @@ import reviewReducer from "./reviewSlice"; // Ejemplo de otro slice para revisio
 import favoriteReducer from "./favoriteSlice"; // Ejemplo de otro slice para favoritos
 
 export const store = configureStore({
-  reducer: {
-    [apiQueries.reducerPath]: apiQueries.reducer,
-    publications: publicationReducer,
-    users: userReducer, 
-    // reviews: reviewReducer,
-    favorites: favoriteReducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiQueries.middleware),
+	reducer: {
+		[apiQueries.reducerPath]: apiQueries.reducer,
+		publications: publicationReducer,
+		users: userReducer,
+		// reviews: reviewReducer,
+		favorites: favoriteReducer,
+	},
+	middleware: getDefaultMiddleware => getDefaultMiddleware().concat(apiQueries.middleware),
 });
 
 setupListeners(store.dispatch);

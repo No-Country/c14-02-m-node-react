@@ -46,7 +46,8 @@ const publicationScheme = new mongoose.Schema({
 
 				return validLength && validFormat;
 			},
-			message: 'El campo type debe tener entre 3 y 50 caracteres y solo puede contener letras y espacios.',
+			message:
+				'El campo type debe tener entre 3 y 50 caracteres y solo puede contener letras y espacios.',
 		},
 	},
 	offering: {
@@ -161,7 +162,8 @@ const publicationScheme = new mongoose.Schema({
 					// Utiliza una expresión regular para verificar que el precio contenga solo números y un punto decimal (si corresponde)
 					return /^\d+(\.\d+)?$/.test(value);
 				},
-				message: 'El precio solo puede contener números y un punto decimal con uno o más decimales.',
+				message:
+					'El precio solo puede contener números y un punto decimal con uno o más decimales.',
 			},
 		],
 	},

@@ -106,7 +106,9 @@ async function deletePublicationByIdController(req, res) {
 	const id = req.params.id;
 	try {
 		const deletePublicationById = new ObjectId(id);
-		const deletionResult = await publicatinManage.deletePublicationById({ _id: deletePublicationById });
+		const deletionResult = await publicatinManage.deletePublicationById({
+			_id: deletePublicationById,
+		});
 
 		if (deletionResult.deletedCount > 0) {
 			return res.status(200).send('Publicación eliminada con éxito');
