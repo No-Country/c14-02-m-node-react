@@ -14,7 +14,9 @@ const favoriteSlice = createSlice({
     status: 'idle',
     error: null,
   },
-  reducers: {},
+  reducers: {
+    
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadFavorites.pending, (state) => {

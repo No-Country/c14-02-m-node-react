@@ -5,8 +5,9 @@ import { CardSlider } from "./CardSlider";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import CardInfo from './CardInfo';
-import { useAddFavoriteMutation, useRemoveFavoriteMutation} from "../store/rtk-query";
-
+import { useAddFavoriteMutation, useRemoveFavoriteMutation, } from "../store/rtk-query";
+import {  useDispatch } from 'react-redux';
+import { loadFavorites } from '../store/favoriteSlice';
 
 export const Card = ({publication, isFavorite}) => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export const Card = ({publication, isFavorite}) => {
   const [DeleteFav, {isLoadingDelete}] = useRemoveFavoriteMutation()
   const [isHeartRed, setIsHeartRed] = useState(isFavorite);
   const { user } = useAuth();
+  const dispatch = useDispatch()
 
 
   const images = publication.photos;
@@ -24,8 +26,11 @@ export const Card = ({publication, isFavorite}) => {
       if(isHeartRed){
         //si esta clickeado borrar de la base de datos/elimina
         DeleteFav(publication._id)
+        dispatch(loadFavorites(user.email))
         e.preventDefault();
         setIsHeartRed(!isHeartRed);
+       
+        
       }else{
         //se crea un post osea un favorito
         const fav = {email: user.email ,publicationId: publication._id}
@@ -39,30 +44,6 @@ export const Card = ({publication, isFavorite}) => {
     }
   };
 
-    // const sendFavoriteStatusToServer = (publicationId, isFavorite) => {
-    // const apiUrl = `https://clon-airbnb-dev-shhb.1.us-1.fl0.io/api/favorite/${publicationId}`;
-    // const requestData = {
-    //   method: "PUT",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ isFavorite }),
-    // };
-
-  //   fetch(apiUrl, requestData)
-  //   .then(response => {
-  //     if (!response.ok) {
-  //       throw new Error('Error en la respuesta del servidor');
-  //     }
-  //     return response.json();
-  //   })
-  //   .then(data => {
-  //     // Manejar la respuesta exitosa del servidor
-  //   })
-  //   .catch(error => {
-  //     console.error('Error en la llamada al servidor:', error);
-  //   });
-  // }
 
   return (
     <>
