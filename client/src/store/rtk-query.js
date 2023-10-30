@@ -102,6 +102,13 @@ export const apiQueries = createApi({
         getBooking: builder.query({
             query: (id) => ({url:`booking/idPublication/${id}`})
         }),
+        postBooking: builder.mutation({
+            query: (dates) =>({
+                url: "booking",
+                method: "post",
+                body: dates,
+            })
+        }),
     }),
     
     //agregar otros endpoints
@@ -140,6 +147,7 @@ export const {
     useAddFavoriteMutation,
     useRemoveFavoriteMutation,
     // Booking
-    useGetBookingQuery
+    useGetBookingQuery,
+    usePostBookingMutation,
 
 } = apiQueries;

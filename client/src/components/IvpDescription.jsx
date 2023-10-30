@@ -8,9 +8,10 @@ import IvpSlider from "./IvpSlider";
 import IvpCalendar from "../components/IvpCalendar";
 import IvpHoster from "./IvpHoster";
 import IvpReservation from "./IvpReservation";
-
+import Times from './Times';
 import { LiaBedSolid, LiaMedalSolid } from "react-icons/lia";
 import { GrNotes } from "react-icons/gr";
+
 
 // import { useSelector } from "react-redux";
 
@@ -118,14 +119,14 @@ function IvpDescription({data, dataUser}) {
             {data?.amenities ? (<Amenities amenities={data?.amenities}/>) : []}
 
             {/* CALENDAR */}
-            <IvpCalendar idPublication={data?._id}/>
+            {/* <IvpCalendar idPublication={data?._id}/> */}
+            {/* <Times idPublication={data?._id}/> */}
           </div>
         </div>
 
 {/* ======================DIV IZQUIERDO==================== */}
 
-        {/* Reservation */}
-        <IvpReservation />
+        <IvpCalendar idPublication={data?._id}/>
       </div>
     </div>
   );
