@@ -11,7 +11,7 @@ export const AccessButtons = ({loginGoogle}) => {
         <img src={google} alt="" className="w-5 ml-2" />
         <p className="mx-auto">Continue with Google</p>
       </button>
-      <button className="border-4 mb-3 w-full h-[48px] flex items-center rounded-md ">
+      {/* <button className="border-4 mb-3 w-full h-[48px] flex items-center rounded-md ">
         <img src={facebook} alt="" className="w-5 ml-2" />
         <p className="mx-auto">Continue with Facebook</p>
       </button>
@@ -22,7 +22,7 @@ export const AccessButtons = ({loginGoogle}) => {
       <button className="border-4 mb-3 w-full h-[48px] flex items-center rounded-md ">
         <img src={email} alt="" className="w-5 ml-2" />
         <p className="mx-auto">Continue with Email</p>
-      </button>
+      </button> */}
     </div>
   );
 };
