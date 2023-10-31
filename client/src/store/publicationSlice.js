@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 // Define una acción asincrónica para cargar las publicaciones
 export const fetchPublications = createAsyncThunk("publications/fetchPublications", async (query ="") => {
 	let data ={}
-	const response = await fetch("http://localhost:3000/api/publication");
+	const response = await fetch("https://clon-airbnb-api.onrender.com/api/publication");
 	const res = await response.json();
 	if (query === ""){
 		 data = res.filter(publication => {
@@ -15,7 +15,7 @@ export const fetchPublications = createAsyncThunk("publications/fetchPublication
 });
 
 export const updatePublication = createAsyncThunk("publications/updatePublication", async (publicationData) => {
-	const url = "http://localhost:3000/api/publication";
+	const url = "https://clon-airbnb-api.onrender.com/api/publication";
 	const requestOptions = {
 	  method: "PUT",
 	  headers: {
@@ -35,7 +35,7 @@ export const updatePublication = createAsyncThunk("publications/updatePublicatio
   });
 
   export const deletePublication = createAsyncThunk("publications/deletePublication", async (id) => {
-	const url = `http://localhost:3000/api/publication/${id}`;
+	const url = `https://clon-airbnb-api.onrender.com/api/publication/${id}`;
 	const requestOptions = {
 	  method: "DELETE",
 	  headers: {

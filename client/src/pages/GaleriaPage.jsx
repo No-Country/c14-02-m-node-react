@@ -8,20 +8,32 @@ import { loadFavorites } from "../store/favoriteSlice";
 import { fetchUsers } from "../store/userSlice";
 
 export const GaleriaPage = () => {
-	const { user } = useAuth();
+	const { user, loading:load } = useAuth();
 	const dispatch = useDispatch();
 	const [loading, setLoading] = useState(true);
 	const [favoritesLoading, setFavoritesLoading] = useState(true);
 
 	useEffect(() => {
-		dispatch(fetchPublications(""));
-		if (user?.email) {
-			dispatch(loadFavorites(user.email)).then(() => {
-				setFavoritesLoading(false);
-			});
-		}
-		dispatch(fetchUsers());
-	}, [user, dispatch]);
+		if (!load) {
+	
+			if (user) {
+				dispatch(fetchPublications(""));
+		
+			if (user?.email) {
+				dispatch(loadFavorites(user.email)).then(() => {
+					setFavoritesLoading(false);
+				});
+			}
+			dispatch(fetchUsers());
+			} else {
+			
+				dispatch(fetchPublications(""));
+				setFavoritesLoading(false)
+			}
+			dispatch(fetchUsers());
+			}
+
+	}, [load, user, dispatch]);
 
 	// Usar Redux para obtener las publicaciones y favoritos
 	const { filteredPublications, status } = useSelector(
