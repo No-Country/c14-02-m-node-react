@@ -20,7 +20,7 @@ function Spaces({ spaces }) {
 		dots: true,
 		infinite: true,
 		speed: 500,
-		slidesToShow: 3, // Número de tarjetas visibles a la vez
+		slidesToShow: 2, // Número de tarjetas visibles a la vez
 		slidesToScroll: 1,
 	};
 
