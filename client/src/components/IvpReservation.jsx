@@ -6,6 +6,21 @@ import { usePostBookingMutation } from "../store/rtk-query";
 import { useAuth } from "../context/AuthContext";
 import { data } from "autoprefixer";
 
+function IvpReservation({ dates, idPublication }) {
+	const { user, loading } = useAuth();
+	console.log("esto llega en id", user);
+	const [showReservation, setShowReservation] = useState(true);
+	const [addDates, { isLoadingDates }] = usePostBookingMutation();
+	const id = idPublication.date;
+	const dataBooking = {
+		publicationID: id,
+		email: user?.email,
+		dateIn: dates[0],
+		dateOut: dates[1],
+	};
+	const handleBooking = () => {
+		addDates(dataBooking);
+	};
 
 function IvpReservation({ dates ,idPublication, data}) {
 
@@ -78,4 +93,3 @@ function IvpReservation({ dates ,idPublication, data}) {
 }
 
 export default IvpReservation;
-

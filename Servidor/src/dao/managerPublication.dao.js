@@ -1,5 +1,11 @@
 const Database = require('../config/mongodb.js');
-const { createDocument, getOneDocument, getAllDocuments, updateDocument,deleteDocument } = require('../config/factory.js');
+const {
+	createDocument,
+	getOneDocument,
+	getAllDocuments,
+	updateDocument,
+	deleteDocument,
+} = require('../config/factory.js');
 const PublicationModel = require('../models/publication.model.js');
 
 class PublicationManager {
@@ -9,7 +15,7 @@ class PublicationManager {
 		this.getOneDocument = getOneDocument;
 		this.getAllDocuments = getAllDocuments;
 		this.updateDocument = updateDocument;
-		this.deleteDocument = deleteDocument
+		this.deleteDocument = deleteDocument;
 	}
 
 	async createPublication(data) {
@@ -32,9 +38,10 @@ class PublicationManager {
 		}
 	}
 
-	async getAllPublication() {
+	async getAllPublication(query) {
 		try {
-			const Publications = await this.getAllDocuments('publicationCollection');
+			// Se agrega filtro o query que llega desde el controller mediante un query params
+			const Publications = await this.getAllDocuments('publicationCollection', query);
 			return Publications;
 		} catch (error) {
 			console.error(error);
@@ -44,7 +51,7 @@ class PublicationManager {
 
 	async getPublicationById(id) {
 		try {
-			const PublicationId = await this.getOneDocument('publicationCollection', id)
+			const PublicationId = await this.getOneDocument('publicationCollection', id);
 			return PublicationId;
 		} catch (error) {
 			console.error(error);
@@ -64,8 +71,8 @@ class PublicationManager {
 
 	async deletePublicationById(id) {
 		try {
-			const PublicationId = await this.deleteDocument('publicationCollection',id)
-			console.log(PublicationId)
+			const PublicationId = await this.deleteDocument('publicationCollection', id);
+			console.log(PublicationId);
 			return PublicationId;
 		} catch (error) {
 			console.error(error);

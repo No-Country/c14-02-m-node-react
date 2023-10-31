@@ -8,9 +8,9 @@ const numberOfDays = 30;
 const availableDates = [today];
 
 for (let i = 1; i < numberOfDays; i++) {
-  const nextDate = new Date(today);
-  nextDate.setDate(today.getDate() + i);
-  availableDates.push(nextDate);
+	const nextDate = new Date(today);
+	nextDate.setDate(today.getDate() + i);
+	availableDates.push(nextDate);
 }
 
 function Times(props) {
@@ -19,37 +19,35 @@ function Times(props) {
   const { data: BookinData, error: BookinError, isLoading: BookinLoading } = useGetBookingQuery(props.date);
   const [blockedDates, setBlockedDates] = useState(new Set());
 
-  useEffect(() => {
-    // Actualizar las fechas bloqueadas cuando BookinData cambia
-    if (BookinData) {
-      const updatedBlockedDates = new Set();
-      BookinData.forEach(booking => {
-        const bookingDateIn = new Date(booking.dateIn);
-        const bookingDateOut = new Date(booking.dateOut);
+	useEffect(() => {
+		// Actualizar las fechas bloqueadas cuando BookinData cambia
+		if (BookinData) {
+			const updatedBlockedDates = new Set();
+			BookinData.forEach(booking => {
+				const bookingDateIn = new Date(booking.dateIn);
+				const bookingDateOut = new Date(booking.dateOut);
 
-        // Agregar al conjunto las fechas entre dateIn y dateOut, incluyendo la fecha de entrada y salida
-        for (let date = bookingDateIn; date <= bookingDateOut; date.setDate(date.getDate() + 1)) {
-          updatedBlockedDates.add(date.toDateString());
-        }
-      });
-      setBlockedDates(updatedBlockedDates);
-    }
-  }, [BookinData]);
-  function handleDateSelection(date) {
-    const index = selectedDates.findIndex(
-      (d) => d.toDateString() === date.toDateString()
-    );
+				// Agregar al conjunto las fechas entre dateIn y dateOut, incluyendo la fecha de entrada y salida
+				for (let date = bookingDateIn; date <= bookingDateOut; date.setDate(date.getDate() + 1)) {
+					updatedBlockedDates.add(date.toDateString());
+				}
+			});
+			setBlockedDates(updatedBlockedDates);
+		}
+	}, [BookinData]);
+	function handleDateSelection(date) {
+		const index = selectedDates.findIndex(d => d.toDateString() === date.toDateString());
 
-    if (index === -1) {
-      // Si la fecha no está en la lista de seleccionadas, la agregamos
-      setSelectedDates([...selectedDates, date]);
-    } else {
-      // Si la fecha ya está en la lista, la eliminamos (deseleccionamos)
-      const updatedDates = [...selectedDates];
-      updatedDates.splice(index, 1);
-      setSelectedDates(updatedDates);
-    }
-  }
+		if (index === -1) {
+			// Si la fecha no está en la lista de seleccionadas, la agregamos
+			setSelectedDates([...selectedDates, date]);
+		} else {
+			// Si la fecha ya está en la lista, la eliminamos (deseleccionamos)
+			const updatedDates = [...selectedDates];
+			updatedDates.splice(index, 1);
+			setSelectedDates(updatedDates);
+		}
+	}
 
   return (
     <div className="times mt-5">

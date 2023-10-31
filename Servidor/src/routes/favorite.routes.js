@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
 const { createFav, getAllFavorite, deleteFav } = require('../controllers/favorite.controller');
@@ -31,15 +31,11 @@ router.get('/:email', getAllFavorite);
 
 router.delete('/:id', deleteFav);
 
-
-
-
 /** DELETE favorito
 METHOD:  DELETE
 URL: http://localhost:3000/api/favorite/652a8ffc06fc9560b23f30fc   --> este es el id pasado
 Elimina el id pasado 
 */
 router.delete('/:id', deleteFav);
-
 
 module.exports = router;

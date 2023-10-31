@@ -5,4 +5,11 @@ const reviewRoutes = require('./review.routes');
 const favoriteRoutes = require('./favorite.routes');
 const photoRoutes = require('./photo.routes');
 
-module.exports = { userRoutes, publicationRoutes, reviewRoutes, bookingRoutes, favoriteRoutes, photoRoutes };
+module.exports = {
+	userRoutes,
+	publicationRoutes,
+	reviewRoutes,
+	bookingRoutes,
+	favoriteRoutes,
+	photoRoutes,
+};

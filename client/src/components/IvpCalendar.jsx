@@ -19,8 +19,3 @@ function IvpCalendar({ idPublication, data }) {
 }
 
 export default IvpCalendar;
-
-
-
-
-

@@ -3,6 +3,13 @@ const BookingModel = require('./booking.model');
 const ReviewModel = require('./review.model');
 const FavoriteModel = require('./favorite.model');
 const PhotoModel = require('./photo.model');
-const PublicationModel = require('./publication.model')
+const PublicationModel = require('./publication.model');
 
-module.exports = { UserModel, BookingModel, ReviewModel, FavoriteModel, PhotoModel , PublicationModel};
+module.exports = {
+	UserModel,
+	BookingModel,
+	ReviewModel,
+	FavoriteModel,
+	PhotoModel,
+	PublicationModel,
+};

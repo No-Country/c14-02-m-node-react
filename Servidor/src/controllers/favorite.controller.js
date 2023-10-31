@@ -1,65 +1,59 @@
-const { FavoriteManager } = require("../dao");
+const { FavoriteManager } = require('../dao');
 const favoriteManager = new FavoriteManager();
 const { ObjectId } = require('mongodb');
 
 async function createFav(req, res) {
-    try {
-        const data = req.body;
+	try {
+		const data = req.body;
 
 		// console.log("pepitoController -->", data  )
 
-        const newFavorite = await favoriteManager.createFavorite(data);
-        return res.status(200).send(newFavorite);
-
-    } catch (error) {
-        console.error('Error al guardar un favorito', error);
+		const newFavorite = await favoriteManager.createFavorite(data);
+		return res.status(200).send(newFavorite);
+	} catch (error) {
+		console.error('Error al guardar un favorito', error);
 		return res.status(400).send(error);
-    }
+	}
 }
 
-
-
 async function getAllFavorite(req, res) {
-    const {email} = req.params
-    let filtro = {}
+	const { email } = req.params;
+	const filtro = {};
 	try {
-        if(email){
-            filtro.email= email
-        }
-        
+		if (email) {
+			filtro.email = email;
+		}
+
 		const favs = await favoriteManager.getAllFavorites(filtro);
 		return res.status(200).send(favs);
-
 	} catch (error) {
 		console.error('Error al obtener los favoritos', error);
 		return res.status(400).send(error);
 	}
 }
 
-//Delete favorite
+// Delete favorite
 async function deleteFav(req, res) {
-    try {
-     
-	   const {id}= req.params;
+	try {
+		const { id } = req.params;
 
-       console.log("que id tengo en el delete del controller? ->", id)
-       console.log(req.params)
-       //__________________________
+		console.log('que id tengo en el delete del controller? ->', id);
+		console.log(req.params);
+		// __________________________
 
+		const objectIdToDelete = new ObjectId(id);
+		console.log(objectIdToDelete);
+		// __________________________
 
-       const objectIdToDelete = new ObjectId(id);
-       console.log(objectIdToDelete);
-       //__________________________
-
-        const result = await favoriteManager.deleteFavorite(objectIdToDelete);
-        console.log("result ->", result)
-        if (result) {
-            return res.status(200).send(result);
-        } 
-    } catch (error) {
-        console.error('Error al eliminar un favorito', error);
-        return res.status(400).send(error);
-    }
+		const result = await favoriteManager.deleteFavorite(objectIdToDelete);
+		console.log('result ->', result);
+		if (result) {
+			return res.status(200).send(result);
+		}
+	} catch (error) {
+		console.error('Error al eliminar un favorito', error);
+		return res.status(400).send(error);
+	}
 }
 
-module.exports = { createFav, getAllFavorite, deleteFav};
+module.exports = { createFav, getAllFavorite, deleteFav };
