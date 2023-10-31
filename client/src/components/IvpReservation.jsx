@@ -5,6 +5,8 @@ import Price from "./Price";
 import { usePostBookingMutation } from "../store/rtk-query";
 import { useAuth } from "../context/AuthContext";
 import { data } from "autoprefixer";
+import Swal from 'sweetalert2';
+
 
 function IvpReservation({ dates, idPublication, data }) {
 	const { user, loading } = useAuth();
@@ -18,9 +20,32 @@ function IvpReservation({ dates, idPublication, data }) {
 		dateIn: dates[0],
 		dateOut: dates[1],
 	};
+	const [reservationCompleted, setReservationCompleted] = useState(false);
+
 	const handleBooking = () => {
-		addDates(dataBooking);
-	};
+		if (reservationCompleted) {
+		  // en caso que la fecha que esté
+		  Swal.fire('Fecha ya reservada', 'Esta fecha ya ha sido reservada.', 'warning');
+		} else {
+		  Swal.fire({
+			title: '¿Confirmar la reserva?',
+			text: '¿Estás seguro de que deseas realizar la reserva?',
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonText: 'Sí, reservar',
+			cancelButtonText: 'Cancelar',
+		  }).then((result) => {
+			if (result.isConfirmed) {
+			  // reserva realizada y completada.
+			  addDates(dataBooking);
+			  setReservationCompleted(true);
+			  Swal.fire('¡Reserva realizada!', 'La reserva se ha realizado con éxito.', 'success');
+			}
+		  });
+		}
+	  };
+	  
+	  
 
 	return (
 		<div>
@@ -60,6 +85,8 @@ function IvpReservation({ dates, idPublication, data }) {
 						</button>
 					</div>
 				</div>
+
+				{/* ZONA DE DENUNCIAS */}
 				<div className="flex hidden md:block text-stone-500 items-center my-5">
 					<div>
 						<FaFlag />
