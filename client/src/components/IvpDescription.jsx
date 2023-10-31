@@ -120,7 +120,7 @@ function IvpDescription({data, dataUser}) {
 
 {/* ======================DIV IZQUIERDO==================== */}
 
-        <IvpCalendar idPublication={data?._id}/>
+        <IvpCalendar idPublication={data?._id} data={data} />
       </div>
     </div>
   );

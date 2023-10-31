@@ -14,6 +14,7 @@ for (let i = 1; i < numberOfDays; i++) {
 }
 
 function Times(props) {
+
   const [selectedDates, setSelectedDates] = useState([]);
   const { data: BookinData, error: BookinError, isLoading: BookinLoading } = useGetBookingQuery(props.date);
   const [blockedDates, setBlockedDates] = useState(new Set());
@@ -76,7 +77,7 @@ function Times(props) {
           </p>
         )}
       </div>
-      <IvpReservation dates={selectedDates} idPublication={props} />
+      <IvpReservation dates={selectedDates} idPublication={props} data={props} />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import { GiGlobe } from "react-icons/gi";
-import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 
 function IvpHoster({dataUser}) {
 
