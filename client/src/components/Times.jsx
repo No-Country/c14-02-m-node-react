@@ -14,10 +14,13 @@ for (let i = 1; i < numberOfDays; i++) {
 }
 
 function Times(props) {
-
-  const [selectedDates, setSelectedDates] = useState([]);
-  const { data: BookinData, error: BookinError, isLoading: BookinLoading } = useGetBookingQuery(props.date);
-  const [blockedDates, setBlockedDates] = useState(new Set());
+	const [selectedDates, setSelectedDates] = useState([]);
+	const {
+		data: BookinData,
+		error: BookinError,
+		isLoading: BookinLoading,
+	} = useGetBookingQuery(props.date);
+	const [blockedDates, setBlockedDates] = useState(new Set());
 
 	useEffect(() => {
 		// Actualizar las fechas bloqueadas cuando BookinData cambia
@@ -49,35 +52,31 @@ function Times(props) {
 		}
 	}
 
-  return (
-    <div className="times mt-5">
-      <h2 className="text-xl font-semibold my-5">
-        Seleccione fecha(s) para su reserva:
-      </h2>
-      <div className="calendar">
-        <Calendar
-          value={selectedDates}
-          onChange={handleDateSelection}
-          tileDisabled={({ date }) => {
-            const dateStr = date.toDateString();
-            return blockedDates.has(dateStr)
-          }
-          }
-        />
-      </div>
-      <div className="mt-5">
-        {selectedDates.length > 0 ? (
-          <>
-          </>
-        ) : (
-          <p>
-            <span>Seleccione fecha(s) para su reserva.</span>
-          </p>
-        )}
-      </div>
-      <IvpReservation dates={selectedDates} idPublication={props} data={props} />
-    </div>
-  );
+	return (
+		<div className="times mt-5">
+			<h2 className="text-xl font-semibold my-5">Seleccione fecha(s) para su reserva:</h2>
+			<div className="calendar">
+				<Calendar
+					value={selectedDates}
+					onChange={handleDateSelection}
+					tileDisabled={({ date }) => {
+						const dateStr = date.toDateString();
+						return blockedDates.has(dateStr);
+					}}
+				/>
+			</div>
+			<div className="mt-5">
+				{selectedDates.length > 0 ? (
+					<></>
+				) : (
+					<p>
+						<span>Seleccione fecha(s) para su reserva.</span>
+					</p>
+				)}
+			</div>
+			<IvpReservation dates={selectedDates} idPublication={props} data={props} />
+		</div>
+	);
 }
 
 export default Times;

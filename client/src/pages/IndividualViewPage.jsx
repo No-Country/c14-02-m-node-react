@@ -84,11 +84,6 @@ function IndividualViewPage(props) {
 				<IvpEvaluaciones />
 				<IvpRules />
 
-				<IvpDescription data={publicationData || []} dataUser={dataUser} />
-				<IvpReviews />
-				<IvpEvaluaciones />
-				<IvpRules />
-
 				<HelpFooter />
 				<OptionsFooter />
 			</div>

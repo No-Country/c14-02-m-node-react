@@ -21,6 +21,30 @@ function IvpDescription({ data, dataUser }) {
 	return (
 		<div>
 			<div className="grid grid-cols-3 gap-4">
+
+				{/* ====================IZQUIERDA==================== */}
+
+				<div className="col-span-3 md:col-span-2">
+          <div className="max-w-[600px] mx-auto">
+            <div className="flex items-center p-5">
+              <div>
+                <Type data={data} />
+                <h2 className="text-2xl font-semibold">Anfitrión: {dataUser?.names}</h2>
+              </div>
+              <div>
+                <Link to="/user-account">
+                  <img
+                    src={dataUser?.photo}
+                    alt="Imagen"
+                    className="rounded-full h-16 w-16 object-cover mr-4"
+                  />
+                </Link>
+              </div>
+            </div>
+
+            {/* SPACES */}
+            {data?.spaces && <Spaces spaces={data.spaces} />}
+
 				{/* FAQ */}
 				<div className="border-b p-8">
 					<div>
@@ -86,12 +110,17 @@ function IvpDescription({ data, dataUser }) {
 				{data?.amenities ? <Amenities amenities={data?.amenities} /> : []}
 
 				{/* CALENDAR */}
-				<IvpCalendar idPublication={data?._id} data={data} />
+				{/* <IvpCalendar idPublication={data?._id} data={data} /> */}
 				{/* <Times idPublication={data?._id}/> */}
 			</div>
 		</div>
 
+		{/* ======================DIV IZQUIERDO==================== */}
+
+        <IvpCalendar idPublication={data?._id} data={data}/>
+      </div>
+    </div>
   );
 }
-
+	
 export default IvpDescription;
