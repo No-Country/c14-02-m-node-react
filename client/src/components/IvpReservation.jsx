@@ -36,7 +36,7 @@ function IvpReservation({ dates, idPublication, data }) {
 			cancelButtonText: 'Cancelar',
 		  }).then((result) => {
 			if (result.isConfirmed) {
-			  // reserva realizada y completada.
+			  // reserva realizada y   completada.
 			  addDates(dataBooking);
 			  setReservationCompleted(true);
 			  Swal.fire('¡Reserva realizada!', 'La reserva se ha realizado con éxito.', 'success');
@@ -44,7 +44,6 @@ function IvpReservation({ dates, idPublication, data }) {
 		  });
 		}
 	  };
-	  
 	  
 
 	return (
