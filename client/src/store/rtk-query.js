@@ -20,19 +20,7 @@ export const apiQueries = createApi({
 				body: data,
 			}),
 		}),
-		updatePublication: builder.mutation({
-			query: (id, update) => ({
-				url: `publication/${id}`,
-				method: "put",
-				body: update,
-			}),
-		}),
-		deletePublication: builder.mutation({
-			query: id => ({
-				url: `publication/${id}`,
-				method: "delete",
-			}),
-		}), // User queries
+		 // User queries
 		getUsers: builder.query({
 			query: () => "user",
 		}),
@@ -225,8 +213,6 @@ export const {
 	useGetAllPublicationsQuery,
 	useGetPublicationByIdQuery,
 	useCreatePublicationMutation,
-	useUpdatePublicationMutation,
-	useDeletePublicationMutation,
 	// user queries
 	useGetUsersQuery,
 	useGetUserQuery,

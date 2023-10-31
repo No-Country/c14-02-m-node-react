@@ -14,7 +14,7 @@ export const GaleriaPage = () => {
 	const [favoritesLoading, setFavoritesLoading] = useState(true);
 
 	useEffect(() => {
-		dispatch(fetchPublications());
+		dispatch(fetchPublications(""));
 		if (user?.email) {
 			dispatch(loadFavorites(user.email)).then(() => {
 				setFavoritesLoading(false);
@@ -24,7 +24,7 @@ export const GaleriaPage = () => {
 	}, [user, dispatch]);
 
 	// Usar Redux para obtener las publicaciones y favoritos
-	const { allPublications, filteredPublications, status } = useSelector(
+	const { filteredPublications, status } = useSelector(
 		state => state.publications
 	);
 	const allFavorites = useSelector(state => state.favorites.allFavorites);
