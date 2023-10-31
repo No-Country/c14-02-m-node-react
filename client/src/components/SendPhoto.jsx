@@ -63,7 +63,7 @@ const SendPhoto = props => {
 			/>
 			<button
 				onClick={() => fileInputRef.current.click()}
-				className="absolute right-0 text-white p-2 bg-stone-950 rounded-full cursor-pointer"
+				className="absolute right-3 top-4 md:right-3 md:top-0 text-white p-2 bg-stone-950 rounded-full cursor-pointer"
 			>
 				<AiOutlineCamera />
 			</button>
