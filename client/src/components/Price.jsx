@@ -1,9 +1,9 @@
 import React from "react";
 
-function Price() {
+function Price({ data }) {
 	return (
 		<div>
-			<h2 className="text-2xl font-semibold mr-2">$57 USD</h2>
+			<h2 className="text-2xl font-semibold mr-2">${data.data.price} USD</h2>
 		</div>
 	);
 }

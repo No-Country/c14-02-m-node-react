@@ -1,12 +1,60 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Define una acción asincrónica para cargar las publicaciones
-export const fetchPublications = createAsyncThunk("publications/fetchPublications", async () => {
-	const response = await fetch("http://localhost:3000/api/publication");
-	const data = await response.json();
+export const fetchPublications = createAsyncThunk("publications/fetchPublications", async (query ="") => {
+	let data ={}
+	const response = await fetch("https://clon-airbnb-api.onrender.com/api/publication");
+	const res = await response.json();
+	if (query === ""){
+		 data = res.filter(publication => {
+			return !publication.title.startsWith("***");
+		})} else {
+			data=res
+		}
 	return data;
 });
 
+export const updatePublication = createAsyncThunk("publications/updatePublication", async (publicationData) => {
+	const url = "https://clon-airbnb-api.onrender.com/api/publication";
+	const requestOptions = {
+	  method: "PUT",
+	  headers: {
+		"Content-Type": "application/json", 
+	  },
+	  body: JSON.stringify(publicationData),
+	};
+  
+	const response = await fetch(url, requestOptions);
+  
+	if (response.ok) {
+	  return publicationData;
+	} else {
+	  const errorData = await response.json();
+	  throw new Error(errorData.message);
+	}
+  });
+
+  export const deletePublication = createAsyncThunk("publications/deletePublication", async (id) => {
+	const url = `https://clon-airbnb-api.onrender.com/api/publication/${id}`;
+	const requestOptions = {
+	  method: "DELETE",
+	  headers: {
+		"Content-Type": "application/json",
+	  },
+	};
+  
+	const response = await fetch(url, requestOptions);
+  console.log(response)
+	if (response.ok) {
+	  // El recurso se eliminó con éxito, no es necesario devolver nada.
+	  return;
+	} else {
+	  const errorData = await response.json();
+	  throw new Error(errorData.message);
+	}
+  });
+  
+  
 const publicationSlice = createSlice({
 	name: "publications",
 	initialState: {
@@ -17,6 +65,7 @@ const publicationSlice = createSlice({
 		error: null,
 	},
 	reducers: {
+		
 		// acción para buscar por ID
 		searchPublicationById: (state, action) => {
 			const idForSearch = action.payload;

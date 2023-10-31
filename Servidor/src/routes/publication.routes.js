@@ -59,7 +59,7 @@ BODY:
 }
 */
 
-router.put('/:id', PublicationController.putUpdatePublicationController);
+router.put('/', PublicationController.putUpdatePublicationController);
 
 /** UPDATE Publication actualiza un publicacion por el parametro espesificado 
 METHOD:  PUT

@@ -12,7 +12,7 @@ const PublicationsUser = () => {
 	const [showComponent, setShowComponent] = useState(false);
 
 	useEffect(() => {
-		dispatch(fetchPublications());
+		dispatch(fetchPublications("***"));
 		dispatch(loadFavorites(user?.email));
 		setShowComponent(true);
 	}, [user, showComponent, dispatch]);

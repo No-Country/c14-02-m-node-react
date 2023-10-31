@@ -2,7 +2,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchUsers = createAsyncThunk("publications/fetchUsers", async () => {
-	const response = await fetch("http://localhost:3000/api/user");
+	const response = await fetch("https://clon-airbnb-api.onrender.com/api/user");
 	const data = await response.json();
 	return data;
 });
