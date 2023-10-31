@@ -55,21 +55,17 @@ async function getAllPublicationController(req, res) {
 	// Se agrega filtro para location
 	const { location } = req.query;
 	try {
-		let filter = {};
-		if (!location) {
-			filter = {};
-		} else {
-			// filter.location = `/.*${location}.*/i`;
-			filter.location = new RegExp(`^${location}`, 'i');
-		}
-		const Publications = await publicatinManage.getAllPublication(filter);
-		return res.status(200).send(Publications);
+	  let filter = {};
+ 	  const Publications = await publicatinManage.getAllPublication(filter);
+	  return res.status(200).send(Publications);
 	} catch (error) {
-		console.error('Error al obtener la publicación', error);
-		return res.status(400).send(error);
+	  console.error('Error al obtener la publicación', error);
+	  return res.status(400).send(error);
 	}
-}
-
+  }
+  
+  
+  
 async function getPublicationByIdController(req, res) {
 	const id = req.params.id;
 	try {
@@ -83,11 +79,10 @@ async function getPublicationByIdController(req, res) {
 }
 
 async function putUpdatePublicationController(req, res) {
-	const id = req.params.id;
 	const data = req.body;
 
 	try {
-		const publicationId = new ObjectId(id);
+		const publicationId = new ObjectId(data.id);
 		const result = await publicatinManage.putUpdatePublication({ _id: publicationId }, data);
 
 		if (result.matchedCount > 0) {

@@ -2,11 +2,13 @@ import React, { useState, useCallback } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { FaFlag } from "react-icons/fa6";
 import Price from "./Price";
-import Reservation from "./Reservation";
 import { usePostBookingMutation } from "../store/rtk-query";
 import { useAuth } from "../context/AuthContext";
+import { data } from "autoprefixer";
+import Swal from 'sweetalert2';
 
-function IvpReservation({ dates, idPublication }) {
+
+function IvpReservation({ dates, idPublication, data }) {
 	const { user, loading } = useAuth();
 	console.log("esto llega en id", user);
 	const [showReservation, setShowReservation] = useState(true);
@@ -18,9 +20,31 @@ function IvpReservation({ dates, idPublication }) {
 		dateIn: dates[0],
 		dateOut: dates[1],
 	};
+	const [reservationCompleted, setReservationCompleted] = useState(false);
+
 	const handleBooking = () => {
-		addDates(dataBooking);
-	};
+		if (reservationCompleted) {
+		  // en caso que la fecha que esté
+		  Swal.fire('Fecha ya reservada', 'Esta fecha ya ha sido reservada.', 'warning');
+		} else {
+		  Swal.fire({
+			title: '¿Confirmar la reserva?',
+			text: '¿Estás seguro de que deseas realizar la reserva?',
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonText: 'Sí, reservar',
+			cancelButtonText: 'Cancelar',
+		  }).then((result) => {
+			if (result.isConfirmed) {
+			  // reserva realizada y   completada.
+			  addDates(dataBooking);
+			  setReservationCompleted(true);
+			  Swal.fire('¡Reserva realizada!', 'La reserva se ha realizado con éxito.', 'success');
+			}
+		  });
+		}
+	  };
+	  
 
 	return (
 		<div>
@@ -28,7 +52,7 @@ function IvpReservation({ dates, idPublication }) {
 				<div className="inner-div md:w-[auto] md:relative bg-white p-4 border-2 md:rounded-xl  md:drop-shadow-[0_10px_10px_rgba(0,0,0,0.25)] md:bottom-auto md:w-auto md:static fixed bottom-0 w-full">
 					<div>
 						<div className="flex items-baseline">
-							<Price />
+							<Price data={data} />
 							<span className="text-slate-500">noche</span>
 						</div>
 						<div className="hidden md:block">
@@ -60,6 +84,8 @@ function IvpReservation({ dates, idPublication }) {
 						</button>
 					</div>
 				</div>
+
+				{/* ZONA DE DENUNCIAS */}
 				<div className="flex hidden md:block text-stone-500 items-center my-5">
 					<div>
 						<FaFlag />
