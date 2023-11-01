@@ -64,7 +64,7 @@
 
 <h4>👉🏻 Task List ✅<h4>
 
-<p>▪️ DDesarrollo de la vista mediante componentes dinámicos con Javascript y React.</p>
+<p>▪️ Desarrollo de la vista mediante componentes dinámicos con Javascript y React.</p>
 <p>▪️ Agregar estilo con componentes, tablas y elementos de Material UI.</p>
 <p>▪️ Base de datos MongoDb.</p>
 <p>▪️ Creando las rutas enlazadas de la página usando React Router.</p>
@@ -87,16 +87,7 @@
 
 <hr/>
 
-<h4> 👉🏻 Product Manager </h4>
-
-
-| <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698323249/1614783338090_bgt4oy.jpg" width=50>|
-|:-:|
-| Cecilia Alsina |
-|<a href="https://github.com/"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/cecilia-alsina-3670aa207/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
-
-
-<h4>✔️ MP </h4>
+<h4>✔️ PM </h4>
 
 <h4>👉🏻 List ✅<h4>
 
@@ -107,3 +98,17 @@
 <p>▪️ Resolución de obstáculos y preparación de presentaciones efectivas para Demo Days, garantizando el progreso y cumplimiento de objetivos.</p>
 <p>▪️ Herramientas de uso:</p>
 <p>▪️ Jira/Trello / Metodología Scrum / Comunicación y plataformas de trabajo: Discord / Slack / whatsapp.</p>
+
+<h4>👉🏻 Product Manager </h4>
+
+| <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698323249/1614783338090_bgt4oy.jpg" width=50>|
+|:-:|
+| Cecilia Alsina |
+|<a href="https://github.com/"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/cecilia-alsina-3670aa207/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+
+
+
+
+
+
+
