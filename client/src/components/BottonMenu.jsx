@@ -91,7 +91,7 @@ const Component = ({ photoPerson }) => {
 									<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70">Poné tu Airbnb</p>
 								</Link>
 								{/* <Li onClick={() => openModal(3)}>Poné tu Airbnb</Li> */}
-								<div className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70" onClick={() => openModal(4)}>Centro de Ayuda</div>
+								{/* <div className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70" onClick={() => openModal(4)}>Centro de Ayuda</div> */}
 								<div>
 									<button className="text-red-600" onClick={handlelogout}>
 										Cerrar Sesión
