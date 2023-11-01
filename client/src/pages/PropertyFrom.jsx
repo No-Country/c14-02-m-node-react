@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import { LiaSwimmingPoolSolid } from "react-icons/lia";
 import { AiOutlineWifi, AiOutlineCar } from "react-icons/ai";
 import { LiaBedSolid } from "react-icons/lia";
@@ -15,7 +15,10 @@ import UpImages from "../components/UpImages";
 
 import Swal from "sweetalert2";
 
+import { useAuth } from "../context/AuthContext";
+
 const PropertyForm = () => {
+	const { user } = useAuth();
 	const [formData, setFormData] = useState({
 		type: "",
 		offering: "",
@@ -30,9 +33,11 @@ const PropertyForm = () => {
 		price: "",
 		discount: "",
 		extra_Security: [],
-		email: "",
+		email: user.email,
 		photos: [],
 	});
+
+	console.log(formData.email, 'aca no  toy')
 
 	const [createPublication] = useCreatePublicationMutation(formData);
 
@@ -123,15 +128,15 @@ const PropertyForm = () => {
 			}
 
 			// validar el formato del correo electrónico
-			const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
-			if (!emailRegex.test(formData.email)) {
-				Swal.fire({
-					icon: "error",
-					title: "Error",
-					text: "El formato del correo electrónico no es válido.",
-				});
-				return; // falta el correo electrónico no es válido
-			}
+			// const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+			// if (!emailRegex.test(formData.email)) {
+			// 	Swal.fire({
+			// 		icon: "error",
+			// 		title: "Error",
+			// 		text: "El formato del correo electrónico no es válido.",
+			// 	});
+			// 	return; // falta el correo electrónico no es válido
+			// }
 
 			// Validar el descuento
 			const discountValue = parseFloat(formData.discount);
@@ -507,7 +512,7 @@ const PropertyForm = () => {
 							/>
 						</div>
 
-						<div className="sm:col-span-4">
+						<div className="sm:col-span-4 hidden">
 							<label htmlFor="email" className="text-sm font-medium text-gray-900">
 								Email
 							</label>
@@ -517,9 +522,9 @@ const PropertyForm = () => {
 									name="email"
 									type="email"
 									autoComplete="email"
-									className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 "
+									className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600"
 									value={formData.email}
-									onChange={handleChange}
+									readOnly
 								/>
 							</div>
 						</div>
