@@ -93,8 +93,7 @@
 
 <p>▪️ Planificación, organización y ejecución del proyecto Clon-Airbnb.</p>
 <p>▪️ Coordinacción los sprints.</p>
-<p>▪️ Comunicación diaria del equipo (dailys) y sirvió como enlace con el Team Leader.</p>
-<p>▪️ Creando las rutas enlazadas de la página usando React Router.</p>
+<p>▪️ Comunicación diaria del equipo (dailys) y con el Team Leader.</p>
 <p>▪️ Resolución de obstáculos y preparación de presentaciones efectivas para Demo Days, garantizando el progreso y cumplimiento de objetivos.</p>
 
 <h4> 👉🏻 Herramientas 🛠️ </h4>
