@@ -14,6 +14,7 @@ const {
 	bookingRoutes,
 	favoriteRoutes,
 	photoRoutes,
+	mailRoutes,
 } = require('./src/routes');
 
 // Middlewares de express
@@ -32,6 +33,7 @@ app.use('/api/review', reviewRoutes);
 app.use('/api/photo', photoRoutes);
 app.use('/api/booking', bookingRoutes);
 app.use('/api/favorite', favoriteRoutes);
+app.use('/api/email',mailRoutes);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Servidor escuchando en el puerto http://localhost:${PORT}`));

@@ -5,7 +5,7 @@ const ContactoSoporte = () => {
 
  	const [formData, setFormData] = useState({
     	name: "",
-    	mail: "",
+    	email: "",
     	mensaje: "",
   	});
 
@@ -13,18 +13,23 @@ const ContactoSoporte = () => {
     e.preventDefault();
 
     const dataToSend = {
-      type: "contact us",
-      name: formData.name,
-      mail: formData.mail,
-      mensaje: formData.mensaje,
+        "type" : "contact us",
+        "name": "jorge",
+        "email": "jorge@jorge.com",
+        "mensaje": "hola jorge"
+      
+      // type: "contact us",
+      // name: formData.name,
+      // email: formData.email,
+      // mensaje: formData.mensaje,
     };
 
-    fetch("https://clon-airbnb-api.onrender.com/api/mail", {
+    fetch("https://clon-airbnb-api.onrender.com/api/email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(dataToSend),
+      // body: JSON.stringify(dataToSend),
     })
       .then((response) => {
         if (response.ok) {
@@ -75,15 +80,15 @@ const ContactoSoporte = () => {
             required
           />
 
-          <label className="text-gray-900 text-lg pb-2" htmlFor="mail">
+          <label className="text-gray-900 text-lg pb-2" htmlFor="email">
             Correo Electrónico
           </label>
           <input
             className="border border-gray-300 rounded-md mb-4"
             type="email"
-            id="mail"
-            name="mail"
-            value={formData.mail}
+            id="email"
+            name="email"
+            value={formData.email}
             onChange={handleChange}
             required
           />
@@ -101,7 +106,7 @@ const ContactoSoporte = () => {
           ></textarea>
 
           <button
-            className="border rounded-md py-2 px-2 bg-black text-white hover-bg-gray-900 mt-4"
+            className="border rounded-md py-2 px-2 bg-black text-white hover:bg-gray-900 mt-4"
             type="submit"
           >
             Enviar

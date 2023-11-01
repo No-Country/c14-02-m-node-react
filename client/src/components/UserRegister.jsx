@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { useCreateUserMutation } from "../store/rtk-query";
 
 const UserForm = user => {
-	console.log(user.user.photoURL);
+	// console.log(user.user.photoURL)
 	const [createUser, { isLoading }] = useCreateUserMutation();
 	const [formData, setFormData] = useState({
 		names: "",
@@ -17,7 +17,7 @@ const UserForm = user => {
 		role: "user",
 	});
 	const navigate = useNavigate();
-	console.log("FORMDATAAAAA", formData);
+	// console.log("FORMDATAAAAA",formData)
 	const handleChange = e => {
 		const { name, value } = e.target;
 		setFormData({

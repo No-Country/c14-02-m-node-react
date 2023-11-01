@@ -12,230 +12,6 @@ import { GrBottomCorner } from "react-icons/gr";
 import { useAuth } from "../context/AuthContext";
 import { Search } from "./Search";
 
-const Navbar = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px 40px;
-	box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
-	background-color: #fff;
-	position: sticky;
-	top: 0;
-	z-index: 100;
-
-	@media (max-width: 800px) {
-		display: flex;
-		justify-content: space-between;
-		box-shadow: none;
-		padding: 15px 0;
-		transform: scale(0.9);
-		margin: 0;
-		position: relative;
-	}
-`;
-
-const Container = styled.div`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	cursor: pointer;
-
-	@media (max-width: 1150px) {
-		display: none;
-	}
-`;
-
-const Container2 = styled.div`
-	display: flex;
-	padding: 8px;
-	margin: 0 0 0 10rem;
-	align-items: center;
-	border-radius: 24px;
-	border: 1px solid #ddd;
-	box-shadow:
-		0px 4px 12px 0px rgba(73, 32, 32, 0.05),
-		0px 1px 2px 0px rgba(0, 0, 0, 0.08);
-	cursor: pointer;
-
-	&:hover {
-		box-shadow:
-			0px 4px 12px 0px rgba(73, 32, 32, 0.09),
-			0px 1px 2px 1px rgba(0, 0, 0, 0.1);
-	}
-
-	@media (max-width: 1150px) {
-		margin: 0;
-		transform: scale(0.9);
-	}
-
-	@media (max-width: 800px) {
-		display: none;
-	}
-`;
-
-const Container2Movil = styled.div`
-	display: none;
-
-	&:hover {
-		box-shadow:
-			0px 4px 12px 0px rgba(73, 32, 32, 0.09),
-			0px 1px 2px 1px rgba(0, 0, 0, 0.1);
-	}
-
-	@media (max-width: 800px) {
-		display: flex;
-		flex-direction: row;
-		width: 90%;
-		padding: 10px;
-		align-items: center;
-		border-radius: 30px;
-		border: 1px solid #ddd;
-		box-shadow:
-			0px 4px 12px 0px rgba(73, 32, 32, 0.05),
-			0px 1px 2px 0px rgba(0, 0, 0, 0.08);
-		cursor: pointer;
-		transform: scale(0.9);
-		overflow: hidden;
-	}
-`;
-
-const Container3 = styled.div`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 8px;
-
-	@media (max-width: 1500px) {
-		gap: 4px;
-	}
-
-	@media (max-width: 800px) {
-		display: none;
-	}
-`;
-
-const DivSearch = styled.div`
-	width: 32px;
-	height: 32px;
-	border-radius: 16px;
-	padding: 10px;
-	align-items: center;
-	background-color: #ff385c;
-`;
-
-const Div = styled.div`
-	display: flex;
-`;
-
-const DivIdioma = styled.div`
-	display: flex;
-	height: 40px;
-	padding: 14px;
-	justify-content: center;
-	align-items: center;
-	border-radius: 20px;
-	cursor: pointer;
-
-	&:hover {
-		background: #f7f7f7;
-	}
-
-	@media (max-width: 1150px) {
-		padding: 10px;
-	}
-`;
-
-const DivMovil = styled.div`
-	display: flex;
-	flex-direction: row;
-`;
-
-const Text = styled.p`
-	white-space: nowrap;
-	margin: 0;
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 22px;
-	padding: 0px 16px;
-	border-right: 1px solid #ddd;
-
-	@media (max-width: 800px) {
-		display: flex;
-		border-right: none;
-		font-size: 15px;
-		line-height: 12px;
-	}
-`;
-
-const Text2 = styled.p`
-	white-space: nowrap;
-	margin: 0;
-	color: #717171;
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 22px;
-	padding: 0px 16px;
-
-	@media (max-width: 800px) {
-		display: flex;
-		font-size: 12px;
-		padding: 0 5px 0 16px;
-		font-weight: 400;
-	}
-`;
-
-const Text3 = styled.p`
-	white-space: nowrap;
-	margin: 0;
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 22px;
-
-	@media (max-width: 800px) {
-		display: flex;
-		font-weight: 400;
-		font-size: 12px;
-		color: #717171;
-		padding: 0 2px;
-	}
-`;
-
-const Icon = styled.img`
-	width: 2.5rem;
-	height: 2.5rem;
-`;
-
-const LogoResponsive = styled.img`
-	display: none;
-
-	@media (max-width: 1150px) {
-		display: flex;
-		width: 2rem;
-		height: 2rem;
-	}
-
-	@media (max-width: 800px) {
-		display: none;
-	}
-`;
-
-const FilterResponsive = styled.div`
-	display: none;
-
-	@media (max-width: 800px) {
-		display: flex;
-		margin: 0 3% 0 0;
-		transform: scale(0.9);
-		padding: 17px;
-		border-radius: 30px;
-		border: 2px solid #ddd;
-		cursor: pointer;
-	}
-`;
 
 export const NavBar = ({ photoPerson }) => {
 	const { user } = useAuth();
@@ -259,46 +35,48 @@ export const NavBar = ({ photoPerson }) => {
 	};
 
 	const handleReloadHomePage = () => {
-		window.location.href = "/"; // Navega a la página de inicio
+		window.location.href = "/"; // Navega a la página de inicio flex flex-row justify-between items-center pt-4 px-10 bg-white sticky top-0 z-50
 	};
 	return (
-		<Navbar>
+		<div className="md:flex md:flex-row md:justify-between md:items-center md:pt-4 md:px-10 md:bg-white md:sticky md:top-0 md:z-50 flex flex-col ">	
 			<Link to="/" style={{ cursor: "pointer" }} onClick={handleReloadHomePage}>
-				<Container>
-					<img src={logo} alt="Logo" className="logo" />
-				</Container>
-				<LogoResponsive src={logosintexto} alt="New Logo" className="new-logo" />
+				<div className="flex flex-row items-center cursor-pointer">
+					<img src={logo} alt="Logo" className="mx-auto p-3 md:mx-0" />
+				</div>
+				{/* <LogoResponsive src={logosintexto} alt="New Logo" className="new-logo" /> */}
 			</Link>
 
-			<Container2 onClick={toggleInput}>
+			<div className="md:p-2 p-4 md:h-[60px] md:w-[400px] flex justify-around items-center rounded-xl border border-gray-300 shadow-md cursor-pointer hover:shadow-lg hover:border-gray-400_outline-none order-2 md:order-1 mb-5 md:mb-0" onClick={toggleInput}>
 				{showInput ? (
 					<Search selectedSearch={selectedSearch} setShowInput={setShowInput} />
 				) : (
 					<>
-						<Text onClick={handleLocationClick}>Locación</Text>
-						<Text onClick={handleTitleClick}>Título</Text>
-						<Text onClick={handlePriceClick}>Precio</Text>
-						<DivSearch className="ml-2">
+						<p className=" m-0 text-sm font-medium  px-4 border-r border-gray-300" onClick={handleLocationClick}>Locación</p>
+						<p className="whitespace-nowrap m-0 text-sm font-medium leading-22 px-4 border-r border-gray-300"  onClick={handleTitleClick}>Título</p>
+						<p className="whitespace-nowrap m-0 text-sm font-medium leading-22 px-4 border-r border-gray-300"  onClick={handlePriceClick}>Precio</p>
+						<div className="rounded-full p-2 flex justify-center items-center bg-red-500 " >
 							<img src={search} alt="Search Icon" />
-						</DivSearch>
+						</div>
 					</>
 				)}
-			</Container2>
-			<Container3>
-				<Div>
-					<DivIdioma>
-						<Text3>Poné tu Airbnb</Text3>
-					</DivIdioma>
-					<DivIdioma>
+			</div>
+			
+							{/* flex flex-row items-center gap-2 */}
+			<div className=" flex flex-row items-center md:justify-center justify-between px-2 mx:px-0 md:p-3 py-4 gap-2 order-1 md:order-2">
+				<div className="flex items-center justify-between  w-[150px]">
+					
+						<p class="whitespace-nowrap m-0 md:text-sm text-md font-medium leading-22 text-lg">Poné tu Airbnb</p>
+					
+					
 						<img src={idioma} alt="Idioma Icon" />
-					</DivIdioma>
-				</Div>
+					
+				</div>
 				<BottonMenu photoPerson={user ? user.photoURL : photoPerson} />
-			</Container3>
-			<FilterResponsive>
+			</div>
+			{/* <FilterResponsive>
 				<img src={filter} className="w-4 h-4 transform scale-90" alt="Filter Icon" />
-			</FilterResponsive>
-		</Navbar>
+			</FilterResponsive> */}
+		</div>
 	);
 };
 

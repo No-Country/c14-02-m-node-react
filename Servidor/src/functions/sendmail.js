@@ -49,7 +49,33 @@ const sendMail = async data => {
 				Telefono_Anfitrion: data.Telefono_Anfitrion,
 			},
 		};
-	}
+	}else if (data.type === 'contact us') {
+			msg1 = {
+				to: 'admclonairbnb@gmail.com',
+				from: data.email,
+				subject: 'Gracias por contactarnos',
+				preheader: 'Trataremos de ayudarte!',
+				templateId: 'd-6ae7ae08dcd340dda477c5fcd3730d68',
+				dynamic_template_data: {
+					name: data.name,
+					mensaje: data.mensaje,
+				},
+			};			
+	}else if (data.type === 'contact p2p') {
+		msg1 = {
+			to: data.emailP,
+			from: data.emailH,
+			subject: 'Gracias por contactarnos',
+			preheader: 'Trataremos de ayudarte!',
+			templateId: 'd-a887f218553b4af2ba39cf9ef94c1977',
+			dynamic_template_data: {
+				nameP: data.nameP,
+				nameH: data.nameH,
+				mensaje: data.mensaje,
+				title:data.title
+			},
+		};			
+}
 	try {
 		res = await sgMail.send(msg1);
 		console.log('Correo electrónico enviado correctamente', res[0].statusCode);

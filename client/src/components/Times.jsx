@@ -74,7 +74,7 @@ function Times(props) {
 					</p>
 				)}
 			</div>
-			<IvpReservation dates={selectedDates} idPublication={props} />
+			<IvpReservation dates={selectedDates} idPublication={props} data={props} />
 		</div>
 	);
 }

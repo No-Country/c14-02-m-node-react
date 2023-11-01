@@ -12,7 +12,6 @@ import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { FiDownload } from "react-icons/fi";
 
 import { useParams } from "react-router-dom";
-import { useGetPublicationByIdQuery, useGetUserQuery } from "../store/rtk-query";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { searchPublicationById } from "../store/publicationSlice";
@@ -81,11 +80,6 @@ function IndividualViewPage(props) {
 
 				<IvpDescription data={publicationData || []} dataUser={dataUser} />
 				{/* <IvpMaps /> */}
-				<IvpReviews />
-				<IvpEvaluaciones />
-				<IvpRules />
-
-				<IvpDescription data={publicationData || []} dataUser={dataUser} />
 				<IvpReviews />
 				<IvpEvaluaciones />
 				<IvpRules />

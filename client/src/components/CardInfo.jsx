@@ -7,7 +7,7 @@ export const CardInfo = ({ info }) => {
 			</div>
 
 			<div>
-				<p className="text-[#858484]">A {info.title} kilómetros de distancia</p>
+				<p className="text-[#858484]">{info.title.slice(0,3) === "***" ? info.title.slice(3) : info.title} kilómetros de distancia</p>
 				{/* <p className="text-[#858484]">{info.publication.date}</p> */}
 				<p className="mt-3 text-[#222]">
 					<b>${info.price} USD</b> noche
