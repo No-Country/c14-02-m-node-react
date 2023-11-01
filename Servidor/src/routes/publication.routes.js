@@ -63,7 +63,7 @@ router.put('/', PublicationController.putUpdatePublicationController);
 
 /** UPDATE Publication actualiza un publicacion por el parametro espesificado 
 METHOD:  PUT
-URL:     http://localhost:3000/api/Publication/john.doe@mail.com
+URL:     http://localhost:3000/api/Publication/
 BODY:
          {
         "names": "Nikola",
