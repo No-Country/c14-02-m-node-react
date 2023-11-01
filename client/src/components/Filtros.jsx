@@ -111,7 +111,7 @@ const Filtros = () => {
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer    font-medium   text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
 					
 					<button className="flex flex-col items-center" onClick={() => click("Casa")}>
-					<img class="w-11 md:w-6 md:h-6" src={casas} />
+					<img className="w-11 md:w-6 md:h-6" src={casas} />
 						<span>Casas</span>
 					</button>
 					{selectedFilter === "Casa" && (
@@ -126,7 +126,7 @@ const Filtros = () => {
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
 					<button className="flex flex-col items-center"  onClick={() => click("Granero")}>
-					<img class="w-11 md:w-6 md:h-6" src={casacampo} />
+					<img className="w-11 md:w-6 md:h-6" src={casacampo} />
 						<span>Campo</span>
 					</button>
 					{selectedFilter === "Granero" && (
@@ -142,7 +142,7 @@ const Filtros = () => {
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
 					<button className="flex flex-col items-center" onClick={() => click("Cabaña")}>
-						<img class="w-11 md:w-6 md:h-6" src={cabañas} />
+						<img className="w-11 md:w-6 md:h-6" src={cabañas} />
 						<span>Cabañas</span>
 					</button>
 					{selectedFilter === "Cabaña" && (
@@ -157,7 +157,7 @@ const Filtros = () => {
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
 					<button className="flex flex-col items-center" onClick={() => click("Hotel")}>
-						<img class="w-11 md:w-6 md:h-6" src={lakefrontt} />
+						<img className="w-11 md:w-6 md:h-6" src={lakefrontt} />
 						<span>Hotel</span> 
 					</button>
 					{selectedFilter === "Hotel" && (
@@ -172,7 +172,7 @@ const Filtros = () => {
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
 					<button className="flex flex-col items-center" onClick={() => click("Casa Rodante")}>
-						<img class="w-11 md:w-6 md:h-6" src={casarodante} />
+						<img className="w-11 md:w-6 md:h-6" src={casarodante} />
 						<span>Casa rodante</span>
 					</button>
 					{selectedFilter === "Casa Rodante" && (
@@ -187,7 +187,7 @@ const Filtros = () => {
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
 					<button className="flex flex-col items-center" onClick={() => click("Castillo")}>
-						<img class="w-11 md:w-6 md:h-6" src={piletasincreibles} />
+						<img className="w-11 md:w-6 md:h-6" src={piletasincreibles} />
 						<span>Castillos</span>
 					</button>
 					{selectedFilter === "Castillo" && (
@@ -202,7 +202,7 @@ const Filtros = () => {
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
 					<button className="flex flex-col items-center" onClick={() => click("Barco")}>
-						<img class="w-11 md:w-6 md:h-6" src={boats} />
+						<img className="w-11 md:w-6 md:h-6" src={boats} />
 						<span>Barcos</span>
 					</button>
 					{selectedFilter === "Barco" && (
