@@ -93,8 +93,6 @@ const Component = ({ photoPerson }) => {
 								<Link to="/centrodeayuda" className="mb-2">
 									<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70">Centro de Ayuda</p>
 								</Link>
-								{/* <Li onClick={() => openModal(3)}>Poné tu Airbnb</Li> */}
-								{/* <Li onClick={() => openModal(4)}>Centro de Ayuda</Li> */}
 								<div>
 									<button className="text-red-600" onClick={handlelogout}>
 										Cerrar Sesión

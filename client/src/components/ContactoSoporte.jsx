@@ -13,23 +13,26 @@ const ContactoSoporte = () => {
     e.preventDefault();
 
     const dataToSend = {
-        "type" : "contact us",
-        "name": "jorge",
-        "email": "jorge@jorge.com",
-        "mensaje": "hola jorge"
+        // "type" : "contact us",
+        // "name": "jorge",
+        // "mail": "jorge@jorge.com",
+        // "mensaje": "hola jorge"
       
-      // type: "contact us",
-      // name: formData.name,
-      // email: formData.email,
-      // mensaje: formData.mensaje,
+      type: "contact us",
+      email: formData.email,
+      names: formData.name,
+      mensaje: formData.mensaje,
     };
+    
 
+    const JsonData = JSON.stringify(dataToSend)
+    console.log(JsonData);
     fetch("https://clon-airbnb-api.onrender.com/api/email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      // body: JSON.stringify(dataToSend),
+      body: JsonData,
     })
       .then((response) => {
         if (response.ok) {

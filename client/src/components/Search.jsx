@@ -18,7 +18,7 @@ export const Search = ({ selectedSearch, setShowInput }) => {
 	};
 
 	// aplicar el filtro
-	const applyTitleFilter = () => {
+	const applyTitleFilter = (e) => {
 		if (selectedSearch === "title") {
 			dispatch(filterPublicationsByTitle(titleFilter));
 		}
@@ -27,6 +27,10 @@ export const Search = ({ selectedSearch, setShowInput }) => {
 		}
 		if (selectedSearch === "price") {
 			dispatch(filterPublicationsByPrice({ price1Filter, price2Filter }));
+		}
+		if (e.key === "Enter") {
+
+			e.preventDefault()
 		}
 	};
 
@@ -59,6 +63,15 @@ export const Search = ({ selectedSearch, setShowInput }) => {
 					className="p-2 border-none rounded-l-lg w-[80%] "
 					value={titleFilter}
 					onChange={handleTitleFilterChange}
+					onKeyDown={(e) => {
+						if (e.key === "Enter") {
+						  // Realizar la acción de búsqueda aquí, por ejemplo, llamar a una función de búsqueda.
+						  applyTitleFilter(e);
+						} else if (e.key === "Escape") {
+						  // Realizar la acción de cancelación aquí.
+						  cancelTitleFilter();
+						}
+					}}
 				/>
 			) : (
 				<>
