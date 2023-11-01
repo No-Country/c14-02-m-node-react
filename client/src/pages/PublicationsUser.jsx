@@ -3,25 +3,27 @@ import { CardEdit } from "../components/CardEdit";
 import { useAuth } from "../context/AuthContext";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPublications } from "../store/publicationSlice";
-import { loadFavorites } from "../store/favoriteSlice";
+// import { loadFavorites } from "../store/favoriteSlice";
 import { Link } from "react-router-dom";
 
 const PublicationsUser = () => {
 	const { user } = useAuth();
 	const dispatch = useDispatch();
 	const [showComponent, setShowComponent] = useState(false);
+	
 
 	useEffect(() => {
 		dispatch(fetchPublications("***"));
-		dispatch(loadFavorites(user?.email));
+		// dispatch(loadFavorites(user?.email));
 		setShowComponent(true);
 	}, [user, showComponent, dispatch]);
 
-	// Usar Redux para obtener las publicaciones y favoritos
-	const { allPublications, filteredPublications, status } = useSelector(
+	const { filteredPublications, status } = useSelector(
 		state => state.publications
 	);
-	const allFavorites = useSelector(state => state.favorites.allFavorites);
+
+	// Usar Redux para obtener las publicaciones y favoritos
+	// const allFavorites = useSelector(state => state.favorites.allFavorites);
 
 	// Condición para renderizar o no el componente
 	if (!showComponent) {

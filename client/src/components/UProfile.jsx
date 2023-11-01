@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useUpdateUserMutation } from "../store/rtk-query";
 import SendPhoto from "./SendPhoto";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgency, photo }) {
 	const [editMode, setEditMode] = useState({
@@ -14,14 +15,14 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 		phoneUrgency: false,
 	});
 	const [newData, setNewData] = useState({
-		names: names,
-		surname: surname,
-		birthDate: birthDate,
-		email: email,
-		phone: phone,
-		address: address,
-		phoneUrgency: phoneUrgency,
-		photo: photo,
+		names,
+		surname,
+		birthDate,
+		email,
+		phone,
+		address,
+		phoneUrgency,
+		photo,
 	});
 	const [updateUser, { isLoading }] = useUpdateUserMutation();
 
@@ -133,7 +134,7 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 				{/* ===============LADO  IZQUIERDO=============== */}
 
 				<div className="md:w-1/2  ">
-					<div className="md:-order-1 md:w-full" >
+					<div className="md:-order-1 md:w-full">
 						<div className="w-full p-10 rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)]">
 							<div className="relative md:w-48 mx-auto ">
 								<img
@@ -147,6 +148,14 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 							<h2 className="text-3xl font-bold text-center mt-4">{newData.names}</h2>
 							<p className="card-content text-center">viajero</p>
 						</div>
+					</div>
+
+					<div className="text-center">
+						<Link to="/">
+							<button className="bg-[#ef4444] mt-5 px-8 rounded-lg text-white font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 ">
+								Aceptar
+							</button>
+						</Link>
 					</div>
 				</div>
 

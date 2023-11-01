@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import { LiaSwimmingPoolSolid } from "react-icons/lia";
 import { AiOutlineWifi, AiOutlineCar } from "react-icons/ai";
 import { LiaBedSolid } from "react-icons/lia";
@@ -15,7 +15,10 @@ import UpImages from "../components/UpImages";
 
 import Swal from "sweetalert2";
 
+import { useAuth } from "../context/AuthContext";
+
 const PropertyForm = () => {
+	const { user } = useAuth();
 	const [formData, setFormData] = useState({
 		type: "",
 		offering: "",
@@ -30,9 +33,11 @@ const PropertyForm = () => {
 		price: "",
 		discount: "",
 		extra_Security: [],
-		email: "",
+		email: user.email,
 		photos: [],
 	});
+
+	console.log(formData.email, 'aca no  toy')
 
 	const [createPublication] = useCreatePublicationMutation(formData);
 
@@ -83,12 +88,11 @@ const PropertyForm = () => {
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-		createPublication(formData);
 
 		try {
 			const response = await createPublication(formData);
 
-			// Validar campos requeridos
+			// validar campos requeridos
 			if (
 				!formData.title ||
 				!formData.location ||
@@ -101,10 +105,19 @@ const PropertyForm = () => {
 					title: "Error",
 					text: "Por favor, completa todos los campos obligatorios.",
 				});
-				return; // No envíes la solicitud si falta información
+				return; // falta información
 			}
 
-			// Validar el campo "description"
+			if (formData.photos.length === 0) {
+				Swal.fire({
+					icon: "error",
+					title: "Error",
+					text: "Debes subir al menos una imagen de la propiedad.",
+				});
+				return; // faltan imágenes
+			}
+
+			// validar el campo "description"
 			if (formData.description.length < 10) {
 				Swal.fire({
 					icon: "error",
@@ -114,16 +127,16 @@ const PropertyForm = () => {
 				return;
 			}
 
-			// Validar el formato del correo electrónico
-			const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
-			if (!emailRegex.test(formData.email)) {
-				Swal.fire({
-					icon: "error",
-					title: "Error",
-					text: "El formato del correo electrónico no es válido.",
-				});
-				return; // No envíes la solicitud si el correo electrónico no es válido
-			}
+			// validar el formato del correo electrónico
+			// const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+			// if (!emailRegex.test(formData.email)) {
+			// 	Swal.fire({
+			// 		icon: "error",
+			// 		title: "Error",
+			// 		text: "El formato del correo electrónico no es válido.",
+			// 	});
+			// 	return; // falta el correo electrónico no es válido
+			// }
 
 			// Validar el descuento
 			const discountValue = parseFloat(formData.discount);
@@ -272,6 +285,9 @@ const PropertyForm = () => {
 							onChange={handleChange}
 						/>
 
+						<label htmlFor="type" className="text-sm font-medium text-gray-900">
+							Tipo de Alojamiento
+						</label>
 						<select
 							id="type"
 							name="type"
@@ -279,7 +295,7 @@ const PropertyForm = () => {
 							value={formData.type}
 							onChange={handleChange}
 						>
-							<option value="">Tipo de Alojamiento</option>
+							<option value="">Tipo de Espacio</option>
 							{[
 								"Casa",
 								"Departamento",
@@ -319,6 +335,9 @@ const PropertyForm = () => {
 							))}
 						</select>
 
+						<label htmlFor="offering" className="text-sm font-medium text-gray-900">
+							Tipo de Alojamiento
+						</label>
 						<select
 							id="offering"
 							name="offering"
@@ -458,11 +477,15 @@ const PropertyForm = () => {
 							onChange={handleChange}
 						/>
 
+						<label htmlFor="security" className="text-sm font-medium text-gray-900">
+							Seguridad
+						</label>
+
 						<select
 							id="security"
 							name="security"
 							className="half-width rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 sm:max-w-xs "
-							value={formData.security.join(",")} // Convierte la matriz en una cadena
+							value={formData.security} // Convierte la matriz en una cadena
 							onChange={handleChange}
 						>
 							<option value="security">Seguridad</option>
@@ -489,7 +512,7 @@ const PropertyForm = () => {
 							/>
 						</div>
 
-						<div className="sm:col-span-4">
+						<div className="sm:col-span-4 hidden">
 							<label htmlFor="email" className="text-sm font-medium text-gray-900">
 								Email
 							</label>
@@ -499,9 +522,9 @@ const PropertyForm = () => {
 									name="email"
 									type="email"
 									autoComplete="email"
-									className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 "
+									className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600"
 									value={formData.email}
-									onChange={handleChange}
+									readOnly
 								/>
 							</div>
 						</div>
