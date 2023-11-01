@@ -19,7 +19,7 @@ export const updatePublication = createAsyncThunk("publications/updatePublicatio
 	const requestOptions = {
 	  method: "PUT",
 	  headers: {
-		"Content-Type": "application/json", 
+		"Content-Type": "application/json",
 	  },
 	  body: JSON.stringify(publicationData),
 	};
@@ -27,7 +27,8 @@ export const updatePublication = createAsyncThunk("publications/updatePublicatio
 	const response = await fetch(url, requestOptions);
   
 	if (response.ok) {
-	  return publicationData;
+	  const updatedPublication = await response.json(); // Esto dependerá de la respuesta de la API
+	  return updatedPublication[0];
 	} else {
 	  const errorData = await response.json();
 	  throw new Error(errorData.message);
@@ -44,10 +45,10 @@ export const updatePublication = createAsyncThunk("publications/updatePublicatio
 	};
   
 	const response = await fetch(url, requestOptions);
-  console.log(response)
+  
 	if (response.ok) {
 	  // El recurso se eliminó con éxito, no es necesario devolver nada.
-	  return;
+	  return id; // Devuelve el ID de la publicación eliminada
 	} else {
 	  const errorData = await response.json();
 	  throw new Error(errorData.message);
@@ -126,7 +127,27 @@ const publicationSlice = createSlice({
 			.addCase(fetchPublications.rejected, (state, action) => {
 				state.status = "failed";
 				state.error = action.error.message;
-			});
+			})
+			.addCase(updatePublication.fulfilled, (state, action) => {
+				state.status = "succeeded";
+				const updatedPublication = action.payload;
+				const publicationIndex = state.allPublications.findIndex(
+				  (pub) => pub._id === updatedPublication._id
+				);
+				console.log(publicationIndex)
+				if (publicationIndex !== -1) {
+				  state.allPublications[publicationIndex] = updatedPublication;
+				  state.filteredPublications = [...state.allPublications];
+				}
+			  })
+			  .addCase(deletePublication.fulfilled, (state, action) => {
+				state.status = "succeeded";
+				const deletedPublicationId = action.payload;
+				state.allPublications = state.allPublications.filter(
+				  (pub) => pub._id !== deletedPublicationId
+				);
+				state.filteredPublications = [...state.allPublications];
+			  });
 	},
 });
 

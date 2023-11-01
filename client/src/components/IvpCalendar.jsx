@@ -7,7 +7,7 @@ function IvpCalendar({ idPublication, data }) {
 	const [showTime, setShowTime] = useState(true);
 
 	return (
-		<div className="class1 class2">
+		<div className="class1 class2 text-center">
 			<Time showTime={showTime} date={idPublication} data={data} />
 		</div>
 	);

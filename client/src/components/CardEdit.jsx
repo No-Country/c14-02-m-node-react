@@ -4,12 +4,11 @@ import { CardSlider } from "./CardSlider";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import CardInfo from "./CardInfo";
-import { useAddFavoriteMutation, useRemoveFavoriteMutation } from "../store/rtk-query";
 import { BiSolidEdit } from "react-icons/bi";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import {BsPlayBtn} from "react-icons/bs"
 import { CgPlayPauseR } from "react-icons/cg";
-import { updatePublication, deletePublication } from "../store/publicationSlice";
+import { fetchPublications,updatePublication, deletePublication } from "../store/publicationSlice";
 import { useDispatch } from "react-redux";
 import PropertyFormEdit from "../pages/PropertyFromEdit";
 
@@ -25,6 +24,8 @@ export const CardEdit = ({ publication }) => {
 
 	const images = publication.photos;
 
+	
+
 	const delPublication = () => {
 		setIsDeleteModalOpen(true);
 	};
@@ -33,9 +34,6 @@ export const CardEdit = ({ publication }) => {
 	};
 
 	const editPublication = () => {
-		// para editar
-		// console.log("Entre la función", publication)
-		// return (<PropertyFormEdit edit={publication}/>)
 		setIsEditModalOpen(true);
 
 	};
@@ -189,8 +187,12 @@ export const CardEdit = ({ publication }) => {
 										className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
 										type="button"
 										onClick={() => {
-											dispatch(updatePublication({ id: publication._id, title: `*** ${publication.title}`}));
-											setIsPauseModalOpen(false)}}
+											dispatch(updatePublication({ id: publication._id, title: `***${publication.title}`}));
+											setIsPauseModalOpen(false)
+											// navigate(-1);
+										}
+										}
+											
 									>
 										Pausar
 									</button>
@@ -242,6 +244,7 @@ export const CardEdit = ({ publication }) => {
 										type="button"
 										onClick={() => {
 											dispatch(updatePublication({ id: publication._id, title: publication.title.slice(3)}));
+											// window.location.reload();
 											setIsPlayModalOpen(false)}}
 									>
 										Activar
