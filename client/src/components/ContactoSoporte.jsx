@@ -20,7 +20,7 @@ const ContactoSoporte = () => {
       
       type: "contact us",
       email: formData.email,
-      names: formData.name,
+      name: formData.name,
       mensaje: formData.mensaje,
     };
     
