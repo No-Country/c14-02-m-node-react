@@ -92,7 +92,7 @@ function IvpHoster({ dataUser }) {
                                 <label className="text-gray-900 text-lg pb-2" htmlFor="message">Mensaje</label>
                                 <textarea className="border border-gray-300 rounded-md h-24 w-full mb-4" id="message" name="message" required></textarea>
 
-                                <button className="border rounded-md py-2 px-2 bg-black text-white hover:bg-gray-900 mt-4" type="submit">Enviar</button>
+                                <button className="border rounded-md py-2 px-2 bg-black text-white hover:bg-gray-900 mt-4 mb-2" type="submit">Enviar</button>
                             </form>
                         </div>
                     </div>
