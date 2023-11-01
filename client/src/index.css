@@ -124,11 +124,19 @@
 .custom-width {
 	width: 100%;
 	padding: 2rem 15%;
+
+	@media (max-width: 768px) {
+		padding: 2rem 1rem;
+	}
 }
 
 .custom-width-min {
 	width: 100%;
 	padding: 2rem 25%;
+	
+	@media (max-width: 768px) {
+		padding: 2rem 1rem;
+	}
 }
 
 .custom-width-anfitrion {
