@@ -15,7 +15,7 @@
 <img align="center" src="https://res.cloudinary.com/desr2crlz/image/upload/v1698208753/paginaVista_cjonyr.png">
 
 <h3 align="center"  ><b>Puedes consultar nuestra página web aquí:</b></h3>
-<h3 align="center"><a href="xxxxxlink deployxxxxxx" target="_blank" rel="noopener noreferrer"> <img align="center" width="20px"  height="20px" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/airbnb_logo_icon_170605.png"> Clone Airbnb <img align="center" width="20px"  height="20px" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/airbnb_logo_icon_170605.png"> </a></h3>
+<h3 align="center"><a href="https://c14-02-m-node-react.vercel.app/" target="_blank" rel="noopener noreferrer"> <img align="center" width="20px"  height="20px" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/airbnb_logo_icon_170605.png"> Clone Airbnb <img align="center" width="20px"  height="20px" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/airbnb_logo_icon_170605.png"> </a></h3>
 <p  align="center" ><a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer"> <img align="center" src="https://img.shields.io/badge/Video Preview%20-%23FF0000.svg?&style=for-the-badge&logo=YouTube&logoColor=white"/></a></p>
 
 <hr/>
@@ -42,7 +42,7 @@
 <p>▪️ Creando filtros con Mongoose y expresiones regulares.</p>
 <p>▪️ Validación de usuarios con Google.</p>
 <p>▪️ Envío de correos electrónicos con bienvenida y recuperación de contraseña.</p>
-<p>▪️ Deployed en xxxxxxxxxx</p>
+<p>▪️ Deployed en Render</p>
 
 <h4> 👉🏻 Construido con 🛠️ </h4>
 
@@ -71,7 +71,7 @@
 <p>▪️ tailwindcss/forms, Redux, toolkit, axios, firebase, para controlar y enviar datos de formularios.</p>
 <p>▪️ Uso de la API de Google Oauth como alternativa de inicio de sesión..</p>
 <p>▪️ Uso de la API de Google Maps para ubicación.</p>
-<p>▪️ Deployed en xxxxxxxxxx</p>
+<p>▪️ Deployed en Vercel</p>
 
 <h4> 👉🏻 Construido con 🛠️ </h4>
 
@@ -97,7 +97,16 @@
 <p>▪️ Creando las rutas enlazadas de la página usando React Router.</p>
 <p>▪️ Resolución de obstáculos y preparación de presentaciones efectivas para Demo Days, garantizando el progreso y cumplimiento de objetivos.</p>
 <p>▪️ Herramientas de uso:</p>
-<p>▪️ Jira/Trello / Metodología Scrum / Comunicación y plataformas de trabajo: Discord / Slack / whatsapp.</p>
+<p>▪️ Jira /Trello / Metodología Scrum / Comunicación y plataformas de trabajo: Discord / Slack / whatsapp.</p>
+
+<h4> 👉🏻 Herramientas 🛠️ </h4>
+
+<img width="48" height="48" src="https://img.icons8.com/color/48/trello.png" alt="trello"/>
+<img width="48" height="48" src="https://img.icons8.com/color/48/jira.png" alt="jira"/>
+<img width="64" height="64" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-scrum-agile-flaticons-lineal-color-flat-icons-4.png" alt="external-scrum-agile-flaticons-lineal-color-flat-icons-4"/>
+<img width="48" height="48" src="https://img.icons8.com/color/48/discord-logo.png" alt="discord-logo"/>
+<img width="48" height="48" src="https://img.icons8.com/color/48/slack-new.png" alt="slack-new"/>
+<img width="48" height="48" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1"/>
 
 <h4>👉🏻 Product Manager </h4>
 
