@@ -51,12 +51,12 @@ export const Search = ({ selectedSearch, setShowInput }) => {
 	}`;
 
 	return (
-		<form className="w-96 flex">
+		<form className="w-full md:flex md:flex-row flex flex-col ">
 			{selectedSearch !== "price" ? (
 				<input
 					type="text"
 					placeholder={placeholderText}
-					className="p-2 border-none rounded-l-full w-full"
+					className="p-2 border-none rounded-l-lg w-[80%] "
 					value={titleFilter}
 					onChange={handleTitleFilterChange}
 				/>
@@ -65,7 +65,7 @@ export const Search = ({ selectedSearch, setShowInput }) => {
 					<input
 						type="number"
 						placeholder="U$S desde"
-						className="ml-2 p-2 border-none rounded-1-full w-1/3 mr-2"
+						className="w-full md:w-36 mb-4 md:mb-0"
 						value={price1Filter}
 						onChange={handlePrice1FilterChange}
 					/>
@@ -73,26 +73,28 @@ export const Search = ({ selectedSearch, setShowInput }) => {
 					<input
 						type="number"
 						placeholder="U$S hasta"
-						className="ml-2 p-2 border-none w-1/3 mr-2"
+						className="w-full md:w-36 md:mr-2"
 						value={price2Filter}
 						onChange={handlePrice2FilterChange}
 					/>
 				</>
 			)}
+			<div className="flex flex-col md:flex-row md:mt-0 mt-7 md:justify-between md:items-center md:w-[100px] ">
 			<button
 				type="button"
-				className="p-2 bg-red-500 text-white rounded-full mr-2"
+				className="border-b-4 md:border-none border-black p-2 md:p-0 md:bg-transparent text-green-900 text-xl md:text-lg font-semibold md:rounded-full "
 				onClick={applyTitleFilter}
 			>
 				Buscar
 			</button>
 			<button
 				type="button"
-				className="p-1 bg-red-500 text-white rounded-full"
+				className="mt-2 text-3xl md:mt-0 text-red-500 md:text-[24px] rounded-full"
 				onClick={cancelTitleFilter}
 			>
-				Cancelar
+				&#128473;
 			</button>
+			</div>
 		</form>
 	);
 };
