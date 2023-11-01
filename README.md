@@ -96,17 +96,24 @@
 <p>▪️ Comunicación diaria del equipo (dailys) y sirvió como enlace con el Team Leader.</p>
 <p>▪️ Creando las rutas enlazadas de la página usando React Router.</p>
 <p>▪️ Resolución de obstáculos y preparación de presentaciones efectivas para Demo Days, garantizando el progreso y cumplimiento de objetivos.</p>
-<p>▪️ Herramientas de uso:</p>
-<p>▪️ Jira /Trello / Metodología Scrum / Comunicación y plataformas de trabajo: Discord / Slack / whatsapp.</p>
 
 <h4> 👉🏻 Herramientas 🛠️ </h4>
 
-<img width="48" height="48" src="https://img.icons8.com/color/48/trello.png" alt="trello"/>
+<div style="display: flex; justify-content: space-between;">
+    <img width="48" height="48" src="https://img.icons8.com/color/48/trello.png" alt="trello"/>
+    <img width="48" height="48" src="https://img.icons8.com/color/48/jira.png" alt="jira"/>
+    <img width="64" height="64" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-scrum-agile-flaticons-lineal-color-flat-icons-4.png" alt="external-scrum-agile-flaticons-lineal-color-flat-icons-4"/>
+    <img width="48" height="48" src="https://img.icons8.com/color/48/discord-logo.png" alt="discord-logo"/>
+    <img width="48" height="48" src="https://img.icons8.com/color/48/slack-new.png" alt="slack-new"/>
+    <img width="48" height="48" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1"/>
+</div>
+
+<!-- <img width="48" height="48" src="https://img.icons8.com/color/48/trello.png" alt="trello"/>
 <img width="48" height="48" src="https://img.icons8.com/color/48/jira.png" alt="jira"/>
 <img width="64" height="64" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-scrum-agile-flaticons-lineal-color-flat-icons-4.png" alt="external-scrum-agile-flaticons-lineal-color-flat-icons-4"/>
 <img width="48" height="48" src="https://img.icons8.com/color/48/discord-logo.png" alt="discord-logo"/>
 <img width="48" height="48" src="https://img.icons8.com/color/48/slack-new.png" alt="slack-new"/>
-<img width="48" height="48" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1"/>
+<img width="48" height="48" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1"/> -->
 
 <h4>👉🏻 Product Manager </h4>
 
