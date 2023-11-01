@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { PublicationController } = require('../controllers');
 
-
 router.get('/', PublicationController.getAllPublicationController);
 
 /** GET Publication devuelve todas las publicaciones
@@ -15,7 +14,6 @@ router.get('/:email', PublicationController.getPublicationController);
 METHOD:  GET
 URL:     http://localhost:3000/api/publication/:email
 */
-
 
 router.get('/byId/:id', PublicationController.getPublicationByIdController);
 
@@ -72,13 +70,12 @@ BODY:
          } 
 */
 
-router.delete('/:id',PublicationController.deletePublicationByIdController);
+router.delete('/:id', PublicationController.deletePublicationByIdController);
 
 /** Delete Elimina publicacon por id 
  METHOD: DELETE
 URL:     http://localhost:3000/api/Publication/652a9ba8752533560587e0fc
 
- */ 
-
+ */
 
 module.exports = router;

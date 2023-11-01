@@ -3,42 +3,39 @@ const usermanager = new UserManager();
 const EncryptService = require('../services/Encrypter');
 const AuthService = require('../services/Auth');
 const sendMail = require('../functions/sendmail');
-const {UserModel} = require('../models')
+const { UserModel } = require('../models');
 
 async function createUser(req, res) {
 	try {
 		const data = req.body;
-		console.log("DATAAAAAAAAAAAAA", data)
-//__________Validaciones______________________________________
-        const validationError = UserModel(data).validateSync();
-        // Trhow  new Error "xxxxxxxx"
+		console.log('DATAAAAAAAAAAAAA', data);
+		// __________Validaciones______________________________________
+		const validationError = UserModel(data).validateSync();
+		// Trhow  new Error "xxxxxxxx"
 		if (validationError) {
-			
 			// return res.status(400).send(validationError);
-			throw validationError
-			
+			throw validationError;
 		}
-//________________________________________________________________		
-
+		// ________________________________________________________________
 
 		const phoneEncrypted = await EncryptService.encrypt(req.body.phone); // en Airbnb podes loguearte con tu numero de celular, se deberia encriptar ?
 
 		const newUser = await usermanager.createUser({ ...data, phone: phoneEncrypted });
 		console.log('result db', newUser);
 
-		//test token
+		// test token
 
 		const token = await AuthService.saveToken(data.name + data.surname + data.phone); // decidir que conbinacion de datos generaria el token
 
 		console.log(token);
 
 		sendMail({
-			"type":"bienvenida",
-			"name":data.names,
-			"email":data.email
-		})
+			type: 'bienvenida',
+			name: data.names,
+			email: data.email,
+		});
 
-		return res.status(200).send({ auth: true, token: token }); // al loguearte y crear usuario, deberiamos mandar el token para quedar iniciados.
+		return res.status(200).send({ auth: true, token }); // al loguearte y crear usuario, deberiamos mandar el token para quedar iniciados.
 	} catch (error) {
 		console.error('Error al crear el usuario', error);
 		return res.status(400).send(error);
@@ -49,12 +46,12 @@ async function login(req, res) {
 	try {
 		const { email, phone } = req.body;
 		// ver el tema de logueo
-		const user = await usermanager.getOneUser({ email: email });
+		const user = await usermanager.getOneUser({ email });
 		if (!user) throw new Error('El email no esta registrado');
 		const validate = await EncryptService.validate(phone, user.phone);
 		if (!validate) throw new Error('El numero de telefono es incorrecto');
 		const token = await AuthService.saveToken(user.name + user.surname + user.phone);
-		res.status(200).json({ auth: true, token: token, user });
+		res.status(200).json({ auth: true, token, user });
 	} catch (error) {
 		console.log(error);
 		res.status(400).json({ auth: false, error: error.message });
@@ -78,14 +75,14 @@ async function getUsers(req, res) {
 		return res.status(200).send(Users);
 	} catch (error) {
 		console.error('Error al obtener el usuario', error);
-		next();
+		// next();
 	}
 }
 
 async function updateUser(req, res) {
 	const email = req.params;
 	const data = req.body;
-	console.log("BODYYYY", data)
+	console.log('BODYYYY', data);
 	try {
 		const Users = await usermanager.updateUser(email, data);
 		if (Users.matchedCount > 0) {
