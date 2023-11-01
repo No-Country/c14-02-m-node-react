@@ -128,23 +128,23 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 	};
 
 	return (
-		<div className="p-16">
-			<div className="grid-cols-2 gap-8 md:flex md:justify-start">
+		<div className="  p-4">
+			<div className="grid-cols-2 gap-8 md:flex md:justify-start ">
 				{/* ===============LADO  IZQUIERDO=============== */}
 
-				<div className="md:w-1/2">
-					<div className="md:-order-1" style={{ width: "300px" }}>
+				<div className="md:w-1/2  ">
+					<div className="md:-order-1 md:w-full" >
 						<div className="w-full p-10 rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)]">
-							<div className="relative w-1/2 mx-auto">
+							<div className="relative md:w-48 mx-auto ">
 								<img
 									src={photo}
 									alt="Imagen"
-									className="rounded-full h-24 w-24 object-cover mx-auto"
+									className="rounded-full w-[300px] md:h-40 md:w-40 object-cover mx-auto"
 								></img>
 								<SendPhoto onPhotoUpload={handlePhotoUpload} />
 							</div>
 
-							<h2 className="text-3xl font-bold text-center">{newData.names}</h2>
+							<h2 className="text-3xl font-bold text-center mt-4">{newData.names}</h2>
 							<p className="card-content text-center">viajero</p>
 						</div>
 					</div>
@@ -152,25 +152,25 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 
 				{/* ===================LADO  DERECHO============= */}
 
-				<div className="md:w-1/2">
+				<div className="md:w-1/2 ">
 					<div className="w-full p-6">
 						<div className="border-b py-6">
 							<h2 className="text-2xl font-semibold pb-4">Datos Personales</h2>
 						</div>
-						<div className="border-b py-2">
-							<h2 className="font-semibold">Nombres</h2>
+						<div className="border-b py-2 ">
+							<h2 className="font-bold">Nombres</h2>
 							{editMode.names ? (
-								<div>
+								<div className=" flex justify-around items-center ">
 									<input
 										type="text"
-										className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 my-3"
+										className="rounded-md border-0 py-1.5 text-[#ef4444] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 my-3"
 										value={newData.names}
 										onChange={e => {
 											setNewData({ ...newData, names: e.target.value });
 										}}
 									/>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-gray-900 text-white rounded-md h-9 px-5"
 										onClick={() => handleSaveClick("names")}
 									>
 										Guardar
@@ -180,7 +180,7 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 								<div>
 									<p className="my-1">{newData.names}</p>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-[#ef4444] mt-2 px-8  rounded-md text-white font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 "
 										onClick={() => handleEditClick("names")}
 									>
 										Editar
@@ -189,19 +189,19 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 							)}
 						</div>
 						<div className="border-b py-2">
-							<h2 className="font-semibold">Apellido</h2>
+							<h2 className="font-bold">Apellido</h2>
 							{editMode.surname ? (
-								<div>
+								<div className=" flex justify-around items-center ">
 									<input
 										type="text"
-										className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 my-3"
+										className="rounded-md border-0 py-1.5 text-[#ef4444] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 my-3"
 										value={newData.surname}
 										onChange={e => {
 											setNewData({ ...newData, surname: e.target.value });
 										}}
 									/>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-gray-900 text-white rounded-md h-9 px-5"
 										onClick={() => handleSaveClick("surname")}
 									>
 										Guardar
@@ -211,7 +211,7 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 								<div>
 									<p className="my-1">{newData.surname}</p>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-[#ef4444] mt-2 px-8  rounded-md text-white font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 "
 										onClick={() => handleEditClick("surname")}
 									>
 										Editar
@@ -221,19 +221,19 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 						</div>
 
 						<div className="border-b py-2">
-							<h2 className="font-semibold">Fecha de Nacimiento</h2>
+							<h2 className="font-bold">Fecha de Nacimiento</h2>
 							{editMode.birthDate ? (
-								<div>
+								<div className=" flex justify-around items-center ">
 									<input
 										type="text"
-										className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 my-3"
+										className="rounded-md border-0 py-1.5 text-[#ef4444] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 my-3"
 										value={newData.birthDate}
 										onChange={e => {
 											setNewData({ ...newData, birthDate: e.target.value });
 										}}
 									/>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-gray-900 text-white rounded-md h-9 px-5"
 										onClick={() => handleSaveClick("birthDate")}
 									>
 										Guardar
@@ -243,7 +243,7 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 								<div>
 									<p className="my-1">{newData.birthDate}</p>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-[#ef4444] mt-2 px-8  rounded-md text-white font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 "
 										onClick={() => handleEditClick("birthDate")}
 									>
 										Editar
@@ -253,19 +253,19 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 						</div>
 
 						<div className="border-b py-2">
-							<h2 className="font-semibold">Teléfono</h2>
+							<h2 className="font-bold">Teléfono</h2>
 							{editMode.phone ? (
-								<div>
+								<div className=" flex justify-around items-center ">
 									<input
 										type="text"
-										className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 my-3"
+										className="rounded-md border-0 py-1.5 text-[#ef4444] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 my-3 "
 										value={newData.phone}
 										onChange={e => {
 											setNewData({ ...newData, phone: e.target.value });
 										}}
 									/>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-gray-900 text-white rounded-md h-9 px-5"
 										onClick={() => handleSaveClick("phone")}
 									>
 										Guardar
@@ -273,9 +273,9 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 								</div>
 							) : (
 								<div>
-									<p className="my-1">{newData.phone}</p>
+									<p className="my-1 overflow-hidden">{newData.phone}</p>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-[#ef4444] mt-2 px-8  rounded-md text-white font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 "
 										onClick={() => handleEditClick("phone")}
 									>
 										Editar
@@ -285,19 +285,19 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 						</div>
 
 						<div className="border-b py-2">
-							<h2 className="font-semibold">Dirección</h2>
+							<h2 className="font-bold">Dirección</h2>
 							{editMode.address ? (
-								<div>
+								<div className=" flex justify-around items-center ">
 									<input
 										type="text"
-										className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 my-3"
+										className="rounded-md border-0 py-1.5 text-[#ef4444] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 my-3"
 										value={newData.address}
 										onChange={e => {
 											setNewData({ ...newData, address: e.target.value });
 										}}
 									/>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-gray-900 text-white rounded-md h-9 px-5"
 										onClick={() => handleSaveClick("address")}
 									>
 										Guardar
@@ -307,7 +307,7 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 								<div>
 									<p className="my-1">{newData.address}</p>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-[#ef4444] mt-2 px-8  rounded-md text-white font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 "
 										onClick={() => handleEditClick("address")}
 									>
 										Editar
@@ -317,19 +317,19 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 						</div>
 
 						<div className="py-2">
-							<h2 className="font-semibold">Teléfono de Urgencia</h2>
+							<h2 className="font-bold">Teléfono de Urgencia</h2>
 							{editMode.phoneUrgency ? (
-								<div>
+								<div className=" flex justify-around items-center ">
 									<input
 										type="text"
-										className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 my-3"
+										className="rounded-md border-0 py-1.5 text-[#ef4444] shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 my-3"
 										value={newData.phoneUrgency}
 										onChange={e => {
 											setNewData({ ...newData, phoneUrgency: e.target.value });
 										}}
 									/>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-gray-900 text-white rounded-md h-9 px-5"
 										onClick={() => handleSaveClick("phoneUrgency")}
 									>
 										Guardar
@@ -339,7 +339,7 @@ function UProfile({ names, surname, birthDate, email, phone, address, phoneUrgen
 								<div>
 									<p className="my-1">{newData.phoneUrgency}</p>
 									<button
-										className="bg-white border border-black px-2 py-0 rounded-md text-black font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 mx-2"
+										className="bg-[#ef4444] mt-2 px-8  rounded-md text-white font-semibold cursor-pointer transition duration-300 hover-bg-gray-200 "
 										onClick={() => handleEditClick("phoneUrgency")}
 									>
 										Editar

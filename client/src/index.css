@@ -118,3 +118,13 @@
     grid-template-columns: repeat(2, 1fr);
   }
 } */
+
+
+/* ---------------------- */
+#filtros-container {
+	height: 100px; /* Establece la altura según tus necesidades */
+	position: sticky;
+	top: 18; /* La distancia desde la parte superior de la ventana en la que se pegarán los filtros */
+	background-color: white; /* Opcional, puedes establecer un fondo blanco o el color que desees */
+	z-index: 40; /* Asegúrate de que los filtros estén en la capa superior */
+  }

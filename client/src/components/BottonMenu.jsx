@@ -5,33 +5,7 @@ import menu from "../assets/images/menu.png";
 import usuario from "../assets/images/usuario.png";
 import { useAuth } from "../context/AuthContext";
 
-const DivLogin = styled.div`
-	display: flex;
-	padding: 8px 8px 8px 14px;
-	align-items: center;
-	gap: 12px;
-	border-radius: 24px;
-	border: 1px solid #ddd;
-	background: #fff;
-	cursor: pointer;
 
-	&:hover {
-		box-shadow:
-			0px 4px 12px 0px rgba(73, 32, 32, 0.09),
-			0px 1px 2px 1px rgba(0, 0, 0, 0.1);
-	}
-
-	@media (max-width: 1150px) {
-		transform: scale(0.9);
-	}
-
-	${({ selected }) =>
-		selected &&
-		`
-    box-shadow: 0px 4px 12px 0px rgba(73, 32, 32, 0.09),
-    0px 1px 2px 1px rgba(0, 0, 0, 0.1);
-    `};
-`;
 
 const DivMenu = styled.div`
 	display: flex;
@@ -53,29 +27,6 @@ const DivMenu = styled.div`
 	}
 `;
 
-const Ul = styled.ul`
-	display: flex;
-	flex-direction: column;
-	margin: 0 90px 0 10px;
-	gap: 15px;
-`;
-
-const Li = styled.li`
-	display: flex;
-	white-space: nowrap;
-	margin: 0;
-	font-size: 15px;
-	cursor: pointer;
-
-	&:hover {
-		opacity: 0.7;
-	}
-`;
-
-const ImgPerson = styled.img`
-	width: 32px;
-	border-radius: 50%;
-`;
 
 const Component = ({ photoPerson }) => {
 	const { user, logout } = useAuth();
@@ -116,30 +67,31 @@ const Component = ({ photoPerson }) => {
 	return (
 		<div>
 			<button onClick={toggleMenu}>
-				<DivLogin selected={selected} onClick={() => setSelected(!selected)}>
+				<div className="flex p-2  items-center gap-3 rounded-3xl border border-gray-300 bg-white cursor-pointer hover:shadow-lg hover:border-gray-400 md:z-50" selected={selected} onClick={() => setSelected(!selected)}>
 					<img src={menu} />
-					<ImgPerson src={user ? photoPerson : usuario} /> {/* Aplica el estilo a la imagen aquí */}
-				</DivLogin>
+					<img className="md:w-8 w-10 rounded-full" src={user ? photoPerson : usuario} /> {/* Aplica el estilo a la imagen aquí */}
+				</div>
 			</button>
 			{isMenuOpen && (
-				<DivMenu>
-					<Ul className="p-2">
+				<div className="flex absolute translate-x-[-66%] w-auto h-auto shrink-0 shadow-[0px_4px_18px_0px_rgba(0,0,0,0.17)] bg-[white] z-[100] mt-2.5 px-0 py-2.5 rounded-[14px]" >
+					{/* 0 90px 0 10px */}
+					<div className="p-2 flex flex-col m-0 ml-3 mr-20   gap-4">
 						{user ? ( // Verifica si el usuario está autenticado
 							<>
 								<Link to="/user">
-									<Li>Mi Perfil</Li>
+									<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70">Mi Perfil</p>
 								</Link>
 								<Link to="/favorites" className="mb-2">
-									<Li>Favoritos</Li>
+									<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70">Favoritos</p>
 								</Link>
 								<Link to="/manageads" className="mb-2">
-									<Li>Administrar anuncios</Li>
+									<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70">Administrar anuncios</p>
 								</Link>
 								<Link to="/tuairbnb" className="mb-2">
-									<Li>Poné tu Airbnb</Li>
+									<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70">Poné tu Airbnb</p>
 								</Link>
 								{/* <Li onClick={() => openModal(3)}>Poné tu Airbnb</Li> */}
-								<Li onClick={() => openModal(4)}>Centro de Ayuda</Li>
+								<div className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70" onClick={() => openModal(4)}>Centro de Ayuda</div>
 								<div>
 									<button className="text-red-600" onClick={handlelogout}>
 										Cerrar Sesión
@@ -149,21 +101,21 @@ const Component = ({ photoPerson }) => {
 						) : (
 							<>
 								<Link to="/register">
-									<Li className="mb-2 font-medium" onClick={() => openModal(1)}>
+									<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70" classNameName="mb-2 font-medium" onClick={() => openModal(1)}>
 										Registrate
-									</Li>
+									</p>
 								</Link>
 								<Link to="/register">
-									<Li className="border-b mb-2 pb-5" onClick={() => openModal(2)}>
+									<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70" classNameName="border-b mb-2 pb-5" onClick={() => openModal(2)}>
 										Inicia Sesión
-									</Li>
+									</p>
 								</Link>
-								<Li onClick={() => openModal(3)}>Poné tu Airbnb</Li>
-								<Li onClick={() => openModal(4)}>Centro de Ayuda</Li>
+								<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70" onClick={() => openModal(3)}>Poné tu Airbnb</p>
+								<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70" onClick={() => openModal(4)}>Centro de Ayuda</p>
 							</>
 						)}
-					</Ul>
-				</DivMenu>
+					</div>
+				</div>
 			)}
 			{activeModal && renderModal(activeModal)}
 		</div>
