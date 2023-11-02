@@ -10,7 +10,7 @@ import { FiMonitor } from "react-icons/fi";
 import { BiSolidChevronLeft } from "react-icons/bi";
 
 import { useCreatePublicationMutation } from "../store/rtk-query";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import UpImages from "../components/UpImages";
 
@@ -39,6 +39,9 @@ const PropertyForm = () => {
 	});
 
 	const [createPublication] = useCreatePublicationMutation(formData);
+
+	const [isModalOpen, setIsModalOpen] = useState(true);
+	const navigate = useNavigate();
 
 	const handleChange = e => {
 		const { name, value, type, checked } = e.target;
@@ -86,28 +89,28 @@ const PropertyForm = () => {
 	};
 
 	const resetForm = () => {
-        setFormData({
-            type: "",
-            offering: "",
-            location: "",
-            spaces: [],
-            amenities: [],
-            featured: "",
-            security: [],
-            title: "",
-            description: "",
-            type_guest: "",
-            price: "",
-            discount: "",
-            extra_Security: [],
-            email: user.email,
-            photos: [],
-        });
-	};	
+		setFormData({
+			type: "",
+			offering: "",
+			location: "",
+			spaces: [],
+			amenities: [],
+			featured: "",
+			security: [],
+			title: "",
+			description: "",
+			type_guest: "",
+			price: "",
+			discount: "",
+			extra_Security: [],
+			email: user.email,
+			photos: [],
+		});
+	};
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-	
+
 		try {
 			// Validar campos requeridos
 			if (
@@ -124,7 +127,7 @@ const PropertyForm = () => {
 				});
 				return; // Falta información
 			}
-	
+
 			// Validar el campo "description"
 			if (formData.description.length < 10) {
 				Swal.fire({
@@ -134,7 +137,7 @@ const PropertyForm = () => {
 				});
 				return;
 			}
-	
+
 			// Validar el formato del correo electrónico
 			const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 			if (!emailRegex.test(formData.email)) {
@@ -145,7 +148,7 @@ const PropertyForm = () => {
 				});
 				return; // El correo electrónico no es válido
 			}
-	
+
 			// Validar el descuento
 			const discountValue = parseFloat(formData.discount);
 			if (isNaN(discountValue) || discountValue < 5 || discountValue > 100) {
@@ -156,7 +159,7 @@ const PropertyForm = () => {
 				});
 				return; // No envíes la solicitud si el descuento no es válido
 			}
-	
+
 			if (formData.photos.length === 0) {
 				Swal.fire({
 					icon: "error",
@@ -165,10 +168,10 @@ const PropertyForm = () => {
 				});
 				return; // Faltan imágenes
 			}
-	
+
 			// Si todas las validaciones se superan, entonces realiza la solicitud
 			const response = await createPublication(formData);
-	
+
 			if (response.data) {
 				// La publicación se creó con éxito
 				Swal.fire({
@@ -176,7 +179,13 @@ const PropertyForm = () => {
 					title: "Éxito",
 					text: "La propiedad se guardó con éxito.",
 				});
-				resetForm();
+				// despues de 2 segundo el modal se limpia, se cierra y se dirije a la pagina de home.
+				// esto es para que de tiempo el modal en cargarse y que se muestre bien.
+				setTimeout(() => {
+					resetForm();
+					setIsModalOpen(false);
+					navigate("/");
+				  }, 2000);
 			} else {
 				// Error al crear la publicación
 				console.error("Error al crear la publicación");
@@ -186,7 +195,6 @@ const PropertyForm = () => {
 			console.error("Error al crear la publicación:", error);
 		}
 	};
-	
 
 	const updateImageUrls = imageUrls => {
 		setFormData({
@@ -214,7 +222,10 @@ const PropertyForm = () => {
 					<UpImages onImagesUploaded={updateImageUrls} />
 				</div>
 
+					{isModalOpen ? (
 				<div className="w-full p-4">
+
+					
 					<form className="flex flex-col " onSubmit={handleSubmit}>
 						<label htmlFor="title" className="text-sm font-medium text-gray-900">
 							Nombre de tu Airbnb
@@ -555,7 +566,9 @@ const PropertyForm = () => {
 							Agregar
 						</button>
 					</form>
+
 				</div>
+						):null}	
 			</div>
 		</div>
 	);
