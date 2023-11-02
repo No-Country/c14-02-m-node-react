@@ -1,4 +1,4 @@
-import { useState, useEffect  } from "react";
+import { useState, useEffect } from "react";
 import { LiaSwimmingPoolSolid } from "react-icons/lia";
 import { AiOutlineWifi, AiOutlineCar } from "react-icons/ai";
 import { LiaBedSolid } from "react-icons/lia";
@@ -7,6 +7,7 @@ import { MdOutlineBathtub, MdOutlineLocalLaundryService } from "react-icons/md";
 import { LuSofa } from "react-icons/lu";
 import { FaKitchenSet, FaFan } from "react-icons/fa6";
 import { FiMonitor } from "react-icons/fi";
+import { BiSolidChevronLeft } from "react-icons/bi";
 
 import { useCreatePublicationMutation } from "../store/rtk-query";
 import { Link } from "react-router-dom";
@@ -36,8 +37,6 @@ const PropertyForm = () => {
 		email: user.email,
 		photos: [],
 	});
-
-	console.log(formData.email, 'aca no  toy')
 
 	const [createPublication] = useCreatePublicationMutation(formData);
 
@@ -85,6 +84,26 @@ const PropertyForm = () => {
 			spaces: updatedSpaces,
 		});
 	};
+
+	const resetForm = () => {
+        setFormData({
+            type: "",
+            offering: "",
+            location: "",
+            spaces: [],
+            amenities: [],
+            featured: "",
+            security: [],
+            title: "",
+            description: "",
+            type_guest: "",
+            price: "",
+            discount: "",
+            extra_Security: [],
+            email: user.email,
+            photos: [],
+        });
+	};	
 
 	const handleSubmit = async e => {
 		e.preventDefault();
@@ -156,6 +175,8 @@ const PropertyForm = () => {
 					title: "Éxito",
 					text: "La propiedad se guardó con éxito.",
 				});
+				
+				resetForm();
 			} else {
 				// error al crear la publicación
 				console.error("Error al crear la publicación");
@@ -175,14 +196,15 @@ const PropertyForm = () => {
 
 	return (
 		<div>
-			<div className="m-4 p-8 rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)]">
+			<div className="m-4 p-8 rounded-xl bg-gray-300 shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)]">
 				{/* El link esta listo para que se ponga a donde se quiere que lo llevemos atras seria el perifl o al home. */}
 				<Link
 					to="/"
-					className="text-4xl text-gray-800 bg-red-500 w-[50px] h-[50px] flex flex-col items-center rounded-lg "
+					className="text-4xl text-white bg-red-500 w-12 h-12 flex items-center justify-center rounded-lg"
 				>
-					&#8592;
+					<BiSolidChevronLeft />
 				</Link>
+
 				<div className="text-center">
 					<h2 className="text-3xl font-semibold">Tu Airbnb</h2>
 				</div>

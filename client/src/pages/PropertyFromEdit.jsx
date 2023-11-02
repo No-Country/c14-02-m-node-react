@@ -177,6 +177,17 @@ const PropertyFormEdit = ({publication,onClose}) => {
 				<div className="text-center">
 					<h2 className="text-3xl font-semibold">Tu Airbnb - Editar</h2>
 				</div>
+
+				<div className="flex gap-4 overflow-y-hidden items-center mt-4">
+					{formData.photos.map((photo) => (
+						<img
+							src={photo}
+							key={photo.id}
+							
+							className="rounded-md w-[150px] h-[100px]"
+						/>
+					))}
+				</div>
 				{/* ==================UPLOAD IMAGES=============== */}
 				<div className="text-center pb-8">
 					<UpImages onImagesUploaded={updateImageUrls} />

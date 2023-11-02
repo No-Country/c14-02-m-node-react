@@ -3,6 +3,7 @@ import { CardEdit } from "../components/CardEdit";
 import { useAuth } from "../context/AuthContext";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPublications } from "../store/publicationSlice";
+import { BiSolidChevronLeft } from "react-icons/bi";
 // import { loadFavorites } from "../store/favoriteSlice";
 import { Link } from "react-router-dom";
 
@@ -35,9 +36,9 @@ const PublicationsUser = () => {
 			<div className="m-4 p-8 rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)] flex items-center">
 				<Link
 					to="/"
-					className="text-4xl text-gray-800 bg-red-500 w-[50px] h-[50px] flex items-center justify-center rounded-lg"
+					className="text-4xl text-white bg-red-500 w-12 h-12 flex items-center justify-center rounded-lg"
 				>
-					&#8592;
+					<BiSolidChevronLeft />
 				</Link>
 				<div className="mx-auto">
 					<h2 className="text-3xl font-semibold">Tus Airbnb</h2>
