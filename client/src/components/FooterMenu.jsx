@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 
 const FooterMenu = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,6 +22,20 @@ const FooterMenu = () => {
 		// Por ejemplo, puedes tener Modal1, Modal2, Modal3, etc.
 	};
 
+	useEffect(() => {
+		const handleScroll = () => {
+		  if (isMenuOpen) {
+			setIsMenuOpen(false);
+		  }
+		};
+	
+		window.addEventListener("scroll", handleScroll);
+	
+		return () => {
+		  window.removeEventListener("scroll", handleScroll);
+		};
+	  }, [isMenuOpen]);
+
 	return (
 		<div className="relative flex justify-center items-center">
 			<button
@@ -31,7 +45,7 @@ const FooterMenu = () => {
 				Ayuda y recursos
 			</button>
 			{isMenuOpen && (
-				<div className="fixed bottom-11 left-0 right-0 bg-stone-200  shadow-md">
+				<div className="fixed bottom-11 left-0 right-0 bg-stone-200 shadow-md z-10">
 					<div className="flex flex-col sm:flex-row bg-stone-200 py-5 border-t-2 border-stone-400 px-6">
 						<div className="flex-1 p-4">
 							<h3 className="font-semibold mb-3">Ayuda</h3>

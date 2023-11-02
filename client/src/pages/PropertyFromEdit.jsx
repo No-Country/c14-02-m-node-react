@@ -9,13 +9,12 @@ import { FaKitchenSet, FaFan } from "react-icons/fa6";
 import { FiMonitor } from "react-icons/fi";
 import { updatePublication } from "../store/publicationSlice";
 
-
 import UpImages from "../components/UpImages";
 
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 
-const PropertyFormEdit = ({publication,onClose}) => { 
+const PropertyFormEdit = ({ publication, onClose }) => {
 	const [formData, setFormData] = useState({
 		type: `${publication.type}`,
 		offering: `${publication.offering}`,
@@ -32,12 +31,10 @@ const PropertyFormEdit = ({publication,onClose}) => {
 		extra_Security: publication.extra_Security,
 		email: `${publication.email}`,
 		photos: publication.photos,
-		id: publication._id
+		id: publication._id,
 	});
 
 	const dispatch = useDispatch();
-
-	
 
 	const handleChange = e => {
 		const { name, value, type, checked } = e.target;
@@ -86,11 +83,9 @@ const PropertyFormEdit = ({publication,onClose}) => {
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-		dispatch(updatePublication(formData))
-		onClose() 
+		dispatch(updatePublication(formData));
+		onClose();
 		try {
-
-
 			// Validar campos requeridos
 			if (
 				!formData.title ||
@@ -150,7 +145,6 @@ const PropertyFormEdit = ({publication,onClose}) => {
 				// error al crear la publicación
 				console.error("Error al crear la publicación");
 			}
-			
 		} catch (error) {
 			// manejar errores de la solicitud aquí
 			console.error("Error al crear la publicación:", error);
@@ -165,12 +159,14 @@ const PropertyFormEdit = ({publication,onClose}) => {
 	};
 
 	return (
-		<div>
-			<div className="m-4 p-8 rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)] z-50">
+		<div className="mt-4 utline mx-auto">
+			<div className="my-4 w-[320px] md:w-[500px]  p-3 bg-gray-300  rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)] z-50">
 				{/* El link esta listo para que se ponga a donde se quiere que lo llevemos atras seria el perifl o al home. */}
 				<button
-					onClick={()=>{onClose()}}
-					className="text-4xl text-white bg-red-500 w-[50px] h-[50px] flex flex-col items-center rounded-lg "
+					onClick={() => {
+						onClose();
+					}}
+					className="text-4xl mb-4 text-white bg-red-500 w-[50px] h-[50px] flex flex-col items-center rounded-lg "
 				>
 					&#128473;
 				</button>
@@ -189,8 +185,12 @@ const PropertyFormEdit = ({publication,onClose}) => {
 					))}
 				</div>
 				{/* ==================UPLOAD IMAGES=============== */}
-				<div className="text-center pb-8">
+
+				
+
+				<div className="text-center   pb-8">
 					<UpImages onImagesUploaded={updateImageUrls} />
+					
 				</div>
 
 				<div className="w-full p-4">
@@ -230,7 +230,7 @@ const PropertyFormEdit = ({publication,onClose}) => {
 							onChange={handleChange}
 						></textarea>
 
-						<div className="flex justify-between pt-4">
+						<div className="flex justify-between flex-wrap pt-4  p-4">
 							{[
 								{
 									id: "Dormitorios",
@@ -253,8 +253,8 @@ const PropertyFormEdit = ({publication,onClose}) => {
 									icon: <FaKitchenSet size={30} />,
 								},
 							].map(option => (
-								<div key={option.id} className="mr-4">
-									<div className="flex items-center justify-around">
+								<div key={option.id} className="mr-4 ">
+									<div className=" p-4 w-[100px] flex items-center justify-around">
 										<input
 											type="checkbox"
 											id={option.id}
@@ -282,7 +282,7 @@ const PropertyFormEdit = ({publication,onClose}) => {
 							type="text"
 							id="featured"
 							name="featured"
-							className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 "
+							className="w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 mb-2"
 							value={formData.featured}
 							onChange={handleChange}
 						/>
@@ -290,7 +290,7 @@ const PropertyFormEdit = ({publication,onClose}) => {
 						<select
 							id="type"
 							name="type"
-							className="half-width rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 sm:max-w-xs "
+							className="half-width rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 sm:max-w-xs mb-2"
 							value={formData.type}
 							onChange={handleChange}
 						>
@@ -337,7 +337,7 @@ const PropertyFormEdit = ({publication,onClose}) => {
 						<select
 							id="offering"
 							name="offering"
-							className="half-width rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 sm:max-w-xs "
+							className="half-width rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 sm:max-w-xs mb-4 "
 							value={formData.offering}
 							onChange={handleChange}
 						>
@@ -365,8 +365,8 @@ const PropertyFormEdit = ({publication,onClose}) => {
 
 						<label className="text-sm font-medium text-gray-900 py-3">Amenities</label>
 
-						<div className="flex flex-col">
-							<div className="flex flex-wrap justify-between">
+						<div className="flex flex-col ">
+							<div className="flex flex-wrap justify-between p-4  ">
 								{[
 									{
 										id: "Wifi",
@@ -389,7 +389,7 @@ const PropertyFormEdit = ({publication,onClose}) => {
 										icon: <AiOutlineCar size={30} />,
 									},
 								].map(amenity => (
-									<div className="flex items-center" key={amenity.id}>
+									<div className="flex items-center  w-[100px] mb-2" key={amenity.id}>
 										<input
 											type="checkbox"
 											id={amenity.id}
@@ -406,7 +406,7 @@ const PropertyFormEdit = ({publication,onClose}) => {
 									</div>
 								))}
 							</div>
-							<div className="flex flex-wrap justify-between">
+							<div className="flex flex-wrap justify-between p-4">
 								{[
 									{
 										id: "Tv",
@@ -429,7 +429,7 @@ const PropertyFormEdit = ({publication,onClose}) => {
 										icon: <FaFan size={30} />,
 									},
 								].map(amenity => (
-									<div className="flex items-center" key={amenity.id}>
+									<div className="flex items-center w-[100px] mb-2" key={amenity.id}>
 										<input
 											type="checkbox"
 											id={amenity.id}
@@ -455,7 +455,7 @@ const PropertyFormEdit = ({publication,onClose}) => {
 							type="text"
 							id="price"
 							name="price"
-							className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 "
+							className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 mb-2"
 							value={formData.price}
 							onChange={handleChange}
 						/>
@@ -468,7 +468,7 @@ const PropertyFormEdit = ({publication,onClose}) => {
 							id="discount"
 							name="discount"
 							placeholder="Entre 5% y 100%"
-							className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 "
+							className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 mb-2"
 							value={formData.discount}
 							onChange={handleChange}
 						/>
@@ -476,7 +476,7 @@ const PropertyFormEdit = ({publication,onClose}) => {
 						<select
 							id="security"
 							name="security"
-							className="half-width rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 sm:max-w-xs "
+							className="half-width rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 sm:max-w-xs mb-2"
 							value={formData.security.join(",")} // Convierte la matriz en una cadena
 							onChange={handleChange}
 						>
@@ -491,20 +491,20 @@ const PropertyFormEdit = ({publication,onClose}) => {
 						</select>
 
 						<div className="flex flex-col">
-							<label htmlFor="extra_Security" className="text-sm font-medium text-gray-900">
+							<label htmlFor="extra_Security" className="text-sm font-medium text-gray-900 ">
 								Seguridad Adicional
 							</label>
 							<input
 								type="text"
 								id="extra_Security"
 								name="extra_Security"
-								className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 "
+								className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 mb-2"
 								value={formData.extra_Security}
 								onChange={handleChange}
 							/>
 						</div>
 
-						<div className="sm:col-span-4">
+						<div className="sm:col-span-4 ">
 							<label htmlFor="email" className="text-sm font-medium text-gray-900">
 								Email
 							</label>
@@ -514,9 +514,9 @@ const PropertyFormEdit = ({publication,onClose}) => {
 									name="email"
 									type="email"
 									autoComplete="email"
-									className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 "
+									className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 w-full "
 									value={formData.email}
-									onChange={handleChange}
+									// onChange={handleChange}
 								/>
 							</div>
 						</div>

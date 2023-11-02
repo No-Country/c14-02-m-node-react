@@ -58,9 +58,9 @@ function UpImages({ onImagesUploaded }) {
 
 	return (
 		<div>
-			<div className="mt-5">
-				<div className="font-semibold mb-3">
-					<label htmlFor="file_input">
+			<div className="mt-5 ">
+				<div className=" text-gray-700  w-full font-semibold mb-3">
+					<label  htmlFor="file_input">
 						Selecciona por lo menos 5 imágenes (máximo 2 MB cada una):
 					</label>
 				</div>
@@ -82,7 +82,7 @@ function UpImages({ onImagesUploaded }) {
 			</div>
 			<div className="mt-4">
 				<button
-					className="bg-white border-2 text-sm border-stone-950 px-4 py-2 text-black font-semibold rounded-md mb-5"
+					className="bg-lime-700 border-2 text-sm  px-4 py-2 text-gray-100 font-semibold rounded-md mb-5"
 					onClick={handleUploadImages}
 				>
 					Subir imágenes
