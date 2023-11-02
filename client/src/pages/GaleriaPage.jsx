@@ -56,7 +56,7 @@ export const GaleriaPage = () => {
 	}
 
 	return (
-		<section className="containerCards flex flex-wrap w-full p-4 mt-0">
+		<section className="containerCards flex flex-wrap w-full p-4 mt-0 mb-6">
 			{status === "failed" ? (
 				<span>Error al cargar las publicaciones</span>
 			) : filteredPublications.length > 0 ? (

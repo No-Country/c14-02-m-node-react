@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { GiGlobe } from "react-icons/gi";
 
-function IvpHoster({ dataUser }) {
+function IvpHoster({ data , dataUser }) {
 
 	const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showForm, setShowForm] = useState(true);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -11,14 +12,67 @@ function IvpHoster({ dataUser }) {
 
     const closeModal = () => {
         setIsModalOpen(false);
+        setShowForm(true);
     };
+
+    const [formData, setFormData] = useState({
+      nameH: "",
+      emailH: "",
+      mensaje: "",
+    });
+
+
+  const handleSubmit = (e) => {
+  e.preventDefault();
+
+    const dataToSend = {
+        type: "contact p2p",
+        emailH: formData.emailH,
+        emailP: dataUser.email,
+        nameP: dataUser.names,
+        nameH: formData.nameH,
+        mensaje: formData.mensaje,
+        title: data.title,
+      };
+
+    const JsonData = JSON.stringify(dataToSend)
+      console.log(JsonData);
+
+      // Esto es para limpiar el form y aparecer el cartel de enviado
+      setFormData({
+        nameH: "",
+        emailH: "",
+        mensaje: "",
+      });
+
+      setShowForm(false);
+      setTimeout(() => {
+      setShowForm(true);
+      }, 8000);
+      // Fin
+
+      fetch("https://clon-airbnb-api.onrender.com/api/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JsonData,
+      })
+  }
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
 
 	return (
 		<div className="border-b">
 			<h2 className="text-2xl font-semibold m-5">Conocé al anfitrión</h2>
 			<div className="p-12 my-3 bg-stone-200 rounded-lg">
 				{/* CARD ANFITRION  */}
-
 				<div className="flex items-center justify-around bg-white rounded-3xl drop-shadow-[0_30px_30px_rgba(0,0,0,0.25)] my-3 p-5 w-400">
 					<div>
 						<img
@@ -81,19 +135,24 @@ function IvpHoster({ dataUser }) {
                     <div className="modal">
                         <div className="modal-content">
                             <button onClick={closeModal}>X</button>
-                            <form className="flex flex-col w-full">
-                                <h1 className="text-3xl font-bold mb-7 mt-7">Contactá al anfitríon</h1>
-                                <label className="text-gray-900 text-lg pb-2" htmlFor="name">Nombre</label>
-                                <input className="border border-gray-300 rounded-md mb-4" type="text" id="name" name="name" required/>
+                            {showForm ? (
+                            <form className="flex flex-col w-full" onSubmit={handleSubmit}>
+                                <h1 className="text-3xl font-bold mb-7 mt-7">Contactá al anfitrión {dataUser.names}</h1>
+                                <h1 className="text-lg font-bold text-gray-600 mb-7"> Propiedad: {data.title}</h1>
+                                <label className="text-gray-900 text-lg pb-2" htmlFor="nameH">Nombre</label>
+                                <input className="border border-gray-300 rounded-md mb-4" type="text" id="nameH" name="nameH" value={formData.nameH} onChange={handleChange} required/>
 
-                                <label className="text-gray-900 text-lg pb-2" htmlFor="email">Correo Electrónico</label>
-                                <input className="border border-gray-300 rounded-md mb-4" type="email" id="email" name="email" required/>
+                                <label className="text-gray-900 text-lg pb-2" htmlFor="emailH">Correo Electrónico</label>
+                                <input className="border border-gray-300 rounded-md mb-4 p-2" type="emailH" id="emailH" name="emailH" value={formData.emailH} onChange={handleChange} required/>
 
-                                <label className="text-gray-900 text-lg pb-2" htmlFor="message">Mensaje</label>
-                                <textarea className="border border-gray-300 rounded-md h-24 w-full mb-4" id="message" name="message" required></textarea>
+                                <label className="text-gray-900 text-lg pb-2" htmlFor="mensaje">Mensaje</label>
+                                <textarea className="border border-gray-300 rounded-md h-24 w-full mb-4" id="mensaje" name="mensaje" value={formData.mensaje} onChange={handleChange} required></textarea>
 
                                 <button className="border rounded-md py-2 px-2 bg-black text-white hover:bg-gray-900 mt-4 mb-2" type="submit">Enviar</button>
                             </form>
+                            ) : (
+                              <h1 className="text-3xl font-semibold text-gray-600 text-center p-10">Su mensaje fue enviado correctamente, el anfitrión le respondera a la brevedad.</h1>
+                            )}
                         </div>
                     </div>
                     )}

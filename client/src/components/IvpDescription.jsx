@@ -15,7 +15,7 @@ import { GrNotes } from "react-icons/gr";
 function IvpDescription({ data, dataUser }) {
 	// const info = useSelector(state => state.main.publicationDetail);
 
-	console.log("PARAMETROS", data, dataUser);
+	console.log("PARAMETROS", data , dataUser);
 	console.log(data.offering);
 
 	return (

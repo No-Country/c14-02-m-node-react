@@ -73,13 +73,14 @@ const sendMail = async data => {
 				nameP: data.nameP,
 				nameH: data.nameH,
 				mensaje: data.mensaje,
-				title:data.title
+				title:data.title,
+				emailH: data.emailH
 			},
 		};			
 }
 	try {
 		res = await sgMail.send(msg1);
-		console.log('Correo electrónico enviado correctamente', res[0].statusCode);
+		console.log('Correo electrónico enviado correctamente', res);
 	} catch (error) {
 		console.error('Error al enviar el correo electrónico', error);
 	}
