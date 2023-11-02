@@ -38,7 +38,7 @@ export const NavBar = ({ photoPerson }) => {
 		window.location.href = "/"; // Navega a la página de inicio flex flex-row justify-between items-center pt-4 px-10 bg-white sticky top-0 z-50
 	};
 	return (
-		<div className="md:flex md:flex-row md:justify-between md:items-center md:pt-4 md:px-10 md:bg-white md:sticky md:top-0 md:z-50 flex flex-col ">	
+		<div className="md:flex md:flex-row md:justify-between md:items-center md:pt-4 md:px-10 md:bg-white md:sticky md:top-0 md:z-50 flex flex-col pb-2 ">	
 			<Link to="/" style={{ cursor: "pointer" }} onClick={handleReloadHomePage}>
 				<div className="flex flex-row items-center cursor-pointer">
 					<img src={logo} alt="Logo" className="mx-auto p-3 md:mx-0" />
