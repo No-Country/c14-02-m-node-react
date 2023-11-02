@@ -64,11 +64,11 @@ export const NavBar = ({ photoPerson }) => {
 							{/* flex flex-row items-center gap-2 */}
 			<div className=" flex flex-row items-center md:justify-center justify-between px-2 mx:px-0 md:p-3 py-4 gap-2 order-1 md:order-2">
 				<div className="flex items-center justify-between  w-[150px]">
-					
+						<Link to="/tuairbnb">
 						<p className="whitespace-nowrap m-0 md:text-sm text-md font-medium leading-22 text-lg">Poné tu Airbnb</p>
+						</Link>
 					
-					
-						<img src={idioma} alt="Idioma Icon" />
+						{/* <img src={idioma} alt="Idioma Icon" /> */}
 					
 				</div>
 				<BottonMenu photoPerson={user ? user.photoURL : photoPerson} />

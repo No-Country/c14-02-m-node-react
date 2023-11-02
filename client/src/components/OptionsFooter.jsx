@@ -4,7 +4,7 @@ import { TbWorld } from "react-icons/tb";
 
 function OptionsFooter() {
 	return (
-		<div className="bg-stone-200 py-5 border-t-2 border-stone-400 px-6">
+		<div className="overflow-hidden bg-stone-200 py-5 border-t-2 border-stone-400 px-6">
 			<div>
 				<div className="flex items-center justify-center">
 					<div className="flex mx-5">
