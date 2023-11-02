@@ -91,7 +91,7 @@ const Filtros = () => {
 	};
 // 
 	return (
-		<div className="w-full md:flex md:flex-row md:justify-around md:items-center md:mb-7 md:px-10 md:gap-6 md:bg-white  md:z-40 md:sticky md:top-20 ">
+		<div className="w-full md:flex md:flex-row md:justify-around md:items-center md:mb-0 md:px-10 md:gap-6 md:bg-white  md:z-40 md:sticky md:top-20 ">
 			<div className="flex gap-4 overflow-y-hidden md:flex items-center md:gap-2 ">
 
 			<div className="flex flex-col items-center bg-white m-4 cursor-pointer text-center font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid hover:border-gray-300 hover:text-black">
@@ -105,8 +105,6 @@ const Filtros = () => {
 				</button>
 			)}
 			</div>
-
-
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer    font-medium   text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
 					
@@ -138,7 +136,6 @@ const Filtros = () => {
 						</button>
 					)}
 				</div>
-				{/* ------------DE ACA PARA ABAJO NO ANDAN-------------- */}
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
 					<button className="flex flex-col items-center" onClick={() => click("Cabaña")}>
@@ -215,17 +212,6 @@ const Filtros = () => {
 					)}
 				</div>
 			</div>
-			{/* <div className="hidden md:flex p-4 items-center gap-7 rounded-lg border border-gray-300 bg-white cursor-pointer">
-				<img src={filter} />
-				<button className="text-gray-700 text-base font-semibold ">Filtros</button>
-			</div>
-			<div className="hidden md:flex p-4  items-center gap-7  rounded-lg border border-gray-300 bg-white cursor-pointer">
-				<button className="text-gray-700  text-base">Mostrar total (sin impuestos)</button>
-				<Switch>
-					<input type="checkbox" />
-					<span></span>
-				</Switch>
-			</div> */}
 		</div>
 	);
 };

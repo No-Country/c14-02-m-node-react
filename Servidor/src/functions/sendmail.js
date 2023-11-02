@@ -73,7 +73,8 @@ const sendMail = async data => {
 				nameP: data.nameP,
 				nameH: data.nameH,
 				mensaje: data.mensaje,
-				title:data.title
+				title:data.title,
+				emailH: data.emailH
 			},
 		};			
 }
