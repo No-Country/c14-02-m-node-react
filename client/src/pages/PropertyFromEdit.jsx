@@ -159,8 +159,8 @@ const PropertyFormEdit = ({ publication, onClose }) => {
 	};
 
 	return (
-		<div className="mt-4 utline mx-auto">
-			<div className="my-4 w-[320px] md:w-[500px]  p-3 bg-gray-300  rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)] z-50">
+		<div className="mt-4  mx-auto md:w-full">
+			<div className="my-4 w-[320px] md:w-[500px] md:w-full p-3 bg-gray-300  rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)] z-50">
 				{/* El link esta listo para que se ponga a donde se quiere que lo llevemos atras seria el perifl o al home. */}
 				<button
 					onClick={() => {
@@ -174,19 +174,9 @@ const PropertyFormEdit = ({ publication, onClose }) => {
 					<h2 className="text-3xl font-semibold">Tu Airbnb - Editar</h2>
 				</div>
 
-				<div className="flex gap-4 overflow-y-hidden items-center mt-4">
-					{formData.photos.map((photo) => (
-						<img
-							src={photo}
-							key={photo.id}
-							
-							className="rounded-md w-[150px] h-[100px]"
-						/>
-					))}
-				</div>
+				
 				{/* ==================UPLOAD IMAGES=============== */}
 
-				
 
 				<div className="text-center   pb-8">
 					<UpImages onImagesUploaded={updateImageUrls} />
