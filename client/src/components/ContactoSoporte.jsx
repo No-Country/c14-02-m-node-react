@@ -13,20 +13,14 @@ const ContactoSoporte = () => {
     e.preventDefault();
 
     const dataToSend = {
-        // "type" : "contact us",
-        // "name": "jorge",
-        // "mail": "jorge@jorge.com",
-        // "mensaje": "hola jorge"
-      
       type: "contact us",
       email: formData.email,
-      names: formData.name,
+      name: formData.name,
       mensaje: formData.mensaje,
     };
     
 
     const JsonData = JSON.stringify(dataToSend)
-    console.log(JsonData);
     fetch("https://clon-airbnb-api.onrender.com/api/email", {
       method: "POST",
       headers: {
@@ -36,17 +30,12 @@ const ContactoSoporte = () => {
     })
       .then((response) => {
         if (response.ok) {
-          return response.json();
+          return "se envio correctamente";
         } else {
           throw new Error("Error en la solicitud");
         }
       })
-      .then((data) => {
-        console.log("Solicitud exitosa:", data);
-      })
-      .catch((error) => {
-        console.error("Error al enviar la solicitud:", error);
-      });
+      
   };
 
   const handleChange = (e) => {
