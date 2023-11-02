@@ -37,18 +37,18 @@ const publicationScheme = new mongoose.Schema({
 			'Molino',
 			'Yurta',
 		],
-		validate: {
-			validator: function (value) {
-				// Primero, verifica la longitud
-				const validLength = value.length >= 3 && value.length <= 50;
-				// Luego, verifica el formato
-				const validFormat = /^[a-zA-Z\s]+$/.test(value);
+		// validate: {
+		// 	validator: function (value) {
+		// 		// Primero, verifica la longitud
+		// 		// const validLength = value.length >= 3 && value.length <= 50;
+		// 		// Luego, verifica el formato
+		// 		const validFormat = /^[a-zA-Z\s]+$/.test(value);
 
-				return validLength && validFormat;
-			},
-			message:
-				'El campo type debe tener entre 3 y 50 caracteres y solo puede contener letras y espacios.',
-		},
+		// 		return validLength && validFormat;
+		// 	},
+		// 	message:
+		// 		'El campo type debe tener entre 3 y 50 caracteres y solo puede contener letras y espacios.',
+		// },
 	},
 	offering: {
 		type: String,
