@@ -107,11 +107,9 @@ const PropertyForm = () => {
 
 	const handleSubmit = async e => {
 		e.preventDefault();
-
+	
 		try {
-			const response = await createPublication(formData);
-
-			// validar campos requeridos
+			// Validar campos requeridos
 			if (
 				!formData.title ||
 				!formData.location ||
@@ -124,19 +122,10 @@ const PropertyForm = () => {
 					title: "Error",
 					text: "Por favor, completa todos los campos obligatorios.",
 				});
-				return; // falta información
+				return; // Falta información
 			}
-
-			if (formData.photos.length === 0) {
-				Swal.fire({
-					icon: "error",
-					title: "Error",
-					text: "Debes subir al menos una imagen de la propiedad.",
-				});
-				return; // faltan imágenes
-			}
-
-			// validar el campo "description"
+	
+			// Validar el campo "description"
 			if (formData.description.length < 10) {
 				Swal.fire({
 					icon: "error",
@@ -145,18 +134,18 @@ const PropertyForm = () => {
 				});
 				return;
 			}
-
-			// validar el formato del correo electrónico
-			// const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
-			// if (!emailRegex.test(formData.email)) {
-			// 	Swal.fire({
-			// 		icon: "error",
-			// 		title: "Error",
-			// 		text: "El formato del correo electrónico no es válido.",
-			// 	});
-			// 	return; // falta el correo electrónico no es válido
-			// }
-
+	
+			// Validar el formato del correo electrónico
+			const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+			if (!emailRegex.test(formData.email)) {
+				Swal.fire({
+					icon: "error",
+					title: "Error",
+					text: "El formato del correo electrónico no es válido.",
+				});
+				return; // El correo electrónico no es válido
+			}
+	
 			// Validar el descuento
 			const discountValue = parseFloat(formData.discount);
 			if (isNaN(discountValue) || discountValue < 5 || discountValue > 100) {
@@ -167,25 +156,37 @@ const PropertyForm = () => {
 				});
 				return; // No envíes la solicitud si el descuento no es válido
 			}
-
+	
+			if (formData.photos.length === 0) {
+				Swal.fire({
+					icon: "error",
+					title: "Error",
+					text: "Debes subir al menos una imagen de la propiedad.",
+				});
+				return; // Faltan imágenes
+			}
+	
+			// Si todas las validaciones se superan, entonces realiza la solicitud
+			const response = await createPublication(formData);
+	
 			if (response.data) {
-				// la publicación se creó con éxito
+				// La publicación se creó con éxito
 				Swal.fire({
 					icon: "success",
 					title: "Éxito",
 					text: "La propiedad se guardó con éxito.",
 				});
-				
 				resetForm();
 			} else {
-				// error al crear la publicación
+				// Error al crear la publicación
 				console.error("Error al crear la publicación");
 			}
 		} catch (error) {
-			// manejar errores de la solicitud aquí
+			// Manejar errores de la solicitud aquí
 			console.error("Error al crear la publicación:", error);
 		}
 	};
+	
 
 	const updateImageUrls = imageUrls => {
 		setFormData({
