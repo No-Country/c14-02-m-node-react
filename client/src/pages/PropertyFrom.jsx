@@ -317,7 +317,7 @@ const PropertyForm = () => {
 							value={formData.type}
 							onChange={handleChange}
 						>
-							<option value="">Tipo de Espacio</option>
+							<option value="">Tipo de Alojamiento</option>
 							{[
 								"Casa",
 								"Departamento",
@@ -358,7 +358,7 @@ const PropertyForm = () => {
 						</select>
 
 						<label htmlFor="offering" className="text-sm font-medium text-gray-900">
-							Tipo de Alojamiento
+							Tipo de Espacio
 						</label>
 						<select
 							id="offering"
