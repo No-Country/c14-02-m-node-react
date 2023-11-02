@@ -73,7 +73,7 @@ const Component = ({ photoPerson }) => {
 				</div>
 			</button>
 			{isMenuOpen && (
-				<div className="flex absolute translate-x-[-66%] w-auto h-auto shrink-0 shadow-[0px_4px_18px_0px_rgba(0,0,0,0.17)] bg-[white] z-[100] mt-2.5 px-0 py-2.5 rounded-[14px]" >
+				<div className="flex absolute translate-x-[-69%] w-auto h-auto shrink-0 shadow-[0px_4px_18px_0px_rgba(0,0,0,0.17)] bg-[white] z-[100] mt-2.5 px-0 py-2.5 rounded-[14px]" >
 					{/* 0 90px 0 10px */}
 					<div className="p-2 flex flex-col m-0 ml-3 mr-20   gap-4">
 						{user ? ( // Verifica si el usuario está autenticado

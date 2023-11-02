@@ -91,7 +91,7 @@ const Filtros = () => {
 	};
 // 
 	return (
-		<div className="w-full md:flex md:flex-row md:justify-around md:items-center md:mb-7 md:px-10 md:gap-6 md:bg-white  md:z-40 md:sticky md:top-20 ">
+		<div className="w-full md:flex md:flex-row md:justify-around md:items-center md:px-10 md:gap-6 md:bg-white  md:z-40 md:sticky md:top-20 pt-1">
 			<div className="flex gap-4 overflow-y-hidden md:flex items-center md:gap-2 ">
 
 			<div className="flex flex-col items-center bg-white m-4 cursor-pointer text-center font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid hover:border-gray-300 hover:text-black">

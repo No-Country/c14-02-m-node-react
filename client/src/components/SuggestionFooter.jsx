@@ -5,7 +5,7 @@ import FooterMenu from "./FooterMenu";
 function SuggestionFooter() {
 	return (
 		<>
-			<div className="md:flex justify-between bg-stone-200 border-t-2 border-stone-400 px-6">
+			<div className="md:flex justify-between bg-stone-200 border-t-2 border-stone-400 px-6 mt-12">
 				<div className="md:flex items-center">
 					<div className="flex justify-center text-xs mr-5">© 2023 Airbnb, Inc.</div>
 					<div className="flex items-center justify-center text-xs">
