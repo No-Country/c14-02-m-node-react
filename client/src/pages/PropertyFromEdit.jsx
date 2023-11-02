@@ -63,13 +63,6 @@ const PropertyFormEdit = ({ publication, onClose }) => {
 		callback(uploadedUrls);
 	};
 
-
-
-
-	
-
-
-
 	const handleSpacesChange = e => {
 		const { name, type, checked } = e.target;
 		let updatedSpaces = formData.spaces;
@@ -167,7 +160,7 @@ const PropertyFormEdit = ({ publication, onClose }) => {
 
 	return (
 		<div className="mt-4 utline mx-auto">
-			<div className="my-4 w-[320px]  p-3 bg-gray-300  rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)] z-50">
+			<div className="my-4 w-[320px] md:w-[500px]  p-3 bg-gray-300  rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)] z-50">
 				{/* El link esta listo para que se ponga a donde se quiere que lo llevemos atras seria el perifl o al home. */}
 				<button
 					onClick={() => {
@@ -181,8 +174,12 @@ const PropertyFormEdit = ({ publication, onClose }) => {
 					<h2 className="text-3xl font-semibold">Tu Airbnb - Editar</h2>
 				</div>
 				{/* ==================UPLOAD IMAGES=============== */}
+
+				
+
 				<div className="text-center   pb-8">
 					<UpImages onImagesUploaded={updateImageUrls} />
+					
 				</div>
 
 				<div className="w-full p-4">
@@ -329,7 +326,7 @@ const PropertyFormEdit = ({ publication, onClose }) => {
 						<select
 							id="offering"
 							name="offering"
-							className="half-width rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 sm:max-w-xs mb-4"
+							className="half-width rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 sm:max-w-xs mb-4 "
 							value={formData.offering}
 							onChange={handleChange}
 						>
@@ -508,7 +505,7 @@ const PropertyFormEdit = ({ publication, onClose }) => {
 									autoComplete="email"
 									className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 w-full "
 									value={formData.email}
-									onChange={handleChange}
+									// onChange={handleChange}
 								/>
 							</div>
 						</div>
