@@ -100,6 +100,11 @@ const Component = ({ photoPerson }) => {
 										Poné tu Airbnb
 									</p>
 								</Link>
+								<Link to="/team" className="mb-2">
+									<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70">
+										Quiénes Sómos
+									</p>
+								</Link>
 								<Link to="/centrodeayuda" className="mb-2">
 									<p className="flex whitespace-nowrap m-0 text-base cursor-pointer hover:opacity-70">
 										Centro de Ayuda
