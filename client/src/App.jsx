@@ -9,6 +9,7 @@ import { FavoritesPages } from "./pages/FavoritesPages";
 import PropertyForm from "./pages/PropertyFrom";
 import PublicationsUser from "./pages/PublicationsUser";
 import Contacto from "./pages/ContactPage";
+import Team from "./pages/Team";
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 				<Route path="/manageads" element={<PublicationsUser />} />
 				<Route path="/tuairbnb" element={<PropertyForm />} />
 				<Route path="/centrodeayuda" element={<Contacto />} />
+				<Route path="/team" element={<Team />} />
 			</Routes>
 		</AuthProvider>
 	);

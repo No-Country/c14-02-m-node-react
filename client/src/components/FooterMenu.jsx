@@ -1,4 +1,6 @@
 import { useState, useEffect  } from "react";
+import {Link} from "react-router-dom"
+
 
 const FooterMenu = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,6 +40,9 @@ const FooterMenu = () => {
 
 	return (
 		<div className="relative flex justify-center items-center">
+			<Link to="/team">
+			<p>Quienes Somos</p>
+			</Link>
 			<button
 				className="border-none outline-none cursor-pointer p-3 flex items-center underline justify-around"
 				onClick={toggleMenu}
