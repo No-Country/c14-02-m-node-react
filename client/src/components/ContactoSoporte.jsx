@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const ContactoSoporte = () => {
 
@@ -9,34 +10,47 @@ const ContactoSoporte = () => {
     	mensaje: "",
   	});
 
-  	const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const dataToSend = {
-      type: "contact us",
-      email: formData.email,
-      name: formData.name,
-      mensaje: formData.mensaje,
-    };
+    const handleSubmit = (e) => {
+      e.preventDefault();
     
-
-    const JsonData = JSON.stringify(dataToSend)
-    fetch("https://clon-airbnb-api.onrender.com/api/email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JsonData,
-    })
-      .then((response) => {
-        if (response.ok) {
-          return "se envio correctamente";
-        } else {
-          throw new Error("Error en la solicitud");
+      const dataToSend = {
+        type: "contact us",
+        email: formData.email,
+        name: formData.name,
+        mensaje: formData.mensaje,
+      };
+    
+      const JsonData = JSON.stringify(dataToSend);
+    
+      Swal.fire({
+        title: '¿Enviar el mensaje?',
+        text: '¿Estás seguro de que deseas enviar este mensaje?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, enviar',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch("https://clon-airbnb-api.onrender.com/api/email", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JsonData,
+          })
+            .then((response) => {
+              if (response.ok) {
+                Swal.fire('¡Mensaje enviado!', 'Tu mensaje se ha enviado con éxito.', 'success');
+              } else {
+                throw new Error("Error en la solicitud");
+              }
+            })
+            .catch((error) => {
+              Swal.fire('Error', 'Hubo un error al enviar el mensaje.', 'error');
+            });
         }
-      })
-      
-  };
+      });
+    };
 
   const handleChange = (e) => {
     setFormData({

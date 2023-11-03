@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { GiGlobe } from "react-icons/gi";
+import Swal from 'sweetalert2';
 
 function IvpHoster({ data , dataUser }) {
 
@@ -21,44 +22,51 @@ function IvpHoster({ data , dataUser }) {
       mensaje: "",
     });
 
-
-  const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
   e.preventDefault();
 
-    const dataToSend = {
-        type: "contact p2p",
-        emailH: formData.emailH,
-        emailP: dataUser.email,
-        nameP: dataUser.names,
-        nameH: formData.nameH,
-        mensaje: formData.mensaje,
-        title: data.title,
-      };
+  const dataToSend = {
+    type: "contact p2p",
+    emailH: formData.emailH,
+    emailP: dataUser.email,
+    nameP: dataUser.names,
+    nameH: formData.nameH,
+    mensaje: formData.mensaje,
+    title: data.title,
+  };
 
-    const JsonData = JSON.stringify(dataToSend)
-      console.log(JsonData);
+  const JsonData = JSON.stringify(dataToSend);
 
-      // Esto es para limpiar el form y aparecer el cartel de enviado
-      setFormData({
-        nameH: "",
-        emailH: "",
-        mensaje: "",
-      });
+  try {
+    const result = await Swal.fire({
+      title: '¿Enviar el mensaje?',
+      text: '¿Estás seguro de que deseas enviar este mensaje?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, enviar',
+      cancelButtonText: 'Cancelar',
+    });
 
-      setShowForm(false);
-      setTimeout(() => {
-      setShowForm(true);
-      }, 8000);
-      // Fin
-
-      fetch("https://clon-airbnb-api.onrender.com/api/email", {
+    if (result.isConfirmed) {
+      const response = await fetch("https://clon-airbnb-api.onrender.com/api/email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JsonData,
-      })
-  }
+      });
+
+      if (response.ok) {
+        await Swal.fire('¡Mensaje enviado!', 'Tu mensaje se ha enviado con éxito.', 'success');
+        setShowForm(false); // Oculta el formulario después de enviar el mensaje
+      } else {
+        throw new Error("Error en la solicitud");
+      }
+        }
+      } catch (error) {
+        Swal.fire('Error', 'Hubo un error al enviar el mensaje.', 'error');
+      }
+    };
 
   const handleChange = (e) => {
     setFormData({
