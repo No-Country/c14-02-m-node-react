@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "./node_modules/.bin/nodemon",
 		"dev-win": ".\\node_modules\\.bin\\nodemon",
-		"start": "npm install && node index.js",
+		"start": "node index.js",
 		"lint": "eslint . --ext js,cjs --report-unused-disable-directives --max-warnings 0",
 		"format": "prettier --write ."
 	},

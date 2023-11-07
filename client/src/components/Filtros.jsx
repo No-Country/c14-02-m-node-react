@@ -75,15 +75,14 @@ const Filtros = () => {
 
 	const click = nombre => {
 		const filter = nombre;
-		console.log(filter);
 		dispatch(filterNav(filter));
 
 		setSelectedFilter(nombre);
-		// Mostrar el botón "Eliminar"
 		setShowDeleteButton(true);
 	};
 
 	const handleDeleteClick = () => {
+		console.log(selectedFilter)
 		if (selectedFilter) {
 			setSelectedFilter(null);
 			setShowDeleteButton(false);
@@ -92,25 +91,27 @@ const Filtros = () => {
 	};
 // 
 	return (
-		<div className="w-full md:flex md:flex-row md:justify-around md:items-center md:mb-7 md:px-10 md:gap-6 md:bg-white  md:z-40 md:sticky md:top-20 ">
+		<div className="w-full md:flex md:flex-row md:justify-around md:items-center md:mb-0 md:px-10 md:gap-6 md:bg-white  md:z-40 md:sticky md:top-20 ">
 			<div className="flex gap-4 overflow-y-hidden md:flex items-center md:gap-2 ">
 
-				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
-					<img class="w-11 md:w-6 md:h-6" src={depto} />
-					<button onClick={() => click("Departamento")}>Departamentos</button>
-					{selectedFilter === "Departamento" && (
-						<button
-							onClick={handleDeleteClick}
-							className="outline outline-red-600 px-1 text-red-950 rounded-sm "
-						>
-							Eliminar
-						</button>
-					)}
-				</div>
+			<div className="flex flex-col items-center bg-white m-4 cursor-pointer text-center font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid hover:border-gray-300 hover:text-black">
+			<button onClick={() => click("Departamento")} className="flex flex-col items-center">
+				<img className="w-11 md:w-6 md:h-6" src={depto} alt="Icono de Departamentos" />
+				<span>Departamentos</span>
+			</button>
+			{selectedFilter === "Departamento" && (
+				<button onClick={handleDeleteClick} className="outline outline-red-600 px-1 text-red-950 rounded-sm">
+				Eliminar
+				</button>
+			)}
+			</div>
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer    font-medium   text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
-					<img class="w-11 md:w-6 md:h-6" src={casas} />
-					<button onClick={() => click("Casa")}>Casas</button>
+					
+					<button className="flex flex-col items-center" onClick={() => click("Casa")}>
+					<img className="w-11 md:w-6 md:h-6" src={casas} />
+						<span>Casas</span>
+					</button>
 					{selectedFilter === "Casa" && (
 						<button
 							onClick={handleDeleteClick}
@@ -122,8 +123,10 @@ const Filtros = () => {
 				</div>
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
-					<img class="w-11 md:w-6 md:h-6" src={casacampo} />
-					<button onClick={() => click("Granero")}>Campo</button>
+					<button className="flex flex-col items-center"  onClick={() => click("Granero")}>
+					<img className="w-11 md:w-6 md:h-6" src={casacampo} />
+						<span>Campo</span>
+					</button>
 					{selectedFilter === "Granero" && (
 						<button
 							onClick={handleDeleteClick}
@@ -133,11 +136,12 @@ const Filtros = () => {
 						</button>
 					)}
 				</div>
-				{/* ------------DE ACA PARA ABAJO NO ANDAN-------------- */}
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
-					<img class="w-11 md:w-6 md:h-6" src={cabañas} />
-					<button onClick={() => click("Cabaña")}>Cabañas</button>
+					<button className="flex flex-col items-center" onClick={() => click("Cabaña")}>
+						<img className="w-11 md:w-6 md:h-6" src={cabañas} />
+						<span>Cabañas</span>
+					</button>
 					{selectedFilter === "Cabaña" && (
 						<button
 							onClick={handleDeleteClick}
@@ -149,67 +153,64 @@ const Filtros = () => {
 				</div>
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
-					<img class="w-11 md:w-6 md:h-6" src={lakefrontt} />
-					<button onClick={() => click("Hotel")}>Hotel</button>
+					<button className="flex flex-col items-center" onClick={() => click("Hotel")}>
+						<img className="w-11 md:w-6 md:h-6" src={lakefrontt} />
+						<span>Hotel</span> 
+					</button>
 					{selectedFilter === "Hotel" && (
 						<button
 							onClick={handleDeleteClick}
 							className="outline outline-red-600 px-1 text-red-950 rounded-sm"
 						>
-							Hotel
+							Eliminar
 						</button>
 					)}
 				</div>
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
-					<img class="w-11 md:w-6 md:h-6" src={casarodante} />
-					<button onClick={() => click("Casa Rodante")}>Casa rodante</button>
+					<button className="flex flex-col items-center" onClick={() => click("Casa Rodante")}>
+						<img className="w-11 md:w-6 md:h-6" src={casarodante} />
+						<span>Casa rodante</span>
+					</button>
 					{selectedFilter === "Casa Rodante" && (
 						<button
 							onClick={handleDeleteClick}
 							className="outline outline-red-600 px-1 text-red-950 rounded-sm"
 						>
-							Hotel
+							Eliminar
 						</button>
 					)}
 				</div>
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
-					<img class="w-11 md:w-6 md:h-6" src={piletasincreibles} />
-					<button onClick={() => click("Castillo")}>Castillos</button>
+					<button className="flex flex-col items-center" onClick={() => click("Castillo")}>
+						<img className="w-11 md:w-6 md:h-6" src={piletasincreibles} />
+						<span>Castillos</span>
+					</button>
 					{selectedFilter === "Castillo" && (
 						<button
 							onClick={handleDeleteClick}
 							className="outline outline-red-600 px-1 text-red-950 rounded-sm"
 						>
-							Hotel
+							Eliminar
 						</button>
 					)}
 				</div>
 
 				<div className="flex flex-col items-center bg-white m-4  cursor-pointer text-center   font-medium text-gray-600 border-b-2 border-transparent hover:transition duration-200 hover:border-solid  hover:border-gray-300 hover:text-black ">
-					<img class="w-11 md:w-6 md:h-6" src={boats} />
-					<button onClick={() => click("Barco")}>Barcos</button>
+					<button className="flex flex-col items-center" onClick={() => click("Barco")}>
+						<img className="w-11 md:w-6 md:h-6" src={boats} />
+						<span>Barcos</span>
+					</button>
 					{selectedFilter === "Barco" && (
 						<button
 							onClick={handleDeleteClick}
 							className="outline outline-red-600 px-1 text-red-950 rounded-sm"
 						>
-							Hotel
+							Eliminar
 						</button>
 					)}
 				</div>
-			</div>
-			<div className="hidden md:flex p-4 items-center gap-7 rounded-lg border border-gray-300 bg-white cursor-pointer">
-				<img src={filter} />
-				<button className="text-gray-700 text-base font-semibold ">Filtros</button>
-			</div>
-			<div className="hidden md:flex p-4  items-center gap-7  rounded-lg border border-gray-300 bg-white cursor-pointer">
-				<button className="text-gray-700  text-base">Mostrar total (sin impuestos)</button>
-				<Switch>
-					<input type="checkbox" />
-					<span></span>
-				</Switch>
 			</div>
 		</div>
 	);

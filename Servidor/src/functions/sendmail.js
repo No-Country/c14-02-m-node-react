@@ -52,13 +52,14 @@ const sendMail = async data => {
 	}else if (data.type === 'contact us') {
 			msg1 = {
 				to: 'admclonairbnb@gmail.com',
-				from: data.email,
+				from: 'admclonairbnb@gmail.com',
 				subject: 'Gracias por contactarnos',
 				preheader: 'Trataremos de ayudarte!',
 				templateId: 'd-6ae7ae08dcd340dda477c5fcd3730d68',
 				dynamic_template_data: {
 					name: data.name,
 					mensaje: data.mensaje,
+					email: data.email
 				},
 			};			
 	}else if (data.type === 'contact p2p') {
@@ -72,13 +73,14 @@ const sendMail = async data => {
 				nameP: data.nameP,
 				nameH: data.nameH,
 				mensaje: data.mensaje,
-				title:data.title
+				title:data.title,
+				emailH: data.emailH
 			},
 		};			
 }
 	try {
 		res = await sgMail.send(msg1);
-		console.log('Correo electrónico enviado correctamente', res[0].statusCode);
+		console.log('Correo electrónico enviado correctamente', res);
 	} catch (error) {
 		console.error('Error al enviar el correo electrónico', error);
 	}

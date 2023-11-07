@@ -80,21 +80,22 @@
 
 <h4>👉🏻 Developers</h4>
 
-| <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698321067/1687562225518_ix5vtb.jpg" width="50"> | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698321113/1684766130356_pfxrdb.jpg" width="50"> | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698321006/1693281606719_gdvgex.jpg" width="50"> | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698321159/1673531572145_qdxmxh.jpg" width="50"> |
-|:-:|:-:|:-:|:-:|
-| [Tiziano Mina](https://github.com/Tizianomina?tab=repositories) | [Vanessa Sanchez](https://github.com/NezziY) | [Emanuel Funes](https://github.com/EmanFun) | [Mateo Corsi](https://github.com/Mateocorsi33) |
-| <a href="https://github.com/Tizianomina?tab=repositories"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/tiziano-mina/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/NezziY"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/bertha-vanessa-s%C3%A1nchez-posadas-5b05a9208/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Mateocorsi33"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/mateocorsi/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/EmanFun"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/emanuel-funes-1b1171183/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+
+| <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698321067/1687562225518_ix5vtb.jpg" width="50"> | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698321113/1684766130356_pfxrdb.jpg" width="50"> | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698321159/1673531572145_qdxmxh.jpg" width="50"> |
+|:-:|:-:|:-:|
+| [Tiziano Mina](https://github.com/Tizianomina?tab=repositories) | [Vanessa Sanchez](https://github.com/NezziY) | [Mateo Corsi](https://github.com/Mateocorsi33) |
+| <a href="https://github.com/Tizianomina?tab=repositories"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/tiziano-mina/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/NezziY"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/bertha-vanessa-s%C3%A1nchez-posadas-5b05a9208/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Mateocorsi33"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/mateocorsi/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+
 
 <hr/>
 
-<h4>✔️ PM </h4>
+<h4>✔️ Product Manager </h4>
 
 <h4>👉🏻 List ✅<h4>
 
 <p>▪️ Planificación, organización y ejecución del proyecto Clon-Airbnb.</p>
 <p>▪️ Coordinacción los sprints.</p>
-<p>▪️ Comunicación diaria del equipo (dailys) y sirvió como enlace con el Team Leader.</p>
-<p>▪️ Creando las rutas enlazadas de la página usando React Router.</p>
+<p>▪️ Comunicación diaria del equipo (dailys) y con el Team Leader.</p>
 <p>▪️ Resolución de obstáculos y preparación de presentaciones efectivas para Demo Days, garantizando el progreso y cumplimiento de objetivos.</p>
 
 <h4> 👉🏻 Herramientas 🛠️ </h4>
@@ -108,14 +109,7 @@
     <img width="48" height="48" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1"/>
 </div>
 
-<!-- <img width="48" height="48" src="https://img.icons8.com/color/48/trello.png" alt="trello"/>
-<img width="48" height="48" src="https://img.icons8.com/color/48/jira.png" alt="jira"/>
-<img width="64" height="64" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-scrum-agile-flaticons-lineal-color-flat-icons-4.png" alt="external-scrum-agile-flaticons-lineal-color-flat-icons-4"/>
-<img width="48" height="48" src="https://img.icons8.com/color/48/discord-logo.png" alt="discord-logo"/>
-<img width="48" height="48" src="https://img.icons8.com/color/48/slack-new.png" alt="slack-new"/>
-<img width="48" height="48" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1"/> -->
-
-<h4>👉🏻 Product Manager </h4>
+<h4>👉🏻 PM </h4>
 
 | <img src="https://res.cloudinary.com/desr2crlz/image/upload/v1698323249/1614783338090_bgt4oy.jpg" width=50>|
 |:-:|

@@ -1,12 +1,86 @@
+import React, { useState } from "react";
 import { GiGlobe } from "react-icons/gi";
+import Swal from 'sweetalert2';
 
-function IvpHoster({ dataUser }) {
+function IvpHoster({ data , dataUser }) {
+
+	const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showForm, setShowForm] = useState(true);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setShowForm(true);
+    };
+
+    const [formData, setFormData] = useState({
+      nameH: "",
+      emailH: "",
+      mensaje: "",
+    });
+
+    const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const dataToSend = {
+    type: "contact p2p",
+    emailH: formData.emailH,
+    emailP: dataUser.email,
+    nameP: dataUser.names,
+    nameH: formData.nameH,
+    mensaje: formData.mensaje,
+    title: data.title,
+  };
+
+  const JsonData = JSON.stringify(dataToSend);
+
+  try {
+    const result = await Swal.fire({
+      title: '¿Enviar el mensaje?',
+      text: '¿Estás seguro de que deseas enviar este mensaje?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, enviar',
+      cancelButtonText: 'Cancelar',
+    });
+
+    if (result.isConfirmed) {
+      const response = await fetch("https://clon-airbnb-api.onrender.com/api/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JsonData,
+      });
+
+      if (response.ok) {
+        await Swal.fire('¡Mensaje enviado!', 'Tu mensaje se ha enviado con éxito.', 'success');
+        setShowForm(false); // Oculta el formulario después de enviar el mensaje
+      } else {
+        throw new Error("Error en la solicitud");
+      }
+        }
+      } catch (error) {
+        Swal.fire('Error', 'Hubo un error al enviar el mensaje.', 'error');
+      }
+    };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+
 	return (
 		<div className="border-b">
 			<h2 className="text-2xl font-semibold m-5">Conocé al anfitrión</h2>
 			<div className="p-12 my-3 bg-stone-200 rounded-lg">
 				{/* CARD ANFITRION  */}
-
 				<div className="flex items-center justify-around bg-white rounded-3xl drop-shadow-[0_30px_30px_rgba(0,0,0,0.25)] my-3 p-5 w-400">
 					<div>
 						<img
@@ -62,9 +136,34 @@ function IvpHoster({ dataUser }) {
 						<span className="text-lg font-semibold underline">Mostrar más</span>
 					</div>
 
-					<button className="bg-stone-900 text-white px-10 py-2 my-4 rounded-lg border-none">
+					<button onClick={openModal} className="bg-stone-900 text-white px-10 py-2 my-4 rounded-lg border-none">
 						Escribile al anfitrión
 					</button>
+					{isModalOpen && (
+                    <div className="modal">
+                        <div className="modal-content">
+                            <button onClick={closeModal}>X</button>
+                            {showForm ? (
+                            <form className="flex flex-col w-full" onSubmit={handleSubmit}>
+                                <h1 className="text-3xl font-bold mb-7 mt-7">Contactá al anfitrión {dataUser.names}</h1>
+                                <h1 className="text-lg font-bold text-gray-600 mb-7"> Propiedad: {data.title}</h1>
+                                <label className="text-gray-900 text-lg pb-2" htmlFor="nameH">Nombre</label>
+                                <input className="border border-gray-300 rounded-md mb-4" type="text" id="nameH" name="nameH" value={formData.nameH} onChange={handleChange} required/>
+
+                                <label className="text-gray-900 text-lg pb-2" htmlFor="emailH">Correo Electrónico</label>
+                                <input className="border border-gray-300 rounded-md mb-4 p-2" type="emailH" id="emailH" name="emailH" value={formData.emailH} onChange={handleChange} required/>
+
+                                <label className="text-gray-900 text-lg pb-2" htmlFor="mensaje">Mensaje</label>
+                                <textarea className="border border-gray-300 rounded-md h-24 w-full mb-4" id="mensaje" name="mensaje" value={formData.mensaje} onChange={handleChange} required></textarea>
+
+                                <button className="border rounded-md py-2 px-2 bg-black text-white hover:bg-gray-900 mt-4 mb-2" type="submit">Enviar</button>
+                            </form>
+                            ) : (
+                              <h1 className="text-3xl font-semibold text-gray-600 text-center p-10">Su mensaje fue enviado correctamente, el anfitrión le respondera a la brevedad.</h1>
+                            )}
+                        </div>
+                    </div>
+                    )}
 				</div>
 				<div className="my-2">
 					<p className="text-xs text-gray-600 my-2">

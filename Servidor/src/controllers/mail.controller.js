@@ -4,7 +4,7 @@ const sendMail = require('../functions/sendmail');
 async function mailController(req, res) {
     try {
         const dataMail = req.body;
-        await sendMail(
+        const response = await sendMail(
             dataMail);
 
         return res.status(200).send('Correo electrónico enviado correctamente');

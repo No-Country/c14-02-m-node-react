@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LiaSwimmingPoolSolid } from "react-icons/lia";
 import { AiOutlineWifi, AiOutlineCar } from "react-icons/ai";
 import { LiaBedSolid } from "react-icons/lia";
@@ -7,15 +7,19 @@ import { MdOutlineBathtub, MdOutlineLocalLaundryService } from "react-icons/md";
 import { LuSofa } from "react-icons/lu";
 import { FaKitchenSet, FaFan } from "react-icons/fa6";
 import { FiMonitor } from "react-icons/fi";
+import { BiSolidChevronLeft } from "react-icons/bi";
 
 import { useCreatePublicationMutation } from "../store/rtk-query";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import UpImages from "../components/UpImages";
 
 import Swal from "sweetalert2";
 
+import { useAuth } from "../context/AuthContext";
+
 const PropertyForm = () => {
+	const { user } = useAuth();
 	const [formData, setFormData] = useState({
 		type: "",
 		offering: "",
@@ -30,11 +34,14 @@ const PropertyForm = () => {
 		price: "",
 		discount: "",
 		extra_Security: [],
-		email: "",
+		email: user.email,
 		photos: [],
 	});
 
 	const [createPublication] = useCreatePublicationMutation(formData);
+
+	const [isModalOpen, setIsModalOpen] = useState(true);
+	const navigate = useNavigate();
 
 	const handleChange = e => {
 		const { name, value, type, checked } = e.target;
@@ -81,13 +88,30 @@ const PropertyForm = () => {
 		});
 	};
 
+	const resetForm = () => {
+		setFormData({
+			type: "",
+			offering: "",
+			location: "",
+			spaces: [],
+			amenities: [],
+			featured: "",
+			security: [],
+			title: "",
+			description: "",
+			type_guest: "",
+			price: "",
+			discount: "",
+			extra_Security: [],
+			email: user.email,
+			photos: [],
+		});
+	};
+
 	const handleSubmit = async e => {
 		e.preventDefault();
-		createPublication(formData);
 
 		try {
-			const response = await createPublication(formData);
-
 			// Validar campos requeridos
 			if (
 				!formData.title ||
@@ -101,7 +125,7 @@ const PropertyForm = () => {
 					title: "Error",
 					text: "Por favor, completa todos los campos obligatorios.",
 				});
-				return; // No envíes la solicitud si falta información
+				return; // Falta información
 			}
 
 			// Validar el campo "description"
@@ -122,7 +146,7 @@ const PropertyForm = () => {
 					title: "Error",
 					text: "El formato del correo electrónico no es válido.",
 				});
-				return; // No envíes la solicitud si el correo electrónico no es válido
+				return; // El correo electrónico no es válido
 			}
 
 			// Validar el descuento
@@ -136,19 +160,38 @@ const PropertyForm = () => {
 				return; // No envíes la solicitud si el descuento no es válido
 			}
 
+			if (formData.photos.length === 0) {
+				Swal.fire({
+					icon: "error",
+					title: "Error",
+					text: "Debes subir al menos una imagen de la propiedad.",
+				});
+				return; // Faltan imágenes
+			}
+
+			// Si todas las validaciones se superan, entonces realiza la solicitud
+			const response = await createPublication(formData);
+
 			if (response.data) {
-				// la publicación se creó con éxito
+				// La publicación se creó con éxito
 				Swal.fire({
 					icon: "success",
 					title: "Éxito",
 					text: "La propiedad se guardó con éxito.",
 				});
+				// despues de 2 segundo el modal se limpia, se cierra y se dirije a la pagina de home.
+				// esto es para que de tiempo el modal en cargarse y que se muestre bien.
+				setTimeout(() => {
+					resetForm();
+					setIsModalOpen(false);
+					navigate("/");
+				  }, 2000);
 			} else {
-				// error al crear la publicación
+				// Error al crear la publicación
 				console.error("Error al crear la publicación");
 			}
 		} catch (error) {
-			// manejar errores de la solicitud aquí
+			// Manejar errores de la solicitud aquí
 			console.error("Error al crear la publicación:", error);
 		}
 	};
@@ -162,14 +205,15 @@ const PropertyForm = () => {
 
 	return (
 		<div>
-			<div className="m-4 p-8 rounded-xl shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)]">
+			<div className="m-4 p-8 rounded-xl bg-gray-300 shadow-[5px_10px_30px_-3px_rgba(0,0,0,0.3)]">
 				{/* El link esta listo para que se ponga a donde se quiere que lo llevemos atras seria el perifl o al home. */}
 				<Link
 					to="/"
-					className="text-4xl text-gray-800 bg-red-500 w-[50px] h-[50px] flex flex-col items-center rounded-lg "
+					className="text-4xl text-white bg-red-500 w-12 h-12 flex items-center justify-center rounded-lg"
 				>
-					&#8592;
+					<BiSolidChevronLeft />
 				</Link>
+
 				<div className="text-center">
 					<h2 className="text-3xl font-semibold">Tu Airbnb</h2>
 				</div>
@@ -178,7 +222,10 @@ const PropertyForm = () => {
 					<UpImages onImagesUploaded={updateImageUrls} />
 				</div>
 
+					{isModalOpen ? (
 				<div className="w-full p-4">
+
+					
 					<form className="flex flex-col " onSubmit={handleSubmit}>
 						<label htmlFor="title" className="text-sm font-medium text-gray-900">
 							Nombre de tu Airbnb
@@ -272,6 +319,9 @@ const PropertyForm = () => {
 							onChange={handleChange}
 						/>
 
+						<label htmlFor="type" className="text-sm font-medium text-gray-900">
+							Tipo de Alojamiento
+						</label>
 						<select
 							id="type"
 							name="type"
@@ -319,6 +369,9 @@ const PropertyForm = () => {
 							))}
 						</select>
 
+						<label htmlFor="offering" className="text-sm font-medium text-gray-900">
+							Tipo de Espacio
+						</label>
 						<select
 							id="offering"
 							name="offering"
@@ -458,11 +511,15 @@ const PropertyForm = () => {
 							onChange={handleChange}
 						/>
 
+						<label htmlFor="security" className="text-sm font-medium text-gray-900">
+							Seguridad
+						</label>
+
 						<select
 							id="security"
 							name="security"
 							className="half-width rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-stone-600 sm:max-w-xs "
-							value={formData.security.join(",")} // Convierte la matriz en una cadena
+							value={formData.security} // Convierte la matriz en una cadena
 							onChange={handleChange}
 						>
 							<option value="security">Seguridad</option>
@@ -489,7 +546,7 @@ const PropertyForm = () => {
 							/>
 						</div>
 
-						<div className="sm:col-span-4">
+						<div className="sm:col-span-4 hidden">
 							<label htmlFor="email" className="text-sm font-medium text-gray-900">
 								Email
 							</label>
@@ -499,9 +556,9 @@ const PropertyForm = () => {
 									name="email"
 									type="email"
 									autoComplete="email"
-									className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600 "
+									className="rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-stone-600"
 									value={formData.email}
-									onChange={handleChange}
+									readOnly
 								/>
 							</div>
 						</div>
@@ -509,7 +566,9 @@ const PropertyForm = () => {
 							Agregar
 						</button>
 					</form>
+
 				</div>
+						):null}	
 			</div>
 		</div>
 	);

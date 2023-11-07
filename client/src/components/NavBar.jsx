@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import styled from "styled-components";
 import logo from "../assets/images/airbnblogo.png";
@@ -12,11 +12,11 @@ import { GrBottomCorner } from "react-icons/gr";
 import { useAuth } from "../context/AuthContext";
 import { Search } from "./Search";
 
-
 export const NavBar = ({ photoPerson }) => {
 	const { user } = useAuth();
 	const [showInput, setShowInput] = useState(false);
 	const [selectedSearch, setSelectedSearch] = useState("");
+	const navigate = useNavigate();
 
 	const toggleInput = () => {
 		if (!showInput) {
@@ -37,8 +37,16 @@ export const NavBar = ({ photoPerson }) => {
 	const handleReloadHomePage = () => {
 		window.location.href = "/"; // Navega a la página de inicio flex flex-row justify-between items-center pt-4 px-10 bg-white sticky top-0 z-50
 	};
+
+	const publicationAirbnb = (e) => {
+		if (!user) {
+			e.preventDefault();
+			navigate("/register");
+		}
+	};
+
 	return (
-		<div className="md:flex md:flex-row md:justify-between md:items-center md:pt-4 md:px-10 md:bg-white md:sticky md:top-0 md:z-50 flex flex-col ">	
+		<div className="md:flex md:flex-row md:justify-between md:items-center md:pt-4 md:px-10 md:bg-white md:sticky md:top-0 md:z-50 flex flex-col pb-2 ">
 			<Link to="/" style={{ cursor: "pointer" }} onClick={handleReloadHomePage}>
 				<div className="flex flex-row items-center cursor-pointer">
 					<img src={logo} alt="Logo" className="mx-auto p-3 md:mx-0" />
@@ -46,31 +54,53 @@ export const NavBar = ({ photoPerson }) => {
 				{/* <LogoResponsive src={logosintexto} alt="New Logo" className="new-logo" /> */}
 			</Link>
 
-			<div className="md:p-2 p-4 md:h-[60px] md:w-[400px] flex justify-around items-center rounded-xl border border-gray-300 shadow-md cursor-pointer hover:shadow-lg hover:border-gray-400_outline-none order-2 md:order-1 mb-5 md:mb-0" onClick={toggleInput}>
+			<div
+				className="md:p-2 p-4 md:h-[60px] md:w-[400px] flex justify-around items-center rounded-xl border border-gray-300 shadow-md cursor-pointer hover:shadow-lg hover:border-gray-400_outline-none order-2 md:order-1 mb-5 md:mb-0"
+				onClick={toggleInput}
+			>
 				{showInput ? (
 					<Search selectedSearch={selectedSearch} setShowInput={setShowInput} />
 				) : (
 					<>
-						<p className=" m-0 text-sm font-medium  px-4 border-r border-gray-300" onClick={handleLocationClick}>Locación</p>
-						<p className="whitespace-nowrap m-0 text-sm font-medium leading-22 px-4 border-r border-gray-300"  onClick={handleTitleClick}>Título</p>
-						<p className="whitespace-nowrap m-0 text-sm font-medium leading-22 px-4 border-r border-gray-300"  onClick={handlePriceClick}>Precio</p>
-						<div className="rounded-full p-2 flex justify-center items-center bg-red-500 " >
+						<p
+							className=" m-0 text-sm font-medium  px-4 border-r border-gray-300"
+							onClick={handleLocationClick}
+						>
+							Locación
+						</p>
+						<p
+							className="whitespace-nowrap m-0 text-sm font-medium leading-22 px-4 border-r border-gray-300"
+							onClick={handleTitleClick}
+						>
+							Título
+						</p>
+						<p
+							className="whitespace-nowrap m-0 text-sm font-medium leading-22 px-4 border-r border-gray-300"
+							onClick={handlePriceClick}
+						>
+							Precio
+						</p>
+						<div className="rounded-full p-2 flex justify-center items-center bg-red-500 ">
 							<img src={search} alt="Search Icon" />
 						</div>
 					</>
 				)}
 			</div>
-			
-							{/* flex flex-row items-center gap-2 */}
+
+			{/* flex flex-row items-center gap-2 */}
 			<div className=" flex flex-row items-center md:justify-center justify-between px-2 mx:px-0 md:p-3 py-4 gap-2 order-1 md:order-2">
 				<div className="flex items-center justify-between  w-[150px]">
-					
-						<p class="whitespace-nowrap m-0 md:text-sm text-md font-medium leading-22 text-lg">Poné tu Airbnb</p>
-					
-					
-						<img src={idioma} alt="Idioma Icon" />
-					
+					<Link to="/tuairbnb">
+						<p
+							className="whitespace-nowrap m-0 md:text-sm text-md font-medium leading-22 text-lg"
+							onClick={publicationAirbnb}
+						>
+							Poné tu Airbnb
+						</p>
+					</Link>
+					{/* <img src={idioma} alt="Idioma Icon" /> */}
 				</div>
+
 				<BottonMenu photoPerson={user ? user.photoURL : photoPerson} />
 			</div>
 			{/* <FilterResponsive>
